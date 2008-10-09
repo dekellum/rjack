@@ -1,0 +1,16 @@
+<assembly>
+  <id>bin</id>
+  <formats>
+    <format>dir</format>
+  </formats>
+
+  <dependencySets>
+    <dependencySet>
+      <includes>
+        <include>ch.qos.logback:logback-classic</include>
+        <include>ch.qos.logback:logback-core</include>
+      </includes>
+    </dependencySet>
+  </dependencySets>
+
+</assembly>

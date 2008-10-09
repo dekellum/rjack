@@ -1,0 +1,148 @@
+#!/usr/bin/env jruby
+#--
+# Copyright 2008 David Kellum
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you
+# may not use this file except in compliance with the License.  You
+# may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+# implied.  See the License for the specific language governing
+# permissions and limitations under the License.
+#++
+
+
+$LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
+
+require 'logback'
+
+require 'test/unit'
+
+class TestAppender
+  import 'ch.qos.logback.core.Appender'
+  include Appender
+
+  attr_reader :count, :last
+  attr_writer :layout
+
+  def initialize
+    reset 
+  end
+
+  def doAppend( event )
+    @count += 1
+    @last = event
+    @last = @layout.nil? ? event : @layout.doLayout( event )
+  end
+
+  def start; end
+  def stop; end
+  
+  def reset
+    @count = 0
+    @last = nil
+    @layout = nil
+  end
+end
+
+class TestLevelSet < Test::Unit::TestCase
+
+  def setup
+    @appender = TestAppender.new
+    Logback.context.configure do |ctx|
+      ctx.root.add( @appender )
+    end
+    @log = SLF4J::Logger.new( "my.app" )
+  end
+  
+  def teardown
+    @appender.reset()
+  end
+
+  def test_below_level
+    Logback.context.root.level = Logback::ERROR
+    assert( ! @log.debug? )
+    @log.debug( "not logged" )
+    @log.debug { "also not logged" }
+    assert_equal( 0, @appender.count )
+  end
+
+  def test_above_level
+    Logback.context.root.level = Logback::TRACE
+    assert( @log.trace? )
+    @log.trace( "logged" )
+    assert_equal( 1, @appender.count )
+    assert_equal( Logback::TRACE, @appender.last.level )
+    assert_equal( "logged", @appender.last.message )
+  end
+
+
+  def test_override_level
+    Logback.context.root.level = Logback::ERROR
+    Logback.context[ "my" ].level = Logback::WARN
+    assert( @log.warn? )
+    @log.warn( "override" )
+    assert_equal( Logback::WARN, @appender.last.level )
+    assert_equal( 1, @appender.count )
+  end
+
+end
+
+class TestConfigure < Test::Unit::TestCase
+  
+  def test_file_appender_config
+    log_file = "./test_appends.test_file_appender.log"
+
+    Logback.context.configure do |ctx|
+      ctx.root.add( ctx.new_file_appender do |a|
+                      a.file = log_file
+                      a.append = false
+                      a.immediateFlush = true
+                      a.encoding = "ISO-8859-1"
+                    end )
+    end
+    log = SLF4J::Logger.new( self.class.name )
+    log.debug( "write to file" )
+    assert( File.file?( log_file ) )
+    assert( File.stat( log_file ).size > 0 )
+    assert_equal( 1, File.delete( log_file ) )
+  end
+
+  def test_pattern_config
+    appender = TestAppender.new
+    Logback.context.configure do |ctx|
+      appender.layout = ctx.new_pattern_layout( "%level-%msg" )
+      ctx.root.add( appender )
+    end
+
+    log = SLF4J::Logger.new( self.class.name )
+    log.info( "message" )
+    assert_equal( 1, appender.count )
+    assert_equal( "INFO-message", appender.last )
+  end
+
+
+  def test_console_config
+    log_name = "#{self.class.name}.#{self.method_name}"
+    appender = TestAppender.new
+    Logback.context.configure do |ctx|
+      ctx.root.add( ctx.new_console_appender do |a|
+                      a.immediateFlush = true
+                      a.encoding = "UTF-8"
+                      a.target = "System.out"
+                    end )
+      ctx[log_name].add( appender )
+    end
+
+    Logback.context[ log_name ].level = Logback::DEBUG
+    Logback.context[ log_name ].additive = false
+    log = SLF4J::Logger.new( log_name )
+    log.debug( "test write to console" )
+    assert_equal( 1, appender.count )
+  end
+
+end

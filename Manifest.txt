@@ -1,0 +1,13 @@
+History.txt
+Manifest.txt
+README.txt
+Rakefile
+lib/slf4j.rb
+lib/slf4j/jcl-over-slf4j-1.5.3.jar
+lib/slf4j/jcl-over-slf4j.rb
+lib/slf4j/jdk14.rb
+lib/slf4j/log4j-over-slf4j-1.5.3.jar
+lib/slf4j/log4j-over-slf4j.rb
+lib/slf4j/slf4j-api-1.5.3.jar
+lib/slf4j/slf4j-jdk14-1.5.3.jar
+test/test_slf4j.rb

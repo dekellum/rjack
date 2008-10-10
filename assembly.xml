@@ -3,13 +3,13 @@
   <formats>
     <format>dir</format>
   </formats>
-
+  <includeBaseDirectory>false</includeBaseDirectory>
   <dependencySets>
     <dependencySet>
       <includes>
         <include>org.slf4j:slf4j-api</include>
         <include>org.slf4j:jcl-over-slf4j</include>
-        <include>org.slf4j:jul-over-slf4j</include>
+        <include>org.slf4j:jul-to-slf4j</include>
         <include>org.slf4j:log4j-over-slf4j</include>
         <include>org.slf4j:slf4j-jcl</include>
         <include>org.slf4j:slf4j-jdk14</include>

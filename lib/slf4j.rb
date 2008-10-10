@@ -14,23 +14,19 @@
 # permissions and limitations under the License.
 #++
 
-# Jruby wrapper module for the SLF4J[http://www.slf4j.org/] Logging
-# interface.
 
+require 'slf4j/version'
 require 'java'
 
+# Wrapper and core Logger compatible adapter for the
+# SLF4J[http://www.slf4j.org/] logging interface.
 module SLF4J
-
-  SLF4J_VERSION = '1.5.3'
-  VERSION = SLF4J_VERSION + '.1'
 
   def self.current_loader
     java.lang.Thread::current_thread.context_class_loader
   end
 
   SLF4J_LOADER = current_loader
-
-  SLF4J_DIR = File.join( File.dirname(__FILE__), 'slf4j' )
 
   def self.require_jar( name )
     #FIXME: Doesn't appear to catch what we would hope it catches.

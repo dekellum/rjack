@@ -17,9 +17,6 @@
 module Logback
   LOGBACK_VERSION = '0.9.9'
   VERSION = LOGBACK_VERSION + '.1'
-  LOGBACK_DIR = File.dirname(__FILE__)
 
-  def self.require_jar( name )
-    require File.join( LOGBACK_DIR, "#{name}-#{ LOGBACK_VERSION }.jar" )
-  end
+  LOGBACK_DIR = File.dirname(__FILE__)
 end

@@ -20,6 +20,9 @@ $LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
 
 require 'logback'
 
+# Test load works
+require 'logback/access'
+
 require 'test/unit'
 
 class TestAppender

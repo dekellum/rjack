@@ -28,6 +28,10 @@ require 'java'
 require 'logback/version'
 
 module Logback
+  def self.require_jar( name )
+    require File.join( LOGBACK_DIR, "#{name}-#{ LOGBACK_VERSION }.jar" )
+  end
+
   require_jar 'logback-core'
   require_jar 'logback-classic'
 

@@ -3,12 +3,13 @@
   <formats>
     <format>dir</format>
   </formats>
-
+  <includeBaseDirectory>false</includeBaseDirectory>
   <dependencySets>
     <dependencySet>
       <includes>
         <include>ch.qos.logback:logback-classic</include>
         <include>ch.qos.logback:logback-core</include>
+        <include>ch.qos.logback:logback-access</include>
       </includes>
     </dependencySet>
   </dependencySets>

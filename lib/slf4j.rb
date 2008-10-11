@@ -14,7 +14,6 @@
 # permissions and limitations under the License.
 #++
 
-
 require 'slf4j/version'
 require 'java'
 
@@ -22,24 +21,60 @@ require 'java'
 # SLF4J[http://www.slf4j.org/] logging interface.
 module SLF4J
 
-  def self.current_loader
-    java.lang.Thread::current_thread.context_class_loader
-  end
+  def self.require_adapter( name )
+    row = ADAPTERS.assoc( name )
+    if row 
+      name,ban = row
+      output = false
+    else
+      row = ADAPTERS.rassoc( name )
+      ban,name = row
+      output = true
+    end
+   
+    if @@loaded[ ban ]
+      raise "Illegal attempt to load '#{name}' when '#{ban}' is loaded."
+    end
 
-  SLF4J_LOADER = current_loader
+    if output 
+      if ! @@output_name.nil? && name != @@output_name
+        logger("SLF4J").warn do
+          "Ignoring attempt to load #{name} after #{@@output_name} already loaded." 
+        end
+        return
+      end
+      if java.lang.Thread::current_thread.context_class_loader != SLF4J_LOADER
+        $stderr.puts( "WARNING: Attempting to load #{name} in child class" + 
+                      " loader of slf4j-api.jar loader." )
+      end
+      require_jar( 'slf4j-' + name )
+      @@output_name = name
+    else
+      require_jar( name )
+    end
+
+    # Special case, requires explicit 'install'
+    if name == 'jul-to-slf4j' 
+      org.slf4j.bridge.SLF4JBridgeHandler.install
+    end
+
+    @@loaded[ name ] = true
+  end
 
   def self.require_jar( name )
-    #FIXME: Doesn't appear to catch what we would hope it catches.
-    if current_loader != SLF4J_LOADER
-      $stderr.puts( "WARNING: Loading #{name} in different class loader " + 
-        "from where slf4j-api.jar is loaded." )
-    end
     require File.join( SLF4J_DIR, "#{name}-#{ SLF4J_VERSION }.jar" )
+  end
+  
+  require_jar 'slf4j-api'
+  SLF4J_LOADER = org.slf4j.ILoggerFactory.java_class.class_loader
 
+  @@loaded = {}
+  @@output_name = nil
+
+  def self.output_name
+    @@output_name
   end
 
-  require_jar 'slf4j-api'
-  
   LEVELS = %w{ trace debug info warn error }
 
   # Wrapper around org.slf4j.Logger (JLogger)
@@ -83,5 +118,4 @@ module SLF4J
   def self.linked_factory
      org.slf4j.LoggerFactory.getILoggerFactory
   end
-  
 end

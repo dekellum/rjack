@@ -5,35 +5,19 @@ require 'hoe'
 
 $LOAD_PATH << './lib'
 
-require 'slf4j/version'
+require 'slf4j/version' 
+# Instead of 'slf4j' to avoid loading slf4j-api in Rake parent loader
 
-# Mapping from loader.rb -> jar
-JAR_LOADERS = {}
+LOADERS = SLF4J::ADAPTERS.flatten.compact
+LOADER_FILES = LOADERS.map { |adp| "lib/slf4j/#{adp}.rb" }
 
-# SLF4J output adapters
-%w{ jcl jdk14 log4j12 nop simple }.each do |adp|
-  JAR_LOADERS[ adp ] = 'slf4j-' + adp
-end
-
-# SLF4J input adapters
-%w{ jcl-over-slf4j jul-to-slf4j log4j-over-slf4j }.each do |ra|
-  JAR_LOADERS[ ra ] = ra
-end
-
-desc "Generate jar loader .rb's"
-task :jar_loaders => [ :jars ] do
-  JAR_LOADERS.each do |rb,jar| 
-    out = File.new( "lib/slf4j/#{rb}.rb", 'w' )
-    begin
-      out.puts "SLF4J.require_jar '#{jar}'"
-    ensure
-      out.close
-    end
-  end
-end
+JARS = SLF4J::ADAPTERS.map do |i,o| 
+  [ i, "slf4j-#{o}" ].map { |n| "#{n}-#{SLF4J::SLF4J_VERSION}.jar" if n } 
+end.flatten.compact
+JAR_FILES = JARS.map { |jar| "lib/slf4j/#{jar}" }
 
 desc "Update the Manifest with actual jars/loaders"
-task :manifest => [ :jars, :jar_loaders ] do
+task :manifest do
   out = File.new( 'Manifest.txt', 'w' ) 
   begin
     out.write <<END
@@ -45,10 +29,21 @@ lib/slf4j.rb
 lib/slf4j/version.rb
 test/test_slf4j.rb
 END
-    Dir.glob( 'lib/slf4j/*.jar' ).each { |jar| out.puts( jar ) }
-    JAR_LOADERS.keys.each { |rb| out.puts( "lib/slf4j/#{rb}.rb" ) }
+    out.puts LOADER_FILES
+    out.puts JAR_FILES
   ensure
     out.close
+  end
+end
+
+LOADERS.each do |adapter| 
+  file "lib/slf4j/#{adapter}.rb" do
+    out = File.new( "lib/slf4j/#{adapter}.rb", 'w' )
+    begin
+      out.puts "SLF4J.require_adapter( '#{adapter}' )"
+    ensure
+      out.close
+    end
   end
 end
 
@@ -58,16 +53,17 @@ file ASSEMBLY => [ 'pom.xml', 'assembly.xml' ] do
   sh( 'mvn package' )
 end
 
-desc "Copy jars from maven assembly."
-task :jars  => [ ASSEMBLY ] do
-  cp_r( Dir.glob( ASSEMBLY + '/*.jar' ), 'lib/slf4j' )
+JARS.each do |jar|
+  file "lib/slf4j/#{jar}" => [ ASSEMBLY ] do
+    cp_r( File.join( ASSEMBLY, jar ), 'lib/slf4j' )
+  end
 end
 
-[ :gem, :test ].each { |t| task t => [ :jars, :jar_loaders ] }
+[ :gem, :test ].each { |t| task t => ( JAR_FILES + LOADER_FILES ) }
 
 task :mvn_clean do
-  rm_f( Dir.glob( 'lib/slf4j/*.jar' ) )
-  JAR_LOADERS.keys.each { |rb| rm_f( "lib/slf4j/#{rb}.rb" ) }
+  rm_f( JAR_FILES )
+  rm_f( LOADER_FILES )
   sh( 'mvn clean' )
 end
 task :clean => :mvn_clean 
@@ -78,4 +74,3 @@ hoe = Hoe.new( "slf4j", SLF4J::VERSION ) do |p|
 end
  
 hoe.spec.dependencies.delete_if { |dep| dep.name == "hoe" }
-

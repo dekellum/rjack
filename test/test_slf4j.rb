@@ -79,4 +79,10 @@ class TestSlf4j < Test::Unit::TestCase
     assert_equal( 4, @handler.count )
   end
 
+  def test_circular_ban
+    assert_raise( RuntimeError ) do
+      require 'slf4j/jul-to-slf4j'
+    end
+  end
+
 end

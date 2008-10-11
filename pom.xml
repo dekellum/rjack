@@ -5,7 +5,7 @@
   <artifactId>slf4j-assembly</artifactId>
   <packaging>pom</packaging>
   <version>1.0</version>
-  <name>Gravitext Hello Servlet</name>
+  <name>SLF4J assembly</name>
 
   <dependencies>
     

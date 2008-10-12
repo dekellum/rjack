@@ -11,9 +11,12 @@ require 'slf4j/version'
 LOADERS = SLF4J::ADAPTERS.flatten.compact
 LOADER_FILES = LOADERS.map { |adp| "lib/slf4j/#{adp}.rb" }
 
-JARS = SLF4J::ADAPTERS.map do |i,o| 
-  [ i, "slf4j-#{o}" ].map { |n| "#{n}-#{SLF4J::SLF4J_VERSION}.jar" if n } 
-end.flatten.compact
+jars = [ 'slf4j-api' ]
+jars += SLF4J::ADAPTERS.map { |i,o| [ i, "slf4j-#{o}" ] }.flatten.compact
+jars.map! { |n| "#{n}-#{SLF4J::SLF4J_VERSION}.jar" }
+
+JARS = jars
+
 JAR_FILES = JARS.map { |jar| "lib/slf4j/#{jar}" }
 
 desc "Update the Manifest with actual jars/loaders"
@@ -70,7 +73,4 @@ task :clean => :mvn_clean
 
 hoe = Hoe.new( "slf4j", SLF4J::VERSION ) do |p|
   p.developer( "David Kellum", "dek-gem@gravitext.com" )
-  p.need_tar = true
 end
- 
-hoe.spec.dependencies.delete_if { |dep| dep.name == "hoe" }

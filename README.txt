@@ -1,27 +1,30 @@
 = slf4j
 
+* http://rjack.rubyforge.org/slf4j
+* http://rubyforge.org/projects/rjack
+
+== Description
+
 A JRuby wrapper and gem packaging of the 
 {Simple Logging Facade for Java}[http://www.slf4j.org/].  
 Provides all jar dependencies and a Ruby Logger compatible
 facade.
 
-== DESCRIPTION:
-
-SLF4J is a java logging abstraction and set of adaptors to various
+SLF4J is a java logging abstraction and set of adapters to various
 concrete logging implementations and legacy logging APIs.  The SLF4J
 gem adds a ruby core Logger compatible facade to SLF4J, and makes any
 needed adapters available to JRuby applications. This makes it
 possible to unify and control logging output of both java and ruby
 components in a JRuby application.
 
-== FEATURES:
+== Features
 
 * The complete set of SLF4J jars with ruby 'require' based selection
   of input and output adapters.
-* A Ruby core Logger compatible SLF4J::Logger, alowing ruby code to
+* A Ruby core Logger compatible SLF4J::Logger, allowing ruby code to
   log through SLF4J.
 
-== SYNOPSIS:
+== Synopsis
 
   require 'slf4j'
   require 'slf4j/simple'
@@ -29,9 +32,9 @@ components in a JRuby application.
   log = SLF4J.logger( "my.app.logger" )
   log.info { "Hello World!" }
 
-== LICENSE:
+== License
 
-=== SLF4J Gem 
+=== slf4j gem 
 
 Copyright (c) 2008 David Kellum
 All rights reserved.

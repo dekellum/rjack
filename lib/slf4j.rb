@@ -28,7 +28,7 @@ require 'java'
 #
 # == Adapters
 #
-# All of the following output adapters are available via +require+
+# All of the following output adapters are available via +require+:
 #
 #   require 'slf4j/jcl'       # Output to Jakarta Commons Logging
 #   require 'slf4j/jdk14'     # JDK java.util.logging 
@@ -36,9 +36,9 @@ require 'java'
 #   require 'slf4j/nop'       # NOP null logger (provided)
 #   require 'slf4j/simple'    # Simple logger (provided)
 #
-# The first loaded output adapter wins (as per SLF4J classpath
-# conventions). A warning will be logged to the "slf4j" Logger if an
-# attempt is made to require a second output adapter.
+# The first loaded output adapter wins (as with mulitple adapters on
+# the classpath). A warning will be logged to "slf4j" if an attempt is
+# made to require a second output adapter.
 #
 # And the following input adapters will intercept JCL,
 # java.util.logging (jdk14), or log4j log output and direct it through
@@ -137,7 +137,7 @@ module SLF4J
   #   log.info?                    # Is this level enabled for logging?
   #   log.info( "message" )        # Log message 
   #   log.info { "message" }       # Execute block if enabled 
-  #                                  and log returned values as string
+  #                                  and log returned value
   class Logger
     attr_reader :name
     
@@ -180,7 +180,7 @@ module SLF4J
   end
   module_function :logger
 
-  # The ILoggerFactory instance if adaptor added
+  # The ILoggerFactory instance if an output adapter is loaded
   def self.linked_factory
      org.slf4j.LoggerFactory.getILoggerFactory
   end

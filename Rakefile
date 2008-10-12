@@ -72,5 +72,5 @@ end
 task :clean => :mvn_clean 
 
 hoe = Hoe.new( "slf4j", SLF4J::VERSION ) do |p|
-  p.developer( "David Kellum", "dek-gem@gravitext.com" )
+  p.developer( "David Kellum", "dek-ruby@gravitext.com" )
 end

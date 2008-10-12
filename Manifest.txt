@@ -1,7 +1,9 @@
-History.txt
 Manifest.txt
 README.txt
+History.txt
 Rakefile
+pom.xml
+assembly.xml
 lib/slf4j.rb
 lib/slf4j/version.rb
 test/test_slf4j.rb

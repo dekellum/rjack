@@ -1,6 +1,6 @@
 = slf4j
 
-* http://rjack.rubyforge.org/slf4j
+* http://rjack.rubyforge.org
 * http://rubyforge.org/projects/rjack
 
 == Description

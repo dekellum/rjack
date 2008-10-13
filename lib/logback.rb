@@ -32,7 +32,7 @@ require 'logback/base'
 #   require 'slf4j' 
 #   require 'logback'
 #
-#   log = SLF4J.logger( 'example' )
+#   log = SLF4J[ 'example' ]
 #   log.info "About to reconfigure..."
 #
 #   Logback.configure do

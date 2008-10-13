@@ -59,7 +59,7 @@ class TestLevelSet < Test::Unit::TestCase
     Logback.configure do 
       Logback.root.add_appender( @appender )
     end
-    @log = SLF4J::Logger.new( "my.app" )
+    @log = SLF4J[ "my.app" ]
   end
   
   def teardown
@@ -108,7 +108,7 @@ class TestConfigure < Test::Unit::TestCase
       end 
       Logback.root.add_appender( appender )
     end
-    log = SLF4J::Logger.new( self.class.name )
+    log = SLF4J[ self.class.name ]
     log.debug( "write to file" )
     assert( File.file?( log_file ) )
     assert( File.stat( log_file ).size > 0 )
@@ -122,7 +122,7 @@ class TestConfigure < Test::Unit::TestCase
       Logback.root.add_appender( appender )
     end
 
-    log = SLF4J::Logger.new( self.class.name )
+    log = SLF4J[ self.class.name ]
     log.info( "message" )
     assert_equal( 1, appender.count )
     assert_equal( "INFO-message", appender.last )
@@ -144,7 +144,7 @@ class TestConfigure < Test::Unit::TestCase
 
     Logback[ log_name ].level = Logback::DEBUG
     Logback[ log_name ].additive = false
-    log = SLF4J::Logger.new( log_name )
+    log = SLF4J[ log_name ]
     log.debug( "test write to console" )
     assert_equal( 1, appender.count )
   end

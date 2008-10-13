@@ -13,7 +13,7 @@
 # Lesser General Public License for more details.
 #++
 
-module Logback::Base
+module LogbackBase
   LOGBACK_VERSION = '0.9.9'
   VERSION = LOGBACK_VERSION + '.1'
 

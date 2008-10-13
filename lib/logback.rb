@@ -71,7 +71,7 @@ require 'logback/base'
 # defaults, yields to a block for customization, and then calls
 # +start+.  Logback provides many other components not yet extended in
 # this way.  These can be created directly and or extended in a
-# similar fashion externally.  Providing providing a patch to the
+# similar fashion externally.  Consider providing a patch to the
 # jrack[http://rubyforge.org/projects/rjack] project with any desired
 # extensions.
 #
@@ -207,6 +207,15 @@ module Logback
   # Extends 
   # ch.qos.logback.core.FileAppender[http://logback.qos.ch/apidocs/ch/qos/logback/core/FileAppender.html]
   # with a block initializer. 
+  #
+  # Note that if buffered (immediate_flush = false, buffer_size > 0),
+  # you will need to +stop+ the appender before exiting in order to
+  # flush/close the log.  Calling:
+  #
+  #   Logback.configure {}
+  #
+  # Will also result in the log being flushed and closed.
+  #
   class FileAppender < JFileAppender
     include AppenderUtil
 
@@ -221,7 +230,7 @@ module Logback
       set_defaults
       self.file = file_name
       self.append = append
-      self.immediateFlush = true #default
+      self.immediate_flush = true #default
       self.encoding = "UTF-8"  
       finish( &block )
     end

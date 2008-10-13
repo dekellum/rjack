@@ -103,7 +103,7 @@ class TestConfigure < Test::Unit::TestCase
     Logback.configure do
       appender = Logback::FileAppender.new( log_file, false ) do |a|
         a.layout = Logback::PatternLayout.new( "%level-%msg" )
-        a.immediateFlush = true
+        a.immediate_flush = true
         a.encoding = "ISO-8859-1"
       end 
       Logback.root.add_appender( appender )
@@ -134,7 +134,7 @@ class TestConfigure < Test::Unit::TestCase
     appender = TestAppender.new
     Logback.configure do
       console = Logback::ConsoleAppender.new do |a|
-        a.immediateFlush = true
+        a.immediate_flush = true
         a.encoding = "UTF-8"
         a.target = "System.out"
       end 

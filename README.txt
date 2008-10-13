@@ -5,13 +5,13 @@
 
 == Description
 
-A JRuby wrapper and gem packaging of the 
+A JRuby adaption and gem packaging of the 
 {Simple Logging Facade for Java}[http://www.slf4j.org/].  
 Provides all jar dependencies and a Ruby Logger compatible
 facade.
 
 SLF4J is a java logging abstraction and set of adapters to various
-concrete logging implementations and legacy logging APIs.  The SLF4J
+concrete logging implementations and legacy logging APIs.  The slf4j
 gem adds a ruby core Logger compatible facade to SLF4J, and makes any
 needed adapters available to JRuby applications. This makes it
 possible to unify and control logging output of both java and ruby
@@ -36,7 +36,7 @@ components in a JRuby application.
 
 === slf4j gem 
 
-Copyright (c) 2008 David Kellum
+Copyright (C) 2008 David Kellum
 All rights reserved.
 
 The SLF4J ruby wrapper and gem packaging is released under the same

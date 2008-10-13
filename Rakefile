@@ -1,6 +1,6 @@
 # -*- ruby -*-
 #--
-# Copyright (c) 2008 David Kellum
+# Copyright (C) 2008 David Kellum
 #
 # Permission is hereby granted, free of charge, to any person
 # obtaining a copy of this software and associated documentation files
@@ -31,16 +31,14 @@ $LOAD_PATH << './lib'
 require 'slf4j/version' 
 # Instead of 'slf4j' to avoid loading slf4j-api in Rake parent loader
 
-LOADERS = SLF4J::ADAPTERS.flatten.compact
-LOADER_FILES = LOADERS.map { |adp| "lib/slf4j/#{adp}.rb" }
+loaders = SLF4J::ADAPTERS.flatten.compact
+loader_files = loaders.map { |adp| "lib/slf4j/#{adp}.rb" }
 
 jars = [ 'slf4j-api' ]
 jars += SLF4J::ADAPTERS.map { |i,o| [ i, "slf4j-#{o}" ] }.flatten.compact
 jars.map! { |n| "#{n}-#{SLF4J::SLF4J_VERSION}.jar" }
 
-JARS = jars
-
-JAR_FILES = JARS.map { |jar| "lib/slf4j/#{jar}" }
+jar_files = jars.map { |jar| "lib/slf4j/#{jar}" }
 
 desc "Update the Manifest with actual jars/loaders"
 task :manifest do
@@ -57,14 +55,14 @@ lib/slf4j.rb
 lib/slf4j/version.rb
 test/test_slf4j.rb
 END
-    out.puts LOADER_FILES
-    out.puts JAR_FILES
+    out.puts loader_files
+    out.puts jar_files
   ensure
     out.close
   end
 end
 
-LOADERS.each do |adapter| 
+loaders.each do |adapter| 
   file "lib/slf4j/#{adapter}.rb" do
     out = File.new( "lib/slf4j/#{adapter}.rb", 'w' )
     begin
@@ -81,17 +79,17 @@ file ASSEMBLY => [ 'pom.xml', 'assembly.xml' ] do
   sh( 'mvn package' )
 end
 
-JARS.each do |jar|
+jars.each do |jar|
   file "lib/slf4j/#{jar}" => [ ASSEMBLY ] do
     cp_r( File.join( ASSEMBLY, jar ), 'lib/slf4j' )
   end
 end
 
-[ :gem, :test ].each { |t| task t => ( JAR_FILES + LOADER_FILES ) }
+[ :gem, :test ].each { |t| task t => ( jar_files + loader_files ) }
 
 task :mvn_clean do
-  rm_f( JAR_FILES )
-  rm_f( LOADER_FILES )
+  rm_f( jar_files )
+  rm_f( loader_files )
   sh( 'mvn clean' )
 end
 task :clean => :mvn_clean 

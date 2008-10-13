@@ -1,5 +1,5 @@
 #--
-# Copyright (c) 2008 David Kellum
+# Copyright (C) 2008 David Kellum
 #
 # Permission is hereby granted, free of charge, to any person
 # obtaining a copy of this software and associated documentation files
@@ -30,12 +30,10 @@ module SLF4J
 
   SLF4J_DIR = File.dirname(__FILE__) # :nodoc:
 
-
   #              :input              :output (jar with slf4j- prefix)
   ADAPTERS = [ [ "jul-to-slf4j",     "jdk14"   ],   
                [ "jcl-over-slf4j",   "jcl"     ],
                [ "log4j-over-slf4j", "log4j12" ],
                [ nil,                "nop"     ],
                [ nil,                "simple"  ] ] # :nodoc:
-      
 end

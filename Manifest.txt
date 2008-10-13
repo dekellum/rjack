@@ -6,7 +6,7 @@ pom.xml
 assembly.xml
 lib/logback.rb
 lib/logback/access.rb
-lib/logback/version.rb
+lib/logback/base.rb
 test/test_logback.rb
 lib/logback/logback-core-0.9.9.jar
 lib/logback/logback-classic-0.9.9.jar

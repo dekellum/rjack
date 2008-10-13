@@ -56,8 +56,8 @@ class TestLevelSet < Test::Unit::TestCase
 
   def setup
     @appender = TestAppender.new
-    Logback.context.configure do |ctx|
-      ctx.root.add( @appender )
+    Logback.configure do 
+      Logback.root.add_appender( @appender )
     end
     @log = SLF4J::Logger.new( "my.app" )
   end
@@ -67,7 +67,7 @@ class TestLevelSet < Test::Unit::TestCase
   end
 
   def test_below_level
-    Logback.context.root.level = Logback::ERROR
+    Logback.root.level = Logback::ERROR
     assert( ! @log.debug? )
     @log.debug( "not logged" )
     @log.debug { "also not logged" }
@@ -75,7 +75,7 @@ class TestLevelSet < Test::Unit::TestCase
   end
 
   def test_above_level
-    Logback.context.root.level = Logback::TRACE
+    Logback.root.level = Logback::TRACE
     assert( @log.trace? )
     @log.trace( "logged" )
     assert_equal( 1, @appender.count )
@@ -85,8 +85,8 @@ class TestLevelSet < Test::Unit::TestCase
 
 
   def test_override_level
-    Logback.context.root.level = Logback::ERROR
-    Logback.context[ "my" ].level = Logback::WARN
+    Logback.root.level = Logback::ERROR
+    Logback[ "my" ].level = Logback::WARN
     assert( @log.warn? )
     @log.warn( "override" )
     assert_equal( Logback::WARN, @appender.last.level )
@@ -100,13 +100,13 @@ class TestConfigure < Test::Unit::TestCase
   def test_file_appender_config
     log_file = "./test_appends.test_file_appender.log"
 
-    Logback.context.configure do |ctx|
-      ctx.root.add( ctx.new_file_appender do |a|
-                      a.file = log_file
-                      a.append = false
-                      a.immediateFlush = true
-                      a.encoding = "ISO-8859-1"
-                    end )
+    Logback.configure do
+      appender = Logback::FileAppender.new( log_file, false ) do |a|
+        a.layout = Logback::PatternLayout.new( "%level-%msg" )
+        a.immediateFlush = true
+        a.encoding = "ISO-8859-1"
+      end 
+      Logback.root.add_appender( appender )
     end
     log = SLF4J::Logger.new( self.class.name )
     log.debug( "write to file" )
@@ -117,9 +117,9 @@ class TestConfigure < Test::Unit::TestCase
 
   def test_pattern_config
     appender = TestAppender.new
-    Logback.context.configure do |ctx|
-      appender.layout = ctx.new_pattern_layout( "%level-%msg" )
-      ctx.root.add( appender )
+    Logback.configure do
+      appender.layout = Logback::PatternLayout.new( "%level-%msg" )
+      Logback.root.add_appender( appender )
     end
 
     log = SLF4J::Logger.new( self.class.name )
@@ -132,17 +132,18 @@ class TestConfigure < Test::Unit::TestCase
   def test_console_config
     log_name = "#{self.class.name}.#{self.method_name}"
     appender = TestAppender.new
-    Logback.context.configure do |ctx|
-      ctx.root.add( ctx.new_console_appender do |a|
-                      a.immediateFlush = true
-                      a.encoding = "UTF-8"
-                      a.target = "System.out"
-                    end )
-      ctx[log_name].add( appender )
+    Logback.configure do
+      console = Logback::ConsoleAppender.new do |a|
+        a.immediateFlush = true
+        a.encoding = "UTF-8"
+        a.target = "System.out"
+      end 
+      Logback.root.add_appender( console )
+      Logback[ log_name ].add_appender( appender )
     end
 
-    Logback.context[ log_name ].level = Logback::DEBUG
-    Logback.context[ log_name ].additive = false
+    Logback[ log_name ].level = Logback::DEBUG
+    Logback[ log_name ].additive = false
     log = SLF4J::Logger.new( log_name )
     log.debug( "test write to console" )
     assert_equal( 1, appender.count )

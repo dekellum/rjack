@@ -1,13 +1,27 @@
 # -*- ruby -*-
+#--
+# Copyright (C) 2008 David Kellum
+#
+# Logback Ruby is free software: you can redistribute it and/or
+# modify it under the terms of the 
+# {GNU Lesser General Public License}[http://www.gnu.org/licenses/lgpl.html] 
+# as published by the Free Software Foundation, either version 3 of the
+# License, or (at your option) any later version.
+#
+# Logback Ruby is distributed in the hope that it will be useful, but
+# WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# Lesser General Public License for more details.
+#++
 
 require 'rubygems'
 require 'hoe'
 
 $LOAD_PATH << './lib'
-require 'logback/version'
+require 'logback/base'
 
 JARS = %w{ core classic access }.map do |n| 
-  "logback-#{n}-#{ Logback::LOGBACK_VERSION }.jar"
+  "logback-#{n}-#{ LogbackBase::LOGBACK_VERSION }.jar"
 end
 JAR_FILES = JARS.map { |jar| "lib/logback/#{jar}" }
 
@@ -24,7 +38,7 @@ pom.xml
 assembly.xml
 lib/logback.rb
 lib/logback/access.rb
-lib/logback/version.rb
+lib/logback/base.rb
 test/test_logback.rb
 END
     out.puts JAR_FILES
@@ -53,9 +67,10 @@ task :mvn_clean do
 end
 task :clean => :mvn_clean 
 
-hoe = Hoe.new( "logback", Logback::VERSION ) do |p|
+hoe = Hoe.new( "logback", LogbackBase::VERSION ) do |p|
   p.developer( "David Kellum", "dek-gem@gravitext.com" )
-# p.need_tar = false
+  p.extra_deps << [ 'slf4j', '>=1.5.3.1' ]
 end
-hoe.spec.dependencies.delete_if { |dep| dep.name == "hoe" }
+
+# No longer needed: hoe.spec.dependencies.delete_if { |dep| dep.name == "hoe" }
 

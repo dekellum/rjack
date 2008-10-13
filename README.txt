@@ -1,21 +1,38 @@
 = logback
 
-A JRuby wrapper around the Logback FIXME
-compatible façade.
+* http://rjack.rubyforge.org
+* http://rubyforge.org/projects/rjack
+
+== Description
+
+The Logback ruby gem packages the Logback[http://logback.qos.ch/] java log
+writer, and provides a JRuby facade for programmatic Logback
+setup. Logback implements the SLF4J[http://www.slf4j.org/] SPI
+packaged in the slf4j gem.
 
 == License
 
-Copyright 2008 David Kellum
+=== Logback Ruby
 
-Licensed under the Apache License, Version 2.0 (the "License"); you
-may not use this file except in compliance with the License.  You
-may obtain a copy of the License at
+Copyright (C) 2008 David Kellum
 
-   http://www.apache.org/licenses/LICENSE-2.0
+Logback Ruby is free software: you can redistribute it and/or
+modify it under the terms of the 
+{GNU Lesser General Public License}[http://www.gnu.org/licenses/lgpl.html] 
+as published by the Free Software Foundation, either version 3 of the
+License, or (at your option) any later version.
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
-implied.  See the License for the specific language governing
-permissions and limitations under the License.
+Logback Ruby is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
 
+=== Logback Java
+
+Logback: the reliable, generic, fast and flexible logging library for Java.  
+
+Copyright (C) 2000-2006, QOS.ch
+
+This library is free software, you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as
+published by the Free Software Foundation.

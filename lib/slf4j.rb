@@ -22,7 +22,7 @@
 # SOFTWARE.  
 #++
 
-require 'slf4j/version'
+require 'slf4j/base'
 require 'java'
 
 # Wrapper and core Logger compatible adapter for the
@@ -31,8 +31,9 @@ require 'java'
 # == Usage
 #
 #   require 'slf4j'
-#   log = SLF4J.logger( "my.app.logger" )
-#   log.info { "Hello World!" }
+#
+#   log = SLF4J[ "my.app.logger" ]
+#   log.info "Hello World!"
 #
 # == Adapters
 #
@@ -65,6 +66,7 @@ require 'java'
 # Adapter names match the corresponding SLF4J jars.
 #
 module SLF4J
+  include SLF4JBase
 
   # Require an adapter by name (add the jar to classpath)
   # This is normally done via require 'slf4j/_name_'
@@ -188,8 +190,14 @@ module SLF4J
   end
   module_function :logger
 
-  # The ILoggerFactory instance if an output adapter is loaded
+  # Synonym for logger( name )
+  def self.[]( name )
+    Logger.new( name )
+  end
+
+  # The ILoggerFactory instance if an output adapter jas been loaded
   def self.linked_factory
      org.slf4j.LoggerFactory.getILoggerFactory
   end
+
 end

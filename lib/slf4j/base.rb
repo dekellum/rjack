@@ -22,7 +22,9 @@
 # SOFTWARE.  
 #++
 
-module SLF4J
+# Base constants for Rakefile, etc.
+module SLF4JBase
+
   # SLF4J-java version
   SLF4J_VERSION = '1.5.3'
   # SLF4J gem version

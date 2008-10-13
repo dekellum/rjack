@@ -64,7 +64,7 @@ class TestSlf4j < Test::Unit::TestCase
     @jdk_logger = JdkLogger.getLogger "" 
     @jdk_logger.addHandler @handler 
     @jdk_logger.level = java.util.logging.Level::INFO
-    @log = SLF4J.logger "my.app" 
+    @log = SLF4J[ "my.app" ]
   end
   
   def teardown

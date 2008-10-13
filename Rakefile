@@ -28,8 +28,9 @@ require 'hoe'
 
 $LOAD_PATH << './lib'
 
-require 'slf4j/version' 
 # Instead of 'slf4j' to avoid loading slf4j-api in Rake parent loader
+require 'slf4j/base' 
+SLF4J = SLF4JBase
 
 loaders = SLF4J::ADAPTERS.flatten.compact
 loader_files = loaders.map { |adp| "lib/slf4j/#{adp}.rb" }
@@ -52,7 +53,7 @@ Rakefile
 pom.xml
 assembly.xml
 lib/slf4j.rb
-lib/slf4j/version.rb
+lib/slf4j/base.rb
 test/test_slf4j.rb
 END
     out.puts loader_files

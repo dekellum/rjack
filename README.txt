@@ -29,8 +29,8 @@ components in a JRuby application.
   require 'slf4j'
   require 'slf4j/simple'
 
-  log = SLF4J.logger( "my.app.logger" )
-  log.info { "Hello World!" }
+  log = SLF4J[ "my.app.logger" ]
+  log.info "Hello World!"
 
 == License
 

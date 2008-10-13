@@ -5,7 +5,7 @@ Rakefile
 pom.xml
 assembly.xml
 lib/slf4j.rb
-lib/slf4j/version.rb
+lib/slf4j/base.rb
 test/test_slf4j.rb
 lib/slf4j/jul-to-slf4j.rb
 lib/slf4j/jdk14.rb

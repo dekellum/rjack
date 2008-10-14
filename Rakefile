@@ -15,6 +15,8 @@
 #++
 
 require 'rubygems'
+
+ENV['NODOT'] = "no thank you"
 require 'hoe'
 
 $LOAD_PATH << './lib'
@@ -70,7 +72,6 @@ task :clean => :mvn_clean
 hoe = Hoe.new( "logback", LogbackBase::VERSION ) do |p|
   p.developer( "David Kellum", "dek-gem@gravitext.com" )
   p.extra_deps << [ 'slf4j', '>=1.5.3.1' ]
+  p.rubyforge_name = "rjack"
+  p.rdoc_pattern = /^(lib.*\.(rb|txt))|[^\/]*\.txt$/
 end
-
-# No longer needed: hoe.spec.dependencies.delete_if { |dep| dep.name == "hoe" }
-

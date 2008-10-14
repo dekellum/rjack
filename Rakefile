@@ -100,4 +100,5 @@ task :clean => :mvn_clean
 hoe = Hoe.new( "slf4j", SLF4J::VERSION ) do |p|
   p.developer( "David Kellum", "dek-ruby@gravitext.com" )
   p.rubyforge_name = "rjack"
+  p.rdoc_pattern = /^(lib.*\.(rb|txt))|[^\/]*\.txt$/
 end

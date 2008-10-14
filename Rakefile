@@ -28,6 +28,8 @@ require 'hoe'
 
 $LOAD_PATH << './lib'
 
+ENV['NODOT'] = "no thank you"
+
 # Instead of 'slf4j' to avoid loading slf4j-api in Rake parent loader
 require 'slf4j/base' 
 SLF4J = SLF4JBase
@@ -97,4 +99,5 @@ task :clean => :mvn_clean
 
 hoe = Hoe.new( "slf4j", SLF4J::VERSION ) do |p|
   p.developer( "David Kellum", "dek-ruby@gravitext.com" )
+  p.rubyforge_name = "rjack"
 end

@@ -1,0 +1,12 @@
+History.txt
+Manifest.txt
+README.txt
+Rakefile
+pom.xml
+assembly.xml
+lib/jetty-jsp.rb
+lib/jetty-jsp/base.rb
+lib/jetty-jsp/jsp-2.1-6.1.11.jar
+lib/jetty-jsp/ant-1.6.5.jar
+lib/jetty-jsp/jsp-api-2.1-6.1.11.jar
+lib/jetty-jsp/core-3.1.1.jar

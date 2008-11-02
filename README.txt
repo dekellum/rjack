@@ -7,7 +7,7 @@
 
 The jetty gem packages jetty, FIXME
 
-The Logback ruby gem packages the Logback[http://logback.qos.ch/] java log
+The jetty gem packages the Logback[http://logback.qos.ch/] java log
 writer, and provides a JRuby facade for programmatic Logback
 setup. Logback implements the SLF4J[http://www.slf4j.org/] SPI
 packaged in the slf4j gem.

@@ -50,8 +50,8 @@ module Jetty
                    :static_contexts, :static_welcome_files,
                    :webapp_contexts,
                    :servlet_contexts,
-                   :request_log_file,
-                   :connector )
+                   :stop_at_shutdown,
+                   :request_log_file )
 
     def initialize
       @port                 = 0        # Use any available port
@@ -64,6 +64,7 @@ module Jetty
       @webapp_contexts      = {}
       @request_log_file     = nil
       @servlet_contexts     = {}
+      @stop_at_shutdown     = true
     end
 
     def create
@@ -77,7 +78,7 @@ module Jetty
       hcol.handlers = create_handlers.compact.to_java( Handler )
       server.handler = hcol
       
-      server.stop_at_shutdown = true
+      server.stop_at_shutdown = @stop_at_shutdown
 
       server
     end
@@ -135,7 +136,7 @@ module Jetty
       end
     end
 
-    def add_servlets( context_path, servlets, options = Context::NO_SESSIONS )
+    def set_context_servlets( context_path, servlets, options = Context::NO_SESSIONS )
       @servlet_contexts[ context_path ] = [ servlets, options ]
     end
 

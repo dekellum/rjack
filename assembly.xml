@@ -11,7 +11,7 @@
         <include>org.mortbay.jetty:jetty-util</include>
         <include>org.mortbay.jetty:jetty-rewrite-handler</include>
         <include>org.mortbay.jetty:servlet-api-2.5</include>
-        <!-- <include>com.gravitext:gravitext-testservlets</include> -->
+        <include>com.gravitext:gravitext-testservlets</include>
       </includes>
     </dependencySet>
   </dependencySets>

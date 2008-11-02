@@ -1,4 +1,5 @@
 #!/usr/bin/env jruby
+#.hashdot.profile += jruby-shortlived
 #--
 # Copyright 2008 David Kellum
 #
@@ -19,22 +20,45 @@ TEST_DIR = File.dirname(__FILE__)
 
 $LOAD_PATH.unshift File.join( TEST_DIR, "..", "lib" )
 
-require 'jetty'
-require 'logback'
-require 'net/http'
-require 'test/unit'
+require 'rubygems'
 
-Logback.configure do
-  Logback.root.add_appender( Logback::ConsoleAppender.new )
-  Logback.root.level = Logback::INFO
-  Logback[ 'org.mortbay' ].level = Logback::WARN
+# Disable jetty logging if slf4j is available
+begin
+  gem( 'slf4j', '~> 1.5' )
+  require 'slf4j'
+  require 'slf4j/nop' 
+rescue Gem::LoadError
 end
+
+require 'jetty'
+require 'jetty/test-servlets'
+require 'test/unit'
+require 'net/http'
 
 class TestJetty < Test::Unit::TestCase
 
-  def test_static_context
+  def default_factory
     factory = Jetty::ServerFactory.new
     factory.max_threads = 1
+    factory.stop_at_shutdown = false
+    factory
+  end
+
+  def test_start_stop
+    10.times do
+      factory = default_factory
+      factory.static_contexts[ '/' ] = TEST_DIR
+      server = factory.create
+      server.start
+      assert( server.is_started )
+      assert( server.connectors.first.local_port > 0 )
+      server.stop
+      assert( server.is_stopped )
+    end
+  end
+
+  def test_static_context
+    factory = default_factory
     factory.static_contexts[ '/' ] = TEST_DIR
     server = factory.create
     server.start
@@ -43,6 +67,7 @@ class TestJetty < Test::Unit::TestCase
     assert_equal( File.read( File.join( TEST_DIR, 'test.txt' ) ), test_text )
     server.stop
   end
+
 
   import 'org.mortbay.jetty.handler.AbstractHandler'
   class TestHandler < AbstractHandler
@@ -54,11 +79,10 @@ class TestJetty < Test::Unit::TestCase
       request.handled = true
     end
   end
-  
+
 
   def test_custom_handler
-    factory = Jetty::ServerFactory.new
-    factory.max_threads = 1
+    factory = default_factory
     def factory.create_pre_handlers
       super << TestHandler.new
     end
@@ -84,28 +108,55 @@ class TestJetty < Test::Unit::TestCase
     end
   end
 
+  import 'com.gravitext.testservlets.SnoopServlet'
   def test_servlet_handler
-    factory = Jetty::ServerFactory.new
-    factory.max_threads = 1
-    factory.add_servlets( '/', 
-                          { '/test'  => TestServlet.new( 'resp-test' ),
-                            '/other' => TestServlet.new( 'resp-other' ), } )
-    factory.add_servlets( '/', { '/one' => TestServlet.new( 'resp-one' ) } )
+    factory = default_factory
+    factory.set_context_servlets( '/some', 
+      { '/test'  => TestServlet.new( 'resp-test' ),
+        '/other' => TestServlet.new( 'resp-other' ) } )
+
+    factory.set_context_servlets( '/', 
+      { '/one' => TestServlet.new( 'resp-one' ),
+        '/snoop' => SnoopServlet.new } )
+
     server = factory.create
     server.start
     port = server.connectors.first.local_port
+
     assert_equal( 'resp-test',
-                  Net::HTTP.get( 'localhost', '/test', port ) )
+                  Net::HTTP.get( 'localhost', '/some/test', port ) )
     assert_equal( 'resp-other', 
-                  Net::HTTP.get( 'localhost', '/other', port ) )
+                  Net::HTTP.get( 'localhost', '/some/other', port ) )
     assert_equal( 'resp-one',
                   Net::HTTP.get( 'localhost', '/one', port ) )
     
     response = Net::HTTP.get_response( 'localhost', '/', port )
     assert( response.is_a?( Net::HTTPNotFound ) )
 
+    response = Net::HTTP.get_response( 'localhost', '/snoop', port )
+    assert( response.is_a?( Net::HTTPSuccess ) )
+
     server.stop
   end
 
-  
+  def test_webapp
+    factory = default_factory
+    index_html = File.read( 
+      File.join( Jetty::TestServlets::WEBAPP_TEST_EXPANDED, 'index.html' ) )
+
+    factory.webapp_contexts[ '/test' ]     = Jetty::TestServlets::WEBAPP_TEST_WAR
+    factory.webapp_contexts[ '/expanded' ] = Jetty::TestServlets::WEBAPP_TEST_EXPANDED
+
+    server = factory.create
+    server.start
+    port = server.connectors.first.local_port
+
+    assert_equal( index_html, Net::HTTP.get( 'localhost', '/test/', port ) )
+    assert_equal( index_html, Net::HTTP.get( 'localhost', '/expanded/', port ) )
+
+    response = Net::HTTP.get_response( 'localhost', '/test/snoop/info?i=33', port )
+    assert( response.is_a?( Net::HTTPSuccess ) )
+
+    server.stop
+  end
 end

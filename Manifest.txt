@@ -4,11 +4,17 @@ README.txt
 Rakefile
 pom.xml
 assembly.xml
+bin/jetty-service
 lib/jetty.rb
 lib/jetty/base.rb
 lib/jetty/rewrite.rb
+lib/jetty/test-servlets.rb
 test/test_jetty.rb
+webapps/test/index.html
+webapps/test/WEB-INF/web.xml
+webapps/test.war
 lib/jetty/jetty-6.1.11.jar
 lib/jetty/jetty-util-6.1.11.jar
 lib/jetty/jetty-rewrite-handler-6.1.11.jar
 lib/jetty/servlet-api-2.5-6.1.11.jar
+lib/jetty/gravitext-testservlets-1.0.jar

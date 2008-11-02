@@ -27,6 +27,7 @@ JARS = %w{ jetty jetty-util jetty-rewrite-handler }.map do |n|
   "#{n}-#{ Jetty::JETTY_VERSION }.jar" 
 end
 JARS << "servlet-api-#{ Jetty::SERVLET_API_VERSION }-#{ Jetty::JETTY_VERSION }.jar"
+JARS << 'gravitext-testservlets-1.0.jar'
 JAR_FILES = JARS.map { |jar| "lib/jetty/#{jar}" }
 
 
@@ -41,10 +42,15 @@ README.txt
 Rakefile
 pom.xml
 assembly.xml
+bin/jetty-service
 lib/jetty.rb
 lib/jetty/base.rb
 lib/jetty/rewrite.rb
+lib/jetty/test-servlets.rb
 test/test_jetty.rb
+webapps/test/index.html
+webapps/test/WEB-INF/web.xml
+webapps/test.war
 END
     out.puts JAR_FILES
   ensure
@@ -53,6 +59,11 @@ END
 end
 
 ASSEMBLY = "target/gravitext-testservlets-1.0-bin.dir"
+
+file 'webapps/test.war' => [ 'webapps/test/index.html', 
+                             'webapps/test/WEB-INF/web.xml' ] do
+  sh( 'jar cvf webapps/test.war -C webapps/test .' )
+end
 
 file ASSEMBLY => [ 'pom.xml', 'assembly.xml' ] do
   sh( 'mvn package' )

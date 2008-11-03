@@ -1,4 +1,9 @@
-=== 1.5.3.1 / 2008-09-24
+=== 0.9.11.1 / 2008-11-01
 
-* Initial gem based on SLF4J 1.5.3 and gravitext-jruby 1.1 fork.
+* Upgraded to Logback 0.9.11
+* Updated SLF4J dependency to ~> 1.5.5 
+
+=== 0.9.9.1 / 2008-10-08
+
+* Initial release based on Logback 0.9.9
 

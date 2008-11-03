@@ -14,11 +14,8 @@
 #++
 
 require 'rubygems'
-
-gem( 'slf4j', '>=1.5.3.1' )
-require 'slf4j'
-
 require 'java'
+require 'slf4j'
 
 require 'logback/base'
 

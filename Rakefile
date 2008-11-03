@@ -70,8 +70,8 @@ end
 task :clean => :mvn_clean 
 
 hoe = Hoe.new( "logback", LogbackBase::VERSION ) do |p|
-  p.developer( "David Kellum", "dek-gem@gravitext.com" )
-  p.extra_deps << [ 'slf4j', '>=1.5.3.1' ]
+  p.developer( "David Kellum", "dek-ruby@gravitext.com" )
+  p.extra_deps << [ 'slf4j', '~> 1.5.5' ]
   p.rubyforge_name = "rjack"
   p.rdoc_pattern = /^(lib.*\.(rb|txt))|[^\/]*\.txt$/
 end

@@ -1,40 +1,73 @@
-= jetty
+= jetty-jsp
 
 * http://rjack.rubyforge.org
 * http://rubyforge.org/projects/rjack
 
 == Description
 
-The jetty gem packages jetty, FIXME
-
-The Logback ruby gem packages the Logback[http://logback.qos.ch/] java log
-writer, and provides a JRuby facade for programmatic Logback
-setup. Logback implements the SLF4J[http://www.slf4j.org/] SPI
-packaged in the slf4j gem.
+A gem packaging of the {Jetty Web Server}[http://www.mortbay.org/jetty/] 
+JSP 2.1 support for JRuby. This gem is provided as a companion to the 
+jetty[http://rjack.rubyforge.org/jetty/] gem.
 
 == License
 
-=== Logback Ruby
+== License
+
+=== jetty-jsp ruby gem
 
 Copyright (C) 2008 David Kellum
 
-Logback Ruby is free software: you can redistribute it and/or
-modify it under the terms of the 
-{GNU Lesser General Public License}[http://www.gnu.org/licenses/lgpl.html] 
-as published by the Free Software Foundation, either version 3 of the
-License, or (at your option) any later version.
+Licensed under the Apache License, Version 2.0 (the "License"); you
+may not use this file except in compliance with the License.  You
+may obtain a copy of the License at:
 
-Logback Ruby is distributed in the hope that it will be useful, but
-WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-Lesser General Public License for more details.
+http://www.apache.org/licenses/LICENSE-2.0
 
-=== Logback Java
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+implied.  See the License for the specific language governing
+permissions and limitations under the License.
 
-Logback: the reliable, generic, fast and flexible logging library for Java.  
+=== Jetty Web Container (Java)
 
-Copyright (C) 2000-2006, QOS.ch
+Copyright 1995-2008 Mort Bay Consulting Pty Ltd
 
-This library is free software, you can redistribute it and/or modify
-it under the terms of the GNU Lesser General Public License as
-published by the Free Software Foundation.
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+ 
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+The Jetty Web Container is Copyright Mort Bay Consulting Pty Ltd
+unless otherwise noted. It is licensed under the apache 2.0
+license.
+
+The javax.servlet package used by Jetty is copyright 
+Sun Microsystems, Inc and Apache Software Foundation. It is 
+distributed under the Common Development and Distribution License.
+You can obtain a copy of the license at 
+https://glassfish.dev.java.net/public/CDDLv1.0.html.
+
+The UnixCrypt.java code ~Implements the one way cryptography used by
+Unix systems for simple password protection.  Copyright 1996 Aki Yoshida,
+modified April 2001  by Iris Van den Broeke, Daniel Deville.
+Permission to use, copy, modify and distribute UnixCrypt 
+for non-commercial or commercial purposes and without fee is
+granted provided that the copyright notice appears in all copies.
+
+The default JSP implementation is provided by the Glassfish JSP engine
+from project Glassfish http://glassfish.dev.java.net.  Copyright 2005
+Sun Microsystems, Inc. and portions Copyright Apache Software Foundation.
+
+Some portions of the code are Copyright:
+  2006 Tim Vernum 
+  1999 Jason Gilbert.
+
+The jboss integration module contains some LGPL code.

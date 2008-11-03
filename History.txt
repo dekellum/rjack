@@ -1,4 +1,4 @@
 === 6.1.11.1 / 2008-10-18
 
-* Gem based on Jetty 6.1.11
+* Gem based on Jetty Web Server 6.1.11 JSP 2.1
 

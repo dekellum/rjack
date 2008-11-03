@@ -1,4 +1,8 @@
+=== 1.5.5.1 / 2008-11-01
+
+* Upgraded to SLF4J 1.5.5
+
 === 1.5.3.1 / 2008-10-08
 
-* Initial gem based on SLF4J 1.5.3
+* Initial release based on SLF4J 1.5.3
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env jruby
 #.hashdot.profile += jruby-shortlived
 #--
-# Copyright 2008 David Kellum
+# Copyright (C) 2008 David Kellum
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you
 # may not use this file except in compliance with the License.  You
@@ -108,7 +108,6 @@ class TestJetty < Test::Unit::TestCase
     end
   end
 
-  import 'com.gravitext.testservlets.SnoopServlet'
   def test_servlet_handler
     factory = default_factory
     factory.set_context_servlets( '/some', 
@@ -117,7 +116,7 @@ class TestJetty < Test::Unit::TestCase
 
     factory.set_context_servlets( '/', 
       { '/one' => TestServlet.new( 'resp-one' ),
-        '/snoop' => SnoopServlet.new } )
+        '/snoop' => Jetty::TestServlets::SnoopServlet.new } )
 
     server = factory.create
     server.start

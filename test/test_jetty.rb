@@ -51,7 +51,7 @@ class TestJetty < Test::Unit::TestCase
       server = factory.create
       server.start
       assert( server.is_started )
-      assert( server.connectors.first.local_port > 0 )
+      assert( server.connectors[0].local_port > 0 )
       server.stop
       assert( server.is_stopped )
     end
@@ -62,7 +62,7 @@ class TestJetty < Test::Unit::TestCase
     factory.static_contexts[ '/' ] = TEST_DIR
     server = factory.create
     server.start
-    port = server.connectors.first.local_port
+    port = server.connectors[0].local_port
     test_text = Net::HTTP.get( 'localhost', '/test.txt', port )
     assert_equal( File.read( File.join( TEST_DIR, 'test.txt' ) ), test_text )
     server.stop
@@ -88,7 +88,7 @@ class TestJetty < Test::Unit::TestCase
     end
     server = factory.create
     server.start
-    port = server.connectors.first.local_port
+    port = server.connectors[0].local_port
     assert_equal( TestHandler::TEST_TEXT, 
                   Net::HTTP.get( 'localhost', '/whatever', port ) )
     server.stop
@@ -120,7 +120,7 @@ class TestJetty < Test::Unit::TestCase
 
     server = factory.create
     server.start
-    port = server.connectors.first.local_port
+    port = server.connectors[0].local_port
 
     assert_equal( 'resp-test',
                   Net::HTTP.get( 'localhost', '/some/test', port ) )
@@ -148,7 +148,7 @@ class TestJetty < Test::Unit::TestCase
 
     server = factory.create
     server.start
-    port = server.connectors.first.local_port
+    port = server.connectors[0].local_port
 
     assert_equal( index_html, Net::HTTP.get( 'localhost', '/test/', port ) )
     assert_equal( index_html, Net::HTTP.get( 'localhost', '/expanded/', port ) )

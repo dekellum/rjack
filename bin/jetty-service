@@ -80,6 +80,6 @@ end.parse!
 server = factory.create
 
 server.start
-log.info( "Listening on port: #{server.connectors.first.local_port}" )
+log.info( "Listening on port: #{server.connectors[0].local_port}" )
 server.join
 log.info( "Server exited." )

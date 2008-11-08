@@ -1,3 +1,8 @@
+=== 6.1.12.1 / 2008-11-07
+
+* Update to Jetty 6.1.12
+* Fixed packaging of test.war
+
 === 6.1.11.1 / 2008-11-02
 
 * Inital release based on Jetty Web Server 6.1.11

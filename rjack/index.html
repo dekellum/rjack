@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=UTF-8" />
+  <title>RJack</title>
+  <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+<h1>RJack: Java component gems for JRuby</h1>
+<div class="nav">
+<a href="http://rubyforge.org/projects/rjack">Project</a> |
+<a href="http://rubyforge.org/frs/?group_id=7145">Download</a>
+</div>
+
+<h2>Summary</h2>
+
+<p>RJack provides common and broadly used open source java components
+as gems for use with <a href="http://www.jruby.org/">JRuby</a>.  The
+gems additionally provide facades or adapters where needed to support
+use and setup of these java components from ruby code.  RJack helps
+bring the advantages of RubyGems to existing Java applications, and
+lowers barriers for these applications to take advantage of better
+ruby facilities in such areas as file system and command line
+interaction, Ruby or DSLs as better "configuration", etc.</p>
+
+<p>In general, rjack gems will closely track upstream java project
+releases (as opposed to individual project jars).  Gem versions will
+be based on the java project version plus an additional gem release
+number.</p>
+
+<h2>Gems</h2>
+
+<h3>Logging</h3>
+
+<ul>
+<li><a href="slf4j/index.html">slf4j gem</a></li>
+<li><a href="logback/index.html">logback gem</a></li>
+</ul>
+
+<p>Gems for <a href="http://www.slf4j.org/">SLF4J</a> and
+<a href="http://logback.qos.ch/">Logback</a> provide a complete
+toolkit for unifying and controlling logging in a heterogeneous
+application containing ruby and java components.  The slf4j gem may
+simply be used to load SLF4J jars that a java component is dependent
+on, but also offers a ruby core Logger compatible logging adapter.
+The logback gem provides a facade for programmatic logback
+configuration in ruby.</p>
+
+<h3>HTTP Server</h3>
+
+<ul>
+<li><a href="jetty/index.html">jetty gem</a></li>
+<li><a href="jetty-jsp/index.html">jetty-jsp gem</a></li>
+</ul>
+
+<p>Gem packaging of the 
+<a href="http://www.mortbay.org/jetty/">Jetty Web Server</a>.
+The jetty gem includes an extensible 
+<a href="jetty/classes/Jetty/ServerFactory.html">ServerFactory</a> for Server setup in
+ruby. The jetty-jsp companion gem adds JSP support when needed.</p>
+
+
+<h2>Related</h2>
+
+<ul>
+<li><a href="http://www.jruby.org/">JRuby</a></li>
+<li><a href="http://jruby-extras.rubyforge.org/">JRuby Extras</a></li>
+<li><a href="http://hashdot.sourceforge.net/">Hashdot</a></li>
+<li><a href="http://gravitext.com/blog/">void * blog</a></li>
+</ul>
+
+</body>
+</html>

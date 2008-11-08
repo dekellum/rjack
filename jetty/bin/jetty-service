@@ -1,0 +1,85 @@
+#!/usr/bin/env jruby
+# -*- ruby -*-
+#--
+# Copyright (C) 2008 David Kellum
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you
+# may not use this file except in compliance with the License.  You
+# may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+# implied.  See the License for the specific language governing
+# permissions and limitations under the License.
+#++
+
+$LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
+
+require 'rubygems'
+
+begin
+  gem 'logback' 
+  require 'logback'
+  Logback.configure do
+    console = Logback::ConsoleAppender.new do |a|
+      a.layout = Logback::PatternLayout.new do |p|
+        p.pattern = "%-4r %-5level %logger{35} - %msg %ex%n"
+      end
+    end
+    Logback.root.add_appender( console )
+    Logback.root.level = Logback::INFO
+  end
+  log = SLF4J[ 'jetty-service' ]
+rescue Gem::LoadError => e
+  class Log
+    def method_missing( method, *args )
+      $stderr.puts( "#{method.id2name.upcase}: #{args.join(' ')}" )
+    end
+  end
+  log = Log.new
+  log.info( "#{e.to_s.strip}: SLF4J/Logback not loaded, using STDERR." )
+end
+
+require 'jetty'
+require 'jetty/test-servlets'
+require 'optparse'
+
+factory = Jetty::ServerFactory.new
+
+factory.webapp_contexts[ '/' ] = Jetty::TestServlets::WEBAPP_TEST_EXPANDED
+
+OptionParser.new do |opts|
+  opts.on( "-p", "--port N", Integer, 
+           "Port to listen on (default: auto)" ) do |v|
+    factory.port = v
+  end
+  opts.on( "-t", "--threads N", Integer, 
+           "Maximum pool threads (default: #{factory.max_threads})" ) do |v|
+    factory.max_threads = v
+  end
+  opts.on( "-w", "--webapp PATH", 
+           "Load PATH as root context webapp. (default: gem test.war)" ) do |v|
+    factory.webapp_contexts[ '/' ] = v
+  end
+  opts.on( "-j", "--jsp", "Enable JSP support by loading jetty-jsp gem") do
+    gem( 'jetty-jsp', "~> #{Jetty::JETTY_VERSION}" )
+    require 'jetty-jsp'
+  end
+  opts.on_tail( "-d", "--debug", "Enable debug logging") do
+    Logback.root.level = Logback::DEBUG if defined?( Logback )
+  end
+  opts.on_tail( "-v", "--version", "Show version and exit" ) do
+    puts "jetty gem (#{$0}) version: #{Jetty::VERSION}"
+    exit
+  end
+end.parse!
+
+server = factory.create
+
+server.start
+log.info( "Listening on port: #{server.connectors[0].local_port}" )
+server.join
+log.info( "Server exited." )

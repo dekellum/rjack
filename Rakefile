@@ -65,7 +65,8 @@ ASSEMBLY = "target/gravitext-testservlets-1.0-bin.dir"
 
 file 'webapps/test.war' => [ 'webapps/test/index.html', 
                              'webapps/test/WEB-INF/web.xml' ] do
-  sh( 'jar cvf webapps/test.war -C webapps/test .' )
+  sh( 'jar cvf webapps/test.war ' + 
+      '-C webapps/test index.html -C webapps/test WEB-INF/web.xml' )
 end
 
 file ASSEMBLY => [ 'pom.xml', 'assembly.xml' ] do
@@ -78,10 +79,10 @@ JARS.each do |jar|
   end
 end
 
-[ :gem, :test ].each { |t| task t => JAR_FILES }
+[ :gem, :test ].each { |t| task t => JAR_FILES + [ 'webapps/test.war' ] }
 
 task :mvn_clean do
-  rm_f( JAR_FILES )
+  rm_f( JAR_FILES + [ 'webapps/test.war' ] )
   sh( 'mvn clean' )
 end
 task :clean => :mvn_clean 

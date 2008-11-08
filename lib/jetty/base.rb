@@ -15,7 +15,7 @@
 #++
 
 module JettyBase
-  JETTY_VERSION = '6.1.11'
+  JETTY_VERSION = '6.1.12'
   VERSION = JETTY_VERSION + '.1'
   SERVLET_API_VERSION = '2.5'
 

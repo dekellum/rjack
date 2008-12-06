@@ -19,7 +19,6 @@ require 'jetty/base'
 # {Jetty Web Server}[http://www.mortbay.org/jetty/] module including
 # a ServerFactory
 module Jetty
-  include JettyBase
 
   def self.require_jar( name )
     require File.join( JETTY_DIR, "#{name}-#{ JETTY_VERSION }.jar" )

@@ -12,11 +12,12 @@ lib/jetty/test-servlets.rb
 src/main/java/com/gravitext/testservlets/PerfTestServlet.java
 src/main/java/com/gravitext/testservlets/SnoopServlet.java
 test/test_jetty.rb
+test/test.txt
 webapps/test.war
 webapps/test/WEB-INF/web.xml
 webapps/test/index.html
-lib/jetty/jetty-6.1.12.jar
-lib/jetty/jetty-util-6.1.12.jar
-lib/jetty/jetty-rewrite-handler-6.1.12.jar
-lib/jetty/servlet-api-2.5-6.1.12.jar
+lib/jetty/jetty-6.1.14.jar
+lib/jetty/jetty-util-6.1.14.jar
+lib/jetty/jetty-rewrite-handler-6.1.14.jar
+lib/jetty/servlet-api-2.5-6.1.14.jar
 lib/jetty/gravitext-testservlets-1.0.jar

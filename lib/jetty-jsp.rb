@@ -21,7 +21,6 @@ require 'jetty'
 
 # Loads jars for JSP 2.1 support
 module JettyJsp
-  include JettyJspBase
   
   Dir.glob( File.join( JETTY_JSP_DIR, '*.jar' ) ).each { |jar| require jar }
 end

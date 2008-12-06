@@ -97,8 +97,9 @@ end
 task :clean => :mvn_clean 
 
 task :tag do
+  tag = "slf4j-#{SLF4J::VERSION}"
   svn_base = 'svn://localhost/subversion.repo/src/gems'
-  tag = "#{svn_base}/tags/slf4j-#{SLF4J::VERSION}"
+  tag_url = "#{svn_base}/tags/#{tag}"
 
   dname = File.dirname( __FILE__ )
   dname = '.' if Dir.getwd == dname
@@ -108,7 +109,7 @@ task :tag do
     $stderr.puts( "Resolve the following before tagging (svn status):" )
     $stderr.puts( stat )
   else
-    sh( "svn cp #{dname} #{tag}" )
+    sh( "svn cp -m 'tag [#{tag}]' #{dname} #{tag_url}" )
   end
 end
 

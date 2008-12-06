@@ -22,7 +22,6 @@ require 'hoe'
 
 $LOAD_PATH << './lib'
 require 'jetty/base'
-Jetty = JettyBase
 
 JARS = %w{ jetty jetty-util jetty-rewrite-handler }.map do |n| 
   "#{n}-#{ Jetty::JETTY_VERSION }.jar" 
@@ -51,6 +50,7 @@ lib/jetty/test-servlets.rb
 src/main/java/com/gravitext/testservlets/PerfTestServlet.java
 src/main/java/com/gravitext/testservlets/SnoopServlet.java
 test/test_jetty.rb
+test/test.txt
 webapps/test.war
 webapps/test/WEB-INF/web.xml
 webapps/test/index.html
@@ -86,6 +86,23 @@ task :mvn_clean do
   sh( 'mvn clean' )
 end
 task :clean => :mvn_clean 
+
+task :tag do
+  tag = "jetty-#{Jetty::VERSION}"
+  svn_base = 'svn://localhost/subversion.repo/src/gems'
+  tag_url = "#{svn_base}/tags/#{tag}"
+
+  dname = File.dirname( __FILE__ )
+  dname = '.' if Dir.getwd == dname
+  stat = `svn status #{dname}`
+  stat.strip! if stat
+  if ( stat && stat.length > 0 )
+    $stderr.puts( "Resolve the following before tagging (svn status):" )
+    $stderr.puts( stat )
+  else
+    sh( "svn cp -m 'tag [#{tag}]' #{dname} #{tag_url}" )
+  end
+end
 
 hoe = Hoe.new( "jetty", Jetty::VERSION ) do |p|
   p.developer( "David Kellum", "dek-ruby@gravitext.com" )

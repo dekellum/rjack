@@ -14,8 +14,8 @@
 # permissions and limitations under the License.
 #++
 
-module JettyBase
-  JETTY_VERSION = '6.1.12'
+module Jetty
+  JETTY_VERSION = '6.1.14'
   VERSION = JETTY_VERSION + '.1'
   SERVLET_API_VERSION = '2.5'
 

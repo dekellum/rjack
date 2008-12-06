@@ -1,3 +1,8 @@
+=== 6.1.14.2.1.1 / 2008-12-06
+
+* Update to Jetty 6.1.14
+* JettyJspBase -rename-> JettyJsp
+
 === 6.1.12.2.1.1 / 2008-11-07
 
 * Update to Jetty 6.1.12

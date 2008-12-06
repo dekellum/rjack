@@ -14,8 +14,8 @@
 # permissions and limitations under the License.
 #++
 
-module JettyJspBase
-  JETTY_VERSION = '6.1.12'
+module JettyJsp
+  JETTY_VERSION = '6.1.14'
   JSP_VERSION = '2.1'
   GEM_VERSION = '1'
 

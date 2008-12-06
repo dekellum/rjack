@@ -71,9 +71,26 @@ task :mvn_clean do
 end
 task :clean => :mvn_clean 
 
-hoe = Hoe.new( "jetty-jsp", JettyJspBase::VERSION ) do |p|
+task :tag do
+  tag = "jetty-jsp-#{JettyJsp::VERSION}"
+  svn_base = 'svn://localhost/subversion.repo/src/gems'
+  tag_url = "#{svn_base}/tags/#{tag}"
+
+  dname = File.dirname( __FILE__ )
+  dname = '.' if Dir.getwd == dname
+  stat = `svn status #{dname}`
+  stat.strip! if stat
+  if ( stat && stat.length > 0 )
+    $stderr.puts( "Resolve the following before tagging (svn status):" )
+    $stderr.puts( stat )
+  else
+    sh( "svn cp -m 'tag [#{tag}]' #{dname} #{tag_url}" )
+  end
+end
+
+hoe = Hoe.new( "jetty-jsp", JettyJsp::VERSION ) do |p|
   p.developer( "David Kellum", "dek-ruby@gravitext.com" )
-  p.extra_deps << [ 'jetty', "~> #{JettyJspBase::JETTY_VERSION}" ]
+  p.extra_deps << [ 'jetty', "~> #{JettyJsp::JETTY_VERSION}" ]
   p.rubyforge_name = "rjack"
   p.rdoc_pattern = /^(lib.*\.(rb|txt))|[^\/]*\.txt$/
 end

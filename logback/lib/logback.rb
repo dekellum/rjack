@@ -73,7 +73,6 @@ require 'logback/base'
 # extensions.
 #
 module Logback
-  include LogbackBase
 
   def self.require_jar( name )
     require File.join( LOGBACK_DIR, "#{name}-#{ LOGBACK_VERSION }.jar" )
@@ -115,7 +114,6 @@ module Logback
 
     # Set output level to specified constant (DEBUG,INFO,...)
     def level=( level )
-      #FIXME: LogBack bug: level = nil
       @jlogger.level = level
     end
 
@@ -234,14 +232,14 @@ module Logback
   end
 
   # Configure Logback with the specified block. The Logback context is
-  # +shutdownAndReset+ before yielding, and then started after return
+  # +reset+ before yielding, and then started after return
   # from the block.
   #
   # :call-seq:
   #   configure { |context| ... } -> nil
   #
   def self.configure
-    @@context.shutdown_and_reset
+    @@context.reset
 
     yield( context )
 

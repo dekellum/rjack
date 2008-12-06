@@ -13,8 +13,8 @@
 # Lesser General Public License for more details.
 #++
 
-module LogbackBase
-  LOGBACK_VERSION = '0.9.11'
+module Logback
+  LOGBACK_VERSION = '0.9.13'
   VERSION = LOGBACK_VERSION + '.1'
 
   LOGBACK_DIR = File.dirname(__FILE__) # :nodoc:

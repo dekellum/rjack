@@ -14,10 +14,11 @@
 # Lesser General Public License for more details.
 #++
 
-$LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
-
-gem( 'slf4j', '~> 1.5.5' )
+require 'rubygems'
+gem( 'slf4j', '~> 1.5.6' )
 require 'slf4j'
+
+$LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
 require 'logback'
 
 # Test load works
@@ -91,6 +92,10 @@ class TestLevelSet < Test::Unit::TestCase
     @log.warn( "override" )
     assert_equal( Logback::WARN, @appender.last.level )
     assert_equal( 1, @appender.count )
+
+    # Unset override
+    Logback[ "my" ].level = nil
+    assert( ! @log.warn? )
   end
 
 end

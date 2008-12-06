@@ -23,7 +23,7 @@ $LOAD_PATH << './lib'
 require 'logback/base'
 
 JARS = %w{ core classic access }.map do |n| 
-  "logback-#{n}-#{ LogbackBase::LOGBACK_VERSION }.jar"
+  "logback-#{n}-#{ Logback::LOGBACK_VERSION }.jar"
 end
 JAR_FILES = JARS.map { |jar| "lib/logback/#{jar}" }
 
@@ -69,9 +69,27 @@ task :mvn_clean do
 end
 task :clean => :mvn_clean 
 
-hoe = Hoe.new( "logback", LogbackBase::VERSION ) do |p|
+task :tag do
+  tag = "logback-#{Logback::VERSION}"
+  svn_base = 'svn://localhost/subversion.repo/src/gems'
+  tag_url = "#{svn_base}/tags/#{tag}"
+
+  dname = File.dirname( __FILE__ )
+  dname = '.' if Dir.getwd == dname
+  stat = `svn status #{dname}`
+  stat.strip! if stat
+  if ( stat && stat.length > 0 )
+    $stderr.puts( "Resolve the following before tagging (svn status):" )
+    $stderr.puts( stat )
+  else
+    sh( "svn cp -m 'tag [#{tag}]' #{dname} #{tag_url}" )
+  end
+end
+
+
+hoe = Hoe.new( "logback", Logback::VERSION ) do |p|
   p.developer( "David Kellum", "dek-ruby@gravitext.com" )
-  p.extra_deps << [ 'slf4j', '~> 1.5.5' ]
+  p.extra_deps << [ 'slf4j', '~> 1.5.6' ]
   p.rubyforge_name = "rjack"
   p.rdoc_pattern = /^(lib.*\.(rb|txt))|[^\/]*\.txt$/
 end

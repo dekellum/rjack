@@ -66,7 +66,6 @@ require 'java'
 # Adapter names match the corresponding SLF4J jars.
 #
 module SLF4J
-  include SLF4JBase
 
   # Require an adapter by name (add the jar to classpath)
   # This is normally done via require 'slf4j/_name_'
@@ -195,7 +194,7 @@ module SLF4J
     Logger.new( name )
   end
 
-  # The ILoggerFactory instance if an output adapter jas been loaded
+  # The ILoggerFactory instance if an output adapter has been loaded
   def self.linked_factory
      org.slf4j.LoggerFactory.getILoggerFactory
   end

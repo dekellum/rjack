@@ -32,7 +32,6 @@ ENV['NODOT'] = "no thank you"
 
 # Instead of 'slf4j' to avoid loading slf4j-api in Rake parent loader
 require 'slf4j/base' 
-SLF4J = SLF4JBase
 
 loaders = SLF4J::ADAPTERS.flatten.compact
 loader_files = loaders.map { |adp| "lib/slf4j/#{adp}.rb" }
@@ -96,6 +95,23 @@ task :mvn_clean do
   sh( 'mvn clean' )
 end
 task :clean => :mvn_clean 
+
+task :tag do
+  svn_base = 'svn://localhost/subversion.repo/src/gems'
+  tag = "#{svn_base}/tags/slf4j-#{SLF4J::VERSION}"
+
+  dname = File.dirname( __FILE__ )
+  dname = '.' if Dir.getwd == dname
+  stat = `svn status #{dname}`
+  stat.strip! if stat
+  if ( stat && stat.length > 0 )
+    $stderr.puts( "Resolve the following before tagging (svn status):" )
+    $stderr.puts( stat )
+  else
+    sh( "svn cp #{dname} #{tag}" )
+  end
+end
+
 
 hoe = Hoe.new( "slf4j", SLF4J::VERSION ) do |p|
   p.developer( "David Kellum", "dek-ruby@gravitext.com" )

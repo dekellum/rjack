@@ -1,3 +1,8 @@
+=== 1.5.6.1 / 2008-12-06
+
+* Upgraded to SLF4J 1.5.6
+* SLF4JBase -rename-> SLF4J
+
 === 1.5.5.1 / 2008-11-01
 
 * Upgraded to SLF4J 1.5.5

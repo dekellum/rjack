@@ -1,12 +1,20 @@
-body  { background: #FFFFFF;
+body  { font-family: Trebuchet MS, Lucida Grande, Tahoma, Verdana, Arial, sans-serif;
+		background: white;
 		margin: 0; padding: 0 10px 0 10px;  }
-h1    { font-size: x-large; text-align: center; background: #DDF;
-		border-style: solid; border-color: black; border-width: 0; 
-		border-top-width: 1px; border-bottom-width: 1px; 
-		margin: 0 -10px 0 -10px; padding: 5px }
 
-div.nav { padding-top: 2px; text-align: center; } 
-div.nav a { text-decoration: none }
+div.h     { background: #111; margin: 0 -10px 0 -10px; height: 105px }
+div.h img { float: left; padding: 10px 10px 0px 10px }
+div.t     { font-size: large; text-align; color: white; text-align:left; padding: 20px }
+div.rj    { font-size: x-large; }
+div.main { clear: both }
+
+div.nav { padding: 2px; text-align: center; 
+		  margin: 0 -10px 0 -10px; background: #bbb; 
+		  border-top: 1px solid black; 
+		  border-bottom: 1px solid black; } 
+div.nav a { text-decoration: none; }
+
+a { color: #1c1585 }
 
 h2    { font-size: large; font-weight: bold }
 h3    { font-size: medium; font-weight: bold }

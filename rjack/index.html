@@ -6,7 +6,14 @@
   <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 <body>
-<h1>RJack: Java component gems for JRuby</h1>
+  <div class="h">
+    <img src="jack_of_ruby.png" alt="jack of ruby"/>
+    <div class="t">
+      <div class="rj">RJack</div>
+      <div>Java component gems for JRuby</div>
+    </div>
+  </div>
+<div class="main">
 <div class="nav">
 <a href="http://rubyforge.org/projects/rjack">Project</a> |
 <a href="http://rubyforge.org/frs/?group_id=7145">Download</a>
@@ -14,19 +21,23 @@
 
 <h2>Summary</h2>
 
-<p>RJack provides common and broadly used open source java components
-as gems for use with <a href="http://www.jruby.org/">JRuby</a>.  The
-gems additionally provide facades or adapters where needed to support
-use and setup of these java components from ruby code.  RJack helps
-bring the advantages of RubyGems to existing Java applications, and
-lowers barriers for these applications to take advantage of better
-ruby facilities in such areas as file system and command line
-interaction, Ruby or DSLs as better "configuration", etc.</p>
+<p>RJack provides broadly used open source java components as gems for
+use with <a href="http://www.jruby.org/">JRuby</a>.  Each gem may be
+used simply and solely to deliver java package dependencies to a
+consuming ruby/java application. However, most of these gems also
+provide either setup facades or adapters for direct use from ruby
+code.  RJack helps bring the advantages of RubyGems to existing Java
+applications, and lowers barriers for these applications to take
+advantage of better ruby facilities in such areas as file system and
+command line interaction, Ruby or DSLs as better "configuration",
+etc.</p>
 
-<p>In general, rjack gems will closely track upstream java project
-releases (as opposed to individual project jars).  Gem versions will
-be based on the java project version plus an additional gem release
-number.</p>
+<p>In general, rjack gems closely track upstream java project
+releases.  Gem versions are based on the java project version plus an
+additional gem release number.</p>
+
+<p>See also relevent usage examples and news in the 
+<a href="http://gravitext.com/blog/tags/rjack">void * blog</a>.</p>
 
 <h2>Gems</h2>
 
@@ -56,18 +67,10 @@ configuration in ruby.</p>
 <p>Gem packaging of the 
 <a href="http://www.mortbay.org/jetty/">Jetty Web Server</a>.
 The jetty gem includes an extensible 
-<a href="jetty/classes/Jetty/ServerFactory.html">ServerFactory</a> for Server setup in
-ruby. The jetty-jsp companion gem adds JSP support when needed.</p>
+<a href="jetty/classes/Jetty/ServerFactory.html">ServerFactory</a> 
+for Server setup in ruby. The jetty-jsp companion gem adds JSP support
+when needed.</p>
 
-
-<h2>Related</h2>
-
-<ul>
-<li><a href="http://www.jruby.org/">JRuby</a></li>
-<li><a href="http://jruby-extras.rubyforge.org/">JRuby Extras</a></li>
-<li><a href="http://hashdot.sourceforge.net/">Hashdot</a></li>
-<li><a href="http://gravitext.com/blog/">void * blog</a></li>
-</ul>
-
+</div>
 </body>
 </html>

@@ -1,15 +1,10 @@
 Upload rjack docs to rubyforge:
 
-       rsync -auP -e ssh rjack/ dekellum@rubyforge.org:/var/www/gforge-projects/rjack/
+       rsync -auP -e ssh --exclude '.svn' rjack/ dekellum@rubyforge.org:/var/www/gforge-projects/rjack/
 
 Release a gem:
 
-        VERSION=x.y.z jrake release
-
-Publish docs for gem:
-
-        jrake publish_docs
-
+        VERSION=x.y.z jrake release publish_docs post_news
 
 Create new package under rjack project:
 (rubyforge login)
@@ -56,4 +51,25 @@ as those in "JRuby Extras" may find it useful to manage java jar
 dependencies with rjack gems.
 
 
+
+Hello Jetty developers,
+
+I have initiated a project named "RJack" at RubyForge to package some of the most broadly applicable open-source Java projects as gems.
+
+http://rjack.rubyforge.org/
+http://rjack.rubyforge.org/jetty/  (rdoc)
+http://rjack.rubyforge.org/jetty-jsp/ (rdoc)
+
+As you may be aware, there is also a "jetty-rails" project hosted on RubyForge. However, the rjack gems have a lower level goal of providing jetty (and jetty-jsp) via the gems system for purposes outside of just rails applications.  Perhaps these efforts could be better unified at some point in the future. 
+
+Beyond the gem packaging, the jetty gem includes a Jetty::ServerFactory which simplifies programmatic setup of Jetty via ruby. I've posted a less trivial example usage on my blog at:
+
+http://gravitext.com/blog/2008/11/09/1226267760000.html
+Code sample: http://pastie.org/310392
+
+I believe I've been careful to uphold Jetty's license terms by including the notices and using the Apache 2.0 license for the gems. (See the License section of the above rdoc link.)  However, I thought it would be appropriate to give you an opportunity to review.  Please let me know if there is anything unsatisfactory in the licensing/attribution. 
+
+I'd greatly appreciate any feedback you might be willing to provide. In any case, thanks for your continued efforts in developing Jetty.
+
+--David Kellum
 

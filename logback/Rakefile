@@ -38,9 +38,9 @@ README.txt
 Rakefile
 pom.xml
 assembly.xml
+lib/logback/base.rb
 lib/logback.rb
 lib/logback/access.rb
-lib/logback/base.rb
 test/test_logback.rb
 END
     out.puts JAR_FILES

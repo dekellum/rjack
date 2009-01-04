@@ -78,7 +78,7 @@ task :tag do
       raise "Commit these changes before tagging."
     end
   end
-  sh %{git tag -s -f -m "tag [#{version}]" "#{version}"}
+  sh %{git tag -s -f -m "tag [#{tag}]" "#{tag}"}
 end
 
 

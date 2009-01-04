@@ -1,3 +1,8 @@
+=== 0.9.14.1 / 2009-01-04
+
+* Upgraded to Logback 0.9.14
+
+
 === 0.9.13.1 / 2008-12-06
 
 * Upgraded to Logback 0.9.13

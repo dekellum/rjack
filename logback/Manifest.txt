@@ -4,10 +4,10 @@ README.txt
 Rakefile
 pom.xml
 assembly.xml
+lib/logback/base.rb
 lib/logback.rb
 lib/logback/access.rb
-lib/logback/base.rb
 test/test_logback.rb
-lib/logback/logback-core-0.9.13.jar
-lib/logback/logback-classic-0.9.13.jar
-lib/logback/logback-access-0.9.13.jar
+lib/logback/logback-core-0.9.14.jar
+lib/logback/logback-classic-0.9.14.jar
+lib/logback/logback-access-0.9.14.jar

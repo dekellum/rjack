@@ -14,7 +14,7 @@
 #++
 
 module Logback
-  LOGBACK_VERSION = '0.9.14'
+  LOGBACK_VERSION = '0.9.15'
   VERSION = LOGBACK_VERSION + '.1'
 
   LOGBACK_DIR = File.dirname(__FILE__) # :nodoc:

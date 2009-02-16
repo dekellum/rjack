@@ -90,7 +90,7 @@ end
 
 hoe = Hoe.new( "jetty-jsp", JettyJsp::VERSION ) do |p|
   p.developer( "David Kellum", "dek-ruby@gravitext.com" )
-  p.extra_deps << [ 'jetty', "~> #{JettyJsp::JETTY_VERSION}" ]
+  p.extra_deps << [ 'jetty', "~> #{JettyJsp::JETTY_VERSION}.1" ]
   p.rubyforge_name = "rjack"
   p.rdoc_pattern = /^(lib.*\.(rb|txt))|[^\/]*\.txt$/
 end

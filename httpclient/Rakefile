@@ -21,7 +21,7 @@ ENV['NODOT'] = "no thank you"
 require 'hoe'
 
 $LOAD_PATH << './lib'
-require 'httpclient/base'
+require 'hc-httpclient/base'
 
 ASSEMBLY = "target/httpclient-1.0-bin.dir"
 
@@ -36,11 +36,11 @@ README.txt
 Rakefile
 pom.xml
 assembly.xml
-lib/httpclient/base.rb
-lib/httpclient.rb
+lib/hc-httpclient/base.rb
+lib/hc-httpclient.rb
 END
     out.puts( Dir.glob( File.join( ASSEMBLY, '*.jar' ) ).map do |jar|
-                File.join( 'lib', 'httpclient', File.basename( jar ) )
+                File.join( 'lib', 'hc-httpclient', File.basename( jar ) )
               end )
   ensure
     out.close
@@ -57,8 +57,8 @@ JAR_FILES = File.new( 'Manifest.txt' ).readlines.map { |f| f.strip }\
 JARS = JAR_FILES.map { |f| File.basename( f.strip ) }
 
 JARS.each do |jar|
-  file "lib/httpclient/#{jar}" => [ ASSEMBLY ] do
-    cp_r( File.join( ASSEMBLY, jar ), 'lib/httpclient' )
+  file "lib/hc-httpclient/#{jar}" => [ ASSEMBLY ] do
+    cp_r( File.join( ASSEMBLY, jar ), 'lib/hc-httpclient' )
   end
 end
 [ :gem, :test ].each { |t| task t => JAR_FILES }

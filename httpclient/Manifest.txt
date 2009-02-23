@@ -4,7 +4,6 @@ README.txt
 Rakefile
 pom.xml
 assembly.xml
-lib/httpclient/base.rb
-lib/httpclient.rb
-lib/httpclient/commons-httpclient-3.1.jar
-lib/httpclient/commons-codec-1.2.jar
+lib/hc-httpclient/base.rb
+lib/hc-httpclient.rb
+

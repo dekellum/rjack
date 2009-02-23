@@ -1,6 +1,6 @@
 # -*- ruby -*-
 #--
-# Copyright (C) 2008 David Kellum
+# Copyright (C) 2008-2009 David Kellum
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you
 # may not use this file except in compliance with the License.  You
@@ -26,7 +26,7 @@ require 'hc-httpclient/base'
 ASSEMBLY = "target/httpclient-1.0-bin.dir"
 
 desc "Update the Manifest with actual jars"
-task :manifest do
+task :manifest => [ ASSEMBLY ] do
   out = File.new( 'Manifest.txt', 'w' ) 
   begin
     out.write <<END
@@ -38,6 +38,7 @@ pom.xml
 assembly.xml
 lib/hc-httpclient/base.rb
 lib/hc-httpclient.rb
+test/test_httpclient.rb
 END
     out.puts( Dir.glob( File.join( ASSEMBLY, '*.jar' ) ).map do |jar|
                 File.join( 'lib', 'hc-httpclient', File.basename( jar ) )
@@ -71,7 +72,9 @@ end
 task :clean => :mvn_clean 
 
 hoe = Hoe.new( "hc-httpclient", HC::HTTPClient::VERSION ) do |p|
-  p.developer( "David Kellum", "dek-ruby@gravitext.com" )
+  p.developer( "David Kellum", "dek-oss@gravitext.com" )
+  p.extra_deps << [ 'slf4j', '~> 1.5.6.1' ]
+  p.extra_dev_deps << [ 'logback', '>= 1.9.14' ]
   p.rubyforge_name = "rjack"
   p.rdoc_pattern = /^(lib.*\.(rb|txt))|[^\/]*\.txt$/
 end

@@ -6,7 +6,7 @@
 == Description
 
 A gem packaging of the {HttpComponents}[http://hc.apache.org/]
-(formerly Jakarta Commons) HTTP Client for jruby.
+(formerly Jakarta Commons) HTTP Client for JRuby.
 
 * Provides commons-httpclient and commons-codec jars.
 * Provides a HC::HTTPClient::ManagerFacade for client and connection
@@ -14,21 +14,34 @@ A gem packaging of the {HttpComponents}[http://hc.apache.org/]
 
 == Synopsis
 
-TBD
+ require 'logback'
+ require 'hc-httpclient'
+
+ include HC::HTTPClient
+
+ mf = ManagerFacade.new 
+ mf.manager_params.max_total_connections = 200
+ mf.client_params.so_timeout = 3000 #ms
+ mf.start
+    
+ mf.client # --> org.apache.commons.HttpClient
+
+ mf.shutdown
+
+See {org.apache.commons.HttpClient}[http://hc.apache.org/httpclient-3.x/apidocs/org/apache/commons/httpclient/HttpClient.html].
 
 == Requirements
 
-Either of the following should be loaded before httpclient:
+* slf4j[http://rjack.rubyforge.org/slf4j] (rjack gem).
 
-* SLF4J (require 'sl4j/jcl-over-slf4j') (available as an rjack
-  slf4j[http://rjack.rubyforge.org/slf4j] gem), or:
-
-* Apache Commons Logging jar (not available from rjack)
-
+* An slf4j output adaptor such as 'slf4j/simple' or
+  logback[http://rjack.rubyforge.org/logback] must be require'd before
+  hc-httpclient.  (The logback gem is listed as a development
+  dependency only.)
 
 == License
 
-=== httpclient ruby gem
+=== hc-httpclient ruby gem
 
 Copyright (C) 2009 David Kellum
 
@@ -44,7 +57,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
 implied.  See the License for the specific language governing
 permissions and limitations under the License.
 
-=== Apache Jakarta HTTPClient (Java)
+=== Jakarta Commons HTTPClient (java)
 
 Copyright 1999-2007 The Apache Software Foundation
 

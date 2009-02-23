@@ -6,4 +6,6 @@ pom.xml
 assembly.xml
 lib/hc-httpclient/base.rb
 lib/hc-httpclient.rb
-
+test/test_httpclient.rb
+lib/hc-httpclient/commons-httpclient-3.1.jar
+lib/hc-httpclient/commons-codec-1.2.jar

@@ -14,19 +14,23 @@
 # permissions and limitations under the License.
 #++
 
-require 'httpclient/base'
+require 'rubygems'
+require 'slf4j'
+require 'slf4j/jcl-over-slf4j'
 
-# "HC" stands for "Http Components" the latest top-level project name at:
+require 'hc-httpclient/base'
+
+# "HC" stands for "Http Components" the latest project name, at:
 #
 # http://hc.apache.org
 #
-# which has inherited "Jakarta Commons HttpClient" 3.x and has
+# which has inherited "Jakarta Commons HttpClient" 3.x and released
 # "HttpComponents Client" 4.x currently in beta. The HC module name is
 # inserted to distinguish this module from others named "HTTPClient",
 # including:
 #
-# http://dev.ctor.org/http-access2
-# http://rubyforge.org/projects/soap4r
+# * http://dev.ctor.org/http-access2
+# * http://rubyforge.org/projects/soap4r
 #
 module HC
   module HTTPClient
@@ -64,10 +68,10 @@ module HC
       # The HttpClient instance available after start
       attr_reader :client
       
-      # Manager paramters
+      # Manager parameters
       attr_reader :manager_params
 
-      # Client paramters
+      # Client parameters
       attr_reader :client_params
 
       def initialize
@@ -79,6 +83,8 @@ module HC
         @connection_manager = nil
       end
 
+      # Given previously set parameters, construct connection manager
+      # and client.
       def start
         @connection_manager = MultiThreadedHttpConnectionManager.new()
         @connection_manager.params = @manager_params
@@ -86,6 +92,7 @@ module HC
         @client = HttpClient.new( @client_params, @connection_manager );
       end
 
+      # Shutdown and close the connection manager and client.
       def shutdown
         @connection_manager.shutdown if @connection_manager
         @client = nil

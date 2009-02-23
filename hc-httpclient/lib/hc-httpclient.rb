@@ -1,5 +1,5 @@
 #--
-# Copyright (C) 2009 David Kellum
+# Copyright (C) 2008-2009 David Kellum
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you
 # may not use this file except in compliance with the License.  You
@@ -59,7 +59,6 @@ module HC
     #  client_params.set_parameter( HttpMethodParams::RETRY_HANDLER, 
     #                               DefaultHttpMethodRetryHandler.new( 2, false ) )
     #  client_params.cookie_policy = CookiePolicy::IGNORE_COOKIES
-    # 
     #
     # Note, use of set_parameter style settings will increase the
     # likelihood of 4.x compatibility

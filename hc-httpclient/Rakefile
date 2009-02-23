@@ -71,6 +71,16 @@ end
 
 task :clean => :mvn_clean 
 
+task :tag do
+  tag = "hc-httpclient-#{HC::HTTPClient::VERSION}"
+  dname = File.dirname( __FILE__ )
+  dname = '.' if Dir.getwd == dname
+  sh( "git status --only #{dname}" ) do |ok,res|
+    raise "Commit these changes before tagging." if ok #changes present
+  end
+  sh %{git tag -s -f -m "tag [#{tag}]" "#{tag}"}
+end
+
 hoe = Hoe.new( "hc-httpclient", HC::HTTPClient::VERSION ) do |p|
   p.developer( "David Kellum", "dek-oss@gravitext.com" )
   p.extra_deps << [ 'slf4j', '~> 1.5.6.1' ]

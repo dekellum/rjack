@@ -14,9 +14,11 @@
 # permissions and limitations under the License.
 #++
 
-module HTTPClient
-  HTTPCLIENT_VERSION = '3.1'
-  VERSION = HTTPCLIENT_VERSION + '.1'
-
-  HTTPCLIENT_DIR = File.dirname( __FILE__ ) # :nodoc:
+module HC
+  module HTTPClient
+    HTTPCLIENT_VERSION = '3.1'
+    VERSION = HTTPCLIENT_VERSION + '.1'
+    
+    HTTPCLIENT_DIR = File.dirname( __FILE__ ) # :nodoc:
+  end
 end

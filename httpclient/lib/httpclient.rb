@@ -16,63 +16,81 @@
 
 require 'httpclient/base'
 
-#FIXME: Naming conflict: http://dev.ctor.org/http-access2
+# "HC" stands for "Http Components" the latest top-level project name at:
+#
+# http://hc.apache.org
+#
+# which has inherited "Jakarta Commons HttpClient" 3.x and has
+# "HttpComponents Client" 4.x currently in beta. The HC module name is
+# inserted to distinguish this module from others named "HTTPClient",
+# including:
+#
+# http://dev.ctor.org/http-access2
+# http://rubyforge.org/projects/soap4r
+#
+module HC
+  module HTTPClient
 
-module HTTPClient
+    Dir.glob( File.join( HTTPCLIENT_DIR, '*.jar' ) ).each { |jar| require jar }
 
-  Dir.glob( File.join( HTTPCLIENT_DIR, '*.jar' ) ).each { |jar| require jar }
+    import 'org.apache.commons.httpclient.params.HttpConnectionManagerParams'
+    import 'org.apache.commons.httpclient.params.HttpClientParams'
+    import 'org.apache.commons.httpclient.params.HttpMethodParams'  
+    import 'org.apache.commons.httpclient.DefaultHttpMethodRetryHandler'
+    import 'org.apache.commons.httpclient.MultiThreadedHttpConnectionManager'
+    import 'org.apache.commons.httpclient.HttpClient'
 
-  import 'org.apache.commons.httpclient.params.HttpConnectionManagerParams'
-  import 'org.apache.commons.httpclient.params.HttpClientParams'
-  import 'org.apache.commons.httpclient.params.HttpMethodParams'  
-  import 'org.apache.commons.httpclient.DefaultHttpMethodRetryHandler'
-  import 'org.apache.commons.httpclient.MultiThreadedHttpConnectionManager'
-  import 'org.apache.commons.httpclient.HttpClient'
+    # Facade over http client and connection manager, setup, start, shutdown
+    # 
+    # == Example Settings
+    #
+    # See: http://hc.apache.org/httpclient-3.x/preference-api.html
+    #
+    #  manager_params.max_total_connections = 200
+    #  manager_params.connection_timeout = 1500 #ms
+    #  manager_params.default_max_connections_per_host = 20
+    #  manager_params.stale_checking_enabled = false
+    #  client_params.connection_manager_timeout = 3000 #ms
+    #  client_params.so_timeout = 3000 #ms
+    #  client_params.set_parameter( HttpMethodParams::RETRY_HANDLER, 
+    #                               DefaultHttpMethodRetryHandler.new( 2, false ) )
+    #  client_params.cookie_policy = CookiePolicy::IGNORE_COOKIES
+    # 
+    #
+    # Note, use of set_parameter style settings will increase the
+    # likelihood of 4.x compatibility
+    class ManagerFacade
 
-  # See: http://hc.apache.org/httpclient-3.x/preference-api.html
-  # 
-  # FIXME: Replace below with set_parameter( string, value ) examples.
-  # Example settings:
-  #  manager_params.max_total_connections = 200
-  #  manager_params.connection_timeout = 1500 #ms
-  #  manager_params.default_max_connections_per_host = 20
-  #  manager_params.stale_checking_enabled = false
-  #  client_params.connection_manager_timeout = 3000 #ms
-  #  client_params.so_timeout = 3000 #ms
-  #  client_params.set_parameter( HttpMethodParams::RETRY_HANDLER, 
-  #                               DefaultHttpMethodRetryHandler.new( 2, false ) )
-  #  client_params.cookie_policy = CookiePolicy::IGNORE_COOKIES
-  class ManagerFacade
-
-    # The HttpClient instance available after start
-    attr_reader :client
-    
-    # Manager paramters
-    attr_reader :manager_params
-
-    # Client paramters
-    attr_reader :client_params
-
-    def initialize
-      @manager_params = HttpConnectionManagerParams.new
-
-      @client_params = HttpClientParams.new
+      # The HttpClient instance available after start
+      attr_reader :client
       
-      @client = nil
-      @connection_manager = nil
-    end
+      # Manager paramters
+      attr_reader :manager_params
 
-    def start
-      @connection_manager = MultiThreadedHttpConnectionManager.new()
-      @connection_manager.params = @manager_params
+      # Client paramters
+      attr_reader :client_params
 
-      @client = HttpClient.new( @client_params, @connection_manager );
-    end
+      def initialize
+        @manager_params = HttpConnectionManagerParams.new
 
-    def shutdown
-      @connection_manager.shutdown if @connection_manager
-      @client = nil
-      @connection_manager = nil
+        @client_params = HttpClientParams.new
+        
+        @client = nil
+        @connection_manager = nil
+      end
+
+      def start
+        @connection_manager = MultiThreadedHttpConnectionManager.new()
+        @connection_manager.params = @manager_params
+
+        @client = HttpClient.new( @client_params, @connection_manager );
+      end
+
+      def shutdown
+        @connection_manager.shutdown if @connection_manager
+        @client = nil
+        @connection_manager = nil
+      end
     end
   end
 end

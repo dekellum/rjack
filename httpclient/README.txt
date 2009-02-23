@@ -1,14 +1,16 @@
-= httpclient
+= hc-httpclient
 
 * http://rjack.rubyforge.org
 * http://rubyforge.org/projects/rjack
 
 == Description
 
-A gem packaging of the {Apache HttpClient}[http://hc.apache.org/] 
-for JRuby:
+A gem packaging of the {HttpComponents}[http://hc.apache.org/]
+(formerly Jakarta Commons) HTTP Client for jruby.
 
 * Provides commons-httpclient and commons-codec jars.
+* Provides a HC::HTTPClient::ManagerFacade for client and connection
+  manager setup, start, shutdown.
 
 == Synopsis
 
@@ -18,10 +20,11 @@ TBD
 
 Either of the following should be loaded before httpclient:
 
-* SLF4J (require 'sl4j/jcl-over-slf4j') (available as rjack
+* SLF4J (require 'sl4j/jcl-over-slf4j') (available as an rjack
   slf4j[http://rjack.rubyforge.org/slf4j] gem), or:
 
 * Apache Commons Logging jar (not available from rjack)
+
 
 == License
 

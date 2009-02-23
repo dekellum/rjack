@@ -70,7 +70,7 @@ end
 
 task :clean => :mvn_clean 
 
-hoe = Hoe.new( "httpclient", HTTPClient::VERSION ) do |p|
+hoe = Hoe.new( "hc-httpclient", HC::HTTPClient::VERSION ) do |p|
   p.developer( "David Kellum", "dek-ruby@gravitext.com" )
   p.rubyforge_name = "rjack"
   p.rdoc_pattern = /^(lib.*\.(rb|txt))|[^\/]*\.txt$/

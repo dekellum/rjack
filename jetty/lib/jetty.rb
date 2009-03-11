@@ -26,7 +26,9 @@ module Jetty
 
   require_jar 'jetty'
   require_jar 'jetty-util'
-  require_jar "servlet-api-#{ SERVLET_API_VERSION }"
+
+  require File.join( JETTY_DIR, 
+    "servlet-api-#{ SERVLET_API_VERSION }-#{ SERVLET_API_DATE }.jar" )
 
   import 'org.mortbay.jetty.Connector'
   import 'org.mortbay.jetty.Handler'

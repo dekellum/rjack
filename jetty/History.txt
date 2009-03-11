@@ -1,3 +1,9 @@
+=== 6.1.15.1 / TBD
+
+* Update to Jetty 6.1.15, which now uses externalized
+  org.mortbay.jetty:servlet-api (2.5-20081211) dependency.
+* Add logback as development dependency.
+
 === 6.1.14.1 / 2008-12-06
 
 * Update to Jetty 6.1.14

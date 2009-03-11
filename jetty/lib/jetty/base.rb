@@ -15,9 +15,10 @@
 #++
 
 module Jetty
-  JETTY_VERSION = '6.1.14'
+  JETTY_VERSION = '6.1.15'
   VERSION = JETTY_VERSION + '.1'
   SERVLET_API_VERSION = '2.5'
+  SERVLET_API_DATE = '20081211'
 
   JETTY_DIR = File.dirname( __FILE__ ) # :nodoc:
 end

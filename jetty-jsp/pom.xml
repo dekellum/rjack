@@ -9,8 +9,8 @@
   <dependencies>
     <dependency>
       <groupId>org.mortbay.jetty</groupId>
-      <artifactId>jsp-2.1</artifactId>
-      <version>6.1.14</version>
+      <artifactId>jsp-2.1-jetty</artifactId>
+      <version>6.1.15</version>
     </dependency>
   </dependencies>
 

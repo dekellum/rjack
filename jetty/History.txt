@@ -16,4 +16,4 @@
 
 === 6.1.11.1 / 2008-11-02
 
-* Inital release based on Jetty Web Server 6.1.11
+* Initial release based on Jetty Web Server 6.1.11

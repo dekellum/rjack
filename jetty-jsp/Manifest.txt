@@ -7,7 +7,7 @@ assembly.xml
 lib/jetty-jsp.rb
 lib/jetty-jsp/base.rb
 lib/jetty-jsp/jsp-api-2.1-glassfish-9.1.1.B51.25.p1.jar
-lib/jetty-jsp/jsp-2.1-jetty-6.1.15.jar
 lib/jetty-jsp/ant-1.6.5.jar
+lib/jetty-jsp/jsp-2.1-jetty-6.1.16.jar
 lib/jetty-jsp/jsp-2.1-glassfish-9.1.1.B51.25.p1.jar
 lib/jetty-jsp/core-3.1.1.jar

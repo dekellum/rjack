@@ -98,19 +98,14 @@ task :clean => :mvn_clean
 
 task :tag do
   tag = "slf4j-#{SLF4J::VERSION}"
-  svn_base = 'svn://localhost/subversion.repo/src/gems'
-  tag_url = "#{svn_base}/tags/#{tag}"
-
   dname = File.dirname( __FILE__ )
   dname = '.' if Dir.getwd == dname
-  stat = `svn status #{dname}`
-  stat.strip! if stat
-  if ( stat && stat.length > 0 )
-    $stderr.puts( "Resolve the following before tagging (svn status):" )
-    $stderr.puts( stat )
-  else
-    sh( "svn cp -m 'tag [#{tag}]' #{dname} #{tag_url}" )
+  sh( "git status --only #{dname}" ) do |ok,res|
+    if ok #changes present
+      raise "Commit these changes before tagging."
+    end
   end
+  sh %{git tag -s -f -m "tag [#{tag}]" "#{tag}"}
 end
 
 

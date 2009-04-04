@@ -1,3 +1,7 @@
+=== 1.5.6.2 / 2009-04-04
+
+* Fixed previously lost rdoc due to base vs slf4j.rb manifest order.
+
 === 1.5.6.1 / 2008-12-06
 
 * Upgraded to SLF4J 1.5.6

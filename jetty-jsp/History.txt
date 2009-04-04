@@ -1,4 +1,4 @@
-=== 6.1.16.2.1.1 / TBD
+=== 6.1.16.2.1.1 / 2009-04-04
 
 * Update to Jetty 6.1.16 JSP 2.1, which now uses externalized
   jsp-2.1-glassfish and jsp-api-2.1-glassfish (9.1.1.B51.25.p1) gems.

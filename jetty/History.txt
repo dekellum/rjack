@@ -1,4 +1,4 @@
-=== 6.1.16.1 / TBD
+=== 6.1.16.1 / 2009-04-04
 
 * Update to Jetty 6.1.16, which now uses externalized
   org.mortbay.jetty:servlet-api (2.5-20081211) dependency.

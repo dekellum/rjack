@@ -1,7 +1,6 @@
 lib/slf4j/jcl-over-slf4j.rb
 lib/slf4j/jcl.rb
 lib/slf4j/jdk14.rb
-lib/slf4j/jul-to-slf4j.rb
 lib/slf4j/log4j-over-slf4j.rb
 lib/slf4j/log4j12.rb
 lib/slf4j/nop.rb

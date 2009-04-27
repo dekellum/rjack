@@ -37,25 +37,33 @@ require 'java'
 #
 # == Adapters
 #
-# All of the following output adapters are available via +require+:
+# An output adapter must be required before the first log call.  All
+# of the following output adapters are available via +require+ from
+# the slf4j gem:
 #
 #   require 'slf4j/jcl'       # Output to Jakarta Commons Logging
-#   require 'slf4j/jdk14'     # JDK java.util.logging 
+#   require 'slf4j/jdk14'     # JDK java.util.logging (JUL)
 #   require 'slf4j/log4j12'   # Log4j (provided elsewhere)
 #   require 'slf4j/nop'       # NOP null logger (provided)
 #   require 'slf4j/simple'    # Simple logger (provided)
 #
-# The first loaded output adapter wins (as with mulitple adapters on
+# The Logback[http://rjack.rubyforge.org/logback/index.html] gem may
+# also be be used as the output adapter:
+#
+#   require 'logback'
+#
+# The first loaded output adapter wins (as with multiple adapters on
 # the classpath). A warning will be logged to "slf4j" if an attempt is
 # made to require a second output adapter.
 #
-# And the following input adapters will intercept JCL,
-# java.util.logging (jdk14), or log4j log output and direct it through
-# SLF4J:
+# The following input adapters will intercept JCL, java.util.logging
+# (JUL), or log4j log output and direct it through SLF4J:
 #
 #   require 'slf4j/jcl-over-slf4j'   # Route Jakarta Commons Logging to SLF4J
-#   require 'slf4j/jul-to-slf4j'     # JDK java.util.logging to SLF4J
 #   require 'slf4j/log4j-over-slf4j' # Log4j to SLF4J
+#
+#   require 'slf4j/jul-to-slf4j'     # JDK java.util.logging (JUL) to SLF4J
+#   SLF4J::JUL.replace_root_handlers # Special case setup for JUL
 #
 # Multiple input adapters may be require'd.  However, a RuntimeError
 # will be raised in the attempt to require both an output adapter and
@@ -99,11 +107,6 @@ module SLF4J
       @@output_name = name
     else
       require_jar( name )
-    end
-
-    # Special case, requires explicit 'install'
-    if name == 'jul-to-slf4j' 
-      org.slf4j.bridge.SLF4JBridgeHandler.install
     end
 
     @@loaded[ name ] = true

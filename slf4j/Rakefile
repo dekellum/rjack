@@ -34,6 +34,7 @@ ENV['NODOT'] = "no thank you"
 require 'slf4j/base' 
 
 loaders = SLF4J::ADAPTERS.flatten.compact
+loaders.delete( "jul-to-slf4j" ) # exception: maintained as source
 loader_files = loaders.map { |adp| "lib/slf4j/#{adp}.rb" }
 
 jars = [ 'slf4j-api' ]
@@ -55,6 +56,8 @@ pom.xml
 assembly.xml
 lib/slf4j/base.rb
 lib/slf4j.rb
+lib/slf4j/jul-to-slf4j.rb
+lib/slf4j/jul.rb
 test/test_slf4j.rb
 END
     out.puts loader_files
@@ -68,6 +71,7 @@ loaders.each do |adapter|
   file "lib/slf4j/#{adapter}.rb" do
     out = File.new( "lib/slf4j/#{adapter}.rb", 'w' )
     begin
+      out.puts "require 'slf4j'"
       out.puts "SLF4J.require_adapter( '#{adapter}' )"
     ensure
       out.close
@@ -108,9 +112,7 @@ task :tag do
   sh %{git tag -s -f -m "tag [#{tag}]" "#{tag}"}
 end
 
-
 hoe = Hoe.new( "slf4j", SLF4J::VERSION ) do |p|
   p.developer( "David Kellum", "dek-ruby@gravitext.com" )
   p.rubyforge_name = "rjack"
-  p.rdoc_pattern = /^(lib.*\.(rb|txt))|[^\/]*\.txt$/
 end

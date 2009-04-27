@@ -1,5 +1,6 @@
+#!/usr/bin/env jruby
 #--
-# Copyright (C) 2008 David Kellum
+# Copyright (c) 2009 David Kellum
 #
 # Permission is hereby granted, free of charge, to any person
 # obtaining a copy of this software and associated documentation files
@@ -22,20 +23,26 @@
 # SOFTWARE.  
 #++
 
-# Base constants for Rakefile, etc.
-module SLF4J
+$LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
 
-  # SLF4J-java version
-  SLF4J_VERSION = '1.5.6'
-  # SLF4J gem version
-  VERSION = SLF4J_VERSION + '.3'
+require 'slf4j/jul-to-slf4j'
 
-  SLF4J_DIR = File.dirname(__FILE__) # :nodoc:
+# FIXME: Can't make this a standard test case, as test_slf4j.rb uses
+# slf4j/jdk14 output adapter.
 
-  #              :input              :output (jar with slf4j- prefix)
-  ADAPTERS = [ [ "jul-to-slf4j",     "jdk14"   ],   
-               [ "jcl-over-slf4j",   "jcl"     ],
-               [ "log4j-over-slf4j", "log4j12" ],
-               [ nil,                "nop"     ],
-               [ nil,                "simple"  ] ] # :nodoc:
-end
+SLF4J::JUL.replace_root_handlers
+SLF4J::JUL.root.level = SLF4J::JUL::INFO
+
+julog = SLF4J::JUL[ "jul" ]
+julog.level = SLF4J::JUL::FINEST
+
+require 'rubygems'
+require 'logback'
+Logback.root.level = Logback::TRACE
+
+slog = SLF4J['slf4j'] 
+slog.debug "from slf4j"
+
+julog.info( "INFO message" )
+julog.finer( "FINER message" )
+julog.finest( "FINEST message" )

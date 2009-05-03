@@ -36,7 +36,7 @@ components in a JRuby application.
 
 === slf4j gem 
 
-Copyright (C) 2008 David Kellum
+Copyright (c) 2008 David Kellum
 All rights reserved.
 
 The SLF4J ruby wrapper and gem packaging is released under the same

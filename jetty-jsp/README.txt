@@ -13,7 +13,7 @@ jetty[http://rjack.rubyforge.org/jetty/] gem.
 
 === jetty-jsp ruby gem
 
-Copyright (C) 2008 David Kellum
+Copyright (c) 2008-2009 David Kellum
 
 Licensed under the Apache License, Version 2.0 (the "License"); you
 may not use this file except in compliance with the License.  You
@@ -29,7 +29,7 @@ permissions and limitations under the License.
 
 === Jetty Web Container (Java)
 
-Copyright 1995-2008 Mort Bay Consulting Pty Ltd
+Copyright (c) 1995-2006 Mort Bay Consulting Pty Ltd
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

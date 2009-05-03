@@ -43,7 +43,7 @@ See {org.apache.commons.HttpClient}[http://hc.apache.org/httpclient-3.x/apidocs/
 
 === hc-httpclient ruby gem
 
-Copyright (C) 2009 David Kellum
+Copyright (c) 2009 David Kellum
 
 Licensed under the Apache License, Version 2.0 (the "License"); you
 may not use this file except in compliance with the License.  You
@@ -59,7 +59,7 @@ permissions and limitations under the License.
 
 === Jakarta Commons HTTPClient (java)
 
-Copyright 1999-2007 The Apache Software Foundation
+Copyright (c) 1999-2007 The Apache Software Foundation
 
 Licensed to the Apache Software Foundation (ASF) under one or more
 contributor license agreements.  See the NOTICE file distributed with

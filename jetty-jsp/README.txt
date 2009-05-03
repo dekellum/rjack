@@ -11,8 +11,6 @@ jetty[http://rjack.rubyforge.org/jetty/] gem.
 
 == License
 
-== License
-
 === jetty-jsp ruby gem
 
 Copyright (C) 2008 David Kellum

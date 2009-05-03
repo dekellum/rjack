@@ -1,19 +1,19 @@
-=== 6.1.16.1 / 2009-04-04
+=== 6.1.17.1 (2009-5-2)
+* Update to Jetty 6.1.17
+* Use rdoc 2.4.3 and hoe 1.12.2 for build.
 
+=== 6.1.16.1 (2009-4-4)
 * Update to Jetty 6.1.16, which now uses externalized
   org.mortbay.jetty:servlet-api (2.5-20081211) dependency.
 * Add logback as development dependency.
 
-=== 6.1.14.1 / 2008-12-06
-
+=== 6.1.14.1 (2008-12-6)
 * Update to Jetty 6.1.14
 * JettyBase -rename-> Jetty
 
-=== 6.1.12.1 / 2008-11-07
-
+=== 6.1.12.1 (2008-11-7)
 * Update to Jetty 6.1.12
 * Fixed packaging of test.war
 
-=== 6.1.11.1 / 2008-11-02
-
+=== 6.1.11.1 (2008-11-2)
 * Initial release based on Jetty Web Server 6.1.11

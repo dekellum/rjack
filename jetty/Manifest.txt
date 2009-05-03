@@ -16,8 +16,8 @@ test/test.txt
 webapps/test.war
 webapps/test/WEB-INF/web.xml
 webapps/test/index.html
-lib/jetty/jetty-6.1.16.jar
-lib/jetty/jetty-util-6.1.16.jar
-lib/jetty/jetty-rewrite-handler-6.1.16.jar
+lib/jetty/jetty-6.1.17.jar
+lib/jetty/jetty-util-6.1.17.jar
+lib/jetty/jetty-rewrite-handler-6.1.17.jar
 lib/jetty/servlet-api-2.5-20081211.jar
 lib/jetty/gravitext-testservlets-1.0.jar

@@ -1,10 +1,10 @@
 # -*- ruby -*-
 #--
-# Copyright (C) 2008 David Kellum
+# Copyright (C) 2008-2009 David Kellum
 #
 # Logback Ruby is free software: you can redistribute it and/or
-# modify it under the terms of the 
-# {GNU Lesser General Public License}[http://www.gnu.org/licenses/lgpl.html] 
+# modify it under the terms of the
+# {GNU Lesser General Public License}[http://www.gnu.org/licenses/lgpl.html]
 # as published by the Free Software Foundation, either version 3 of the
 # License, or (at your option) any later version.
 #
@@ -22,14 +22,14 @@ require 'hoe'
 $LOAD_PATH << './lib'
 require 'logback/base'
 
-JARS = %w{ core classic access }.map do |n| 
+JARS = %w{ core classic access }.map do |n|
   "logback-#{n}-#{ Logback::LOGBACK_VERSION }.jar"
 end
 JAR_FILES = JARS.map { |jar| "lib/logback/#{jar}" }
 
 desc "Update the Manifest with actual jars"
 task :manifest do
-  out = File.new( 'Manifest.txt', 'w' ) 
+  out = File.new( 'Manifest.txt', 'w' )
   begin
     out.write <<END
 History.txt
@@ -67,7 +67,7 @@ task :mvn_clean do
   rm_f( JAR_FILES )
   sh( 'mvn clean' )
 end
-task :clean => :mvn_clean 
+task :clean => :mvn_clean
 
 task :tag do
   tag = "logback-#{Logback::VERSION}"
@@ -86,5 +86,4 @@ hoe = Hoe.new( "logback", Logback::VERSION ) do |p|
   p.developer( "David Kellum", "dek-ruby@gravitext.com" )
   p.extra_deps << [ 'slf4j', '~> 1.5.6.1' ]
   p.rubyforge_name = "rjack"
-  p.rdoc_pattern = /^(lib.*\.(rb|txt))|[^\/]*\.txt$/
 end

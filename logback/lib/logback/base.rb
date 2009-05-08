@@ -2,8 +2,8 @@
 # Copyright (C) 2008 David Kellum
 #
 # Logback Ruby is free software: you can redistribute it and/or
-# modify it under the terms of the 
-# {GNU Lesser General Public License}[http://www.gnu.org/licenses/lgpl.html] 
+# modify it under the terms of the
+# {GNU Lesser General Public License}[http://www.gnu.org/licenses/lgpl.html]
 # as published by the Free Software Foundation, either version 3 of the
 # License, or (at your option) any later version.
 #
@@ -14,8 +14,11 @@
 #++
 
 module Logback
+  # Logback java version
   LOGBACK_VERSION = '0.9.15'
-  VERSION = LOGBACK_VERSION + '.1'
+
+  # Logback gem version
+  VERSION = LOGBACK_VERSION + '.2'
 
   LOGBACK_DIR = File.dirname(__FILE__) # :nodoc:
 end

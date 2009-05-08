@@ -17,8 +17,8 @@ packaged in the slf4j gem.
 Copyright (c) 2008-2009 David Kellum
 
 Logback Ruby is free software: you can redistribute it and/or
-modify it under the terms of the 
-{GNU Lesser General Public License}[http://www.gnu.org/licenses/lgpl.html] 
+modify it under the terms of the
+{GNU Lesser General Public License}[http://www.gnu.org/licenses/lgpl.html]
 as published by the Free Software Foundation, either version 3 of the
 License, or (at your option) any later version.
 
@@ -29,7 +29,7 @@ Lesser General Public License for more details.
 
 === Logback Java
 
-Logback: the reliable, generic, fast and flexible logging library for Java.  
+Logback: the reliable, generic, fast and flexible logging library for Java.
 
 Copyright (c) 2000-2008, QOS.ch
 

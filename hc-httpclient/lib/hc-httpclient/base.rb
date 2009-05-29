@@ -17,8 +17,8 @@
 module HC
   module HTTPClient
     HTTPCLIENT_VERSION = '3.1'
-    VERSION = HTTPCLIENT_VERSION + '.1'
-    
+    VERSION = HTTPCLIENT_VERSION + '.2'
+
     HTTPCLIENT_DIR = File.dirname( __FILE__ ) # :nodoc:
   end
 end

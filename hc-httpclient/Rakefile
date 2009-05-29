@@ -27,7 +27,7 @@ ASSEMBLY = "target/httpclient-1.0-bin.dir"
 
 desc "Update the Manifest with actual jars"
 task :manifest => [ ASSEMBLY ] do
-  out = File.new( 'Manifest.txt', 'w' ) 
+  out = File.new( 'Manifest.txt', 'w' )
   begin
     out.write <<END
 History.txt
@@ -69,7 +69,7 @@ task :mvn_clean do
   sh( 'mvn clean' )
 end
 
-task :clean => :mvn_clean 
+task :clean => :mvn_clean
 
 task :tag do
   tag = "hc-httpclient-#{HC::HTTPClient::VERSION}"
@@ -86,5 +86,4 @@ hoe = Hoe.new( "hc-httpclient", HC::HTTPClient::VERSION ) do |p|
   p.extra_deps << [ 'slf4j', '~> 1.5.6.1' ]
   p.extra_dev_deps << [ 'logback', '>= 0.9.14.1' ]
   p.rubyforge_name = "rjack"
-  p.rdoc_pattern = /^(lib.*\.(rb|txt))|[^\/]*\.txt$/
 end

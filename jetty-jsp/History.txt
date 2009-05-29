@@ -1,3 +1,6 @@
+=== 6.1.18.2.1.1 (2009-5-29)
+* Update to Jetty 6.1.18 JSP 2.1
+
 === 6.1.17.2.1.1 (2009-5-2)
 * Update to Jetty 6.1.17 JSP 2.1
 * Includes jsp-api-2.1-glassfish (9.1.1.B60.25.p0).

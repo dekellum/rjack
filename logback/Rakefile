@@ -83,6 +83,6 @@ end
 
 hoe = Hoe.new( "logback", Logback::VERSION ) do |p|
   p.developer( "David Kellum", "dek-ruby@gravitext.com" )
-  p.extra_deps << [ 'slf4j', '~> 1.5.6.1' ]
+  p.extra_deps << [ 'slf4j', '~> 1.5.6' ]
   p.rubyforge_name = "rjack"
 end

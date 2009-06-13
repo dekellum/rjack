@@ -1,3 +1,6 @@
+=== 0.9.15.3 (TBD)
+* Relax slf4j dependency to '~> 1.5.6' (tested with slf4j 1.5.7.1).
+
 === 0.9.15.2 (2009-5-8)
 * Added Logback.config_console({}) convenience config method.
 * Use rdoc 2.4.3 and hoe 1.12.2 for build, and general rdoc

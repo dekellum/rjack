@@ -30,11 +30,11 @@ require 'hc-httpclient'
 class TestClient < Test::Unit::TestCase
   include HC::HTTPClient
   def test_setup
-    m = ManagerFacade.new 
+    m = ManagerFacade.new
     m.manager_params.max_total_connections = 200
     m.client_params.so_timeout = 3000 #ms
     m.start
-    
+
     assert_not_nil m.client
 
     m.shutdown

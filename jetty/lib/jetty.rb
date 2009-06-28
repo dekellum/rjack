@@ -27,7 +27,7 @@ module Jetty
   require_jar 'jetty'
   require_jar 'jetty-util'
 
-  require File.join( JETTY_DIR, 
+  require File.join( JETTY_DIR,
     "servlet-api-#{ SERVLET_API_VERSION }-#{ SERVLET_API_DATE }.jar" )
 
   import 'org.mortbay.jetty.Connector'
@@ -45,7 +45,7 @@ module Jetty
   import 'org.mortbay.jetty.servlet.ServletHolder'
   import 'org.mortbay.jetty.webapp.WebAppContext'
   import 'org.mortbay.thread.QueuedThreadPool'
-  
+
   # A factory for creating complete org.morbay.jetty.Server
   # instances. Provides a general purpose facade for setup including
   # the Server, a ThreadPool, a Connector, and various Handlers.  It
@@ -60,7 +60,7 @@ module Jetty
   #
   #   # Set static resource context mapping URI to directory
   #   factory.static_contexts[ '/html' ] = '/var/www/html'
-  #   
+  #
   #   # Implement custom handler and register it.
   #   import 'org.mortbay.jetty.handler.AbstractHandler'
   #   class RedirectHandler < AbstractHandler
@@ -73,17 +73,17 @@ module Jetty
   #     def handle( target, request, response, dispatch )
   #       goto = @redirects[ target ]
   #       unless goto.nil?
-  #         response.send_redirect( goto ) 
+  #         response.send_redirect( goto )
   #         request.handled = true
   #       end
   #     end
   #   end
-  #   
+  #
   #   def factory.create_pre_handlers
   #     [ RedirectHandler.new( '/' => '/html/' ) ] + super
   #   end
   #
-  #   # Create a webapp context (war file or webapp expanded) 
+  #   # Create a webapp context (war file or webapp expanded)
   #   factory.webapp_contexts[ '/test' ] = Jetty::TestServlets::WEBAPP_TEST_WAR
   #
   #   # Create a context for a custom HelloServlet
@@ -94,9 +94,9 @@ module Jetty
   #       response.writer.write( 'Hello World!' )
   #     end
   #   end
-  #  
+  #
   #   factory.set_context_servlets( '/hello', { '/*' => HelloServlet.new } )
-  #   
+  #
   #   # Create, start, and join (wait for shutdown)
   #   server = factory.create
   #   server.start
@@ -113,10 +113,10 @@ module Jetty
 
     def initialize
       @port                 = 0        # Use any available port
-      @max_threads          = 20  
+      @max_threads          = 20
       @low_threads          = 0        # No low thread threshold
       @min_threads          = nil      # Compute from max_threads
-      @max_idle_time_ms     = 10000    
+      @max_idle_time_ms     = 10000
       @static_contexts      = {}
       @static_welcome_files = [ 'index.html' ]
       @webapp_contexts      = {}
@@ -124,7 +124,7 @@ module Jetty
       @servlet_contexts     = {}
       @stop_at_shutdown     = true
     end
-    
+
     # Returns a new org.morbay.jetty.Server that is ready to
     # be started.
     def create
@@ -137,13 +137,13 @@ module Jetty
       hcol = HandlerCollection.new
       hcol.handlers = create_handlers.compact.to_java( Handler )
       server.handler = hcol
-      
+
       server.stop_at_shutdown = @stop_at_shutdown
 
       server
     end
-    
-    # Return a org.mortbay.thread.ThreadPool implementation.  
+
+    # Return a org.mortbay.thread.ThreadPool implementation.
     #
     # This implementation creates a QueuedThreadPool with min_threads
     # (default max_threads / 4), any low_threads, and max_threads
@@ -169,7 +169,7 @@ module Jetty
     end
 
     # Returns an Array of org.mortbay.jetty.Handler instances.
-    # 
+    #
     # This implementation concatenates create_pre_handlers and
     # create_post_handlers.
     def create_handlers
@@ -187,21 +187,21 @@ module Jetty
       create_context_handlers( ctx_handlers )
       h = ctx_handlers.handlers
       if( h.nil? || h.length == 0 )
-        [ ] 
+        [ ]
       else
         [ ctx_handlers ]
       end
     end
 
     # Returns an Array of "post" org.mortbay.jetty.Handler instances.
-    # 
+    #
     # This implementation returns a DefaultHandler instance, and any
     # handler returned by create_request_log_handler.
     def create_post_handlers
       [ DefaultHandler.new, # Handle errors, etc.
         create_request_log_handler ]
     end
-    
+
     # Create context handlers on the provided ContextHandlerCollection
     #
     # This implementation calls create_static_contexts,
@@ -218,14 +218,14 @@ module Jetty
         ch = ContextHandler.new( context_handler_collection, ctx )
         ch.resource_base = rpath
         ch.handler = ResourceHandler.new
-        ch.handler.welcome_files = 
+        ch.handler.welcome_files =
           @static_welcome_files.to_java( java.lang.String )
       end
     end
 
     # Set a context of servlets given context_path, a servlets hash
     # (mapping path to Servlet), and options.
-    def set_context_servlets( context_path, servlets, 
+    def set_context_servlets( context_path, servlets,
                               options = Context::NO_SESSIONS )
       @servlet_contexts[ context_path ] = [ servlets, options ]
     end
@@ -246,7 +246,7 @@ module Jetty
       @webapp_contexts.each do |ctx, webapp_path|
         WebAppContext.new( context_handler_collection, webapp_path, ctx )
       end
-    end    
+    end
 
     # Create RequestLogHandler from any set request_log_file
     def create_request_log_handler
@@ -264,6 +264,6 @@ module Jetty
       log.append = true;
       log
     end
-    
+
   end
 end

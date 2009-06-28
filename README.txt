@@ -10,7 +10,7 @@ public home page documentation pushed to rjack.rubyforge.org.
 Git Remotes:
 
 % git remote add rubyforge gitosis@rubyforge.org:rjack.git
-% git remote add origin git@github.com:dekellum/rjack.git 
+% git remote add origin git@github.com:dekellum/rjack.git
 
 Rubyforge Deployment:
 
@@ -26,4 +26,3 @@ Create new package under rjack project:
 
     (rubyforge login)
     rubyforge create_package rjack jetty
-

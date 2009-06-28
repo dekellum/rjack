@@ -20,7 +20,7 @@
 # BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
 # ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.  
+# SOFTWARE.
 #++
 
 require 'rubygems'
@@ -31,7 +31,7 @@ $LOAD_PATH << './lib'
 ENV['NODOT'] = "no thank you"
 
 # Instead of 'slf4j' to avoid loading slf4j-api in Rake parent loader
-require 'slf4j/base' 
+require 'slf4j/base'
 
 loaders = SLF4J::ADAPTERS.flatten.compact
 loaders.delete( "jul-to-slf4j" ) # exception: maintained as source
@@ -45,7 +45,7 @@ jar_files = jars.map { |jar| "lib/slf4j/#{jar}" }
 
 desc "Update the Manifest with actual jars/loaders"
 task :manifest do
-  out = File.new( 'Manifest.txt', 'w' ) 
+  out = File.new( 'Manifest.txt', 'w' )
   begin
     out.write <<END
 Manifest.txt
@@ -67,7 +67,7 @@ END
   end
 end
 
-loaders.each do |adapter| 
+loaders.each do |adapter|
   file "lib/slf4j/#{adapter}.rb" do
     out = File.new( "lib/slf4j/#{adapter}.rb", 'w' )
     begin
@@ -98,7 +98,7 @@ task :mvn_clean do
   rm_f( loader_files )
   sh( 'mvn clean' )
 end
-task :clean => :mvn_clean 
+task :clean => :mvn_clean
 
 task :tag do
   tag = "slf4j-#{SLF4J::VERSION}"

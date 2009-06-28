@@ -19,7 +19,7 @@
 # BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
 # ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.  
+# SOFTWARE.
 #++
 
 require 'java'
@@ -57,7 +57,7 @@ module SLF4J::JUL
   FINER   = Level::FINER
   FINEST  = Level::FINEST
   ALL     = Level::ALL
-  
+
   # Global java.util.logging.LogManager reset: close any handlers and
   # set root level to INFO.
   def self.reset

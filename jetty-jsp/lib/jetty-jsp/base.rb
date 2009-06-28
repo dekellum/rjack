@@ -19,7 +19,7 @@ module JettyJsp
   JSP_VERSION = '2.1'
   GEM_VERSION = '1'
 
-  VERSION = [ JETTY_VERSION, JSP_VERSION, GEM_VERSION ].join( '.' ) 
+  VERSION = [ JETTY_VERSION, JSP_VERSION, GEM_VERSION ].join( '.' )
 
   JETTY_JSP_DIR = File.dirname( __FILE__ ) # :nodoc:
 end

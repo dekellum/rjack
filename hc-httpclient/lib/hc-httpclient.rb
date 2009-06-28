@@ -39,13 +39,13 @@ module HC
 
     import 'org.apache.commons.httpclient.params.HttpConnectionManagerParams'
     import 'org.apache.commons.httpclient.params.HttpClientParams'
-    import 'org.apache.commons.httpclient.params.HttpMethodParams'  
+    import 'org.apache.commons.httpclient.params.HttpMethodParams'
     import 'org.apache.commons.httpclient.DefaultHttpMethodRetryHandler'
     import 'org.apache.commons.httpclient.MultiThreadedHttpConnectionManager'
     import 'org.apache.commons.httpclient.HttpClient'
 
     # Facade over http client and connection manager, setup, start, shutdown
-    # 
+    #
     # == Example Settings
     #
     # See: http://hc.apache.org/httpclient-3.x/preference-api.html
@@ -56,7 +56,7 @@ module HC
     #  manager_params.stale_checking_enabled = false
     #  client_params.connection_manager_timeout = 3000 #ms
     #  client_params.so_timeout = 3000 #ms
-    #  client_params.set_parameter( HttpMethodParams::RETRY_HANDLER, 
+    #  client_params.set_parameter( HttpMethodParams::RETRY_HANDLER,
     #                               DefaultHttpMethodRetryHandler.new( 2, false ) )
     #  client_params.cookie_policy = CookiePolicy::IGNORE_COOKIES
     #
@@ -66,7 +66,7 @@ module HC
 
       # The HttpClient instance available after start
       attr_reader :client
-      
+
       # Manager parameters
       attr_reader :manager_params
 
@@ -77,7 +77,7 @@ module HC
         @manager_params = HttpConnectionManagerParams.new
 
         @client_params = HttpClientParams.new
-        
+
         @client = nil
         @connection_manager = nil
       end

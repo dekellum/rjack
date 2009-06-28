@@ -19,11 +19,11 @@ A gem packaging of the {HttpComponents}[http://hc.apache.org/]
 
  include HC::HTTPClient
 
- mf = ManagerFacade.new 
+ mf = ManagerFacade.new
  mf.manager_params.max_total_connections = 200
  mf.client_params.so_timeout = 3000 #ms
  mf.start
-    
+
  mf.client # --> org.apache.commons.HttpClient
 
  mf.shutdown

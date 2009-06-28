@@ -17,7 +17,7 @@
 require 'jetty'
 
 module Jetty
- 
+
   # Loads testservlets jar.
   module TestServlets
     require File.join( Jetty::JETTY_DIR, "gravitext-testservlets-1.0.jar" )

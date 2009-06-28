@@ -3,8 +3,8 @@
 # Copyright (C) 2008 David Kellum
 #
 # Logback Ruby is free software: you can redistribute it and/or
-# modify it under the terms of the 
-# {GNU Lesser General Public License}[http://www.gnu.org/licenses/lgpl.html] 
+# modify it under the terms of the
+# {GNU Lesser General Public License}[http://www.gnu.org/licenses/lgpl.html]
 # as published by the Free Software Foundation, either version 3 of the
 # License, or (at your option) any later version.
 #
@@ -34,7 +34,7 @@ class TestAppender
   attr_writer :layout
 
   def initialize
-    reset 
+    reset
   end
 
   def doAppend( event )
@@ -45,7 +45,7 @@ class TestAppender
 
   def start; end
   def stop; end
-  
+
   def reset
     @count = 0
     @last = nil
@@ -57,12 +57,12 @@ class TestLevelSet < Test::Unit::TestCase
 
   def setup
     @appender = TestAppender.new
-    Logback.configure do 
+    Logback.configure do
       Logback.root.add_appender( @appender )
     end
     @log = SLF4J[ "my.app" ]
   end
-  
+
   def teardown
     @appender.reset()
   end
@@ -84,7 +84,6 @@ class TestLevelSet < Test::Unit::TestCase
     assert_equal( "logged", @appender.last.message )
   end
 
-
   def test_override_level
     Logback.root.level = Logback::ERROR
     Logback[ "my" ].level = Logback::WARN
@@ -101,7 +100,7 @@ class TestLevelSet < Test::Unit::TestCase
 end
 
 class TestConfigure < Test::Unit::TestCase
-  
+
   def test_file_appender_config
     log_file = "./test_appends.test_file_appender.log"
 
@@ -110,7 +109,7 @@ class TestConfigure < Test::Unit::TestCase
         a.layout = Logback::PatternLayout.new( "%level-%msg" )
         a.immediate_flush = true
         a.encoding = "ISO-8859-1"
-      end 
+      end
       Logback.root.add_appender( appender )
     end
     log = SLF4J[ self.class.name ]
@@ -133,7 +132,6 @@ class TestConfigure < Test::Unit::TestCase
     assert_equal( "INFO-message", appender.last )
   end
 
-
   def test_console_config
     log_name = "#{self.class.name}.#{self.method_name}"
     appender = TestAppender.new
@@ -142,7 +140,7 @@ class TestConfigure < Test::Unit::TestCase
         a.immediate_flush = true
         a.encoding = "UTF-8"
         a.target = "System.out"
-      end 
+      end
       Logback.root.add_appender( console )
       Logback[ log_name ].add_appender( appender )
     end

@@ -20,7 +20,7 @@
 # BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
 # ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.  
+# SOFTWARE.
 #++
 
 $LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
@@ -45,7 +45,7 @@ class TestHandler < java.util.logging.Handler
 
   def flush; end
   def close; end
-  
+
   def publish( record )
     @count += 1
     @last = record
@@ -61,12 +61,12 @@ class TestSlf4j < Test::Unit::TestCase
   JdkLogger = java.util.logging.Logger
   def setup
     @handler = TestHandler.new
-    @jdk_logger = JdkLogger.getLogger "" 
-    @jdk_logger.addHandler @handler 
+    @jdk_logger = JdkLogger.getLogger ""
+    @jdk_logger.addHandler @handler
     @jdk_logger.level = java.util.logging.Level::INFO
     @log = SLF4J[ "my.app" ]
   end
-  
+
   def teardown
     @handler.reset
   end

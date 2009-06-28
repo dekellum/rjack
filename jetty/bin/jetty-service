@@ -21,7 +21,7 @@ $LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
 require 'rubygems'
 
 begin
-  gem 'logback' 
+  gem 'logback'
   require 'logback'
   Logback.configure do
     console = Logback::ConsoleAppender.new do |a|
@@ -52,15 +52,15 @@ factory = Jetty::ServerFactory.new
 factory.webapp_contexts[ '/' ] = Jetty::TestServlets::WEBAPP_TEST_EXPANDED
 
 OptionParser.new do |opts|
-  opts.on( "-p", "--port N", Integer, 
+  opts.on( "-p", "--port N", Integer,
            "Port to listen on (default: auto)" ) do |v|
     factory.port = v
   end
-  opts.on( "-t", "--threads N", Integer, 
+  opts.on( "-t", "--threads N", Integer,
            "Maximum pool threads (default: #{factory.max_threads})" ) do |v|
     factory.max_threads = v
   end
-  opts.on( "-w", "--webapp PATH", 
+  opts.on( "-w", "--webapp PATH",
            "Load PATH as root context webapp. (default: gem test.war)" ) do |v|
     factory.webapp_contexts[ '/' ] = v
   end

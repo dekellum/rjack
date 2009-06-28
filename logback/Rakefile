@@ -81,7 +81,6 @@ task :tag do
   sh %{git tag -s -f -m "tag [#{tag}]" "#{tag}"}
 end
 
-
 hoe = Hoe.new( "logback", Logback::VERSION ) do |p|
   p.developer( "David Kellum", "dek-ruby@gravitext.com" )
   p.extra_deps << [ 'slf4j', '~> 1.5.6.1' ]

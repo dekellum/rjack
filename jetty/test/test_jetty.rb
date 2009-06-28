@@ -26,7 +26,7 @@ require 'rubygems'
 begin
   gem( 'slf4j', '~> 1.5' )
   require 'slf4j'
-  require 'slf4j/nop' 
+  require 'slf4j/nop'
 rescue Gem::LoadError
 end
 
@@ -68,7 +68,6 @@ class TestJetty < Test::Unit::TestCase
     server.stop
   end
 
-
   import 'org.mortbay.jetty.handler.AbstractHandler'
   class TestHandler < AbstractHandler
     TEST_TEXT = 'test handler text'
@@ -80,7 +79,6 @@ class TestJetty < Test::Unit::TestCase
     end
   end
 
-
   def test_custom_handler
     factory = default_factory
     def factory.create_pre_handlers
@@ -89,11 +87,10 @@ class TestJetty < Test::Unit::TestCase
     server = factory.create
     server.start
     port = server.connectors[0].local_port
-    assert_equal( TestHandler::TEST_TEXT, 
+    assert_equal( TestHandler::TEST_TEXT,
                   Net::HTTP.get( 'localhost', '/whatever', port ) )
     server.stop
   end
-
 
   import 'javax.servlet.http.HttpServlet'
   class TestServlet < HttpServlet
@@ -110,11 +107,11 @@ class TestJetty < Test::Unit::TestCase
 
   def test_servlet_handler
     factory = default_factory
-    factory.set_context_servlets( '/some', 
+    factory.set_context_servlets( '/some',
       { '/test'  => TestServlet.new( 'resp-test' ),
         '/other' => TestServlet.new( 'resp-other' ) } )
 
-    factory.set_context_servlets( '/', 
+    factory.set_context_servlets( '/',
       { '/one' => TestServlet.new( 'resp-one' ),
         '/snoop' => Jetty::TestServlets::SnoopServlet.new } )
 
@@ -124,11 +121,11 @@ class TestJetty < Test::Unit::TestCase
 
     assert_equal( 'resp-test',
                   Net::HTTP.get( 'localhost', '/some/test', port ) )
-    assert_equal( 'resp-other', 
+    assert_equal( 'resp-other',
                   Net::HTTP.get( 'localhost', '/some/other', port ) )
     assert_equal( 'resp-one',
                   Net::HTTP.get( 'localhost', '/one', port ) )
-    
+
     response = Net::HTTP.get_response( 'localhost', '/', port )
     assert( response.is_a?( Net::HTTPNotFound ) )
 
@@ -140,7 +137,7 @@ class TestJetty < Test::Unit::TestCase
 
   def test_webapp
     factory = default_factory
-    index_html = File.read( 
+    index_html = File.read(
       File.join( Jetty::TestServlets::WEBAPP_TEST_EXPANDED, 'index.html' ) )
 
     factory.webapp_contexts[ '/test' ]     = Jetty::TestServlets::WEBAPP_TEST_WAR

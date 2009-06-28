@@ -19,7 +19,7 @@
 # BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
 # ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.  
+# SOFTWARE.
 #++
 
 require 'slf4j/base'
@@ -77,9 +77,9 @@ module SLF4J
 
   # Require an adapter by name (add the jar to classpath)
   # This is normally done via require 'slf4j/_name_'
-  def self.require_adapter( name ) 
+  def self.require_adapter( name )
     row = ADAPTERS.assoc( name )
-    if row 
+    if row
       name,ban = row
       output = false
     else
@@ -87,20 +87,20 @@ module SLF4J
       ban,name = row
       output = true
     end
-   
+
     if @@loaded[ ban ]
       raise "Illegal attempt to load '#{name}' when '#{ban}' is loaded."
     end
 
-    if output 
+    if output
       if ! @@output_name.nil? && name != @@output_name
         logger("slf4j").warn do
-          "Ignoring attempt to load #{name} after #{@@output_name} already loaded." 
+          "Ignoring attempt to load #{name} after #{@@output_name} already loaded."
         end
         return
       end
       if java.lang.Thread::current_thread.context_class_loader != @@api_loader
-        $stderr.puts( "WARNING: Attempting to load #{name} in child class" + 
+        $stderr.puts( "WARNING: Attempting to load #{name} in child class" +
                       " loader of slf4j-api.jar loader." )
       end
       require_jar( 'slf4j-' + name )
@@ -115,10 +115,10 @@ module SLF4J
   def self.require_jar( name ) # :nodoc:
     require File.join( SLF4J_DIR, "#{name}-#{ SLF4J_VERSION }.jar" )
   end
-  
+
   require_jar 'slf4j-api'
 
-  @@api_loader = org.slf4j.ILoggerFactory.java_class.class_loader 
+  @@api_loader = org.slf4j.ILoggerFactory.java_class.class_loader
   @@loaded = {}
   @@output_name = nil
 
@@ -127,18 +127,18 @@ module SLF4J
     @@output_name
   end
 
-  # SLF4J severity levels 
+  # SLF4J severity levels
   LEVELS = %w{ trace debug info warn error }
 
-  # Logger compatible facade over org.slf4j.Logger 
+  # Logger compatible facade over org.slf4j.Logger
   #
   # === Generated Methods
   #
   # Corresponding methods are generated for each of the SLF4J levels:
   #
-  # * trace 
-  # * debug 
-  # * info 
+  # * trace
+  # * debug
+  # * info
   # * warn
   # * error
   # * fatal (alias to error)
@@ -147,12 +147,12 @@ module SLF4J
   #
   #   log = Logger.new( "name" )
   #   log.info?                    # Is this level enabled for logging?
-  #   log.info( "message" )        # Log message 
-  #   log.info { "message" }       # Execute block if enabled 
+  #   log.info( "message" )        # Log message
+  #   log.info { "message" }       # Execute block if enabled
   #                                  and log returned value
   class Logger
     attr_reader :name
-    
+
     # Create new or find existing Logger by name
     #
     # Note that loggers are arranged in a hiearchy by dot '.' name
@@ -164,9 +164,9 @@ module SLF4J
       @name = name
       @logger = org.slf4j.LoggerFactory.getLogger( @name )
     end
-   
+
     # Define logging methods for each level: debug(), error(), etc.
-    LEVELS.each do |lvl|  
+    LEVELS.each do |lvl|
       module_eval( %Q{
 
         def #{lvl}?
@@ -185,9 +185,9 @@ module SLF4J
     alias_method :fatal, :error
     alias_method :fatal?, :error?
   end
-  
+
   # Get Logger by name
-  def logger( name = self.class.name ) 
+  def logger( name = self.class.name )
     Logger.new( name )
   end
   module_function :logger

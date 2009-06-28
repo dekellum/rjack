@@ -27,7 +27,7 @@ ASSEMBLY = "target/jetty-jsp-assembly-1.0-bin.dir"
 
 desc "Update the Manifest with actual jars"
 task :manifest => [ ASSEMBLY ] do
-  out = File.new( 'Manifest.txt', 'w' ) 
+  out = File.new( 'Manifest.txt', 'w' )
   begin
     out.write <<END
 History.txt
@@ -46,7 +46,6 @@ END
     out.close
   end
 end
-
 
 file ASSEMBLY => [ 'pom.xml', 'assembly.xml' ] do
   sh( 'mvn package' )
@@ -69,7 +68,7 @@ task :mvn_clean do
   rm_f( JAR_FILES )
   sh( 'mvn clean' )
 end
-task :clean => :mvn_clean 
+task :clean => :mvn_clean
 
 task :tag do
   tag = "jetty-jsp-#{JettyJsp::VERSION}"

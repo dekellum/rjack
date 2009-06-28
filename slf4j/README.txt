@@ -5,8 +5,8 @@
 
 == Description
 
-A JRuby adaption and gem packaging of the 
-{Simple Logging Facade for Java}[http://www.slf4j.org/].  
+A JRuby adaption and gem packaging of the
+{Simple Logging Facade for Java}[http://www.slf4j.org/].
 Provides all jar dependencies and a Ruby Logger compatible
 facade.
 
@@ -34,21 +34,21 @@ components in a JRuby application.
 
 == License
 
-=== slf4j gem 
+=== slf4j gem
 
 Copyright (c) 2008 David Kellum
 All rights reserved.
 
 The SLF4J ruby wrapper and gem packaging is released under the same
 license terms as the SLF4J java source code and binaries, see below. Note
-that these license terms are identical to the 
+that these license terms are identical to the
 {MIT License}[http://en.wikipedia.org/wiki/MIT_License] and deemed
 compatible with GPL and the Apache Software License.
 
 === SLF4J License
 
-Copyright (c) 2004-2008 QOS.ch 
-All rights reserved. 
+Copyright (c) 2004-2008 QOS.ch
+All rights reserved.
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -68,4 +68,3 @@ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
 LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
 OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-

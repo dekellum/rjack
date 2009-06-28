@@ -22,7 +22,7 @@
       <version>0.9.15</version>
       <scope>runtime</scope>
     </dependency>
-    
+
   </dependencies>
 
   <build>

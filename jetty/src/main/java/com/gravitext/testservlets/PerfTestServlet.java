@@ -27,7 +27,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet for perform and chunked output testing. 
+ * Servlet for perform and chunked output testing.
  * @author David Kellum
  */
 public class PerfTestServlet extends HttpServlet
@@ -39,13 +39,13 @@ public class PerfTestServlet extends HttpServlet
     {
         int delayConst = getParam( req, "delay", 0 );
         int delayRandom = getParam( req, "rdelay", 0 );
-        
+
         int burnConst = getParam( req, "burn", 0 );
         int burnRandom = getParam( req, "rburn", 0 );
-                    
+
         int size = getParam( req, "size", 0 );
         int sizeRandom = getParam( req, "rsize", 0 );
-        
+
         int count = getParam( req, "count", 0 );
         count += random( getParam( req, "rcount", 0 ) );
 
@@ -68,16 +68,16 @@ public class PerfTestServlet extends HttpServlet
         out.println( "<tr><td>burn</td><td>Constant chunk CPU burn time in ms</td></tr>" );
         out.println( "<tr><td>rburn</td><td>Random [0,n) chunk burn time in ms</td></tr>" );
         out.println( "</table>" );
-               
+
         out.println( "<h2>Output</h2>" );
         out.flush();
-        
+
         out.println( "<p>Writing " + count + " (delayed) chunks...</p>" );
         out.flush();
 
         try {
             for( int b = 0; b < count; ++b ) {
-                
+
                 long delay = delayConst + random( delayRandom );
                 if( delay > 0 ) Thread.sleep( delay );
 
@@ -85,7 +85,7 @@ public class PerfTestServlet extends HttpServlet
                 if( burn > 0 ) {
                     delay += burnTime( burn );
                 }
-                
+
                 out.println( "<p>(Delayed " + delay + " ms) " );
 
                 int f = size + random( sizeRandom );
@@ -103,7 +103,7 @@ public class PerfTestServlet extends HttpServlet
         out.println( "</html>" );
         out.flush();
     }
-    
+
     private long burnTime( int burn_ms )
     {
         long prime = 2;
@@ -112,7 +112,7 @@ public class PerfTestServlet extends HttpServlet
         long last = 0;
         do {
             prime = BigInteger.probablePrime( 64, new Random() ).longValue();
-            last = System.currentTimeMillis(); 
+            last = System.currentTimeMillis();
         } while( last < endTime );
 
         if( prime == 2 ) {
@@ -121,32 +121,32 @@ public class PerfTestServlet extends HttpServlet
         return last - begin;
     }
 
-    private int getParam( HttpServletRequest req, String name, int defVal )    
+    private int getParam( HttpServletRequest req, String name, int defVal )
     {
         int value = defVal;
         String strVal = req.getParameter( name );
         if( strVal != null ) {
-            value = Integer.parseInt( strVal ); 
+            value = Integer.parseInt( strVal );
         }
-        
+
         return value;
     }
-    
+
     private int random( int range )
     {
         Random _random = new Random();
         if( range > 0 ) return _random.nextInt( range );
         return 0;
     }
-    
-    private static final String FILLER = 
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit, " + 
-        "sed do eiusmod tempor incididunt ut labore et dolore magna " + 
-        "aliqua. Ut enim ad minim veniam, quis nostrud exercitation " + 
-        "ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis " + 
-        "aute irure dolor in reprehenderit in voluptate velit esse cillum " + 
-        "dolore eu fugiat nulla pariatur. Excepteur sint occaecat " + 
-        "cupidatat non proident, sunt in culpa qui officia deserunt " + 
+
+    private static final String FILLER =
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit, " +
+        "sed do eiusmod tempor incididunt ut labore et dolore magna " +
+        "aliqua. Ut enim ad minim veniam, quis nostrud exercitation " +
+        "ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis " +
+        "aute irure dolor in reprehenderit in voluptate velit esse cillum " +
+        "dolore eu fugiat nulla pariatur. Excepteur sint occaecat " +
+        "cupidatat non proident, sunt in culpa qui officia deserunt " +
         "mollit anim id est laborum.  ";
 
     private static final long serialVersionUID = 1L;

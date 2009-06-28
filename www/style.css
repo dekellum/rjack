@@ -1,6 +1,6 @@
 body  { font-family: Trebuchet MS, Lucida Grande, Tahoma, Verdana, Arial, sans-serif;
-		background: white;
-		margin: 0; padding: 0 10px 0 10px;  }
+        background: white;
+        margin: 0; padding: 0 10px 0 10px;  }
 
 div.h     { background: #111; margin: 0 -10px 0 -10px; height: 105px }
 div.h img { float: left; padding: 10px 10px 0px 10px }
@@ -8,10 +8,10 @@ div.t     { font-size: large; text-align; color: white; text-align:left; padding
 div.rj    { font-size: x-large; }
 div.main { clear: both }
 
-div.nav { padding: 2px; text-align: center; 
-		  margin: 0 -10px 0 -10px; background: #bbb; 
-		  border-top: 1px solid black; 
-		  border-bottom: 1px solid black; } 
+div.nav { padding: 2px; text-align: center;
+          margin: 0 -10px 0 -10px; background: #bbb;
+          border-top: 1px solid black;
+          border-bottom: 1px solid black; }
 div.nav a { text-decoration: none; }
 
 a { color: #1c1585 }
@@ -25,9 +25,9 @@ ul    { padding-left: 20px; list-style-type: circle }
 ul ul { list-style-type: none }
 ul a  { text-decoration: none }
 
-pre   { margin: 15px; background: #EEE; padding: 10px; 
-		border-style: dashed; border-color: black; border-width: 1px }
-		
-div.copyright { margin: 5em -10px 0 -10px; padding: 5px; background: #DDF; 
-				text-align: center; border-style: solid; border-color: black; 
-				border-width: 1px 0 1px 0; } 
+pre   { margin: 15px; background: #EEE; padding: 10px;
+        border-style: dashed; border-color: black; border-width: 1px }
+
+div.copyright { margin: 5em -10px 0 -10px; padding: 5px; background: #DDF;
+                text-align: center; border-style: solid; border-color: black;
+                border-width: 1px 0 1px 0; }

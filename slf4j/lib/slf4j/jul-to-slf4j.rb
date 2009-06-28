@@ -18,4 +18,3 @@ module SLF4J::JUL
   end
 
 end
-

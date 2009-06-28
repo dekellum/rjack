@@ -20,7 +20,7 @@
 # BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
 # ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.  
+# SOFTWARE.
 #++
 
 $LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
@@ -40,7 +40,7 @@ require 'rubygems'
 require 'logback'
 Logback.root.level = Logback::TRACE
 
-slog = SLF4J['slf4j'] 
+slog = SLF4J['slf4j']
 slog.debug "from slf4j"
 
 julog.info( "INFO message" )

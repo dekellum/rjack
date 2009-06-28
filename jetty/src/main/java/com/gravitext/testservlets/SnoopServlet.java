@@ -30,7 +30,7 @@ public class SnoopServlet extends HttpServlet
 {
 
     @Override
-    protected void doGet( HttpServletRequest request, 
+    protected void doGet( HttpServletRequest request,
                               HttpServletResponse response )
         throws ServletException, IOException
     {
@@ -56,7 +56,7 @@ public class SnoopServlet extends HttpServlet
         writeRow( out, "Auth Type", request.getAuthType() );
         writeRow( out, "Remote User", request.getRemoteUser() );
         out.println( "</table>" );
-        
+
         writeTableHeader( out, "Request Headers", "Header" );
         Enumeration<?> hNames = request.getHeaderNames();
         while( hNames.hasMoreElements() ) {
@@ -65,7 +65,7 @@ public class SnoopServlet extends HttpServlet
             writeRow( out, hname, hvalue );
         }
         out.println( "</table>" );
-        
+
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             writeTableHeader( out, "Cookies", "Cookie" );
@@ -74,13 +74,13 @@ public class SnoopServlet extends HttpServlet
             }
             out.println( "</table>" );
         }
-        
+
         out.println( "</body>" );
         out.println( "</html>" );
         out.close();
     }
 
-    private void writeTableHeader( PrintWriter out, 
+    private void writeTableHeader( PrintWriter out,
                                    String heading, String name )
     {
         out.println( "<h2>" + heading + "</h2>" );
@@ -89,9 +89,9 @@ public class SnoopServlet extends HttpServlet
 
     private void writeRow( PrintWriter out, String name, String value )
     {
-        out.println( String.format( "<tr><td>%s</td><td>%s</td></tr>", 
+        out.println( String.format( "<tr><td>%s</td><td>%s</td></tr>",
                                     name, value ) );
     }
-   
+
     private static final long serialVersionUID = 1L;
 }

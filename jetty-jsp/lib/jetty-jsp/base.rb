@@ -15,7 +15,7 @@
 #++
 
 module JettyJsp
-  JETTY_VERSION = '6.1.18'
+  JETTY_VERSION = '6.1.19'
   JSP_VERSION = '2.1'
   GEM_VERSION = '1'
 

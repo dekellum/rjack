@@ -1,4 +1,5 @@
-=== 0.9.15.3 (TBD)
+=== 0.9.16.1 (TBD)
+* Upgraded to Logback 0.9.16
 * Relax slf4j dependency to '~> 1.5.6' (tested with slf4j 1.5.7.1).
 
 === 0.9.15.2 (2009-5-8)

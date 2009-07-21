@@ -15,10 +15,10 @@
 
 module Logback
   # Logback java version
-  LOGBACK_VERSION = '0.9.15'
+  LOGBACK_VERSION = '0.9.16'
 
   # Logback gem version
-  VERSION = LOGBACK_VERSION + '.3'
+  VERSION = LOGBACK_VERSION + '.1'
 
   LOGBACK_DIR = File.dirname(__FILE__) # :nodoc:
 end

@@ -30,9 +30,9 @@ task :manifest => [ ASSEMBLY ] do
   out = File.new( 'Manifest.txt', 'w' )
   begin
     out.write <<END
-History.txt
 Manifest.txt
-README.txt
+README.rdoc
+History.rdoc
 Rakefile
 pom.xml
 assembly.xml
@@ -86,4 +86,7 @@ hoe = Hoe.new( "hc-httpclient", HC::HTTPClient::VERSION ) do |p|
   p.extra_deps     << [ 'slf4j',   '~> 1.5.8' ]
   p.extra_dev_deps << [ 'logback', '>= 0.9.16.1' ]
   p.rubyforge_name = "rjack"
+  p.history_file = "History.rdoc"
+  p.readme_file = "README.rdoc"
+  p.extra_rdoc_files = [ "History.rdoc", "README.rdoc" ]
 end

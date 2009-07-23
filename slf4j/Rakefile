@@ -49,8 +49,8 @@ task :manifest do
   begin
     out.write <<END
 Manifest.txt
-README.txt
-History.txt
+README.rdoc
+History.rdoc
 Rakefile
 pom.xml
 assembly.xml
@@ -115,4 +115,7 @@ end
 hoe = Hoe.new( "slf4j", SLF4J::VERSION ) do |p|
   p.developer( "David Kellum", "dek-ruby@gravitext.com" )
   p.rubyforge_name = "rjack"
+  p.history_file = "History.rdoc"
+  p.readme_file = "README.rdoc"
+  p.extra_rdoc_files = [ "History.rdoc", "README.rdoc" ]
 end

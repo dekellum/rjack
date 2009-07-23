@@ -1,4 +1,4 @@
-=== 6.1.19.2.1.1 (TBD)
+=== 6.1.19.2.1.1 (2009-7-22)
 * Update to Jetty 6.1.19 JSP 2.1
 
 === 6.1.18.2.1.1 (2009-5-29)
@@ -10,7 +10,7 @@
 
 === 6.1.16.2.1.1 (2009-4-4)
 * Update to Jetty 6.1.16 JSP 2.1, which now uses externalized
-  jsp-2.1-glassfish and jsp-api-2.1-glassfish (9.1.1.B51.25.p1) gems.
+  jsp-2.1-glassfish and jsp-api-2.1-glassfish (9.1.1.B51.25.p1) jars.
 
 === 6.1.14.2.1.1 (2008-12-6)
 * Update to Jetty 6.1.14

@@ -168,7 +168,7 @@ module Logback
   JPatternLayout = Java::ch.qos.logback.classic.PatternLayout
 
   # Extends
-  # ch.qos.logback.classic.PatternLayout[http://logback.qos.ch/apidocs/ch/qos/logback/access/PatternLayout.html]
+  # ch.qos.logback.classic.PatternLayout[http://logback.qos.ch/apidocs/ch/qos/logback/classic/PatternLayout.html]
   # with a block initializer.
   class PatternLayout < JPatternLayout
 

@@ -17,7 +17,7 @@
 module JettyJsp
   JETTY_VERSION = '6.1.19'
   JSP_VERSION = '2.1'
-  GEM_VERSION = '1'
+  GEM_VERSION = '2'
 
   VERSION = [ JETTY_VERSION, JSP_VERSION, GEM_VERSION ].join( '.' )
 

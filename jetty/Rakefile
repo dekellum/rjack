@@ -100,6 +100,6 @@ end
 
 hoe = Hoe.new( "jetty", Jetty::VERSION ) do |p|
   p.developer( "David Kellum", "dek-oss@gravitext.com" )
-  p.extra_dev_deps << [ 'logback', '>= 0.9.15.1' ]
+  p.extra_dev_deps << [ 'logback', '>= 0.9.16.1' ]
   p.rubyforge_name = "rjack"
 end

@@ -26,7 +26,7 @@
 module SLF4J
 
   # SLF4J-java version
-  SLF4J_VERSION = '1.5.7'
+  SLF4J_VERSION = '1.5.8'
   # SLF4J gem version
   VERSION = SLF4J_VERSION + '.1'
 

@@ -15,7 +15,7 @@
 
 module Logback
   # Logback java version
-  LOGBACK_VERSION = '0.9.16'
+  LOGBACK_VERSION = '0.9.17'
 
   # Logback gem version
   VERSION = LOGBACK_VERSION + '.1'

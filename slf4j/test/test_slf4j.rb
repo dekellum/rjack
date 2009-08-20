@@ -58,7 +58,9 @@ class TestHandler < java.util.logging.Handler
 end
 
 class TestSlf4j < Test::Unit::TestCase
+
   JdkLogger = java.util.logging.Logger
+
   def setup
     @handler = TestHandler.new
     @jdk_logger = JdkLogger.getLogger ""
@@ -85,6 +87,38 @@ class TestSlf4j < Test::Unit::TestCase
     assert @log.fatal?
     @log.fatal { "test write fatal --> error" }
     assert_equal( 4, @handler.count )
+  end
+
+  def test_native_exception
+    jlist = Java::java.util.ArrayList.new
+    jlist.add( 33 )
+    ex = nil
+    begin
+      jlist.get( 666 ) # IndexOutOfBoundsException
+    rescue Java::java.lang.IndexOutOfBoundsException => x
+      ex = x
+      @log.error( "test java exception", x )
+    end
+    assert_equal( 1, @handler.count )
+    assert_same( ex.cause, @handler.last.thrown )
+  end
+
+  def test_ruby_exception
+    begin
+      0/0 # ZeroDivisionError
+    rescue ZeroDivisionError => x
+      @log.error( x )
+    end
+    assert_equal( 1, @handler.count )
+  end
+
+  def test_ruby_exception_block
+    begin
+      0/0 # ZeroDivisionError
+    rescue ZeroDivisionError => x
+      @log.error( x ) { "ruby exception" }
+    end
+    assert_equal( 1, @handler.count )
   end
 
   def test_circular_ban

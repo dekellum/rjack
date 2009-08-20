@@ -1,5 +1,7 @@
 === 1.5.8.1 (TBD)
 * Upgraded to SLF4J 1.5.8
+* Added support for logging exceptions, with special handling of
+  NativeException#cause
 
 === 1.5.6.3 (2009-4-25)
 * Added SLF4J::JUL for controlling java.util.logging, including

@@ -143,13 +143,21 @@ module SLF4J
   # * error
   # * fatal (alias to error)
   #
-  # These have the form (using _info_ as example)
+  # These have the form (using _info_ as example):
   #
   #   log = Logger.new( "name" )
   #   log.info?                    # Is this level enabled for logging?
   #   log.info( "message" )        # Log message
   #   log.info { "message" }       # Execute block if enabled
   #                                  and log returned value
+  #   log.info( "message", ex )    # Log message with exception message/stack trace
+  #   log.info( ex ) { "message" } # Log message with exception message/stack trace
+  #   log.info( ex )               # Log exception with default "Exception:" message
+  #
+  # Note that the exception variants are aware of JRuby's
+  # NativeException class (a wrapped java exception) and will log using
+  # the Java ex.cause in this case.
+
   class Logger
     attr_reader :name
 
@@ -173,10 +181,33 @@ module SLF4J
           @logger.is#{lvl.capitalize}Enabled
         end
 
-        def #{lvl}( msg=nil )
+        def #{lvl}( msg=nil, ex=nil )
+          if msg.is_a?( Exception ) && ex.nil?
+            msg, ex = "Exception:", msg
+          end
           msg = yield if ( block_given? && #{lvl}? )
-          @logger.#{lvl}( msg.to_s ) unless msg.nil?
-         end
+          if msg
+            if ex
+              #{lvl}_ex( msg, ex )
+            else
+              @logger.#{lvl}( msg.to_s )
+            end
+          end
+        end
+
+        def #{lvl}_ex( msg, ex )
+          if ex.is_a?( NativeException )
+            @logger.#{lvl}( msg.to_s, ex.cause )
+          elsif #{lvl}?
+            log = msg.to_s
+            log << '\n'
+            log << ex.class.name << ': ' << ex.message << '\n'
+            ex.backtrace.each do |b|
+              log << '\t' << b << '\n'
+            end
+            @logger.#{lvl}( log )
+          end
+        end
 
       } )
     end

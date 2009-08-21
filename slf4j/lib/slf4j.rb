@@ -130,6 +130,15 @@ module SLF4J
   # SLF4J severity levels
   LEVELS = %w{ trace debug info warn error }
 
+  # Return a java style class name, suitable as a logger name, from the
+  # given ruby class or module, i.e:
+  #
+  #    ruby_to_java_logger_name( Foo::Bar::Baz ) --> "foo.bar.Baz"
+  #
+  def self.ruby_to_java_logger_name( clz )
+    clz.name.gsub( /::/, '.' ).gsub( /([^\.]+)\./ ) { |m| m.downcase }
+  end
+
   # Logger compatible facade over org.slf4j.Logger
   #
   # === Generated Methods
@@ -155,21 +164,26 @@ module SLF4J
   #   log.info( ex )               # Log exception with default "Exception:" message
   #
   # Note that the exception variants are aware of JRuby's
-  # NativeException class (a wrapped java exception) and will log using
-  # the Java ex.cause in this case.
-
+  # NativeException class (a wrapped java exception) and will log
+  # using the Java ex.cause in this case.
+  #
   class Logger
     attr_reader :name
 
-    # Create new or find existing Logger by name
+    # Create new or find existing Logger by name. If name is a Module (Class, etc.)
+    # then use SLF4J.ruby_to_java_logger_name( name ) as the name
     #
     # Note that loggers are arranged in a hiearchy by dot '.' name
-    # notation, i.e.:
+    # notation using java package/class name conventions:
     #
-    # * "parent"
-    # * "parent.child"
+    # * "pmodule"
+    # * "pmodule.cmodule."
+    # * "pmodule.cmodule.ClassName"
+    #
+    # Which enables hierarchical level setting and abbreviation in some output adapters.
+    #
     def initialize( name )
-      @name = name
+      @name = name.is_a?( Module ) ? SLF4J.ruby_to_java_logger_name( name ) : name
       @logger = org.slf4j.LoggerFactory.getLogger( @name )
     end
 
@@ -223,7 +237,7 @@ module SLF4J
   end
   module_function :logger
 
-  # Synonym for logger( name )
+  # Synonym for Logger.new( name )
   def self.[]( name )
     Logger.new( name )
   end

@@ -57,6 +57,13 @@ class TestHandler < java.util.logging.Handler
   end
 end
 
+module Foo
+  module Bar
+    class Baz
+    end
+  end
+end
+
 class TestSlf4j < Test::Unit::TestCase
 
   JdkLogger = java.util.logging.Logger
@@ -119,6 +126,12 @@ class TestSlf4j < Test::Unit::TestCase
       @log.error( x ) { "ruby exception" }
     end
     assert_equal( 1, @handler.count )
+  end
+
+  def test_ruby_to_java_class_name
+    assert_equal( "foo.bar.Baz",
+                  SLF4J.ruby_to_java_logger_name( Foo::Bar::Baz ) )
+    assert_equal( "foo.bar.Baz", SLF4J[ Foo::Bar::Baz ].name )
   end
 
   def test_circular_ban

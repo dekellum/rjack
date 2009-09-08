@@ -1,6 +1,7 @@
 === 0.9.17.1 (TBD)
 * Upgraded to Logback 0.9.17
 * Update/relax slf4j dependency to '~> 1.5.8' (tested with slf4j 1.5.8.1).
+* Added Logback.config_console( :mdc => [ :key ] ) option
 
 === 0.9.15.2 (2009-5-8)
 * Added Logback.config_console({}) convenience config method.

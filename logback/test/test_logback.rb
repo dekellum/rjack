@@ -21,6 +21,8 @@ require 'slf4j'
 $LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
 require 'logback'
 
+require 'slf4j/mdc'
+
 # Test load works
 require 'logback/access'
 
@@ -150,6 +152,16 @@ class TestConfigure < Test::Unit::TestCase
     log = SLF4J[ log_name ]
     log.debug( "test write to console" )
     assert_equal( 1, appender.count )
+  end
+
+  def test_config_console
+    Logback.config_console( :mdc => [ :key1, :key2 ], :mdc_width => 11 )
+    log = SLF4J[ self.class ]
+    log.info "without"
+    SLF4J::MDC[ :key1 ] = "val1"
+    log.info "with 1"
+    SLF4J::MDC[ :key2 ] = "val2"
+    log.info "with 2"
   end
 
 end

@@ -267,6 +267,8 @@ module Logback
   # :thread:: Output thread name? (default: false)
   # :level<Level>:: Set root level (default: INFO)
   # :lwidth<~to_s>:: Logger width (default: :full ? 35 : 30)
+  # :mdc<String|Array[String]>:: One or more Mapped Diagnostic Context keys
+  # :mdc_width<~to_s}:: MDC width (default: unspecified)
   def self.config_console( options = {} )
     configure do
       console = Logback::ConsoleAppender.new do |a|
@@ -275,8 +277,18 @@ module Logback
           pat = [ options[ :full ] ? '%date' : '%-4r' ]
           pat << '[%thread]' if options[ :thread ]
           pat << '%-5level'
+
           w = ( options[ :lwidth ] || ( options[ :full ] ? 35 : 30 ) )
           pat << "%logger{#{w}}"
+
+          mdcs = options[ :mdc ].to_a.map { |k| "%X{#{k}}" }
+          unless mdcs.empty?
+            mp = ( '\(' + mdcs.join(',') + '\)' )
+            mw = options[ :mdc_width ]
+            mp = "%-#{mw}(#{mp})" if mw
+            pat << mp
+          end
+
           pat += [ '-', '%msg' '%ex%n' ]
           layout.pattern = pat.join( ' ' )
         end

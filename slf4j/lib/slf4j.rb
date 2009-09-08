@@ -187,6 +187,11 @@ module SLF4J
       @logger = org.slf4j.LoggerFactory.getLogger( @name )
     end
 
+    # Return underlying org.slf4j.Logger
+    def java_logger
+      @logger
+    end
+
     # Define logging methods for each level: debug(), error(), etc.
     LEVELS.each do |lvl|
       module_eval( %Q{

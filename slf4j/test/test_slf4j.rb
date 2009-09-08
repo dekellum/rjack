@@ -30,6 +30,9 @@ require 'slf4j'
 # Load jdk14 implementation for testing
 require 'slf4j/jdk14'
 
+# Now safe to load:
+require 'slf4j/mdc'
+
 # Load these only to confirm loading works
 require 'slf4j/jcl-over-slf4j'
 require 'slf4j/log4j-over-slf4j'

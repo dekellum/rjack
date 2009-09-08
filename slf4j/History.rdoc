@@ -1,9 +1,11 @@
 === 1.5.8.1 (TBD)
 * Upgraded to SLF4J 1.5.8
-* Added support for logging exceptions, with special handling of
-  NativeException#cause
+* Added support for logging exceptions from ruby, with special
+  handling of NativeException#cause
 * Added support for converting from ruby style "Module::Class" to java
   "module.Class" name in SLF4J::Logger.new
+* Added SLF4J::MDC (Mapped Diagnostic Context) support module
+* Added Logger.java_logger access
 
 === 1.5.6.3 (2009-4-25)
 * Added SLF4J::JUL for controlling java.util.logging, including

@@ -1,0 +1,10 @@
+Manifest.txt
+README.rdoc
+History.rdoc
+Rakefile
+NOTICE.txt
+pom.xml
+assembly.xml
+lib/rjack-commons-codec/base.rb
+lib/rjack-commons-codec.rb
+lib/rjack-commons-codec/commons-codec-1.4.jar

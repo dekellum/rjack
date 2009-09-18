@@ -23,7 +23,10 @@ require 'hoe'
 $LOAD_PATH << './lib'
 require 'hc-httpclient/base'
 
-ASSEMBLY = "target/httpclient-1.0-bin.dir"
+GEMNAME  = 'hc-httpclient'
+GEMVER   = HC::HTTPClient::VERSION
+
+ASSEMBLY = "target/#{GEMNAME}-1.0-bin.dir"
 
 desc "Update the Manifest with actual jars"
 task :manifest => [ ASSEMBLY ] do
@@ -41,7 +44,7 @@ lib/hc-httpclient.rb
 test/test_httpclient.rb
 END
     out.puts( Dir.glob( File.join( ASSEMBLY, '*.jar' ) ).map do |jar|
-                File.join( 'lib', 'hc-httpclient', File.basename( jar ) )
+                File.join( 'lib', GEMNAME, File.basename( jar ) )
               end )
   ensure
     out.close
@@ -58,10 +61,11 @@ JAR_FILES = File.new( 'Manifest.txt' ).readlines.map { |f| f.strip }\
 JARS = JAR_FILES.map { |f| File.basename( f.strip ) }
 
 JARS.each do |jar|
-  file "lib/hc-httpclient/#{jar}" => [ ASSEMBLY ] do
-    cp_r( File.join( ASSEMBLY, jar ), 'lib/hc-httpclient' )
+  file "lib/#{GEMNAME}/#{jar}" => [ ASSEMBLY ] do
+    cp_r( File.join( ASSEMBLY, jar ), "lib/#{GEMNAME}" )
   end
 end
+
 [ :gem, :test ].each { |t| task t => JAR_FILES }
 
 task :mvn_clean do
@@ -72,7 +76,7 @@ end
 task :clean => :mvn_clean
 
 task :tag do
-  tag = "hc-httpclient-#{HC::HTTPClient::VERSION}"
+  tag = "#{GEMNAME}-#{GEMVER}"
   dname = File.dirname( __FILE__ )
   dname = '.' if Dir.getwd == dname
   sh( "git status --only #{dname}" ) do |ok,res|
@@ -81,7 +85,7 @@ task :tag do
   sh %{git tag -s -f -m "tag [#{tag}]" "#{tag}"}
 end
 
-hoe = Hoe.new( "hc-httpclient", HC::HTTPClient::VERSION ) do |p|
+hoe = Hoe.new( GEMNAME, GEMVER ) do |p|
   p.developer( "David Kellum", "dek-oss@gravitext.com" )
   p.extra_deps     << [ 'slf4j',   '~> 1.5.8' ]
   p.extra_dev_deps << [ 'logback', '>= 0.9.16.1' ]

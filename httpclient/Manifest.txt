@@ -1,0 +1,10 @@
+Manifest.txt
+README.rdoc
+History.rdoc
+Rakefile
+pom.xml
+assembly.xml
+lib/hc-httpclient/base.rb
+lib/hc-httpclient.rb
+test/test_httpclient.rb
+lib/hc-httpclient/commons-httpclient-3.1.jar

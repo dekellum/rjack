@@ -8,7 +8,6 @@
     <dependencySet>
       <includes>
         <include>commons-httpclient:commons-httpclient</include>
-        <include>commons-codec:commons-codec</include>
       </includes>
     </dependencySet>
   </dependencySets>

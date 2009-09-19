@@ -87,8 +87,9 @@ end
 
 hoe = Hoe.new( GEMNAME, GEMVER ) do |p|
   p.developer( "David Kellum", "dek-oss@gravitext.com" )
-  p.extra_deps     << [ 'slf4j',   '~> 1.5.8' ]
-  p.extra_dev_deps << [ 'logback', '>= 0.9.16.1' ]
+  p.extra_deps     << [ 'slf4j',               '~> 1.5.8' ]
+  p.extra_deps     << [ 'rjack-commons-codec', '~> 1.4.0' ]
+  p.extra_dev_deps << [ 'logback',             '>= 0.9.16.1' ]
   p.rubyforge_name = "rjack"
   p.history_file = "History.rdoc"
   p.readme_file = "README.rdoc"

@@ -25,10 +25,10 @@ require 'test/unit'
 
 $LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
 
-require 'hc-httpclient'
+require 'rjack-httpclient'
 
 class TestClient < Test::Unit::TestCase
-  include HC::HTTPClient
+  include RJack::HTTPClient
   def test_setup
     m = ManagerFacade.new
     m.manager_params.max_total_connections = 200

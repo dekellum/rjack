@@ -1,8 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.gravitext</groupId>
-  <artifactId>hc-httpclient</artifactId>
+  <groupId>rjack</groupId>
+  <artifactId>rjack-httpclient</artifactId>
   <packaging>pom</packaging>
   <version>1.0</version>
   <name>HTTPClient Assembly for Gem</name>
@@ -10,9 +10,9 @@
   <dependencies>
 
      <dependency>
-      <groupId>commons-httpclient</groupId>
-      <artifactId>commons-httpclient</artifactId>
-      <version>3.1</version>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpclient</artifactId>
+      <version>4.0</version>
       <exclusions>
         <exclusion>
           <groupId>commons-logging</groupId>
@@ -20,6 +20,20 @@
         </exclusion>
       </exclusions>
     </dependency>
+
+    <!--
+    <dependency>
+      <groupId>org.apache.httpcomponents</groupId>
+      <artifactId>httpmime</artifactId>
+      <version>4.0</version>
+      <exclusions>
+        <exclusion>
+          <groupId>commons-logging</groupId>
+          <artifactId>commons-logging</artifactId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    -->
 
   </dependencies>
 

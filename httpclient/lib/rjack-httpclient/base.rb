@@ -14,10 +14,10 @@
 # permissions and limitations under the License.
 #++
 
-module HC
+module RJack
   module HTTPClient
-    HTTPCLIENT_VERSION = '3.1'
-    VERSION = HTTPCLIENT_VERSION + '.3'
+    HTTPCLIENT_VERSION = '4.0'
+    VERSION = HTTPCLIENT_VERSION + '.0'
 
     HTTPCLIENT_DIR = File.dirname( __FILE__ ) # :nodoc:
   end

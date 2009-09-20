@@ -118,14 +118,19 @@ module RJack
       # Create a default SchemeRegistry with http and https enabled.
       def create_scheme_registry
         sr = SchemeRegistry.new
-        sr.register( Scheme.new( "http",  plain_factory, 80 ) )
-        sr.register( Scheme.new( "https", SSLSocketFactory::socket_factory, 443 ) )
+        sr.register( Scheme.new( "http",  plain_factory,  80 ) )
+        sr.register( Scheme.new( "https", ssl_factory,   443 ) )
         sr
       end
 
-      # Returns static MultihomePlainSocketFactory instance
+      # Return MultihomePlainSocketFactory instance
       def plain_factory
         MultihomePlainSocketFactory::socket_factory
+      end
+
+      # Return SSLSocketFactory instance
+      def ssl_factory
+        SSLSocketFactory::socket_factory
       end
 
       # Create default ThreadSafeClientConnManager using a set manager_params

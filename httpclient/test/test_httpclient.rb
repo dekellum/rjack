@@ -33,7 +33,7 @@ class TestClient < Test::Unit::TestCase
     mf = ManagerFacade.new
 
     mf.manager_params.max_total_connections     = 200
-    mf.manager_params.timeout                   = 2000 #milliseconds
+    mf.manager_params.timeout                   = 2000     #milliseconds
     mf.manager_params.connections_per_route     = 10
     mf.client_params.allow_circular_redirects   = false
     mf.client_params.cookie_policy              = CookiePolicy::BEST_MATCH

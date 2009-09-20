@@ -47,7 +47,7 @@ module RJack
       # "bean", responding to various setters:
       #
       #  manager_params.max_total_connections     = 200
-      #  manager_params.timeout                   = 2000 #milliseconds
+      #  manager_params.timeout                   = 2000     #milliseconds
       #  manager_params.connections_per_route     = 10
       #
       attr_reader :manager_params

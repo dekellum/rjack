@@ -60,8 +60,7 @@ module HC
     #                               DefaultHttpMethodRetryHandler.new( 2, false ) )
     #  client_params.cookie_policy = CookiePolicy::IGNORE_COOKIES
     #
-    # Note, use of set_parameter style settings will increase the
-    # likelihood of 4.x compatibility
+    # Expect incompatible changes to these setting upon upgrade to 4.0
     class ManagerFacade
 
       # The HttpClient instance available after start

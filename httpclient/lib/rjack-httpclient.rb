@@ -25,66 +25,145 @@ module RJack
 
     Dir.glob( File.join( HTTPCLIENT_DIR, '*.jar' ) ).each { |jar| require jar }
 
-    import 'org.apache.commons.httpclient.params.HttpConnectionManagerParams'
-    import 'org.apache.commons.httpclient.params.HttpClientParams'
-    import 'org.apache.commons.httpclient.params.HttpMethodParams'
-    import 'org.apache.commons.httpclient.DefaultHttpMethodRetryHandler'
-    import 'org.apache.commons.httpclient.MultiThreadedHttpConnectionManager'
-    import 'org.apache.commons.httpclient.HttpClient'
+    import 'org.apache.http.client.params.ClientParamBean'
+    import 'org.apache.http.client.params.CookiePolicy'
+    import 'org.apache.http.conn.MultihomePlainSocketFactory'
+    import 'org.apache.http.conn.params.ConnManagerParamBean'
+    import 'org.apache.http.conn.params.ConnPerRouteBean'
+    import 'org.apache.http.conn.scheme.Scheme'
+    import 'org.apache.http.conn.scheme.SchemeRegistry'
+    import 'org.apache.http.conn.ssl.SSLSocketFactory'
+    import 'org.apache.http.impl.client.DefaultHttpClient'
+    import 'org.apache.http.impl.client.DefaultHttpRequestRetryHandler'
+    import 'org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager'
+    import 'org.apache.http.message.BasicHeader'
+    import 'org.apache.http.params.BasicHttpParams'
+    import 'org.apache.http.params.HttpConnectionParamBean'
 
-    # Facade over http client and connection manager, setup, start, shutdown
-    #
-    # == Example Settings
-    #
-    # See: http://hc.apache.org/httpclient-3.x/preference-api.html
-    #
-    #  manager_params.max_total_connections = 200
-    #  manager_params.connection_timeout = 1500 #ms
-    #  manager_params.default_max_connections_per_host = 20
-    #  manager_params.stale_checking_enabled = false
-    #  client_params.connection_manager_timeout = 3000 #ms
-    #  client_params.so_timeout = 3000 #ms
-    #  client_params.set_parameter( HttpMethodParams::RETRY_HANDLER,
-    #                               DefaultHttpMethodRetryHandler.new( 2, false ) )
-    #  client_params.cookie_policy = CookiePolicy::IGNORE_COOKIES
-    #
-    # Note, use of set_parameter style settings will increase the
-    # likelihood of 4.x compatibility
+    # Facade over http client and connection manager, supporting
+    # setup -> start() -> shutdown()
     class ManagerFacade
-
-      # The HttpClient instance available after start
-      attr_reader :client
-
-      # Manager parameters
+      # {Manager parameters}[http://hc.apache.org/httpcomponents-client/httpclient/apidocs/org/apache/http/conn/params/ConnManagerParamBean.html]
+      # "bean", responding to various setters:
+      #
+      #  manager_params.max_total_connections     = 200
+      #  manager_params.timeout                   = 2000 #milliseconds
+      #  manager_params.connections_per_route     = 10
+      #
       attr_reader :manager_params
 
-      # Client parameters
+      # {Client parameters}[http://hc.apache.org/httpcomponents-client/httpclient/apidocs/org/apache/http/client/params/ClientParamBean.html]
+      # "bean", responding to various setters:
+      #
+      #  client_params.allow_circular_redirects   = false
+      #  client_params.cookie_policy              = CookiePolicy::BEST_MATCH
+      #  client_params.default_headers            = { "X-Name" => "value" }
+      #  client_params.handle_redirects           = true
+      #  client_params.reject_relative_redirect   = true
+      #
       attr_reader :client_params
 
-      def initialize
-        @manager_params = HttpConnectionManagerParams.new
+      # {Connection parameters}[http://hc.apache.org/httpcomponents-core/httpcore/apidocs/org/apache/http/params/HttpConnectionParamBean.html]
+      # "bean", responding to various setters:
+      #
+      #  connection_params.connection_timeout     = 2000     #milliseconds
+      #  connection_params.so_timeout             = 3000     #milliseconds
+      #  connection_params.linger                 = 2        #seconds
+      #  connection_params.socket_buffer_size     = 2 * 1024 #bytes
+      #  connection_params.stale_checking_enabled = true
+      #  connection_params.tcp_no_delay           = false
+      #
+      attr_reader :connection_params
 
-        @client_params = HttpClientParams.new
+      # {org.apache.http.client.HttpClient}[http://hc.apache.org/httpcomponents-client/httpclient/apidocs/org/apache/http/client/HttpClient.html]
+      # available after start()
+      attr_reader :client
+
+      # New facade ready for setup
+      def initialize
+        @mparams = BasicHttpParams.new
+        @cparams = BasicHttpParams.new
+
+        @manager_params    = ConnManagerParamBean.new( @mparams )
+        @client_params     = ClientParamBean.new( @cparams )
+        @connection_params = HttpConnectionParamBean.new( @cparams )
 
         @client = nil
         @connection_manager = nil
+        @retry_handler = nil
       end
 
-      # Given previously set parameters, construct connection manager
-      # and client.
+      # Setup a DefaultHttpRequestRetryHandler
+      def set_retry_handler( count, retry_if_sent = false )
+        @retry_handler =
+          DefaultHttpRequestRetryHandler.new( count, retry_if_sent )
+      end
+
+      # Given previous setup, create connection manager, create, and
+      # return client.
       def start
-        @connection_manager = MultiThreadedHttpConnectionManager.new()
-        @connection_manager.params = @manager_params
+        @scheme_registry = create_scheme_registry
+        @connection_manager = create_connection_manager
 
-        @client = HttpClient.new( @client_params, @connection_manager );
+        @client = create_http_client
       end
 
-      # Shutdown and close the connection manager and client.
+      # Shutdown client and connection manager.
       def shutdown
         @connection_manager.shutdown if @connection_manager
         @client = nil
         @connection_manager = nil
       end
+
+      # Create a default SchemeRegistry with http and https enabled.
+      def create_scheme_registry
+        sr = SchemeRegistry.new
+        sr.register( Scheme.new( "http",  plain_factory, 80 ) )
+        sr.register( Scheme.new( "https", SSLSocketFactory::socket_factory, 443 ) )
+        sr
+      end
+
+      # Returns static MultihomePlainSocketFactory instance
+      def plain_factory
+        MultihomePlainSocketFactory::socket_factory
+      end
+
+      # Create default ThreadSafeClientConnManager using a set manager_params
+      def create_connection_manager
+        ThreadSafeClientConnManager.new( @mparams, @scheme_registry )
+      end
+
+      # Create DefaultHttpClient given connection manager and any set
+      # client or connection_params
+      def create_http_client
+        c = DefaultHttpClient.new( @connection_manager, @cparams )
+        c.http_request_retry_handler = @retry_handler if @retry_handler
+        c
+      end
+
     end
+
+    # ConnManagerParamBean reopen
+    class ConnManagerParamBean
+      # Convert to ConnPerRouteBean.new( value ) unless is one.
+      def connections_per_route=( value )
+        unless value.is_a?( ConnPerRouteBean )
+          value = ConnPerRouteBean.new( value.to_i )
+        end
+        setConnectionsPerRoute( value )
+      end
+    end
+
+    # ClientParamBean reopen
+    class ClientParamBean
+      # Convert to [ BasicHeader.new( k,v ) ] if value is hash.
+      def default_headers=( value )
+        if value.is_a?( Hash )
+          value = value.map { |nv| BasicHeader.new( *nv ) }
+        end
+        setDefaultHeaders( value )
+      end
+    end
+
   end
 end

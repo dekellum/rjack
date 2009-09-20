@@ -16,10 +16,10 @@
 #++
 
 require 'rubygems'
-gem( 'logback', '>= 0.9.14' )
+gem( 'logback', '>= 0.9.15.2' )
 
 require 'logback'
-Logback.root.level = Logback::DEBUG
+Logback.config_console( :level => Logback::DEBUG )
 
 require 'test/unit'
 
@@ -30,15 +30,31 @@ require 'rjack-httpclient'
 class TestClient < Test::Unit::TestCase
   include RJack::HTTPClient
   def test_setup
-    m = ManagerFacade.new
-    m.manager_params.max_total_connections = 200
-    m.client_params.so_timeout = 3000 #ms
-    m.start
+    mf = ManagerFacade.new
 
-    assert_not_nil m.client
+    mf.manager_params.max_total_connections     = 200
+    mf.manager_params.timeout                   = 2000 #milliseconds
+    mf.manager_params.connections_per_route     = 10
+    mf.client_params.allow_circular_redirects   = false
+    mf.client_params.cookie_policy              = CookiePolicy::BEST_MATCH
+    mf.client_params.default_headers            = { "X-Name" => "value" }
+    mf.client_params.handle_redirects           = true
+    mf.client_params.reject_relative_redirect   = true
+    mf.connection_params.connection_timeout     = 2000     #milliseconds
+    mf.connection_params.so_timeout             = 3000     #milliseconds
+    mf.connection_params.linger                 = 2        #seconds
+    mf.connection_params.socket_buffer_size     = 2 * 1024 #bytes
+    mf.connection_params.stale_checking_enabled = true
+    mf.connection_params.tcp_no_delay           = false
 
-    m.shutdown
+    mf.set_retry_handler( 2 )
 
-    assert_nil m.client
+    mf.start
+
+    assert_not_nil mf.client
+
+    mf.shutdown
+
+    assert_nil mf.client
   end
 end

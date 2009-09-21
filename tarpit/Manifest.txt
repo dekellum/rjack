@@ -1,0 +1,5 @@
+Manifest.txt
+History.rdoc
+README.rdoc
+Rakefile
+lib/rjack-tarpit.rb

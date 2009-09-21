@@ -1,0 +1,18 @@
+# -*- ruby -*-
+
+require 'rubygems'
+
+$LOAD_PATH << './lib'
+
+# Use same hoe version for building gem plus this gem's dependency
+hoe_version = '~> 2.3.3'
+
+gem     'hoe', hoe_version
+require 'rjack-tarpit'
+
+TarPit.specify( 'rjack-tarpit' ) do |h|
+  h.developer( 'David Kellum', 'dek-oss@gravitext.com' )
+  h.rubyforge_name = 'rjack'
+  h.extra_deps += [ [ 'hoe',  hoe_version ],
+                    [ 'rdoc', '~> 2.4'    ] ]
+end

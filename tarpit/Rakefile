@@ -9,10 +9,16 @@ hoe_version = '~> 2.3.3'
 
 gem     'hoe', hoe_version
 require 'rjack-tarpit'
+include  RJack
 
-TarPit.specify( 'rjack-tarpit' ) do |h|
+t = TarPit.new( 'rjack-tarpit' )
+t.version = TarPit::VERSION
+
+t.specify do |h|
   h.developer( 'David Kellum', 'dek-oss@gravitext.com' )
   h.rubyforge_name = 'rjack'
   h.extra_deps += [ [ 'hoe',  hoe_version ],
                     [ 'rdoc', '~> 2.4'    ] ]
 end
+
+t.define_tasks

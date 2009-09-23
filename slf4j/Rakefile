@@ -1,6 +1,6 @@
 # -*- ruby -*-
 #--
-# Copyright (C) 2008 David Kellum
+# Copyright (C) 2008-2009 David Kellum
 #
 # Permission is hereby granted, free of charge, to any person
 # obtaining a copy of this software and associated documentation files
@@ -24,99 +24,48 @@
 #++
 
 require 'rubygems'
-require 'hoe'
+require 'rjack-tarpit'
 
 $LOAD_PATH << './lib'
-
-ENV['NODOT'] = "no thank you"
-
-# Instead of 'slf4j' to avoid loading slf4j-api in Rake parent loader
 require 'slf4j/base'
 
-loaders = SLF4J::ADAPTERS.flatten.compact
-loaders.delete( "jul-to-slf4j" ) # exception: maintained as source
-loader_files = loaders.map { |adp| "lib/slf4j/#{adp}.rb" }
+t = RJack::TarPit.new( 'slf4j' )
+t.version = SLF4J::VERSION
 
-jars = [ 'slf4j-api' ]
-jars += SLF4J::ADAPTERS.map { |i,o| [ i, "slf4j-#{o}" ] }.flatten.compact
-jars.map! { |n| "#{n}-#{SLF4J::SLF4J_VERSION}.jar" }
-
-jar_files = jars.map { |jar| "lib/slf4j/#{jar}" }
-
-desc "Update the Manifest with actual jars/loaders"
-task :manifest do
-  out = File.new( 'Manifest.txt', 'w' )
-  begin
-    out.write <<END
-Manifest.txt
-README.rdoc
-History.rdoc
-Rakefile
-pom.xml
-assembly.xml
-lib/slf4j/base.rb
-lib/slf4j.rb
-lib/slf4j/jul-to-slf4j.rb
-lib/slf4j/jul.rb
-lib/slf4j/mdc.rb
-test/test_slf4j.rb
-END
-    out.puts loader_files
-    out.puts jar_files
-  ensure
-    out.close
-  end
+t.specify do |h|
+  h.developer( "David Kellum", "dek-ruby@gravitext.com" )
+  h.rubyforge_name = "rjack"
 end
+
+loaders =
+  begin
+    l = SLF4J::ADAPTERS.flatten.compact
+    l.delete( "jul-to-slf4j" ) # exception: maintained as source
+    l
+  end
+
+t.generated_files = loaders.map { |adp| "lib/#{t.name}/#{adp}.rb" }
+
+t.jars =
+  begin
+    j = [ 'slf4j-api' ]
+    j += SLF4J::ADAPTERS.map { |i,o| [ i, "slf4j-#{o}" ] }.flatten.compact
+    j.map { |n| "#{n}-#{SLF4J::SLF4J_VERSION}.jar" }
+  end
+
+file 'Manifest.txt' => [ 'lib/slf4j/base.rb' ]
+
+t.assembly_version = 1.0
+
+t.define_tasks
 
 loaders.each do |adapter|
   file "lib/slf4j/#{adapter}.rb" do
-    out = File.new( "lib/slf4j/#{adapter}.rb", 'w' )
-    begin
-      out.puts "require 'slf4j'"
-      out.puts "SLF4J.require_adapter( '#{adapter}' )"
-    ensure
-      out.close
+    open( "lib/slf4j/#{adapter}.rb", 'w' ) do |out|
+      out.write <<END
+require 'slf4j'
+SLF4J.require_adapter( '#{adapter}' )
+END
     end
   end
-end
-
-ASSEMBLY = "target/slf4j-assembly-1.0-bin.dir"
-
-file ASSEMBLY => [ 'pom.xml', 'assembly.xml' ] do
-  sh( 'mvn package' )
-end
-
-jars.each do |jar|
-  file "lib/slf4j/#{jar}" => [ ASSEMBLY ] do
-    cp_r( File.join( ASSEMBLY, jar ), 'lib/slf4j' )
-  end
-end
-
-[ :gem, :test ].each { |t| task t => ( jar_files + loader_files ) }
-
-task :mvn_clean do
-  rm_f( jar_files )
-  rm_f( loader_files )
-  sh( 'mvn clean' )
-end
-task :clean => :mvn_clean
-
-task :tag do
-  tag = "slf4j-#{SLF4J::VERSION}"
-  dname = File.dirname( __FILE__ )
-  dname = '.' if Dir.getwd == dname
-  sh( "git status --only #{dname}" ) do |ok,res|
-    if ok #changes present
-      raise "Commit these changes before tagging."
-    end
-  end
-  sh %{git tag -s -f -m "tag [#{tag}]" "#{tag}"}
-end
-
-hoe = Hoe.new( "slf4j", SLF4J::VERSION ) do |p|
-  p.developer( "David Kellum", "dek-ruby@gravitext.com" )
-  p.rubyforge_name = "rjack"
-  p.history_file = "History.rdoc"
-  p.readme_file = "README.rdoc"
-  p.extra_rdoc_files = [ "History.rdoc", "README.rdoc" ]
 end

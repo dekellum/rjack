@@ -1,0 +1,12 @@
+Manifest.txt
+README.rdoc
+History.rdoc
+Rakefile
+pom.xml
+assembly.xml
+lib/slf4j/base.rb
+lib/slf4j.rb
+lib/slf4j/jul-to-slf4j.rb
+lib/slf4j/jul.rb
+lib/slf4j/mdc.rb
+test/test_slf4j.rb

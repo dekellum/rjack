@@ -17,6 +17,7 @@ module RJack
       @name = name
       @jars = nil
       @jar_dest = File.join( 'lib', @name )
+      @find_jars_in_assembly = false
       @hoe_specifier = :unset
     end
 
@@ -26,19 +27,31 @@ module RJack
       @hoe_specifier = block
     end
 
+    def find_jars_in_assembly
+      @find_jars_in_assembly = true
+    end
+
     def define_tasks
-      if @jars || @generated_files
+      if @jars || @find_jars_in_assembly
+        define_maven_package_task
+      end
+
+      if @jars || @find_jars_in_assembly || @generated_files
         mtask = define_manifest_task #FIXME: Block?
 
-        # The manifiest needs to run before hoe_sepcify.
+        if @find_jars_in_assembly
+          task :manifest => [ MVN_STATE_FILE ]
+        end
+
+        # The manifiest needs to run before hoe_specify
         mtask.invoke
       end
 
-      hoe_specify
-
-      if @jars
-        define_maven_tasks
+      if @jars || @find_jars_in_assembly
+        define_post_maven_tasks
       end
+
+      hoe_specify
 
       define_git_tag
     end
@@ -46,13 +59,13 @@ module RJack
     # Define task for dynamicly generating Manifest.txt, by
     # appending array returned by the given block to specifed files, or
     # contents of Manifest.static.
-    def define_manifest_task( &dynamic_files )
+    def define_manifest_task
 
       if File.exist?( 'Manifest.static' )
         file 'Manifest.txt' => [ 'Manifest.static' ]
       end
 
-      gf = @generated_files.to_a.compact.sort
+      gf = clean_list( @generated_files ).sort
       [ :gem, :test ].each { |t| task t => gf }
 
       unless gf.empty?
@@ -62,44 +75,42 @@ module RJack
         task :clean => :gen_clean
       end
 
-      ftask = file 'Manifest.txt' do
-        m = []
-        if File.exist?( 'Manifest.static' )
-          m += read_static_files( 'Manifest.static' )
-        end
-        m += gf
-        m += jar_dest_files
-        if dynamic_files
-          m += dynamic_files.call.to_a.reject { |f| f.empty? }.compact.sort
-        end
-
-        puts "TARPIT: Rewriting Manifest.txt"
-        open( 'Manifest.txt', 'w' ) { |out| out.puts m }
+      desc "Force update of Manifest.txt"
+      task :manifest do
+        generate_manifest
       end
 
-      ftask
+      mtask = file 'Manifest.txt' do
+        generate_manifest
+      end
+
+      mtask
     end
 
     # A file used to record the time of last 'mvn package' run.
     MVN_STATE_FILE = 'target/.tarpit'
 
-    def define_maven_tasks
+    def define_maven_package_task
       file MVN_STATE_FILE => maven_dependencies do
         sh( 'mvn package' ) && touch( MVN_STATE_FILE )
       end
+    end
+
+    def define_post_maven_tasks
       ap = assembly_path
-      @jars.each do |jar|
+      jars_lazy.each do |jar|
         from = File.join( ap, jar )
         dest = File.join( @jar_dest, jar )
         file from => [ MVN_STATE_FILE ]
         file_create dest => [ from ] do
           ln_s( File.join( '..', '..', from ), dest )
         end
-        [ :gem, :test ].each { |t| task t => dest }
+        puts "TARPIT: :test => #{dest.inspect}"
+        [ :gem, :test ].each { |t| task t => [ dest ] }
       end
 
       task :mvn_clean do
-        rm_f jar_dest_files
+        rm_f jar_dest_files #FIXME: Use pattern, since this can result in assembly being called?
         sh 'mvn clean'
       end
       task :clean => :mvn_clean
@@ -135,6 +146,18 @@ module RJack
       end
     end
 
+    def generate_manifest
+      m = []
+      if File.exist?( 'Manifest.static' )
+        m += read_static_files( 'Manifest.static' )
+      end
+      m += clean_list( @generated_files ).sort
+      m += jar_dest_files
+
+      puts "TARPIT: Updating Manifest.txt"
+      open( 'Manifest.txt', 'w' ) { |out| out.puts m }
+    end
+
     def maven_dependencies
       deps  = [ 'pom.xml' ]
       deps << 'assembly.xml' if File.exist?( 'assembly.xml' )
@@ -142,8 +165,18 @@ module RJack
       deps
     end
 
+    def jars_lazy
+      if @find_jars_in_assembly
+        @jars = FileList[ "#{assembly_path}/*.jar" ]
+        @jars.map! { |f| File.basename( f ) }
+        puts "TARPIT jars_lazy : #{@jars.inspect}"
+        #FIXME: Safe to do once? @find_jars_from_assembly = false
+      end
+      @jars
+    end
+
     def jar_dest_files
-      @jars.to_a.sort.map { |j| File.join( @jar_dest, j ) }
+      clean_list( jars_lazy ).sort.map { |j| File.join( @jar_dest, j ) }
     end
 
     def assembly_path
@@ -154,8 +187,15 @@ module RJack
     end
 
     def read_static_files( sfile )
-      fs = open( sfile ) { |f| f.readlines }
-      fs.map { |f| f.strip }.reject { |f| f.empty? }.compact
+      clean_list( open( sfile ) { |f| f.readlines } )
+    end
+
+    def clean_list( l )
+      l = l.to_a.compact
+      l.map! { |f| f.strip }
+      l.map! { |f| f.empty? ? nil : f }
+      l.compact!
+      l
     end
 
   end

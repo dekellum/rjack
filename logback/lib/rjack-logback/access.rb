@@ -1,1 +1,1 @@
-Logback.require_jar 'logback-access'
+RJack::Logback.require_jar 'logback-access'

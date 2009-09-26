@@ -13,12 +13,14 @@
 # Lesser General Public License for more details.
 #++
 
-module Logback
-  # Logback java version
-  LOGBACK_VERSION = '0.9.17'
+module RJack
+  module Logback
+    # Logback java version
+    LOGBACK_VERSION = '0.9.17'
 
-  # Logback gem version
-  VERSION = LOGBACK_VERSION + '.1'
+    # Logback gem version
+    VERSION = LOGBACK_VERSION + '.1'
 
-  LOGBACK_DIR = File.dirname(__FILE__) # :nodoc:
+    LOGBACK_DIR = File.dirname(__FILE__) # :nodoc:
+  end
 end

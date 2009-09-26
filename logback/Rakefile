@@ -21,7 +21,7 @@ require 'rubygems'
 gem     'rjack-tarpit', '~> 1.0.0'
 require 'rjack-tarpit'
 
-t = RJack::TarPit.new( 'rjack-logback', Logback::VERSION )
+t = RJack::TarPit.new( 'rjack-logback', RJack::Logback::VERSION )
 
 t.specify do |h|
   h.developer( "David Kellum", "dek-ruby@gravitext.com" )
@@ -30,7 +30,7 @@ t.specify do |h|
 end
 
 t.jars = %w{ core classic access }.map do |n|
-  "logback-#{n}-#{ Logback::LOGBACK_VERSION }.jar"
+  "logback-#{n}-#{ RJack::Logback::LOGBACK_VERSION }.jar"
 end
 
 file 'Manifest.txt' => [ "lib/#{t.name}/base.rb" ]

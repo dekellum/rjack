@@ -22,6 +22,7 @@
 # SOFTWARE.
 #++
 
+require 'rjack-slf4j'
 require 'java'
 
 # Utilities for finer grain control of the JDK java.util.logging
@@ -36,15 +37,15 @@ require 'java'
 # Adjust JUL levels (in conjunction with 'slf4j/jul-to-slf4j' or
 # 'slf4j/jdk14', see SLF4J.)
 #
-#   require 'slf4j/jul'
+#   require 'rjack-slf4j/jul'
 #   SLF4J::JUL[ "my.jul.logger" ].level = SLF4J::JUL::FINER
 #
 # Direct all output to SLF4J (output adapter != 'jdk14')
 #
-#   require 'slf4j/jul-to-slf4j'
-#   SLF4J::JUL.replace_root_handlers
+#   require 'rjack-slf4j/jul-to-slf4j'
+#   RJack::SLF4J::JUL.replace_root_handlers
 #
-module SLF4J::JUL
+module RJack::SLF4J::JUL
   LogManager         = Java::java.util.logging.LogManager
   Logger             = Java::java.util.logging.Logger
   Level              = Java::java.util.logging.Level

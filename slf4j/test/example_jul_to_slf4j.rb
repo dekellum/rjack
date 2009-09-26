@@ -25,7 +25,7 @@
 
 $LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
 
-require 'slf4j/jul-to-slf4j'
+require 'rjack-slf4j/jul-to-slf4j'
 
 # FIXME: Can't make this a standard test case, as test_slf4j.rb uses
 # slf4j/jdk14 output adapter.

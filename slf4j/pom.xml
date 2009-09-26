@@ -2,7 +2,7 @@
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>rjack</groupId>
-  <artifactId>slf4j</artifactId>
+  <artifactId>rjack-slf4j</artifactId>
   <packaging>pom</packaging>
   <version>1.0</version>
   <name>SLF4J assembly</name>

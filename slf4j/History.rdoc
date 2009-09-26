@@ -1,4 +1,7 @@
 === 1.5.8.1 (TBD)
+* Renamed gem rjack-slf4j and as module RJack::SLF4J (with ::SLF4J
+  alias kept for backward compatibility.)
+* Use rjack-tarpit for build.
 * Upgraded to SLF4J 1.5.8
 * Added support for logging exceptions from ruby, with special
   handling of NativeException#cause

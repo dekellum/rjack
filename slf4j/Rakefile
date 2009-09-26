@@ -30,7 +30,7 @@ require 'rubygems'
 gem     'rjack-tarpit', '~> 1.0.0'
 require 'rjack-tarpit'
 
-t = RJack::TarPit.new( 'rjack-slf4j', SLF4J::VERSION )
+t = RJack::TarPit.new( 'rjack-slf4j', RJack::SLF4J::VERSION )
 
 t.specify do |h|
   h.developer( "David Kellum", "dek-ruby@gravitext.com" )
@@ -39,7 +39,7 @@ end
 
 loaders =
   begin
-    l = SLF4J::ADAPTERS.flatten.compact
+    l = RJack::SLF4J::ADAPTERS.flatten.compact
     l.delete( "jul-to-slf4j" ) # exception: maintained as source
     l
   end
@@ -49,8 +49,8 @@ t.generated_files = loaders.map { |adp| "lib/#{t.name}/#{adp}.rb" }
 t.jars =
   begin
     j = [ 'slf4j-api' ]
-    j += SLF4J::ADAPTERS.map { |i,o| [ i, "slf4j-#{o}" ] }.flatten.compact
-    j.map { |n| "#{n}-#{SLF4J::SLF4J_VERSION}.jar" }
+    j += RJack::SLF4J::ADAPTERS.map { |i,o| [ i, "slf4j-#{o}" ] }.flatten.compact
+    j.map { |n| "#{n}-#{RJack::SLF4J::SLF4J_VERSION}.jar" }
   end
 
 file 'Manifest.txt' => [ "lib/#{t.name}/base.rb" ]
@@ -63,8 +63,8 @@ loaders.each do |adapter|
   file "lib/#{t.name}/#{adapter}.rb" => [ "lib/#{t.name}/base.rb", 'Rakefile' ] do
     open( "lib/#{t.name}/#{adapter}.rb", 'w' ) do |out|
       out.write <<END
-require 'slf4j'
-SLF4J.require_adapter( '#{adapter}' )
+require 'rjack-slf4j'
+RJack::SLF4J.require_adapter( '#{adapter}' )
 END
     end
   end

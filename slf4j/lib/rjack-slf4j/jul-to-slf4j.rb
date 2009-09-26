@@ -1,9 +1,9 @@
-require 'slf4j'
-require 'slf4j/jul'
+require 'rjack-slf4j'
+require 'rjack-slf4j/jul'
 
-SLF4J.require_adapter( 'jul-to-slf4j' )
+RJack::SLF4J.require_adapter( 'jul-to-slf4j' )
 
-module SLF4J::JUL
+module RJack::SLF4J::JUL
 
   # Replace any existing configured root java.util.Logger Handlers with
   # the org.slf4j.bridge.SLF4JBridgeHandler

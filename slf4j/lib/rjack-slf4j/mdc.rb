@@ -14,9 +14,9 @@
 # permissions and limitations under the License.
 #++
 
-require 'slf4j'
+require 'rjack-slf4j'
 
-module SLF4J
+module RJack::SLF4J
 
   # Mapped Diagnostic Context support module
   #

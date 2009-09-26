@@ -23,14 +23,14 @@
 # SOFTWARE.
 #++
 
-require 'rubygems'
-require 'rjack-tarpit'
-
 $LOAD_PATH << './lib'
 require 'slf4j/base'
 
-t = RJack::TarPit.new( 'slf4j' )
-t.version = SLF4J::VERSION
+require 'rubygems'
+gem     'rjack-tarpit', '~> 1.0.0'
+require 'rjack-tarpit'
+
+t = RJack::TarPit.new( 'slf4j', SLF4J::VERSION )
 
 t.specify do |h|
   h.developer( "David Kellum", "dek-ruby@gravitext.com" )
@@ -53,14 +53,14 @@ t.jars =
     j.map { |n| "#{n}-#{SLF4J::SLF4J_VERSION}.jar" }
   end
 
-file 'Manifest.txt' => [ 'lib/slf4j/base.rb' ]
+file 'Manifest.txt' => [ "lib/#{t.name}/base.rb" ]
 
 t.assembly_version = 1.0
 
 t.define_tasks
 
 loaders.each do |adapter|
-  file "lib/slf4j/#{adapter}.rb" do
+  file "lib/slf4j/#{adapter}.rb" => [ "lib/#{t.name}/base.rb", 'Rakefile' ] do
     open( "lib/slf4j/#{adapter}.rb", 'w' ) do |out|
       out.write <<END
 require 'slf4j'

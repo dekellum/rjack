@@ -170,7 +170,6 @@ module RJack
           file dest => [ from ] do
             ln_sf( File.join( '..', '..', from ), dest )
           end
-          puts "TARPIT: :test, :gem => #{dest} => #{from}"
           [ :gem, :test ].each { |t| task t => [ dest ] }
         end
 
@@ -253,8 +252,8 @@ module RJack
         dirs = [ 'target' ]
 
         unless @flags.include?( :no_assembly )
-          dirs << [ assembly_name || name,
-                    assembly_version || version,
+          dirs << [ @assembly_name || name,
+                    @assembly_version || version,
                     'bin.dir' ].join('-')
         end
 
@@ -315,7 +314,6 @@ module RJack
           files = read_file_list( 'Manifest.txt' ).select { |f| f =~ /\.jar$/ }
           @jars = files.map { |f| File.basename( f ) }
         end
-        puts "TARPIT: Manifest jars = #{@jars.inspect}"
         @jars
       end
 

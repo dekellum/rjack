@@ -17,7 +17,7 @@ require 'rubygems'
 require 'java'
 require 'slf4j'
 
-require 'logback/base'
+require 'rjack-logback/base'
 
 # Jruby wrapper module for the Logback[http://logback.qos.ch/] log writer.
 # Programmatic configuration and setting of logger output levels is supported.

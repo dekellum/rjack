@@ -4,7 +4,7 @@ History.rdoc
 Rakefile
 pom.xml
 assembly.xml
-lib/logback/base.rb
-lib/logback.rb
-lib/logback/access.rb
+lib/rjack-logback/base.rb
+lib/rjack-logback.rb
+lib/rjack-logback/access.rb
 test/test_logback.rb

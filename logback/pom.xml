@@ -2,7 +2,7 @@
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>rjack</groupId>
-  <artifactId>logback</artifactId>
+  <artifactId>rjack-logback</artifactId>
   <packaging>pom</packaging>
   <version>1.0</version>
   <name>Logback Assembly for Gem</name>

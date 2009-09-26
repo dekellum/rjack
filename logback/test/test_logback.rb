@@ -15,16 +15,16 @@
 #++
 
 require 'rubygems'
-gem( 'slf4j', '~> 1.5.8' )
-require 'slf4j'
+gem( 'rjack-slf4j', '~> 1.5.8' )
+require 'rjack-slf4j'
 
 $LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
-require 'logback'
+require 'rjack-logback'
 
-require 'slf4j/mdc'
+require 'rjack-slf4j/mdc'
 
 # Test load works
-require 'logback/access'
+require 'rjack-logback/access'
 
 require 'test/unit'
 

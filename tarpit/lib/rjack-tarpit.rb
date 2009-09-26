@@ -8,11 +8,11 @@ module RJack
   module TarPit
     VERSION = '1.0.0'
 
-    def self.new( p, strategy = nil )
-      if strategy == :jars_from_assembly
-        JarsFromAssembly.new( p )
+    def self.new( p, *flags )
+      if flags.include?( :jars_from_assembly )
+        JarsFromAssembly.new( p, flags )
       else
-        BaseStrategy.new( p )
+        BaseStrategy.new( p, flags )
       end
     end
 
@@ -20,16 +20,16 @@ module RJack
 
       attr_reader :name
 
-      attr_writer :jars
-
       attr_accessor :version
-      attr_accessor :jar_dest
       attr_accessor :assembly_name
       attr_accessor :assembly_version
+      attr_accessor :jars
+      attr_accessor :jar_dest
       attr_accessor :generated_files
 
-      def initialize( name )
+      def initialize( name, flags )
         @name = name
+        @flags = flags
         @jars = nil
         @jar_dest = File.join( 'lib', @name )
         @hoe_specifier = :unset
@@ -99,20 +99,20 @@ module RJack
       end
 
       def define_post_maven_tasks
-        ap = assembly_path
+        ap = jars_from_path
         jars.each do |jar|
           from = File.join( ap, jar )
           dest = File.join( @jar_dest, jar )
           file from => [ MVN_STATE_FILE ]
-          file_create dest => [ from ] do
-            ln_s( File.join( '..', '..', from ), dest )
+          file dest => [ from ] do
+            ln_sf( File.join( '..', '..', from ), dest )
           end
-          puts "TARPIT: :test, :gem => #{dest.inspect}"
-          [ :gem, :test ].each { |t| task t => [ dest ] }
+          puts "TARPIT: :test, :gem => #{dest} => #{from}"
+          [ :gem, :test ].each { |t| task t => [ dest ] } #FIXME
         end
 
         task :mvn_clean do
-          rm_f jar_dest_files #FIXME: Use pattern, since this can result in assembly being called?
+          rm_f jar_dest_files #FIXME: Use pattern instead?
           sh 'mvn clean'
         end
         task :clean => :mvn_clean
@@ -149,6 +149,7 @@ module RJack
       end
 
       def generate_manifest
+        # FIXME: Clean old lib/*.jar links?
         m = []
         if File.exist?( 'Manifest.static' )
           m += read_static_files( 'Manifest.static' )
@@ -167,20 +168,20 @@ module RJack
         deps
       end
 
-      def jars
-        @jars
-      end
-
       def jar_dest_files
         clean_list( jars ).sort.map { |j| File.join( @jar_dest, j ) }
       end
 
-      def assembly_path
+      def jars_from_path
+        dirs = [ 'target' ]
 
-        File.join( 'target',
-                   [ assembly_name || name,
-                     assembly_version || @version,
-                     'bin.dir' ].join('-') )
+        unless @flags.include?( :no_assembly )
+          dirs << [ assembly_name || name,
+                    assembly_version || version,
+                    'bin.dir' ].join('-')
+        end
+
+        File.join( dirs )
       end
 
       def read_static_files( sfile )
@@ -217,7 +218,7 @@ module RJack
       end
 
       def jars
-        @jars = FileList[ "#{assembly_path}/*.jar" ]
+        @jars = FileList[ "#{jars_from_path}/*.jar" ]
         @jars.map! { |f| File.basename( f ) }
         puts "TARPIT jars : #{@jars.inspect}"
         #FIXME: Safe to do once?

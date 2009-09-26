@@ -15,80 +15,22 @@
 # permissions and limitations under the License.
 #++
 
-require 'rubygems'
-
-ENV['NODOT'] = "no thank you"
-require 'hoe'
-
 $LOAD_PATH << './lib'
 require 'rjack-commons-codec/base'
 
-GEMNAME  = 'rjack-commons-codec'
-GEMVER   = RJack::CommonsCodec::VERSION
+require 'rubygems'
+gem     'rjack-tarpit', '~> 1.0.0'
+require 'rjack-tarpit'
 
-ASSEMBLY = "target/#{GEMNAME}-1.0-bin.dir"
+t = RJack::TarPit.new( 'rjack-commons-codec', RJack::CommonsCodec::VERSION )
 
-desc "Update the Manifest with actual jars"
-task :manifest => [ ASSEMBLY ] do
-  out = File.new( 'Manifest.txt', 'w' )
-  begin
-    out.write <<END
-Manifest.txt
-README.rdoc
-History.rdoc
-Rakefile
-NOTICE.txt
-pom.xml
-assembly.xml
-lib/rjack-commons-codec/base.rb
-lib/rjack-commons-codec.rb
-END
-    out.puts( Dir.glob( File.join( ASSEMBLY, '*.jar' ) ).map do |jar|
-                File.join( 'lib', GEMNAME, File.basename( jar ) )
-              end )
-  ensure
-    out.close
-  end
+t.specify do |h|
+  h.developer( "David Kellum", "dek-oss@gravitext.com" )
+  h.rubyforge_name = "rjack"
 end
 
-file ASSEMBLY => [ 'pom.xml', 'assembly.xml' ] do
-  sh( 'mvn package' )
-end
+t.jars = [ "commons-codec-#{ RJack::CommonsCodec::CODEC_VERSION }.jar" ]
 
-JAR_FILES = File.new( 'Manifest.txt' ).readlines.map { |f| f.strip }\
-.select { |f| f =~ /\.jar$/ }
+t.assembly_version = 1.0
 
-JARS = JAR_FILES.map { |f| File.basename( f.strip ) }
-
-JARS.each do |jar|
-  file "lib/#{GEMNAME}/#{jar}" => [ ASSEMBLY ] do
-    cp_r( File.join( ASSEMBLY, jar ), "lib/#{GEMNAME}" )
-  end
-end
-
-[ :gem, :test ].each { |t| task t => JAR_FILES }
-
-task :mvn_clean do
-  rm_f( JAR_FILES )
-  sh( 'mvn clean' )
-end
-
-task :clean => :mvn_clean
-
-task :tag do
-  tag = "#{GEMNAME}-#{GEMVER}"
-  dname = File.dirname( __FILE__ )
-  dname = '.' if Dir.getwd == dname
-  sh( "git status --only #{dname}" ) do |ok,res|
-    raise "Commit these changes before tagging." if ok #changes present
-  end
-  sh %{git tag -s -f -m "tag [#{tag}]" "#{tag}"}
-end
-
-hoe = Hoe.new( GEMNAME, GEMVER ) do |p|
-  p.developer( "David Kellum", "dek-oss@gravitext.com" )
-  p.rubyforge_name = "rjack"
-  p.history_file = "History.rdoc"
-  p.readme_file = "README.rdoc"
-  p.extra_rdoc_files = [ "History.rdoc", "README.rdoc" ]
-end
+t.define_tasks

@@ -35,9 +35,9 @@ module RJack
   #
   # == Usage
   #
-  #   require 'slf4j'
+  #   require 'rjack-slf4j'
   #
-  #   log = SLF4J[ "my.app.logger" ]
+  #   log = RJack::SLF4J[ "my.app.logger" ]
   #   log.info "Hello World!"
   #
   # == Adapters
@@ -68,12 +68,12 @@ module RJack
   #   require 'rjack-slf4j/log4j-over-slf4j' # Log4j to SLF4J
   #
   #   require 'rjack-slf4j/jul-to-slf4j'     # JDK java.util.logging (JUL) to SLF4J
-  #   SLF4J::JUL.replace_root_handlers # Special case setup for JUL
+  #   RJack::SLF4J::JUL.replace_root_handlers # Special case setup for JUL
   #
   # Multiple input adapters may be require'd.  However, a RuntimeError
   # will be raised in the attempt to require both an output adapter and
   # input adapter from/to the same interface, for example
-  # 'slf4j/jcl-over-slf4j' and 'slf4j/jcl', which would otherwise cause
+  # 'rjack-slf4j/jcl-over-slf4j' and 'rjack-slf4j/jcl', which would otherwise cause
   # a circular logging loop (and stack overflow.)
   #
   # Adapter names match the corresponding SLF4J jars.

@@ -37,7 +37,7 @@ julog = SLF4J::JUL[ "jul" ]
 julog.level = SLF4J::JUL::FINEST
 
 require 'rubygems'
-require 'logback'
+require 'rjack-logback'
 Logback.root.level = Logback::TRACE
 
 slog = SLF4J['slf4j']

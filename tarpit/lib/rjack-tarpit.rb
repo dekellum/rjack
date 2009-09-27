@@ -303,7 +303,7 @@ module RJack
       # package will be run first for the :manifest target.
       def dest_jars
         jars = FileList[ File.join( jar_from, "*.jar" ) ]
-        jars = jars.map { |j| File.basename( j ) }
+        jars = jars.map { |j| File.basename( j ) }.sort
         jars.map { |j| File.join( jar_dest, j ) }
       end
 

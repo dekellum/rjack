@@ -16,19 +16,21 @@
 #++
 
 $LOAD_PATH << './lib'
-require 'jetty-jsp/base'
+require 'rjack-jetty-jsp/base'
 
 require 'rubygems'
 gem     'rjack-tarpit', '~> 1.0.0'
 require 'rjack-tarpit'
 
-t = RJack::TarPit.new( 'jetty-jsp',
-                       JettyJsp::VERSION,
-                       :jars_from_assembly )
+include RJack
+
+t = TarPit.new( 'rjack-jetty-jsp',
+                Jetty::Jsp::VERSION,
+                :jars_from_assembly )
 
 t.specify do |h|
   h.developer( "David Kellum", "dek-oss@gravitext.com" )
-  h.extra_deps << [ 'jetty', "~> #{JettyJsp::JETTY_VERSION}.1" ]
+  h.extra_deps << [ 'rjack-jetty', "~> #{Jetty::Jsp::JETTY_VERSION}.1" ]
   h.rubyforge_name = "rjack"
 end
 

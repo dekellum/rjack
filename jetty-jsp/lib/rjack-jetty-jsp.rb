@@ -1,5 +1,5 @@
 #--
-# Copyright (C) 2008 David Kellum
+# Copyright (C) 2008-2009 David Kellum
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you
 # may not use this file except in compliance with the License.  You
@@ -16,11 +16,16 @@
 
 require 'rubygems'
 
-require 'jetty-jsp/base'
-require 'jetty'
+require 'rjack-jetty-jsp/base'
+require 'rjack-jetty'
 
-# Loads jars for JSP 2.1 support
-module JettyJsp
+module RJack
+  module Jetty
 
-  Dir.glob( File.join( JETTY_JSP_DIR, '*.jar' ) ).each { |jar| require jar }
+    # Loads jars for JSP 2.1 support
+    module Jsp
+      Dir.glob( File.join( JETTY_JSP_DIR, '*.jar' ) ).each { |jar| require jar }
+    end
+
+  end
 end

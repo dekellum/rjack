@@ -4,5 +4,5 @@ History.rdoc
 Rakefile
 pom.xml
 assembly.xml
-lib/jetty-jsp.rb
-lib/jetty-jsp/base.rb
+lib/rjack-jetty-jsp.rb
+lib/rjack-jetty-jsp/base.rb

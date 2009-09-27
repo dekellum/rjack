@@ -4,10 +4,10 @@ History.rdoc
 Rakefile
 pom.xml
 assembly.xml
-lib/jetty-jsp.rb
-lib/jetty-jsp/base.rb
-lib/jetty-jsp/ant-1.6.5.jar
-lib/jetty-jsp/core-3.1.1.jar
-lib/jetty-jsp/jsp-2.1-glassfish-9.1.1.B60.25.p2.jar
-lib/jetty-jsp/jsp-2.1-jetty-6.1.20.jar
-lib/jetty-jsp/jsp-api-2.1-glassfish-9.1.1.B60.25.p2.jar
+lib/rjack-jetty-jsp.rb
+lib/rjack-jetty-jsp/base.rb
+lib/rjack-jetty-jsp/ant-1.6.5.jar
+lib/rjack-jetty-jsp/core-3.1.1.jar
+lib/rjack-jetty-jsp/jsp-2.1-glassfish-9.1.1.B60.25.p2.jar
+lib/rjack-jetty-jsp/jsp-2.1-jetty-6.1.20.jar
+lib/rjack-jetty-jsp/jsp-api-2.1-glassfish-9.1.1.B60.25.p2.jar

@@ -22,15 +22,19 @@ require 'rubygems'
 gem     'rjack-tarpit', '~> 1.0.0'
 require 'rjack-tarpit'
 
-t = RJack::TarPit.new( 'rjack-commons-codec', RJack::CommonsCodec::VERSION )
+include RJack
+
+t = TarPit.new( 'rjack-commons-codec', CommonsCodec::VERSION )
 
 t.specify do |h|
   h.developer( "David Kellum", "dek-oss@gravitext.com" )
   h.rubyforge_name = "rjack"
 end
 
-t.jars = [ "commons-codec-#{ RJack::CommonsCodec::CODEC_VERSION }.jar" ]
+t.jars = [ "commons-codec-#{ CommonsCodec::CODEC_VERSION }.jar" ]
 
 t.assembly_version = 1.0
+
+file 'Manifest.txt' => [ "lib/#{t.name}/base.rb" ]
 
 t.define_tasks

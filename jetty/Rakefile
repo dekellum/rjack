@@ -29,7 +29,8 @@ t = TarPit.new( 'rjack-jetty', Jetty::VERSION )
 t.specify do |h|
   h.developer( "David Kellum", "dek-oss@gravitext.com" )
   h.extra_dev_deps << [ 'rjack-logback', '>= 0.9.17.1' ]
-  h.rubyforge_name = "rjack"
+  h.rubyforge_name  = 'rjack'
+  h.remote_rdoc_dir = 'jetty'
 end
 
 t.jars =

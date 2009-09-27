@@ -7,7 +7,7 @@
 
 A gem packaging of the {Jetty Web Server}[http://www.mortbay.org/jetty/]
 JSP 2.1 support for JRuby. This gem is provided as a companion to the
-jetty[http://rjack.rubyforge.org/jetty/] gem.
+rjack-jetty[http://rjack.rubyforge.org/jetty/] gem.
 
 == License
 

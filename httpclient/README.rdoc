@@ -36,13 +36,13 @@ See {org.apache.http.client.HttpClient}[http://hc.apache.org/httpcomponents-clie
 
 == Requirements
 
-* rjack-commons-codec[http://rjack.rubyforge.org/rjack-commons-codec].
+* rjack-commons-codec[http://rjack.rubyforge.org/commons-codec].
 
-* rjack-slf4j[http://rjack.rubyforge.org/rjack-slf4j].
+* rjack-slf4j[http://rjack.rubyforge.org/slf4j].
 
 * An SLF4J output adaptor such as 'rjack-slf4j/simple' or
-  rjack-logback[http://rjack.rubyforge.org/rjack-logback] must be
-  require'd before rjack-httpclient.  (The logback gem is listed as a
+  rjack-logback[http://rjack.rubyforge.org/logback] must be require'd
+  before rjack-httpclient.  (The rjack-logback gem is listed as a
   development dependency only.)
 
 == License

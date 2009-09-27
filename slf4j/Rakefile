@@ -35,6 +35,7 @@ t = RJack::TarPit.new( 'rjack-slf4j', RJack::SLF4J::VERSION )
 t.specify do |h|
   h.developer( "David Kellum", "dek-oss@gravitext.com" )
   h.rubyforge_name = "rjack"
+  h.remote_rdoc_dir = "slf4j"
 end
 
 loaders =

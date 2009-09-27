@@ -22,7 +22,6 @@
 # SOFTWARE.
 #++
 
-# Base constants for Rakefile, etc.
 module RJack
   module SLF4J
 

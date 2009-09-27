@@ -25,8 +25,9 @@ t = RJack::TarPit.new( 'rjack-logback', RJack::Logback::VERSION )
 
 t.specify do |h|
   h.developer( "David Kellum", "dek-oss@gravitext.com" )
-  h.rubyforge_name = "rjack"
   h.extra_deps << [ 'rjack-slf4j', '~> 1.5.8' ]
+  h.rubyforge_name = "rjack"
+  h.remote_rdoc_dir = "logback"
 end
 
 t.jars = %w{ core classic access }.map do |n|

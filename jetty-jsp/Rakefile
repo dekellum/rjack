@@ -31,7 +31,8 @@ t = TarPit.new( 'rjack-jetty-jsp',
 t.specify do |h|
   h.developer( "David Kellum", "dek-oss@gravitext.com" )
   h.extra_deps << [ 'rjack-jetty', "~> #{Jetty::Jsp::JETTY_VERSION}.1" ]
-  h.rubyforge_name = "rjack"
+  h.rubyforge_name  = 'rjack'
+  h.remote_rdoc_dir = 'jetty-jsp'
 end
 
 t.assembly_version = 1.0

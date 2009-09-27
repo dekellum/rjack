@@ -48,11 +48,11 @@ or
 No hard requirements, however:
 
 * To load webapps with JSPs, the
-  rjack-jetty-jsp[http://rjack.rubyforge.org/rjack-jetty-jsp/] gem
+  rjack-jetty-jsp[http://rjack.rubyforge.org/jetty-jsp/] gem
   must be loaded.
-* Jetty will log to slf4j[http://rjack.rubyforge.org/rjack-slf4j] if
+* Jetty will log to SLF4J[http://rjack.rubyforge.org/slf4j] if
   loaded. The jetty-service script will attempt to load
-  rjack-logback[http://rjack.rubyforge.org/rjack-logback], and thus
+  rjack-logback[http://rjack.rubyforge.org/logback], and thus
   rjack-slf4j, if available.
 
 == License

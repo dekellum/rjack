@@ -36,16 +36,29 @@ etc.</p>
 releases.  Gem versions are based on the java project version plus an
 additional gem release number.</p>
 
-<p>See also relevent usage examples and news in the
+<p>See also relevant usage examples and news in the
 <a href="http://gravitext.com/blog/tags/rjack">void * blog</a>.</p>
 
 <h2>Gems</h2>
 
+<h3>Build</h3>
+
+<ul>
+<li><a href="tarpit/">rjack-tarpit</a></li>
+</ul>
+
+<p>TarPit provides the glue for an unholy union of build tools,
+  namely <a href="http://github.com/jimweirich/rake">Rake</a> with
+  <a href="http://seattlerb.rubyforge.org/hoe/">Hoe</a>,
+  and <a href="http://maven.apache.org/">Maven</a>. Its used for
+  building all the rjack gems, as well as other java-in-gem
+  projects.</p>
+
 <h3>Logging</h3>
 
 <ul>
-<li><a href="slf4j/index.html">slf4j gem</a></li>
-<li><a href="logback/index.html">logback gem</a></li>
+<li><a href="slf4j/">rjack-slf4j</a></li>
+<li><a href="logback/">rjack-logback</a></li>
 </ul>
 
 <p>Gems for <a href="http://www.slf4j.org/">SLF4J</a> and
@@ -55,30 +68,44 @@ application containing ruby and java components.  The slf4j gem may
 simply be used to load SLF4J jars that a java component is dependent
 on, but also offers a ruby core Logger compatible logging adapter.
 The logback gem provides a facade for programmatic logback
-configuration in ruby.</p>
+configuration in ruby. Any rjack gem java dependencies on Commons
+Logging (JCL) are satified via require
+'rjack-slf4j/jcl-over-slf4j'.</p>
 
 <h3>HTTP Server</h3>
 
 <ul>
-<li><a href="jetty/index.html">jetty gem</a></li>
-<li><a href="jetty-jsp/index.html">jetty-jsp gem</a></li>
+<li><a href="jetty/">rjack-jetty</a></li>
+<li><a href="jetty-jsp/">rjack-jetty-jsp</a></li>
 </ul>
 
 <p>Gem packaging of the
 <a href="http://www.mortbay.org/jetty/">Jetty Web Server</a>.
 The jetty gem includes an extensible
-<a href="jetty/classes/Jetty/ServerFactory.html">ServerFactory</a>
+<a href="jetty/RJack/Jetty/ServerFactory.html">ServerFactory</a>
 for Server setup in ruby. The jetty-jsp companion gem adds JSP support
-when needed.</p>
+when needed.  </p>
 
 <h3>HTTP Client</h3>
 
 <ul>
-<li><a href="hc-httpclient/index.html">hc-httpclient gem</a></li>
+<li><a href="httpclient/"  >rjack-httpclient (4.x)</a></li>
+<li><a href="httpclient-3/">rjack-httpclient (3.x)</a></li>
 </ul>
 
-<p>Gem packaging of the Apache <a href="http://hc.apache.org/">HttpComponents</a>
-(formerly Jakarta Commons) HttpClient. Includes a ruby setup facade.</a>
+<p>Gem packaging of the
+<a href="http://hc.apache.org/">HttpComponents</a> (formerly
+Jakarta Commons) HttpClient. Includes a ruby setup facade. As
+dependent project migration to httpclient 4.x is likely to take some
+time, both 3.x and 4.x branches will be maintained in rjack.</a>
+
+<h3>Miscellaneous</h3>
+
+<ul>
+<li><a href="commons-codec/">rjack-commons-codec</a></li>
+</ul>
+
+<p>Additional gems to satisfy common java dependencies.</p>
 
 </div>
 </body>

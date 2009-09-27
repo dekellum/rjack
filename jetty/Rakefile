@@ -16,13 +16,13 @@
 #++
 
 $LOAD_PATH << './lib'
-require 'jetty/base'
+require 'rjack-jetty/base'
 
 require 'rubygems'
 gem     'rjack-tarpit', '~> 1.0.0'
 require 'rjack-tarpit'
 
-t = RJack::TarPit.new( 'jetty', Jetty::VERSION )
+t = RJack::TarPit.new( 'rjack-jetty', Jetty::VERSION )
 
 t.specify do |h|
   h.developer( "David Kellum", "dek-oss@gravitext.com" )

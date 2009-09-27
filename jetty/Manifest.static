@@ -4,11 +4,11 @@ History.rdoc
 Rakefile
 pom.xml
 assembly.xml
-bin/jetty-service
-lib/jetty/base.rb
-lib/jetty.rb
-lib/jetty/rewrite.rb
-lib/jetty/test-servlets.rb
+lib/rjack-jetty/base.rb
+lib/rjack-jetty.rb
+lib/rjack-jetty/rewrite.rb
+lib/rjack-jetty/test-servlets.rb
+bin/rjack-jetty-service
 src/main/java/rjack/testservlets/PerfTestServlet.java
 src/main/java/rjack/testservlets/SnoopServlet.java
 test/test_jetty.rb

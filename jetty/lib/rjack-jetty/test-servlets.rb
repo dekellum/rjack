@@ -14,20 +14,23 @@
 # permissions and limitations under the License.
 #++
 
-require 'jetty'
+require 'rjack-jetty'
 
-module Jetty
+module RJack
+  module Jetty
 
-  # Loads testservlets jar.
-  module TestServlets
-    require File.join( Jetty::JETTY_DIR, "rjack-jetty-1.0.jar" )
-    import 'rjack.testservlets.SnoopServlet'
-    import 'rjack.testservlets.PerfTestServlet'
+    # Loads testservlets jar.
+    module TestServlets
+      require File.join( Jetty::JETTY_DIR, "rjack-jetty-1.0.jar" )
+      import 'rjack.testservlets.SnoopServlet'
+      import 'rjack.testservlets.PerfTestServlet'
 
-    # Webapps directory containing "test/" expanded webapp and "test.war"
-    WEBAPPS_DIR = File.join( Jetty::JETTY_DIR, '..', '..', 'webapps' )
+      # Webapps directory containing "test/" expanded webapp and "test.war"
+      WEBAPPS_DIR = File.join( Jetty::JETTY_DIR, '..', '..', 'webapps' )
 
-    WEBAPP_TEST_EXPANDED = File.join( WEBAPPS_DIR, 'test' )
-    WEBAPP_TEST_WAR      = File.join( WEBAPPS_DIR, 'test.war' )
+      WEBAPP_TEST_EXPANDED = File.join( WEBAPPS_DIR, 'test' )
+      WEBAPP_TEST_WAR      = File.join( WEBAPPS_DIR, 'test.war' )
+    end
+
   end
 end

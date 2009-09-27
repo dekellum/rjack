@@ -1,4 +1,4 @@
-= jetty
+= rjack-jetty
 
 * http://rjack.rubyforge.org
 * http://rubyforge.org/projects/rjack
@@ -32,8 +32,8 @@ jetty-jsp[http://rjack.rubyforge.org/jetty-jsp/] gem.
 
 or
 
-  require 'jetty'
-  require 'jetty/test-servlets'
+  require 'rjack-jetty'
+  require 'rjack-jetty/test-servlets'
 
   factory = Jetty::ServerFactory.new
   factory.port = 8080
@@ -49,14 +49,14 @@ No hard requirements, however:
 
 * To load webapps with JSPs, the jetty-jsp[http://rjack.rubyforge.org/jetty-jsp/]
   gem must be loaded.
-* Jetty will log to slf4j[http://rjack.rubyforge.org/slf4j] if
+* Jetty will log to slf4j[http://rjack.rubyforge.org/rjack-slf4j] if
   loaded. The jetty-service script will attempt to load
-  logback[http://rjack.rubyforge.org/logback], and thus slf4j, if
-  available.
+  rjack-logback[http://rjack.rubyforge.org/rjack-logback], and thus
+  rjack-slf4j, if available.
 
 == License
 
-=== jetty ruby gem, test servlets
+=== rjack-jetty gem
 
 Copyright (c) 2008-2009 David Kellum
 

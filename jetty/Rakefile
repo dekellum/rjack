@@ -22,7 +22,9 @@ require 'rubygems'
 gem     'rjack-tarpit', '~> 1.0.0'
 require 'rjack-tarpit'
 
-t = RJack::TarPit.new( 'rjack-jetty', Jetty::VERSION )
+include RJack
+
+t = TarPit.new( 'rjack-jetty', Jetty::VERSION )
 
 t.specify do |h|
   h.developer( "David Kellum", "dek-oss@gravitext.com" )
@@ -50,6 +52,5 @@ end
 t.generated_files = 'webapps/test.war'
 
 t.assembly_version = 1.0
-t.assembly_name = 'rjack-jetty' #FIXME: Make obsolete
 
 t.define_tasks

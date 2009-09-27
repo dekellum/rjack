@@ -35,9 +35,11 @@ rescue Gem::LoadError => e
   log.info( "#{e.to_s.strip}: SLF4J/Logback not loaded, using STDERR." )
 end
 
-require 'jetty'
-require 'jetty/test-servlets'
+require 'rjack-jetty'
+require 'rjack-jetty/test-servlets'
 require 'optparse'
+
+include RJack
 
 factory = Jetty::ServerFactory.new
 

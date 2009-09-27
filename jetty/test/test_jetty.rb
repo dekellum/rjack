@@ -30,10 +30,12 @@ begin
 rescue Gem::LoadError
 end
 
-require 'jetty'
-require 'jetty/test-servlets'
+require 'rjack-jetty'
+require 'rjack-jetty/test-servlets'
 require 'test/unit'
 require 'net/http'
+
+include RJack
 
 class TestJetty < Test::Unit::TestCase
 

@@ -1,5 +1,5 @@
 #--
-# Copyright (C) 2008 David Kellum
+# Copyright (C) 2008-2009 David Kellum
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you
 # may not use this file except in compliance with the License.  You
@@ -14,11 +14,13 @@
 # permissions and limitations under the License.
 #++
 
-module Jetty
-  JETTY_VERSION = '6.1.20'
-  VERSION = JETTY_VERSION + '.1'
-  SERVLET_API_VERSION = '2.5'
-  SERVLET_API_DATE = '20081211'
+module RJack
+  module Jetty
+    JETTY_VERSION = '6.1.20'
+    VERSION = JETTY_VERSION + '.1'
+    SERVLET_API_VERSION = '2.5'
+    SERVLET_API_DATE = '20081211'
 
-  JETTY_DIR = File.dirname( __FILE__ ) # :nodoc:
+    JETTY_DIR = File.dirname( __FILE__ ) # :nodoc:
+  end
 end

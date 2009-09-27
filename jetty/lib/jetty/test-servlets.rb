@@ -21,8 +21,8 @@ module Jetty
   # Loads testservlets jar.
   module TestServlets
     require File.join( Jetty::JETTY_DIR, "rjack-jetty-1.0.jar" )
-    import 'com.gravitext.testservlets.SnoopServlet'
-    import 'com.gravitext.testservlets.PerfTestServlet'
+    import 'rjack.testservlets.SnoopServlet'
+    import 'rjack.testservlets.PerfTestServlet'
 
     # Webapps directory containing "test/" expanded webapp and "test.war"
     WEBAPPS_DIR = File.join( Jetty::JETTY_DIR, '..', '..', 'webapps' )

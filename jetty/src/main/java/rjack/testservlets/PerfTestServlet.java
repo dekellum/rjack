@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.gravitext.testservlets;
+package rjack.testservlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;

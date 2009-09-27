@@ -7,12 +7,12 @@
 
   <servlet>
     <servlet-name>PerfTest</servlet-name>
-    <servlet-class>com.gravitext.testservlets.PerfTestServlet</servlet-class>
+    <servlet-class>rjack.testservlets.PerfTestServlet</servlet-class>
   </servlet>
 
   <servlet>
     <servlet-name>Snoop</servlet-name>
-    <servlet-class>com.gravitext.testservlets.SnoopServlet</servlet-class>
+    <servlet-class>rjack.testservlets.SnoopServlet</servlet-class>
   </servlet>
 
   <servlet-mapping>

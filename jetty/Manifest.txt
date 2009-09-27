@@ -9,8 +9,8 @@ lib/jetty/base.rb
 lib/jetty.rb
 lib/jetty/rewrite.rb
 lib/jetty/test-servlets.rb
-src/main/java/com/gravitext/testservlets/PerfTestServlet.java
-src/main/java/com/gravitext/testservlets/SnoopServlet.java
+src/main/java/rjack/testservlets/PerfTestServlet.java
+src/main/java/rjack/testservlets/SnoopServlet.java
 test/test_jetty.rb
 test/test.txt
 webapps/test/WEB-INF/web.xml

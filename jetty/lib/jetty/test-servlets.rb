@@ -20,7 +20,7 @@ module Jetty
 
   # Loads testservlets jar.
   module TestServlets
-    require File.join( Jetty::JETTY_DIR, "gravitext-testservlets-1.0.jar" )
+    require File.join( Jetty::JETTY_DIR, "rjack-jetty-1.0.jar" )
     import 'com.gravitext.testservlets.SnoopServlet'
     import 'com.gravitext.testservlets.PerfTestServlet'
 

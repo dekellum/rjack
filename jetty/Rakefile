@@ -1,6 +1,6 @@
 # -*- ruby -*-
 #--
-# Copyright (C) 2008 David Kellum
+# Copyright (C) 2008-2009 David Kellum
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you
 # may not use this file except in compliance with the License.  You
@@ -15,52 +15,31 @@
 # permissions and limitations under the License.
 #++
 
-require 'rubygems'
-
-ENV['NODOT'] = "no thank you"
-require 'hoe'
-
 $LOAD_PATH << './lib'
 require 'jetty/base'
 
-JARS = %w{ jetty jetty-util jetty-rewrite-handler }.map do |n|
-  "#{n}-#{ Jetty::JETTY_VERSION }.jar"
-end
-JARS << "servlet-api-#{ Jetty::SERVLET_API_VERSION }-#{ Jetty::SERVLET_API_DATE }.jar"
-JARS << 'gravitext-testservlets-1.0.jar'
-JAR_FILES = JARS.map { |jar| "lib/jetty/#{jar}" }
+require 'rubygems'
+gem     'rjack-tarpit', '~> 1.0.0'
+require 'rjack-tarpit'
 
-desc "Update the Manifest with actual jars"
-task :manifest do
-  out = File.new( 'Manifest.txt', 'w' )
+t = RJack::TarPit.new( 'jetty', Jetty::VERSION )
+
+t.specify do |h|
+  h.developer( "David Kellum", "dek-oss@gravitext.com" )
+  h.extra_dev_deps << [ 'logback', '>= 0.9.16.1' ]
+  h.rubyforge_name = "rjack"
+end
+
+t.jars =
   begin
-    out.write <<END
-Manifest.txt
-README.rdoc
-History.rdoc
-Rakefile
-pom.xml
-assembly.xml
-bin/jetty-service
-lib/jetty/base.rb
-lib/jetty.rb
-lib/jetty/rewrite.rb
-lib/jetty/test-servlets.rb
-src/main/java/com/gravitext/testservlets/PerfTestServlet.java
-src/main/java/com/gravitext/testservlets/SnoopServlet.java
-test/test_jetty.rb
-test/test.txt
-webapps/test.war
-webapps/test/WEB-INF/web.xml
-webapps/test/index.html
-END
-    out.puts JAR_FILES
-  ensure
-    out.close
+    mods = %w{ jetty jetty-util jetty-rewrite-handler }
+    l = mods.map { |n| "#{n}-#{ Jetty::JETTY_VERSION }.jar" }
+    l << "servlet-api-#{ Jetty::SERVLET_API_VERSION }-#{ Jetty::SERVLET_API_DATE }.jar"
+    l << 'rjack-jetty-1.0.jar'
+    l
   end
-end
 
-ASSEMBLY = "target/gravitext-testservlets-1.0-bin.dir"
+file 'Manifest.txt' => [ "lib/#{t.name}/base.rb" ]
 
 file 'webapps/test.war' => [ 'webapps/test/index.html',
                              'webapps/test/WEB-INF/web.xml' ] do
@@ -68,41 +47,9 @@ file 'webapps/test.war' => [ 'webapps/test/index.html',
       '-C webapps/test index.html -C webapps/test WEB-INF/web.xml' )
 end
 
-file ASSEMBLY => [ 'pom.xml', 'assembly.xml' ] do
-  sh( 'mvn package' )
-end
+t.generated_files = 'webapps/test.war'
 
-JARS.each do |jar|
-  file "lib/jetty/#{jar}" => [ ASSEMBLY ] do
-    cp_r( File.join( ASSEMBLY, jar ), 'lib/jetty' )
-  end
-end
+t.assembly_version = 1.0
+t.assembly_name = 'rjack-jetty' #FIXME: Make obsolete
 
-[ :gem, :test ].each { |t| task t => JAR_FILES + [ 'webapps/test.war' ] }
-
-task :mvn_clean do
-  rm_f( JAR_FILES + [ 'webapps/test.war' ] )
-  sh( 'mvn clean' )
-end
-task :clean => :mvn_clean
-
-task :tag do
-  tag = "jetty-#{Jetty::VERSION}"
-  dname = File.dirname( __FILE__ )
-  dname = '.' if Dir.getwd == dname
-  sh( "git status --only #{dname}" ) do |ok,res|
-    if ok #changes present
-      raise "Commit these changes before tagging."
-    end
-  end
-  sh %{git tag -s -f -m "tag [#{tag}]" "#{tag}"}
-end
-
-hoe = Hoe.new( "jetty", Jetty::VERSION ) do |p|
-  p.developer( "David Kellum", "dek-oss@gravitext.com" )
-  p.extra_dev_deps << [ 'logback', '>= 0.9.16.1' ]
-  p.rubyforge_name = "rjack"
-  p.history_file = "History.rdoc"
-  p.readme_file = "README.rdoc"
-  p.extra_rdoc_files = [ "History.rdoc", "README.rdoc" ]
-end
+t.define_tasks

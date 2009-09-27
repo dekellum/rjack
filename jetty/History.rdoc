@@ -1,7 +1,6 @@
 === 6.1.20.1 (TBD)
 * Update to Jetty 6.1.20
-
-=== 6.1.19.2 (TBD)
+* Use rjack-tarpit for build.
 * Update development dependency to logback >= 0.9.16.1
 
 === 6.1.19.1 (2009-7-22)

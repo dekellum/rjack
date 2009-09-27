@@ -15,9 +15,3 @@ test/test_jetty.rb
 test/test.txt
 webapps/test/WEB-INF/web.xml
 webapps/test/index.html
-webapps/test.war
-lib/jetty/jetty-6.1.20.jar
-lib/jetty/jetty-rewrite-handler-6.1.20.jar
-lib/jetty/jetty-util-6.1.20.jar
-lib/jetty/rjack-jetty-1.0.jar
-lib/jetty/servlet-api-2.5-20081211.jar

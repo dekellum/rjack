@@ -15,8 +15,8 @@
 #++
 
 require 'rubygems'
-require 'slf4j'
-require 'slf4j/jcl-over-slf4j'
+require 'rjack-slf4j'
+require 'rjack-slf4j/jcl-over-slf4j'
 
 require 'hc-httpclient/base'
 

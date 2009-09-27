@@ -8,13 +8,13 @@
 A gem packaging of the {HttpComponents}[http://hc.apache.org/] HTTP
 Client for JRuby.
 
-* Provides commons-httpclient and commons-codec jars.
+* Provides httpclient and httpcore jars.
 * Provides a RJack::HTTPClient::ManagerFacade for client and connection
   manager setup, start, shutdown.
 
 == Synopsis
 
- require 'logback'
+ require 'rjack-logback'
  require 'rjack-httpclient'
 
  include RJack::HTTPClient
@@ -36,12 +36,14 @@ See {org.apache.http.client.HttpClient}[http://hc.apache.org/httpcomponents-clie
 
 == Requirements
 
-* slf4j[http://rjack.rubyforge.org/slf4j] (rjack gem).
+* rjack-commons-codec[http://rjack.rubyforge.org/rjack-commons-codec].
 
-* An slf4j output adaptor such as 'slf4j/simple' or
-  logback[http://rjack.rubyforge.org/logback] must be require'd before
-  rjack-httpclient.  (The logback gem is listed as a development
-  dependency only.)
+* rjack-slf4j[http://rjack.rubyforge.org/rjack-slf4j].
+
+* An SLF4J output adaptor such as 'rjack-slf4j/simple' or
+  rjack-logback[http://rjack.rubyforge.org/rjack-logback] must be
+  require'd before rjack-httpclient.  (The logback gem is listed as a
+  development dependency only.)
 
 == License
 
@@ -61,7 +63,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
 implied.  See the License for the specific language governing
 permissions and limitations under the License.
 
-=== HttpComponents Client  (java)
+=== HttpComponents Client (java)
 
 Copyright (c) 1999-2009 The Apache Software Foundation
 

@@ -14,7 +14,7 @@
 # permissions and limitations under the License.
 #++
 
-module HC
+module RJack
   module HTTPClient
     HTTPCLIENT_VERSION = '3.1'
     VERSION = HTTPCLIENT_VERSION + '.3'

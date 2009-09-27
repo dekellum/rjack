@@ -15,24 +15,12 @@
 #++
 
 require 'rubygems'
+
 require 'rjack-slf4j'
 require 'rjack-slf4j/jcl-over-slf4j'
+require 'rjack-httpclient/base'
 
-require 'hc-httpclient/base'
-
-# "HC" stands for "Http Components" the latest project name, at:
-#
-# http://hc.apache.org
-#
-# which has inherited "Jakarta Commons HttpClient" 3.x and released
-# "HttpComponents Client" 4.x currently in beta. The HC module name is
-# inserted to distinguish this module from others named "HTTPClient",
-# including:
-#
-# * http://dev.ctor.org/http-access2
-# * http://rubyforge.org/projects/soap4r
-#
-module HC
+module RJack
   module HTTPClient
 
     Dir.glob( File.join( HTTPCLIENT_DIR, '*.jar' ) ).each { |jar| require jar }

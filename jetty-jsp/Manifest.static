@@ -1,0 +1,8 @@
+Manifest.txt
+README.rdoc
+History.rdoc
+Rakefile
+pom.xml
+assembly.xml
+lib/jetty-jsp.rb
+lib/jetty-jsp/base.rb

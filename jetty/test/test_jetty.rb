@@ -22,11 +22,11 @@ $LOAD_PATH.unshift File.join( TEST_DIR, "..", "lib" )
 
 require 'rubygems'
 
-# Disable jetty logging if slf4j is available
+# Disable jetty logging if rjack-slf4j is available
 begin
-  gem( 'slf4j', '~> 1.5' )
-  require 'slf4j'
-  require 'slf4j/nop'
+  gem( 'rjack-slf4j', '~> 1.5' )
+  require 'rjack-slf4j'
+  require 'rjack-slf4j/nop'
 rescue Gem::LoadError
 end
 

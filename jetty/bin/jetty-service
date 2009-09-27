@@ -21,17 +21,9 @@ $LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
 require 'rubygems'
 
 begin
-  gem 'logback'
-  require 'logback'
-  Logback.configure do
-    console = Logback::ConsoleAppender.new do |a|
-      a.layout = Logback::PatternLayout.new do |p|
-        p.pattern = "%-4r %-5level %logger{35} - %msg %ex%n"
-      end
-    end
-    Logback.root.add_appender( console )
-    Logback.root.level = Logback::INFO
-  end
+  gem     'rjack-logback'
+  require 'rjack-logback'
+  Logback.config_console( :level => Logback::INFO )
   log = SLF4J[ 'jetty-service' ]
 rescue Gem::LoadError => e
   class Log

@@ -18,6 +18,7 @@ require 'rubygems'
 
 require 'rjack-slf4j'
 require 'rjack-slf4j/jcl-over-slf4j'
+require 'rjack-commons-codec'
 require 'rjack-httpclient/base'
 
 module RJack

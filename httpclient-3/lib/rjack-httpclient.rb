@@ -24,7 +24,7 @@ require 'rjack-httpclient/base'
 module RJack
   module HTTPClient
 
-    Dir.glob( File.join( HTTPCLIENT_DIR, '*.jar' ) ).each { |jar| require jar }
+    require "#{HTTPCLIENT_DIR}/commons-httpclient-#{HTTPCLIENT_VERSION}.jar"
 
     import 'org.apache.commons.httpclient.params.HttpConnectionManagerParams'
     import 'org.apache.commons.httpclient.params.HttpClientParams'

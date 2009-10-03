@@ -16,6 +16,7 @@
 
 require 'rubygems'
 
+require 'rjack-commons-pool'
 require 'rjack-commons-dbcp/base'
 
 # Commons DBCP wrapper module

@@ -22,9 +22,7 @@ require 'rubygems'
 gem     'rjack-tarpit', '~> 1.0.0'
 require 'rjack-tarpit'
 
-t = RJack::TarPit.new( 'rjack-jets3t',
-                       RJack::JetS3t::VERSION,
-                       :jars_from_assembly )
+t = RJack::TarPit.new( 'rjack-jets3t', RJack::JetS3t::VERSION )
 
 t.specify do |h|
   h.developer( "David Kellum", "dek-oss@gravitext.com" )

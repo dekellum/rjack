@@ -1,0 +1,2 @@
+=== 1.5.3.0 (TBD)
+* Initial release based on commons-pool 1.5.3

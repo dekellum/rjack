@@ -1,0 +1,9 @@
+Manifest.txt
+README.rdoc
+History.rdoc
+Rakefile
+NOTICE.txt
+pom.xml
+assembly.xml
+lib/rjack-commons-pool/base.rb
+lib/rjack-commons-pool.rb

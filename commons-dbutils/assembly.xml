@@ -1,0 +1,14 @@
+<assembly>
+  <id>bin</id>
+  <formats>
+    <format>dir</format>
+  </formats>
+  <includeBaseDirectory>false</includeBaseDirectory>
+  <dependencySets>
+    <dependencySet>
+      <includes>
+        <include>commons-dbutils:commons-dbutils</include>
+      </includes>
+    </dependencySet>
+  </dependencySets>
+</assembly>

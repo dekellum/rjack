@@ -1,0 +1,11 @@
+Manifest.static
+Manifest.txt
+README.rdoc
+History.rdoc
+Rakefile
+NOTICE.txt
+pom.xml
+assembly.xml
+lib/rjack-commons-dbutils/base.rb
+lib/rjack-commons-dbutils.rb
+lib/rjack-commons-dbutils/commons-dbutils-1.2.jar

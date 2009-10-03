@@ -1,0 +1,8 @@
+Manifest.txt
+README.rdoc
+History.rdoc
+Rakefile
+pom.xml
+assembly.xml
+lib/rjack-jets3t/base.rb
+lib/rjack-jets3t.rb

@@ -1,0 +1,10 @@
+Manifest.txt
+README.rdoc
+History.rdoc
+Rakefile
+NOTICE.txt
+pom.xml
+assembly.xml
+lib/rjack-commons-dbcp/base.rb
+lib/rjack-commons-dbcp.rb
+lib/rjack-commons-dbcp/commons-dbcp-1.2.2.jar

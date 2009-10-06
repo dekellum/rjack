@@ -322,3 +322,16 @@ module RJack
   end
 
 end
+
+# Replace special Hoe development dependency with rjack-tarpit (which
+# itself depends on constrained version of Hoe.)
+class Hoe
+  def add_dependencies
+    self.extra_deps     = normalize_deps extra_deps
+    self.extra_dev_deps = normalize_deps extra_dev_deps
+
+    unless name == 'rjack-tarpit'
+      extra_dev_deps << [ 'rjack-tarpit', "~> #{ RJack::TarPit::VERSION }" ]
+    end
+  end
+end

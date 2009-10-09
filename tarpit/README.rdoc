@@ -36,8 +36,8 @@ source with maven:
 
   t.specify do |h|
     h.developer( "David Kellum", "dek-oss@gravitext.com" )
-    h.extra_deps += [ [ 'slf4j',  '~> 1.5.8'  ],
-                      [ 'logback, '~> 1.9.16' ] ]
+    h.extra_deps += [ [ 'rjack-slf4j',  '~> 1.5.8'  ],
+                      [ 'rjack-logback, '~> 1.9.16' ] ]
   end
 
   t.jars = [ t.default_jar ]

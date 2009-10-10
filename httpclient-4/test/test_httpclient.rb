@@ -25,10 +25,10 @@ require 'test/unit'
 
 $LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
 
-require 'rjack-httpclient'
+require 'rjack-httpclient-4'
 
 class TestClient < Test::Unit::TestCase
-  include RJack::HTTPClient
+  include RJack::HTTPClient4
   def test_setup
     mf = ManagerFacade.new
 

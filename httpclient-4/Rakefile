@@ -16,14 +16,14 @@
 #++
 
 $LOAD_PATH << './lib'
-require 'rjack-httpclient/base'
+require 'rjack-httpclient-4/base'
 
 require 'rubygems'
 gem     'rjack-tarpit', '~> 1.0.0'
 require 'rjack-tarpit'
 
-t = RJack::TarPit.new( 'rjack-httpclient',
-                       RJack::HTTPClient::VERSION,
+t = RJack::TarPit.new( 'rjack-httpclient-4',
+                       RJack::HTTPClient4::VERSION,
                        :jars_from_assembly )
 
 t.specify do |h|
@@ -32,7 +32,7 @@ t.specify do |h|
                         [ 'rjack-commons-codec', '~> 1.4.0' ] ]
   h.extra_dev_deps <<   [ 'rjack-logback',       '>= 0.9.16.1' ]
   h.rubyforge_name = "rjack"
-  h.remote_rdoc_dir = "httpclient"
+  h.remote_rdoc_dir = "httpclient-4"
 end
 
 t.assembly_version = 1.0

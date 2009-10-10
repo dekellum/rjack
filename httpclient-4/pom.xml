@@ -2,7 +2,7 @@
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>rjack</groupId>
-  <artifactId>rjack-httpclient</artifactId>
+  <artifactId>rjack-httpclient-4</artifactId>
   <packaging>pom</packaging>
   <version>1.0</version>
   <name>HTTPClient Assembly for Gem</name>

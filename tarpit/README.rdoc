@@ -40,8 +40,6 @@ source with maven:
                       [ 'rjack-logback, '~> 1.9.16' ] ]
   end
 
-  t.jars = [ t.default_jar ]
-
   file 'Manifest.txt' => [ 'lib/mygem/version.rb' ]
 
   t.define_tasks

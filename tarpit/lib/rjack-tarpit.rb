@@ -31,7 +31,8 @@ module RJack
     # ==== flags
     # :jars_from_assembly:: jars will be found in assembly rather then
     #                       set in Rakefile.
-    # :no_assembly:: One jar created from source, no assembly setup in maven.
+    # :no_assembly:: One jar created from source, jars=[default_jar],
+    #                no assembly setup in maven.
     def self.new( name, version, *flags )
       if flags.include?( :jars_from_assembly )
         JarsFromAssembly.new( name, version, flags )
@@ -72,7 +73,7 @@ module RJack
         @name = name
         @version = version
         @flags = flags
-        @jars = nil
+        @jars = [ default_jar ] if @flags.include?( :no_assembly )
         @jar_dest = File.join( 'lib', @name )
         @hoe_specifier = :unset
       end

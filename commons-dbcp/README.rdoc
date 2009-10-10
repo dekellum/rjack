@@ -9,7 +9,7 @@ A gem packaging of {Commons DBCP}[http://commons.apache.org/dbcp/]
 
 == License
 
-=== rjack-commons-dbcp Gem
+=== rjack-commons-dbcp gem
 
 Copyright (c) 2009 David Kellum
 

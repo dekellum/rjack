@@ -9,7 +9,7 @@ A gem packaging of {Commons Pool}[http://commons.apache.org/pool/]
 
 == License
 
-=== rjack-commons-pool Gem
+=== rjack-commons-pool gem
 
 Copyright (c) 2009 David Kellum
 

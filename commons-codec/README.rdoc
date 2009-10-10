@@ -9,7 +9,7 @@ A gem packaging of {Commons Codec}[http://commons.apache.org/codec/]
 
 == License
 
-=== rjack-commons-codec Gem
+=== rjack-commons-codec gem
 
 Copyright (c) 2009 David Kellum
 

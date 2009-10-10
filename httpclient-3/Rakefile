@@ -16,7 +16,7 @@
 #++
 
 $LOAD_PATH << './lib'
-require 'rjack-httpclient/base'
+require 'rjack-httpclient-3/base'
 
 require 'rubygems'
 gem     'rjack-tarpit', '~> 1.0.0'
@@ -24,7 +24,7 @@ require 'rjack-tarpit'
 
 include RJack
 
-t = TarPit.new( 'rjack-httpclient', HTTPClient::VERSION )
+t = TarPit.new( 'rjack-httpclient-3', HTTPClient3::VERSION )
 
 t.specify do |h|
   h.developer( "David Kellum", "dek-oss@gravitext.com" )
@@ -35,7 +35,7 @@ t.specify do |h|
   h.remote_rdoc_dir = "httpclient-3"
 end
 
-t.jars = [ "commons-httpclient-#{ HTTPClient::HTTPCLIENT_VERSION }.jar" ]
+t.jars = [ "commons-httpclient-#{ HTTPClient3::HTTPCLIENT_VERSION }.jar" ]
 
 t.assembly_version = 1.0
 

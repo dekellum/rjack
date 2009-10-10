@@ -15,7 +15,7 @@
 #++
 
 module RJack
-  module HTTPClient
+  module HTTPClient3
     HTTPCLIENT_VERSION = '3.1'
     VERSION = HTTPCLIENT_VERSION + '.3'
 

@@ -19,10 +19,10 @@ require 'rubygems'
 require 'rjack-slf4j'
 require 'rjack-slf4j/jcl-over-slf4j'
 require 'rjack-commons-codec'
-require 'rjack-httpclient/base'
+require 'rjack-httpclient-3/base'
 
 module RJack
-  module HTTPClient
+  module HTTPClient3
 
     require "#{HTTPCLIENT_DIR}/commons-httpclient-#{HTTPCLIENT_VERSION}.jar"
 

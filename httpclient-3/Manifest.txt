@@ -5,7 +5,7 @@ History.rdoc
 Rakefile
 pom.xml
 assembly.xml
-lib/rjack-httpclient/base.rb
-lib/rjack-httpclient.rb
+lib/rjack-httpclient-3/base.rb
+lib/rjack-httpclient-3.rb
 test/test_httpclient.rb
-lib/rjack-httpclient/commons-httpclient-3.1.jar
+lib/rjack-httpclient-3/commons-httpclient-3.1.jar

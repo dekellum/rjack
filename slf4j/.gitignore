@@ -1,7 +1,7 @@
-lib/slf4j/jcl-over-slf4j.rb
-lib/slf4j/jcl.rb
-lib/slf4j/jdk14.rb
-lib/slf4j/log4j-over-slf4j.rb
-lib/slf4j/log4j12.rb
-lib/slf4j/nop.rb
-lib/slf4j/simple.rb
+lib/rjack-slf4j/jcl-over-slf4j.rb
+lib/rjack-slf4j/jcl.rb
+lib/rjack-slf4j/jdk14.rb
+lib/rjack-slf4j/log4j-over-slf4j.rb
+lib/rjack-slf4j/log4j12.rb
+lib/rjack-slf4j/nop.rb
+lib/rjack-slf4j/simple.rb

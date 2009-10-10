@@ -1,4 +1,4 @@
-=== 0.9.17.1 (TBD)
+=== 0.9.17.1 (2009-10-10)
 * Renamed gem rjack-logback and as module RJack::Logback (with ::Logback
   alias kept for backward compatibility.)
 * Use rjack-tarpit for build.

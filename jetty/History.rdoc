@@ -1,8 +1,8 @@
-=== 6.1.20.1 (TBD)
+=== 6.1.20.1 (2009-10-10)
 * Rename gem rjack-jetty and as module RJack::Jetty
 * Update to Jetty 6.1.20
 * Use rjack-tarpit for build.
-* Update development dependency to logback >= 0.9.16.1
+* Update development dependency to rjack-logback >= 0.9.17.1
 
 === 6.1.19.1 (2009-7-22)
 * Update to Jetty 6.1.19

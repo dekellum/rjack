@@ -1,4 +1,4 @@
-=== 6.1.20.2.1.1 (TBD)
+=== 6.1.20.2.1.1 (2009-10-10)
 * Rename gem rjack-jetty-jsp and as module RJack::Jetty::Jsp
 * Update to Jetty 6.1.20 JSP 2.1
 * Includes jsp-(api)-2.1-glassfish-9.1.1.B60.25.p2

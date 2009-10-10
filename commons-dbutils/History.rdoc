@@ -1,2 +1,2 @@
-=== 1.2.0 (TBD)
+=== 1.2.0 (2009-10-10)
 * Initial release based on commons-dbutils 1.2

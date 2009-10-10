@@ -1,4 +1,4 @@
-=== 1.5.8.1 (TBD)
+=== 1.5.8.1 (2009-10-10)
 * Renamed gem rjack-slf4j and as module RJack::SLF4J (with ::SLF4J
   alias kept for backward compatibility.)
 * Use rjack-tarpit for build.

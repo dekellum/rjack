@@ -29,9 +29,9 @@ t = TarPit.new( 'rjack-tarpit', TarPit::VERSION )
 
 t.specify do |h|
   h.developer( 'David Kellum', 'dek-oss@gravitext.com' )
-  h.extra_deps += [ [ 'hoe',       hoe_version ],
-                    [ 'rdoc',      '~> 2.4'    ],
-                    [ 'rubyforge', '~> 1.0.3' ] ]
+  h.extra_deps += [ [ 'rdoc',      '~> 2.4'    ],
+                    [ 'rubyforge', '~> 1.0.3'  ],
+                    [ 'hoe',       hoe_version ] ]
   h.rubyforge_name = 'rjack'
   h.remote_rdoc_dir = 'tarpit'
 end

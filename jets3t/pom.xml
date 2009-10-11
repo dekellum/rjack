@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>rjack</groupId>
   <artifactId>rjack-jets3t</artifactId>
-  <packaging>jar</packaging>
+  <packaging>pom</packaging>
   <version>1.0</version>
   <name>RJack JetS3t Assembly</name>
 

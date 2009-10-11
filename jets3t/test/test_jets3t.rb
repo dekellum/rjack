@@ -1,3 +1,5 @@
+#!/usr/bin/env jruby
+#.hashdot.profile += jruby-shortlived
 #--
 # Copyright (C) 2009 David Kellum
 #
@@ -14,16 +16,22 @@
 # permissions and limitations under the License.
 #++
 
+$LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
+
 require 'rubygems'
+gem( 'rjack-slf4j',   '~> 1.5.8' )
+gem( 'rjack-logback', '~> 0.9.17' )
 
-require 'rjack-slf4j'
-require 'rjack-slf4j/jcl-over-slf4j'
-require 'rjack-commons-codec'
-require 'rjack-httpclient-3'
-require 'rjack-jets3t/base'
+require 'rjack-logback'
 
-module RJack
-  module JetS3t
-    require "#{JETS3T_DIR}/jets3t-#{JETS3T_VERSION}.jar"
+require 'rjack-jets3t'
+
+require 'test/unit'
+
+include RJack
+
+class TestJets3t < Test::Unit::TestCase
+  def test_me
+    assert( true ) #FIXME: Just asserting the load works for now.
   end
 end

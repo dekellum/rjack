@@ -1,14 +1,7 @@
-
-jets3t : Java Extra-Tasty S3 Toolkit (for Amazon S3 online storage service)
-
-Copyright 2008 James Murty, 2008 Zmanda Inc
-
-=========================================================================
-==  NOTICE file corresponding to section 4(d) of the Apache License,   ==
-==  Version 2.0, in this case for the distribution of jets3t.          ==
-=========================================================================
-
 This product includes software developed by:
+
+jets3t (java)
+Copyright 2009 James Murty, 2008 Zmanda Inc
 
 The Apache Software Foundation (http://www.apache.org/).
 

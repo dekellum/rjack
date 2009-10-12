@@ -2,8 +2,8 @@ Manifest.static
 Manifest.txt
 README.rdoc
 History.rdoc
-Rakefile
 NOTICE.txt
+Rakefile
 pom.xml
 assembly.xml
 lib/rjack-commons-dbcp/base.rb

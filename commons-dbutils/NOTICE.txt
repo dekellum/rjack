@@ -1,5 +1,7 @@
-Apache Commons DbUtils
-Copyright 2002-2009 The Apache Software Foundation
+rjack-commons-dbutils gem
+Copyright (c) 2009 David Kellum
 
-This product includes software developed by
-The Apache Software Foundation (http://www.apache.org/).
+This product includes software developed by:
+
+Apache Commons DbUtils
+Copyright (c) 2002-2009 The Apache Software Foundation (http://www.apache.org/)

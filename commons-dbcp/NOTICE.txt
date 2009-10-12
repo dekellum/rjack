@@ -1,5 +1,7 @@
-Apache Commons DBCP
-Copyright 1999-2009 The Apache Software Foundation
+rjack-commons-dbcp gem
+Copyright (c) 2009 David Kellum
 
-This product includes software developed by
-The Apache Software Foundation (http://www.apache.org/).
+This product includes software developed by:
+
+Apache Commons DBCP
+Copyright (c) 1999-2009 The Apache Software Foundation (http://www.apache.org/)

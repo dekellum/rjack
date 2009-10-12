@@ -42,7 +42,7 @@ See {org.apache.commons.HttpClient}[http://hc.apache.org/httpclient-3.x/apidocs/
 
 == License
 
-=== rjack-httpclient-3 ruby gem
+=== rjack-httpclient-3 gem
 
 Copyright (c) 2008-2009 David Kellum
 
@@ -60,7 +60,7 @@ permissions and limitations under the License.
 
 === Jakarta Commons HTTPClient (java)
 
-Copyright (c) 1999-2007 The Apache Software Foundation
+Copyright (c) 1999-2008 The Apache Software Foundation
 
 Licensed to the Apache Software Foundation (ASF) under one or more
 contributor license agreements.  See the NOTICE file distributed with
@@ -69,7 +69,7 @@ The ASF licenses this file to You under the Apache License, Version
 2.0 (the "License"); you may not use this file except in compliance
 with the License.  You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,

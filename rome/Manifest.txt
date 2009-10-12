@@ -1,0 +1,12 @@
+Manifest.static
+Manifest.txt
+README.rdoc
+History.rdoc
+NOTICE.txt
+Rakefile
+pom.xml
+assembly.xml
+lib/rjack-rome/base.rb
+lib/rjack-rome.rb
+test/test_rome.rb
+lib/rjack-rome/rome-1.0.jar

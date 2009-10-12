@@ -1,14 +1,20 @@
+rjack-jets3t gem
+Copyright (c) 2009 David Kellum
+
 This product includes software developed by:
 
 jets3t (java)
-Copyright 2009 James Murty, 2008 Zmanda Inc
+Copyright (c) 2009 James Murty, 2008 Zmanda Inc
 
-The Apache Software Foundation (http://www.apache.org/).
+  JMX instrumentation code was contributed by:
+  Copyright (c) 2009 Doug MacEachern (Hyperic.com)
 
-The ExoLab Project (http://www.exolab.org/)
+  The Apache Software Foundation (http://www.apache.org/).
 
-Sun Microsystems (http://www.sun.com/)
+  The ExoLab Project (http://www.exolab.org/)
 
-Codehaus (http://castor.codehaus.org)
+  Sun Microsystems (http://www.sun.com/)
 
-Safehaus (http://jug.safehaus.org/Home)
+  Codehaus (http://castor.codehaus.org)
+
+  Safehaus (http://jug.safehaus.org/Home)

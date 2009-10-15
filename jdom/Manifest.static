@@ -7,3 +7,4 @@ pom.xml
 assembly.xml
 lib/rjack-jdom/base.rb
 lib/rjack-jdom.rb
+test/test_jdom.rb

@@ -8,4 +8,5 @@ pom.xml
 assembly.xml
 lib/rjack-jets3t/base.rb
 lib/rjack-jets3t.rb
+lib/rjack-jets3t/s3_service.rb
 test/test_jets3t.rb

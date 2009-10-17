@@ -24,14 +24,37 @@ gem( 'rjack-logback', '~> 0.9.17' )
 
 require 'rjack-logback'
 
+include RJack
+
+Logback.config_console( :level => Logback::INFO )
+
 require 'rjack-jets3t'
 
 require 'test/unit'
 
-include RJack
-
 class TestJets3t < Test::Unit::TestCase
-  def test_me
-    assert( true ) #FIXME: Just asserting the load works for now.
+  include JetS3t
+
+  def test_loaded
+    assert true
   end
+
+  # Create a test_opts.yaml with creds to account with at least one
+  # bucket for a real test.
+  #
+  #   ---
+  #   :credentials:
+  #   - access-key
+  #   - secret-key
+
+  if File.exists?( 'test_opts.yaml' )
+    def test_list
+      opts = File.open( 'test_opts.yaml' ) { |f| YAML::load( f ) }
+      s3 = S3Service.new( opts )
+      buckets = s3.service.list_all_buckets
+      assert( buckets.length > 0 )
+      puts buckets.map { |b| b.name }
+    end
+  end
+
 end

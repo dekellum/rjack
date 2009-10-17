@@ -27,3 +27,5 @@ module RJack
     require "#{JETS3T_DIR}/jets3t-#{JETS3T_VERSION}.jar"
   end
 end
+
+require 'rjack-jets3t/s3_service'

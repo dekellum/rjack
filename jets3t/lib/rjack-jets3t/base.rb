@@ -16,7 +16,10 @@
 
 module RJack
   module JetS3t
+    # JetS3t java version
     JETS3T_VERSION = '0.7.1'
+
+    # rjack-jets3t version
     VERSION = JETS3T_VERSION + '.0'
 
     JETS3T_DIR = File.dirname( __FILE__ ) # :nodoc:

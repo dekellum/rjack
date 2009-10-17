@@ -5,11 +5,9 @@
 
 == Description
 
-A gem packaging of the
+A gem packaging and initialization facade for the
 {JetS3t}[http://jets3t.s3.amazonaws.com/index.html]
 Amazon Simple Storage Service (S3) client.
-
-* Provides JetS3t jars
 
 == Synopsis
 
@@ -17,6 +15,11 @@ Amazon Simple Storage Service (S3) client.
  require 'rjack-jets3t'
 
  include RJack::Jets3t
+
+ s3 = S3Service.new( :credentials => [ '<access-key>', '<secret-key>' ] )
+
+ buckets = s3.service.list_all_buckets
+ puts buckets.map { |b| b.name }
 
 == Requirements
 

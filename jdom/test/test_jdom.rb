@@ -1,4 +1,5 @@
 #!/usr/bin/env jruby
+#.hashdot.profile += jruby-shortlived
 
 #--
 # Copyright (C) 2009 David Kellum
@@ -16,7 +17,12 @@ require 'rjack-jdom'
 
 class TestJdom < Test::Unit::TestCase
 
-  def test_setup
-    assert true # Just confirm we make it here.
+  import 'org.jdom.Element'
+  import 'org.jdom.Document'
+  import 'org.jdom.output.XMLOutputter'
+
+  def test_output
+    doc = Document.new( Element.new( "document" ) )
+    assert( XMLOutputter.new.outputString( doc ) =~ /<document/ )
   end
 end

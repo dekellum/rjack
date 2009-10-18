@@ -17,7 +17,7 @@
 <div class="nav">
 <a href="http://rubyforge.org/projects/rjack">RubyForge</a> |
 <a href="http://rubyforge.org/frs/?group_id=7145">Download</a> |
-<a href="http://github.com/dekellum/rjack">GitHub</a> |
+<a href="http://github.com/dekellum/rjack">GitHub</a>
 </div>
 
 <h2>Summary</h2>
@@ -42,75 +42,112 @@ additional gem release number.</p>
 
 <h2>Gems</h2>
 
-<h3>Build</h3>
+<table class="gems">
+<tr class="odd">
+<td class="gemlink">
+<a title="rdoc" href="tarpit/">rjack-tarpit</a>
+</td>
+<td>
+<p>
+TarPit provides the glue for an unholy union of build tools,
+namely <a href="http://github.com/jimweirich/rake">Rake</a> with
+<a href="http://seattlerb.rubyforge.org/hoe/">Hoe</a>,
+and <a href="http://maven.apache.org/">Maven</a>. Its used for
+building all the rjack gems, as well as other java-in-gem
+projects.</p>
+</td>
+</tr>
 
-<ul>
-<li><a href="tarpit/">rjack-tarpit</a></li>
-</ul>
-
-<p>TarPit provides the glue for an unholy union of build tools,
-  namely <a href="http://github.com/jimweirich/rake">Rake</a> with
-  <a href="http://seattlerb.rubyforge.org/hoe/">Hoe</a>,
-  and <a href="http://maven.apache.org/">Maven</a>. Its used for
-  building all the rjack gems, as well as other java-in-gem
-  projects.</p>
-
-<h3>Logging</h3>
-
-<ul>
-<li><a href="slf4j/"  >rjack-slf4j</a></li>
-<li><a href="logback/">rjack-logback</a></li>
-</ul>
-
-<p>Gems for <a href="http://www.slf4j.org/">SLF4J</a> and
+<tr>
+<td class="gemlink">
+<div><a title="rdoc" href="slf4j/"  >rjack-slf4j</a></div>
+<div><a title="rdoc" href="logback/">rjack-logback</a></div>
+</td>
+<td>
+<p><span class="sh">Logging:</span>
+Gems for <a href="http://www.slf4j.org/">SLF4J</a> and
 <a href="http://logback.qos.ch/">Logback</a> provide a complete
 toolkit for unifying and controlling logging in a heterogeneous
 application containing ruby and java components.  The slf4j gem may
-simply be used to load SLF4J jars that a java component is dependent
-on, but also offers a ruby core Logger compatible logging adapter.
-The logback gem provides a facade for programmatic logback
-configuration in ruby. Any rjack gem java dependencies on Commons
-Logging (JCL) are satified via require
-'rjack-slf4j/jcl-over-slf4j'.</p>
+simply be used to satisfy common java logging dependencies, but also
+offers a ruby core Logger compatible adapter. The logback gem
+provides a facade for programmatic logback configuration in ruby. </p>
+</td>
+</tr>
 
-<h3>HTTP Server</h3>
+<tr class="odd">
+<td class="gemlink">
+<div><a title="rdoc" href="httpclient-3/">rjack-httpclient-3</a></div>
+<div><a title="rdoc" href="httpclient-4/">rjack-httpclient-4</a></div>
+</td>
+<td>
+<p><span class="sh">HTTP Client:</span>
+Gem packaging of the
+<a href="http://hc.apache.org/">HttpComponents</a> 4.x
+and (Jakarta) Commons HttpClient 3.x.  These gems are named with the
+major version numbers to allow them to coexist in the same process and
+incremental upgrade to 4.x.</p>
+</td>
+</tr>
+<tr>
+<td class="gemlink">
+<div><a title="rdoc" href="jetty/"    >rjack-jetty</a></div>
+<div><a title="rdoc" href="jetty-jsp/">rjack-jetty-jsp</a></div>
+</td>
+<td>
 
-<ul>
-<li><a href="jetty/"    >rjack-jetty</a></li>
-<li><a href="jetty-jsp/">rjack-jetty-jsp</a></li>
-</ul>
+<p><span class="sh">HTTP Server:</span>
+Gem packaging of the
 
-<p>Gem packaging of the
 <a href="http://www.mortbay.org/jetty/">Jetty Web Server</a>.
 The jetty gem includes an extensible
 <a href="jetty/RJack/Jetty/ServerFactory.html">ServerFactory</a>
 for Server setup in ruby. The jetty-jsp companion gem adds JSP support
-when needed.  </p>
+when needed.</p>
+</td>
+</tr>
 
-<h3>HTTP Client</h3>
+<tr class="odd">
+<td class="gemlink">
+<div><a title="rdoc" href="jets3t/">rjack-jets3t</a></div>
+</td>
+<td>
+<p>
+Gem packaging and initialization facade for the
+<a href="http://jets3t.s3.amazonaws.com/index.html">JetS3t</a>
+client to Amazon Simple Storage Service (S3) and CloudFront.</p>
+</td>
+</tr>
 
-<ul>
-<li><a href="httpclient-3/">rjack-httpclient-3</a></li>
-<li><a href="httpclient-4/">rjack-httpclient-4</a></li>
-</ul>
+<tr>
+<td class="gemlink">
+<div><a title="rdoc" href="jdom/">rjack-jdom</a></div>
+</td>
+<td>
+<p>
+Gem packaging of the
+<a href="http://www.jdom.org/">JDOM</a>
+XML processor.</p>
+</td>
+</tr>
 
-<p>Gem packaging of the
-<a href="http://hc.apache.org/">HttpComponents</a> 4.x
-and (Jakarta) Commons HttpClient 3.x.  These gems are named with the
-major version numbers to allow them to coexist in the same process and thus allow
-incremental upgrade to 4.x.</p>
+<tr class="odd">
+<td class="gemlink">
+<div><a title="rdoc" href="commons-codec/"  >rjack-commons-codec</a></div>
+<div><a title="rdoc" href="commons-dbcp/"   >rjack-commons-dbcp</a></div>
+<div><a title="rdoc" href="commons-dbutils/">rjack-commons-dbutils</a></div>
+<div><a title="rdoc" href="commons-pool/"   >rjack-commons-pool</a></div>
+</td>
+<td>
+<p><span class="sh">Commons:</span>
 
-<h3>Commons</h3>
-
-<ul>
-<li><a href="commons-codec/"  >rjack-commons-codec</a></li>
-<li><a href="commons-dbcp/"   >rjack-commons-dbcp</a></li>
-<li><a href="commons-dbutils/">rjack-commons-dbutils</a></li>
-<li><a href="commons-pool/"   >rjack-commons-pool</a></li>
-</ul>
-
-<p>Various additional gems packaging java components from the
+Gems for various components from the
 <a href="http://commons.apache.org/">Commons</a> project.</p>
+
+</td>
+</tr>
+
+</table>
 
 </div>
 </body>

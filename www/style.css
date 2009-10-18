@@ -9,7 +9,7 @@ div.rj    { font-size: x-large; }
 div.main { clear: both }
 
 div.nav { padding: 2px; text-align: center;
-          margin: 0 -10px 0 -10px; background: #bbb;
+          margin: 0 -10px 0 -10px; background: #E5E5EE;
           border-top: 1px solid black;
           border-bottom: 1px solid black; }
 div.nav a { text-decoration: none; }
@@ -20,7 +20,7 @@ h2    { font-size: large; font-weight: bold }
 h3    { font-size: medium; font-weight: bold }
 h4    { font-size: medium; font-weight: normal; font-style: italic }
 
-p     { margin: 15px; text-align: justify }
+p     { margin: 1em 2em; text-align: justify }
 ul    { padding-left: 20px; list-style-type: circle }
 ul ul { list-style-type: none }
 ul a  { text-decoration: none }
@@ -31,3 +31,12 @@ pre   { margin: 15px; background: #EEE; padding: 10px;
 div.copyright { margin: 5em -10px 0 -10px; padding: 5px; background: #DDF;
                 text-align: center; border-style: solid; border-color: black;
                 border-width: 1px 0 1px 0; }
+
+td         { padding: 1em; }
+tr.odd     { background: #E5E5EE }
+td.gemlink { padding: 1em 2em;  white-space: nowrap; }
+td.gemlink a { text-decoration: none; }
+
+td p { margin: 0 1em 0 0; text-align: justify }
+
+span.sh { font-weight: bold; margin-right: 10px }

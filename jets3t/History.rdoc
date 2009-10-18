@@ -1,2 +1,2 @@
-=== 0.7.1.0 (TBD)
-* Initial version based on jets3t 0.7.1
+=== 0.7.1.0 (2009-10-17)
+* Initial release based on jets3t 0.7.1

@@ -24,7 +24,7 @@
 
 <p>RJack provides broadly used open source java components as gems for
 use with <a href="http://www.jruby.org/">JRuby</a>.  Each gem may be
-used simply and solely to deliver java package dependencies to a
+used simply and solely to deliver java dependencies to a
 consuming ruby/java application. However, most of these gems also
 provide either setup facades or adapters for direct use from ruby
 code.  RJack helps bring the advantages of RubyGems to existing Java
@@ -41,6 +41,12 @@ additional gem release number.</p>
 <a href="http://gravitext.com/blog/tags/rjack">void * blog</a>.</p>
 
 <h2>Gems</h2>
+
+<div class="graph" >
+<object data="rjack.svg" type="image/svg+xml">
+  <p>(<a href="rjack.svg">SVG dependency diagram.</a>)</p>
+</object>
+</div>
 
 <table class="gems">
 <tr class="odd">
@@ -86,7 +92,7 @@ Gem packaging of the
 <a href="http://hc.apache.org/">HttpComponents</a> 4.x
 and (Jakarta) Commons HttpClient 3.x.  These gems are named with the
 major version numbers to allow them to coexist in the same process and
-incremental upgrade to 4.x.</p>
+allow incremental upgrade to 4.x.</p>
 </td>
 </tr>
 <tr>
@@ -132,6 +138,18 @@ XML processor.</p>
 </tr>
 
 <tr class="odd">
+<td class="gemlink">
+<div><a title="rdoc" href="rome/">rjack-rome</a></div>
+</td>
+<td>
+<p>
+Gem packaging of the
+<a href="https://rome.dev.java.net/">ROME</a>
+RSS/Atom feed parser and generator.</p>
+</td>
+</tr>
+
+<tr>
 <td class="gemlink">
 <div><a title="rdoc" href="commons-codec/"  >rjack-commons-codec</a></div>
 <div><a title="rdoc" href="commons-dbcp/"   >rjack-commons-dbcp</a></div>

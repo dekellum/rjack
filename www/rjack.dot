@@ -1,0 +1,54 @@
+digraph "RJack Gem Dependency Graph" {
+  rankdir=TB
+  size="7.5,10";
+  node [ shape=box, style=filled, fillcolor="#f8df8b", fontname="Arial",
+         margin="0.30,0.1" ];
+
+  "rjack-jets3t" -> "rjack-httpclient";
+  "rjack-jets3t" -> "rjack-commons-codec";
+
+  subgraph u {
+    rank=same
+    "rjack-rome"   [ target=_parent, URL="rome/" ];
+    "rjack-jets3t" [ target=_parent, URL="jets3t/" ];
+  }
+
+  "rjack-jdom"     [ target=_parent, URL="jdom/" ];
+  "rjack-rome" -> "rjack-jdom"
+
+  "rjack-httpclient" [ target=_parent, URL="httpclient-3/",
+                       shape=record, label="rjack-httpclient-[3,4]" ];
+
+  "rjack-httpclient" -> "rjack-commons-codec";
+  "rjack-httpclient" -> "rjack-logback" [ style=dashed, label="dev" ];
+  "rjack-httpclient" -> "rjack-slf4j";
+
+  "rjack-jetty"     [ target=_parent, URL="jetty/" ];
+  "rjack-jetty-jsp" [ target=_parent, URL="jetty-jsp/" ];
+  "rjack-jetty-jsp" -> "rjack-jetty";
+
+  "rjack-jetty" -> "rjack-logback" [ style=dashed, label="dev" ];
+  "rjack-jetty" -> "rjack-slf4j"   [ style=dashed, label="opt" ];
+
+  "rjack-slf4j"   [ target=_parent, URL="slf4j/", group=log ];
+  "rjack-logback" [ target=_parent, URL="logback/", group=log ];
+
+  "rjack-logback" -> "rjack-slf4j";
+
+  "rjack-commons-codec"   [ target=_parent, URL="commons-codec/", group=commons ];
+
+  subgraph d {
+    rank=same
+    "rjack-commons-dbcp"    [ target=_parent, URL="commons-dbcp/", group=commons ];
+    "rjack-commons-dbutils" [ target=_parent, URL="commons-dbutils/", group=commons ];
+  }
+
+  "rjack-commons-pool"    [ target=_parent, URL="commons-pool/", group=commons ];
+  "rjack-commons-dbcp" -> "rjack-commons-pool";
+
+  subgraph t {
+    rank=sink
+    "rjack-tarpit" [ target=_parent, URL="tarpit/" ];
+  }
+
+}

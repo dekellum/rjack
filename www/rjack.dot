@@ -6,6 +6,8 @@ digraph "RJack Gem Dependency Graph" {
 
   "rjack-jets3t" -> "rjack-httpclient";
   "rjack-jets3t" -> "rjack-commons-codec";
+  "rjack-jets3t" -> "rjack-slf4j";
+  "rjack-jets3t" -> "rjack-logback" [ style=dashed, label="dev" ];
 
   subgraph u {
     rank=same

@@ -1,6 +1,7 @@
 digraph "RJack Gem Dependency Graph" {
-  rankdir=TB
-  size="7.5,10";
+  bgcolor="transparent";
+  rankdir=TB;
+  size="7.4,10";
   node [ shape=box, style=filled, fillcolor="#f8df8b", fontname="Arial",
          margin="0.30,0.1" ];
 

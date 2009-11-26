@@ -17,7 +17,7 @@
 module RJack
   module Jetty
     module Jsp
-      JETTY_VERSION = '6.1.21'
+      JETTY_VERSION = '6.1.22'
       JSP_VERSION = '2.1'
       GEM_VERSION = '0'
 

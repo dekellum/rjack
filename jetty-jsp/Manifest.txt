@@ -10,5 +10,5 @@ lib/rjack-jetty-jsp/base.rb
 lib/rjack-jetty-jsp/ant-1.6.5.jar
 lib/rjack-jetty-jsp/core-3.1.1.jar
 lib/rjack-jetty-jsp/jsp-2.1-glassfish-9.1.1.B60.25.p2.jar
-lib/rjack-jetty-jsp/jsp-2.1-jetty-6.1.21.jar
+lib/rjack-jetty-jsp/jsp-2.1-jetty-6.1.22.jar
 lib/rjack-jetty-jsp/jsp-api-2.1-glassfish-9.1.1.B60.25.p2.jar

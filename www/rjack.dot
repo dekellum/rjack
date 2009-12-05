@@ -2,8 +2,8 @@ digraph "RJack Gem Dependency Graph" {
   bgcolor="transparent";
   rankdir=TB;
   size="7.4,10";
-  node [ shape=box, style=filled, fillcolor="#f8df8b", fontname="Arial",
-         margin="0.30,0.1" ];
+  node [ shape=box, style="filled,rounded", fillcolor="#f8df8b",
+         fontname="Arial", margin="0.30,0.1" ];
 
   "rjack-jets3t" -> "rjack-httpclient";
   "rjack-jets3t" -> "rjack-commons-codec";

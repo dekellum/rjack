@@ -1,3 +1,6 @@
+=== 0.9.18.0 (TBD)
+* Upgraded to Logback 0.9.18
+
 === 0.9.17.1 (2009-10-10)
 * Renamed gem rjack-logback and as module RJack::Logback (with ::Logback
   alias kept for backward compatibility.)

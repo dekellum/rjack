@@ -2,15 +2,14 @@
 # Copyright (C) 2008-2009 David Kellum
 #
 # rjack-logback is free software: you can redistribute it and/or
-# modify it under the terms of the
-# {GNU Lesser General Public License}[http://www.gnu.org/licenses/lgpl.html]
-# as published by the Free Software Foundation, either version 3 of the
-# License, or (at your option) any later version.
+# modify it under the terms of either of following licenses:
+#
+#   GNU Lesser General Public License v3 or later
+#   Eclipse Public License v1.0
 #
 # rjack-logback is distributed in the hope that it will be useful, but
 # WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-# Lesser General Public License for more details.
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #++
 
 require 'rubygems'
@@ -31,38 +30,37 @@ module RJack
   #
   # === High level configuration
   #
-  #   require 'logback'
+  #   require 'rjack-logback'
   #
-  #   Logback.config_console( :thread => true, :level => Logback:INFO )
+  #   RJack::Logback.config_console( :thread => true, :level => Logback:INFO )
   #
   # === Low level configuration
   #
-  #   require 'rjack-slf4j'
   #   require 'rjack-logback'
   #
-  #   log = SLF4J[ 'example' ]
+  #   log = RJack::SLF4J[ 'example' ]
   #   log.info "About to reconfigure..."
   #
-  #   Logback.configure do
-  #     console = Logback::ConsoleAppender.new do |a|
+  #   RJack::Logback.configure do
+  #     console = RJack::Logback::ConsoleAppender.new do |a|
   #       a.target = "System.err"
-  #       a.layout = Logback::PatternLayout.new do |p|
+  #       a.layout = RJack::Logback::PatternLayout.new do |p|
   #         p.pattern = "%r %-5level %logger{35} - %msg %ex%n"
   #       end
   #     end
-  #     Logback.root.add_appender( console )
-  #     Logback.root.level = Logback::INFO
+  #     RJack::Logback.root.add_appender( console )
+  #     RJack::Logback.root.level = Logback::INFO
   #   end
   #
   #   # Adjust output levels (also works outside of configure )
-  #   Logback[ 'example' ].level = Logback::DEBUG
+  #   RJack::Logback[ 'example' ].level = Logback::DEBUG
   #
   #   log.debug "...after reconfigure."
   #
   # Configure with Logback XML configuration:
   #
-  #   Logback.configure do
-  #     Logback.load_xml_config( 'sample-logback.xml' )
+  #   RJack::Logback.configure do
+  #     RJack::Logback.load_xml_config( 'sample-logback.xml' )
   #   end
   #
   # == Programmatic Configuration Support

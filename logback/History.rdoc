@@ -1,5 +1,6 @@
 === 0.9.18.0 (TBD)
 * Upgraded to Logback 0.9.18
+* Match Logback's new dual licensing under the Eclipse Public License (EPL).
 
 === 0.9.17.1 (2009-10-10)
 * Renamed gem rjack-logback and as module RJack::Logback (with ::Logback

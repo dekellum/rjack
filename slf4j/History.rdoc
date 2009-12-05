@@ -1,3 +1,6 @@
+=== 1.5.10.0 (TBD)
+* Upgraded to SLF4J 1.5.10
+
 === 1.5.8.1 (2009-10-10)
 * Renamed gem rjack-slf4j and as module RJack::SLF4J (with ::SLF4J
   alias kept for backward compatibility.)

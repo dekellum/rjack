@@ -16,15 +16,12 @@
 
 require 'hoe'
 
-# Silly Hoe sets up DOT with rdoc unless this is set.
-ENV['NODOT'] = "no thanks"
-
 module RJack
 
   # Provides glue for Rake, Hoe, and Maven by generating tasks.
   module TarPit
     # Module version
-    VERSION = '1.0.1'
+    VERSION = '1.0.2'
 
     # Construct new task generator by gem name, version, and flags. A descendant
     # of BaseStrategy is returned.
@@ -60,6 +57,9 @@ module RJack
       # Any additional generated files to be included [Default: nil]
       attr_accessor :generated_files
 
+      # Use rdoc --diagram (requires http://graphiz.org 'dot' in PATH)
+      attr_accessor :rdoc_diagram
+
       # The name of the assembly [Default: name]
       attr_writer :assembly_name
 
@@ -76,6 +76,7 @@ module RJack
         @jars = [ default_jar ] if @flags.include?( :no_assembly )
         @jar_dest = File.join( 'lib', @name )
         @hoe_specifier = :unset
+        @rdoc_diagram = false
       end
 
       # Return a default jar name built from name and version
@@ -207,6 +208,12 @@ module RJack
 
       # Setup Hoe via Hoe.spec
       def hoe_specify
+
+        unless @rdoc_diagram
+          # Silly Hoe sets up DOT with rdoc unless this is set.
+          ENV['NODOT'] = "no thanks"
+        end
+
         unless @hoe_specifier == :unset
           tp = self
           outer = @hoe_specifier

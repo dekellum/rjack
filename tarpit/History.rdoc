@@ -1,5 +1,9 @@
+=== 1.0.2 (TBD)
+* Add :rdoc_diagram option to use Graphviz dot --diagram with rdoc.
+
 === 1.0.1 (2009-10-11)
-* Make Hoe the last dependency to avoid version conflict with rubyforge or others.
+* Make Hoe the last dependency to avoid version conflict with
+  rubyforge or others.
 
 === 1.0.0 (2009-10-10)
 * Initial release.

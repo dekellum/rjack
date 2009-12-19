@@ -19,9 +19,11 @@ Create new gem package under rjack project:
     (rubyforge login)
     rubyforge create_package rjack rjack-jetty
 
+FIXME: Required now with gemcutter?
+
 Release a gem:
 
-    VERSION=x.y.z jrake release publish_docs post_news
+    VERSION=x.y.z jrake push publish_docs post_news
 
 Upload rjack docs to rubyforge:
 

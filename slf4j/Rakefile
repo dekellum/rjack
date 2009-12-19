@@ -27,7 +27,7 @@ $LOAD_PATH << './lib'
 require 'rjack-slf4j/base'
 
 require 'rubygems'
-gem     'rjack-tarpit', '~> 1.0.0'
+gem     'rjack-tarpit', '~> 1.1.0'
 require 'rjack-tarpit'
 
 t = RJack::TarPit.new( 'rjack-slf4j', RJack::SLF4J::VERSION )

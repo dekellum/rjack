@@ -1,5 +1,6 @@
-=== 1.0.2 (TBD)
+=== 1.1.0 (TBD)
 * Add :rdoc_diagram option to use Graphviz dot --diagram with rdoc.
+* Added gem :push (gemcutter) and :install tasks
 
 === 1.0.1 (2009-10-11)
 * Make Hoe the last dependency to avoid version conflict with

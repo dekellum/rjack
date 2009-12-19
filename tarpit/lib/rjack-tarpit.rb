@@ -21,7 +21,7 @@ module RJack
   # Provides glue for Rake, Hoe, and Maven by generating tasks.
   module TarPit
     # Module version
-    VERSION = '1.0.2'
+    VERSION = '1.1.0'
 
     # Construct new task generator by gem name, version, and flags. A descendant
     # of BaseStrategy is returned.
@@ -111,6 +111,7 @@ module RJack
         hoe_specify
 
         define_git_tag
+        define_gem_tasks
       end
 
       # Define task for dynamically generating Manifest.txt, by
@@ -193,6 +194,7 @@ module RJack
 
       # Define git based :tag task
       def define_git_tag
+        desc "git tag current version"
         task :tag do
           tag = [ name, version ].join( '-' )
           dname = File.dirname( __FILE__ )
@@ -203,6 +205,23 @@ module RJack
             end
           end
           sh %{git tag -s -f -m "tag [#{tag}]" "#{tag}"}
+        end
+      end
+
+      # Define gem push and install tasks
+      def define_gem_tasks
+        desc "gem push (gemcutter)"
+        task :push => [ :gem ] do
+          require 'rubygems'
+          cm = Gem::CommandManager::instance
+          cm.run( [ 'push', '-V', "pkg/#{name}-#{version}.gem" ] )
+        end
+
+        desc "gem install (default install dir)"
+        task :install => [ :gem ] do
+          require 'rubygems'
+          cm = Gem::CommandManager::instance
+          cm.run( [ 'install', '--no-ri', '-V', "pkg/#{name}-#{version}.gem" ] )
         end
       end
 
@@ -304,6 +323,7 @@ module RJack
         hoe_specify
 
         define_git_tag
+        define_gem_tasks
       end
 
       # For manifest, map destination jars from available jars in

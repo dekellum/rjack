@@ -1,5 +1,6 @@
-=== 1.5.10.0 (TBD)
+=== 1.5.10.0 (2009-12-19)
 * Upgraded to SLF4J 1.5.10
+* Upgraded to tarpit-1.1.0 (gemcutter)
 
 === 1.5.8.1 (2009-10-10)
 * Renamed gem rjack-slf4j and as module RJack::SLF4J (with ::SLF4J

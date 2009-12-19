@@ -8,4 +8,4 @@ pom.xml
 assembly.xml
 lib/rjack-commons-pool/base.rb
 lib/rjack-commons-pool.rb
-lib/rjack-commons-pool/commons-pool-1.5.3.jar
+lib/rjack-commons-pool/commons-pool-1.5.4.jar

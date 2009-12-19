@@ -1,5 +1,6 @@
-=== 1.5.4.0 (TBD)
+=== 1.5.4.0 (2009-12-19)
 * Upgrade to commons-pool 1.5.4
+* Upgrade to tarpit-1.1.0 (gemcutter)
 
 === 1.5.3.0 (2009-10-10)
 * Initial release based on commons-pool 1.5.3

@@ -1,5 +1,6 @@
-=== 4.0.1.0 (TBD)
+=== 4.0.1.0 (2009-12-19)
 * Upgrade to HttpComponents HttpClient 4.0.1
+* Upgrade to tarpit-1.1.0 (gemcutter)
 
 === 4.0.0 (2009-10-10)
 * Update jars and docs for HTTPComponents 4.0 HttpClient and dependencies.

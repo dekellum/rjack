@@ -1,3 +1,6 @@
+=== 4.0.1.0 (TBD)
+* Upgrade to HttpComponents HttpClient 4.0.1
+
 === 4.0.0 (2009-10-10)
 * Update jars and docs for HTTPComponents 4.0 HttpClient and dependencies.
 * Rename gem rjack-httpclient-4 and as module RJack::HTTPClient4

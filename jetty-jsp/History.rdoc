@@ -1,5 +1,6 @@
-=== 6.1.22.2.1.0 (TBD)
+=== 6.1.22.2.1.0 (2009-12-19)
 * Update to Jetty 6.1.22 JSP 2.1
+* Upgrade to tarpit-1.1.0 (gemcutter)
 
 === 6.1.21.2.1.0 (2009-10-11)
 * Update to Jetty 6.1.21 JSP 2.1

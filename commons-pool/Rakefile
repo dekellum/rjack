@@ -19,7 +19,7 @@ $LOAD_PATH << './lib'
 require 'rjack-commons-pool/base'
 
 require 'rubygems'
-gem     'rjack-tarpit', '~> 1.0.0'
+gem     'rjack-tarpit', '~> 1.1.0'
 require 'rjack-tarpit'
 
 include RJack

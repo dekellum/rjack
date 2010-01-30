@@ -31,3 +31,7 @@ FileList[ '*.dot' ].each do |d|
 end
 
 task :default => [ 'index.html' ]
+
+task :clean do
+  rm_f [ 'index.html', 'rjack.png', 'rjack.svg' ]
+end

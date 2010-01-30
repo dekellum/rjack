@@ -25,6 +25,6 @@ Release a gem:
 
     VERSION=x.y.z jrake push publish_docs post_news
 
-Upload rjack docs to rubyforge:
+Publish site html:
 
-    rsync -auP -e ssh www/ dekellum@rubyforge.org:/var/www/gforge-projects/rjack/
+    cd www && rake publish

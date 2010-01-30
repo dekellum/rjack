@@ -3,6 +3,20 @@
 require 'ostruct'
 require 'erb'
 
+GEN_FILES = %w[ index.html rjack.png rjack.svg ]
+PUB_FILES = %w[ jack_of_ruby.png style.css ] + GEN_FILES
+
+task :default => GEN_FILES
+
+task :clean do
+  rm_f [ 'index.html', 'rjack.png', 'rjack.svg' ]
+end
+
+task :publish => PUB_FILES do
+  sh( "rsync -auP #{ PUB_FILES.join ' ' } " +
+      'dekellum@rubyforge.org:/var/www/gforge-projects/rjack/' )
+end
+
 rule( '.svg' => [ '.dot' ] ) do |t|
   sh "dot -Tsvg -o #{t.name} #{t.source}"
 end
@@ -23,15 +37,4 @@ file 'index.html' => [ 'index.erb', 'rjack.png' ] do
   m = id.match( /PNG (\d+)x(\d+)/ ) or raise id
   g = OpenStruct.new( :w => m[1], :h => m[2] )
   erb_generate( 'index.erb', 'index.html', binding )
-end
-
-FileList[ '*.dot' ].each do |d|
-  task :default => d.gsub( /(\.dot)$/, '.svg' )
-  task :default => d.gsub( /(\.dot)$/, '.png' )
-end
-
-task :default => [ 'index.html' ]
-
-task :clean do
-  rm_f [ 'index.html', 'rjack.png', 'rjack.svg' ]
 end

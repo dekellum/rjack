@@ -245,16 +245,24 @@ module RJack
         desc "gem push (gemcutter)"
         task :push => [ :gem ] do
           require 'rubygems'
-          cm = Gem::CommandManager::instance
-          cm.run( [ 'push', '-V', "pkg/#{name}-#{version}.gem" ] )
+          cm = Gem::CommandManager.instance
+          cm.run( gem_config( 'push' ) +
+                  [ '-V', "pkg/#{name}-#{version}.gem" ] )
         end
 
         desc "gem install (default install dir)"
         task :install => [ :gem ] do
           require 'rubygems'
-          cm = Gem::CommandManager::instance
-          cm.run( [ 'install', '--no-ri', '-V', "pkg/#{name}-#{version}.gem" ] )
+          cm = Gem::CommandManager.instance
+          cm.run( gem_config( 'install' ) +
+                  [ '--no-ri', '-V', "pkg/#{name}-#{version}.gem" ] )
         end
+      end
+
+      def gem_config( command )
+        cargs = Gem.configuration[ command ]
+        cargs = cargs.is_a?( String ) ? cargs.split( ' ' ) : cargs.to_a
+        [ command ] + cargs
       end
 
       # Setup Hoe via Hoe.spec

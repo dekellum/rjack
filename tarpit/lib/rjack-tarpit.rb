@@ -229,7 +229,7 @@ module RJack
         desc "git tag current version"
         task :tag do
           tag = [ name, version ].join( '-' )
-          dname = File.dirname( __FILE__ )
+          dname = Rake.original_dir
           dname = '.' if Dir.getwd == dname
           sh( "git status --only #{dname}" ) do |ok,res|
             if ok #changes present

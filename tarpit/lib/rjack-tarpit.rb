@@ -114,6 +114,38 @@ module RJack
         define_gem_tasks
       end
 
+      # Test that all specified files have at least one line matching
+      # line_regex, and that first line additionally matches (optional)
+      # pass_line_regex.
+      # ==== Parameters
+      # files<~to_a>:: List of files to test
+      # line_regex<Regexp>:: Test first matching line
+      # pass_line_regex:: Further test on match line (default: match all)
+      # ==== Raises
+      # RuntimeError:: on test failure.
+      def test_line_match( files, line_regex, pass_line_regex = // )
+        files.to_a.each do |mfile|
+          found = false
+          open( mfile ) do |mf|
+            num = 0
+            mf.each do |line|
+              num += 1
+              if line =~ line_regex
+                found = true
+                unless line =~ pass_line_regex
+                  raise( "%s:%d: %s !~ %s" %
+                         [ mfile, num, line.strip, pass_line_regex.inspect ] )
+                end
+                break
+              end
+            end
+          end
+          unless found
+            raise "#{mfile}: #{line_regex.inspect} not found"
+          end
+        end
+      end
+
       # Define task for dynamically generating Manifest.txt, by
       # appending array returned by the given block to specified files, or
       # contents of Manifest.static.

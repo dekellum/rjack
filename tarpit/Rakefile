@@ -36,4 +36,14 @@ t.specify do |h|
   h.remote_rdoc_dir = 'tarpit'
 end
 
+task :check_history_version do
+  t.test_line_match( 'History.rdoc', /^==/, / #{t.version} / )
+end
+task :check_history_date do
+  t.test_line_match( 'History.rdoc', /^==/, /\([0-9\-]\)$/ )
+end
+
+task :gem  => [ :check_history_version ]
+task :push => [ :check_history_date ]
+
 t.define_tasks

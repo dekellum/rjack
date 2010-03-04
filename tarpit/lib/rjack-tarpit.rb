@@ -1,5 +1,5 @@
 #--
-# Copyright (C) 2009 David Kellum
+# Copyright (C) 2009-2010 David Kellum
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you
 # may not use this file except in compliance with the License.  You
@@ -30,6 +30,7 @@ module RJack
     #                       set in Rakefile.
     # :no_assembly:: One jar created from source, jars=[default_jar],
     #                no assembly setup in maven.
+    # :java_platform:: Set gem specification platform to java.
     def self.new( name, version, *flags )
       if flags.include?( :jars_from_assembly )
         JarsFromAssembly.new( name, version, flags )
@@ -77,6 +78,7 @@ module RJack
         @jar_dest = File.join( 'lib', @name )
         @hoe_specifier = :unset
         @rdoc_diagram = false
+        @spec = nil
       end
 
       # Return a default jar name built from name and version
@@ -247,7 +249,7 @@ module RJack
           require 'rubygems'
           cm = Gem::CommandManager.instance
           cm.run( gem_config( 'push' ) +
-                  [ '-V', "pkg/#{name}-#{version}.gem" ] )
+                  [ '-V', gem_file ] )
         end
 
         desc "gem install (default install dir)"
@@ -255,8 +257,18 @@ module RJack
           require 'rubygems'
           cm = Gem::CommandManager.instance
           cm.run( gem_config( 'install' ) +
-                  [ '--no-ri', '-V', "pkg/#{name}-#{version}.gem" ] )
+                  [ '--no-ri', '-V', gem_file ] )
         end
+      end
+
+      def gem_file
+        parts = [ name, version ]
+        if @spec
+          pform = @spec.spec_extras[ :platform ]
+          parts << 'java' if ( pform && pform.os == 'java' )
+        end
+
+        "pkg/#{ parts.join( '-' ) }.gem"
       end
 
       def gem_config( command )
@@ -276,12 +288,15 @@ module RJack
         unless @hoe_specifier == :unset
           tp = self
           outer = @hoe_specifier
-          Hoe.spec( @name ) do |h|
-            h.version = tp.version
+          jplat = @flags.include?( :java_platform )
+          @spec = Hoe.spec( @name ) do |h|
 
+            h.version = tp.version
             h.readme_file  =  'README.rdoc' if File.exist?(  'README.rdoc' )
             h.history_file = 'History.rdoc' if File.exist?( 'History.rdoc' )
             h.extra_rdoc_files = FileList[ '*.rdoc' ]
+
+            h.spec_extras[ :platform ] = Gem::Platform.new( "java" ) if jplat
 
             outer.call( h )
           end

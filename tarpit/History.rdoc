@@ -1,6 +1,7 @@
 === 1.2.0 (TBD)
 * Add RJack::TarPit::BaseStrategy.test_line_match for common
   version, etc. file checks. See example usage in this gem's Rakefile.
+* Add :java_platform flag for setting gem specification platform to java.
 * Add available Gem.configuration in gem command tasks.
 * Fix tag task outside of RJack repo.
 

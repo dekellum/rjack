@@ -1,3 +1,6 @@
+* Upgraded to tarpit ~> 1.2.0
+* Set gem platform to java
+
 === 1.5.10.0 (2009-12-19)
 * Upgraded to SLF4J 1.5.10
 * Upgraded to tarpit-1.1.0 (gemcutter)

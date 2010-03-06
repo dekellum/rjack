@@ -131,9 +131,9 @@ class TestSlf4j < Test::Unit::TestCase
     assert_equal( 1, @handler.count )
   end
 
-  def test_ruby_to_java_class_name
+  def test_to_log_name
     assert_equal( "foo.bar.Baz",
-                  SLF4J.ruby_to_java_logger_name( Foo::Bar::Baz ) )
+                  SLF4J.to_log_name( Foo::Bar::Baz ) )
     assert_equal( "foo.bar.Baz", SLF4J[ Foo::Bar::Baz ].name )
   end
 

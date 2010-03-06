@@ -1,7 +1,8 @@
 === 1.5.11.0 (TBD)
 * Upgraded to SLF4J 1.5.11
-* Upgraded to tarpit ~> 1.2.0
 * Set gem platform to java
+* SLF4J.ruby_to_java_logger_name renamed/aliased SLF4J.to_log_name
+* Upgraded to tarpit ~> 1.2.0
 
 === 1.5.10.0 (2009-12-19)
 * Upgraded to SLF4J 1.5.10

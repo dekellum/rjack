@@ -18,10 +18,10 @@ module RJack
   module CommonsDbcp
 
     # Commons dbcp (java) version
-    DBCP_VERSION = '1.2.2'
+    DBCP_VERSION = '1.3'
 
     # rjack gem version
-    VERSION = DBCP_VERSION + '.0'
+    VERSION = DBCP_VERSION + '.0.0'
 
     DBCP_DIR = File.dirname( __FILE__ ) # :nodoc:
   end

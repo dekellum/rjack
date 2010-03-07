@@ -1,4 +1,4 @@
-=== 1.5.11.0 (TBD)
+=== 1.5.11.0 (2010-3-6)
 * Upgraded to SLF4J 1.5.11
 * Set gem platform to java
 * SLF4J.ruby_to_java_logger_name renamed/aliased SLF4J.to_log_name

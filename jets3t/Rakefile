@@ -19,10 +19,12 @@ $LOAD_PATH << './lib'
 require 'rjack-jets3t/base'
 
 require 'rubygems'
-gem     'rjack-tarpit', '~> 1.1.0'
+gem     'rjack-tarpit', '~> 1.2.0'
 require 'rjack-tarpit'
 
-t = RJack::TarPit.new( 'rjack-jets3t', RJack::JetS3t::VERSION )
+include RJack
+
+t = TarPit.new( 'rjack-jets3t', JetS3t::VERSION, :java_platform )
 
 t.specify do |h|
   h.developer( "David Kellum", "dek-oss@gravitext.com" )
@@ -35,7 +37,22 @@ t.specify do |h|
 end
 
 t.assembly_version = 1.0
-t.jars = [ "jets3t-#{ RJack::JetS3t::JETS3T_VERSION }.jar" ]
+t.jars = [ "jets3t-#{ JetS3t::JETS3T_VERSION }.jar" ]
 file 'Manifest.txt' => [ "lib/#{t.name}/base.rb" ]
+
+task :check_pom_deps do
+  t.test_line_match( 'pom.xml',
+                     %r[<version>#{ JetS3t::JETS3T_VERSION }</version>] )
+end
+task :check_history_version do
+  t.test_line_match( 'History.rdoc', /^==/, / #{t.version} / )
+end
+task :check_history_date do
+  t.test_line_match( 'History.rdoc', /^==/, /\([0-9\-]+\)$/ )
+end
+
+task :gem  => [ :check_pom_deps, :check_history_version                      ]
+task :tag  => [ :check_pom_deps, :check_history_version, :check_history_date ]
+task :push => [                                          :check_history_date ]
 
 t.define_tasks

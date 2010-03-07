@@ -18,7 +18,7 @@ module RJack
   module CommonsDbcp
 
     # Commons dbcp (java) version
-    DBCP_VERSION = '1.3'
+    DBCP_VERSION = '1.4'
 
     # rjack gem version
     VERSION = DBCP_VERSION + '.0.0'

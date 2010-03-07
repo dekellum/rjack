@@ -8,4 +8,4 @@ pom.xml
 assembly.xml
 lib/rjack-commons-dbcp/base.rb
 lib/rjack-commons-dbcp.rb
-lib/rjack-commons-dbcp/commons-dbcp-1.3.jar
+lib/rjack-commons-dbcp/commons-dbcp-1.4.jar

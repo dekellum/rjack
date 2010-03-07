@@ -1,3 +1,6 @@
+=== 1.4.0.0 (2010-3-6)
+* Update to commons-dbcp 1.4(.0)
+
 === 1.3.0.0 (2010-3-6)
 * Update to commons-dbcp 1.3(.0)
 * Set gem platform to java

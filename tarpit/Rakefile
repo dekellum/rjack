@@ -23,7 +23,7 @@ hoe_version = '~> 2.3.3'
 gem     'hoe', hoe_version
 require 'rjack-tarpit'
 
-include  RJack
+include RJack
 
 t = TarPit.new( 'rjack-tarpit', TarPit::VERSION )
 
@@ -37,14 +37,17 @@ t.specify do |h|
 end
 
 task :check_history_version do
-  t.test_line_match( 'History.rdoc', /^==/, / #{t.version} / )
+  t.test_line_match( 'History.rdoc', /^==/, / #{ t.version } / )
+end
+task :check_sample_version do
+  t.test_line_match( 'README.rdoc', /^\s*gem.+#{ t.name }/, /#{ t.version }/ )
 end
 task :check_history_date do
   t.test_line_match( 'History.rdoc', /^==/, /\([0-9\-]+\)$/ )
 end
 
-task :gem  => [ :check_history_version ]
-task :tag  => [ :check_history_version, :check_history_date ]
-task :push => [                         :check_history_date ]
+task :gem  => [ :check_history_version, :check_sample_version  ]
+task :tag  => [ :check_history_version, :check_sample_version, :check_history_date ]
+task :push => [ :check_history_version, :check_sample_version, :check_history_date ]
 
 t.define_tasks

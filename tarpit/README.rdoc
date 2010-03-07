@@ -29,15 +29,15 @@ source with maven:
   require 'mygem/version'
 
   require 'rubygems'
-  gem     'rjack-tarpit', '~> 1.0.0'
+  gem     'rjack-tarpit', '~> 1.2.0'
   require 'rjack-tarpit'
 
-  t = RJack::TarPit.new( 'mygem', MyGem::VERSION, :no_assembly )
+  t = RJack::TarPit.new( 'mygem', MyGem::VERSION, :no_assembly, :java_package )
 
   t.specify do |h|
     h.developer( "David Kellum", "dek-oss@gravitext.com" )
-    h.extra_deps += [ [ 'rjack-slf4j',  '~> 1.5.8'  ],
-                      [ 'rjack-logback, '~> 1.9.16' ] ]
+    h.extra_deps += [ [ 'rjack-slf4j',  '~> 1.5.11' ],
+                      [ 'rjack-logback, '~> 0.9.18' ] ]
   end
 
   file 'Manifest.txt' => [ 'lib/mygem/version.rb' ]

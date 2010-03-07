@@ -1,3 +1,7 @@
+=== 0.9.18.1 (2010-3-6)
+* Set gem platform to java
+* Upgraded to tarpit ~> 1.2.0
+
 === 0.9.18.0 (2009-12-19)
 * Upgraded to Logback 0.9.18
 * Match Logback's new dual licensing under the Eclipse Public License (EPL).

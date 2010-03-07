@@ -1,3 +1,7 @@
+=== 6.1.22.1 (2010-3-6)
+* Set gem platform to java
+* Upgraded to tarpit ~> 1.2.0
+
 === 6.1.22.0 (2009-12-19)
 * Update to Jetty 6.1.22
 * Upgrade to tarpit-1.1.0 (gemcutter)

@@ -19,12 +19,12 @@ $LOAD_PATH << './lib'
 require 'rjack-jetty/base'
 
 require 'rubygems'
-gem     'rjack-tarpit', '~> 1.1.0'
+gem     'rjack-tarpit', '~> 1.2.0'
 require 'rjack-tarpit'
 
 include RJack
 
-t = TarPit.new( 'rjack-jetty', Jetty::VERSION )
+t = TarPit.new( 'rjack-jetty', Jetty::VERSION, :java_platform )
 
 t.specify do |h|
   h.developer( "David Kellum", "dek-oss@gravitext.com" )
@@ -53,5 +53,20 @@ end
 t.generated_files = 'webapps/test.war'
 
 t.assembly_version = 1.0
+
+task :check_pom_deps do
+  t.test_line_match( 'pom.xml',
+                     %r[<version>#{ Jetty::JETTY_VERSION }</version>] )
+end
+task :check_history_version do
+  t.test_line_match( 'History.rdoc', /^==/, / #{t.version} / )
+end
+task :check_history_date do
+  t.test_line_match( 'History.rdoc', /^==/, /\([0-9\-]+\)$/ )
+end
+
+task :gem  => [ :check_pom_deps, :check_history_version                      ]
+task :tag  => [ :check_pom_deps, :check_history_version, :check_history_date ]
+task :push => [                                          :check_history_date ]
 
 t.define_tasks

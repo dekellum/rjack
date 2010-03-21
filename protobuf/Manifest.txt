@@ -1,0 +1,10 @@
+Manifest.static
+Manifest.txt
+README.rdoc
+History.rdoc
+Rakefile
+pom.xml
+assembly.xml
+lib/rjack-protobuf/base.rb
+lib/rjack-protobuf.rb
+lib/rjack-protobuf/protobuf-java-2.3.0.jar

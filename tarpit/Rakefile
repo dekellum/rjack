@@ -50,4 +50,6 @@ task :gem  => [ :check_history_version, :check_sample_version  ]
 task :tag  => [ :check_history_version, :check_sample_version, :check_history_date ]
 task :push => [ :check_history_version, :check_sample_version, :check_history_date ]
 
+task :test #noop
+
 t.define_tasks

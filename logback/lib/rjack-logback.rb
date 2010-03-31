@@ -226,14 +226,6 @@ module RJack
     # ch.qos.logback.core.FileAppender[http://logback.qos.ch/apidocs/ch/qos/logback/core/FileAppender.html]
     # with a block initializer.
     #
-    # Note that if buffered (immediate_flush = false, buffer_size > 0),
-    # you will need to +stop+ the appender before exiting in order to
-    # flush/close the log.  Calling:
-    #
-    #   Logback.configure {}
-    #
-    # Will also result in the log being flushed and closed.
-    #
     class FileAppender < JFileAppender
       include AppenderUtil
 
@@ -243,8 +235,7 @@ module RJack
         set_defaults
         self.file = file_name
         self.append = append
-        self.immediate_flush = true #default
-        self.encoding = "UTF-8"
+        # self.encoding = "UTF-8" #FIXME: Encoder.charset
         finish( &block )
       end
     end

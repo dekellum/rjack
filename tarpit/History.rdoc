@@ -1,3 +1,5 @@
+=== 1.2.1 (TBD)
+
 === 1.2.0 (2010-3-6)
 * Add RJack::TarPit::BaseStrategy.test_line_match for common
   version, etc. file checks. See example usage in this gem's Rakefile.

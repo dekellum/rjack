@@ -247,6 +247,7 @@ module RJack
         desc "gem push (gemcutter)"
         task :push => [ :gem ] do
           require 'rubygems'
+          require 'rubygems/command_manager'
           cm = Gem::CommandManager.instance
           cm.run( gem_config( 'push' ) +
                   [ '-V', gem_file ] )
@@ -255,6 +256,7 @@ module RJack
         desc "gem install (default install dir)"
         task :install => [ :gem ] do
           require 'rubygems'
+          require 'rubygems/command_manager'
           cm = Gem::CommandManager.instance
           cm.run( gem_config( 'install' ) +
                   [ '--no-ri', '-V', gem_file ] )

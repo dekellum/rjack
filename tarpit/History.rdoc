@@ -1,4 +1,5 @@
 === 1.2.1 (TBD)
+* Also require 'rubygems/command_manager' for gem tasks (ruby)
 
 === 1.2.0 (2010-3-6)
 * Add RJack::TarPit::BaseStrategy.test_line_match for common

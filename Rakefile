@@ -26,6 +26,16 @@ task( :multi, :subtasks ) do |t,args|
   end
 end
 
+desc "Run multish['shell command'] over all sub gem dirs"
+task( :multish, :subtasks ) do |t,args|
+  gems.each do |dir|
+    Dir.chdir( dir ) do
+      puts ">> cd #{dir}"
+      sh( args.subtasks )
+    end
+  end
+end
+
 desc "Aggregated javadocs via Maven"
 task :javadoc do
   sh( "mvn javadoc:aggregate" )

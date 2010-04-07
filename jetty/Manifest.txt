@@ -17,8 +17,8 @@ test/test.txt
 webapps/test/WEB-INF/web.xml
 webapps/test/index.html
 webapps/test.war
-lib/rjack-jetty/jetty-6.1.22.jar
-lib/rjack-jetty/jetty-rewrite-handler-6.1.22.jar
-lib/rjack-jetty/jetty-util-6.1.22.jar
+lib/rjack-jetty/jetty-6.1.23.jar
+lib/rjack-jetty/jetty-rewrite-handler-6.1.23.jar
+lib/rjack-jetty/jetty-util-6.1.23.jar
 lib/rjack-jetty/rjack-jetty-1.0.jar
 lib/rjack-jetty/servlet-api-2.5-20081211.jar

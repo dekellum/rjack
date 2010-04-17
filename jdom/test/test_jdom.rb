@@ -7,8 +7,8 @@
 # See README.rdoc for license terms.
 #++
 
+require 'java'
 require 'rubygems'
-
 require 'test/unit'
 
 $LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )

@@ -43,6 +43,7 @@ class TestHandler < java.util.logging.Handler
   attr_accessor :count, :last
 
   def initialize
+    super
     reset
   end
 

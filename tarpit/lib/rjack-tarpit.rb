@@ -249,8 +249,7 @@ module RJack
           require 'rubygems'
           require 'rubygems/command_manager'
           cm = Gem::CommandManager.instance
-          cm.run( gem_config( 'push' ) +
-                  [ '-V', gem_file ] )
+          cm.run( gem_config( 'push', '-V', gem_file ) )
         end
 
         desc "gem install (default install dir)"
@@ -258,8 +257,8 @@ module RJack
           require 'rubygems'
           require 'rubygems/command_manager'
           cm = Gem::CommandManager.instance
-          cm.run( gem_config( 'install' ) +
-                  [ '--no-ri', '-V', gem_file ] )
+          cm.run( gem_config( 'install',
+                              '--local', '--no-ri', '-V', gem_file ) )
         end
       end
 
@@ -273,10 +272,10 @@ module RJack
         "pkg/#{ parts.join( '-' ) }.gem"
       end
 
-      def gem_config( command )
-        cargs = Gem.configuration[ command ]
+      def gem_config( command, *args )
+        cargs = Gem.configuration[ 'gem' ]
         cargs = cargs.is_a?( String ) ? cargs.split( ' ' ) : cargs.to_a
-        [ command ] + cargs
+        [ command ] + cargs + args
       end
 
       # Setup Hoe via Hoe.spec

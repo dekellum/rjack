@@ -1,5 +1,5 @@
 #--
-# Copyright (C) 2009 David Kellum
+# Copyright (c) 2009-2010 David Kellum
 #
 # See README.rdoc for license terms.
 #++

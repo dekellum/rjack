@@ -1,10 +1,9 @@
-Manifest.static
+History.rdoc
 Manifest.txt
 README.rdoc
-History.rdoc
 Rakefile
-pom.xml
 assembly.xml
+pom.xml
 lib/rjack-logback/base.rb
 lib/rjack-logback.rb
 lib/rjack-logback/access.rb

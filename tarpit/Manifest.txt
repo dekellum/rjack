@@ -1,6 +1,6 @@
-Manifest.txt
 History.rdoc
-README.rdoc
+Manifest.txt
 NOTICE.txt
+README.rdoc
 Rakefile
 lib/rjack-tarpit.rb

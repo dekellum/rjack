@@ -1,9 +1,8 @@
-Manifest.static
+History.rdoc
 Manifest.txt
 README.rdoc
-History.rdoc
 Rakefile
-pom.xml
 assembly.xml
-lib/rjack-jetty-jsp.rb
+pom.xml
 lib/rjack-jetty-jsp/base.rb
+lib/rjack-jetty-jsp.rb

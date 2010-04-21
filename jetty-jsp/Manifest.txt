@@ -1,12 +1,11 @@
-Manifest.static
+History.rdoc
 Manifest.txt
 README.rdoc
-History.rdoc
 Rakefile
-pom.xml
 assembly.xml
-lib/rjack-jetty-jsp.rb
+pom.xml
 lib/rjack-jetty-jsp/base.rb
+lib/rjack-jetty-jsp.rb
 lib/rjack-jetty-jsp/ant-1.6.5.jar
 lib/rjack-jetty-jsp/core-3.1.1.jar
 lib/rjack-jetty-jsp/jsp-2.1-glassfish-2.1.v20091210.jar

@@ -1,11 +1,10 @@
-Manifest.static
-Manifest.txt
-README.rdoc
 History.rdoc
+Manifest.txt
 NOTICE.txt
+README.rdoc
 Rakefile
-pom.xml
 assembly.xml
+pom.xml
 lib/rjack-jets3t/base.rb
 lib/rjack-jets3t.rb
 lib/rjack-jets3t/s3_service.rb

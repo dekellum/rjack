@@ -1,10 +1,9 @@
-Manifest.static
+History.rdoc
 Manifest.txt
 README.rdoc
-History.rdoc
 Rakefile
-pom.xml
 assembly.xml
+pom.xml
 lib/rjack-jdom/base.rb
 lib/rjack-jdom.rb
 test/test_jdom.rb

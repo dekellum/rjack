@@ -1,11 +1,10 @@
-Manifest.static
-Manifest.txt
-README.rdoc
 History.rdoc
+Manifest.txt
 NOTICE.txt
+README.rdoc
 Rakefile
-pom.xml
 assembly.xml
+pom.xml
 lib/rjack-commons-dbcp/base.rb
 lib/rjack-commons-dbcp.rb
 lib/rjack-commons-dbcp/commons-dbcp-1.4.jar

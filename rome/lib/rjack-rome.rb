@@ -14,8 +14,6 @@
 # permissions and limitations under the License.
 #++
 
-require 'rubygems'
-
 require 'rjack-rome/base'
 require 'rjack-jdom'
 

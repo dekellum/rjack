@@ -12,7 +12,6 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #++
 
-require 'rubygems'
 require 'java'
 
 require 'rjack-slf4j'

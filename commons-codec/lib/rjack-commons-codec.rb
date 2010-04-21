@@ -14,8 +14,6 @@
 # permissions and limitations under the License.
 #++
 
-require 'rubygems'
-
 require 'rjack-commons-codec/base'
 
 # Commons Codec wrapper module

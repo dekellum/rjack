@@ -14,8 +14,6 @@
 # permissions and limitations under the License.
 #++
 
-require 'rubygems'
-
 require 'rjack-slf4j'
 require 'rjack-slf4j/jcl-over-slf4j'
 require 'rjack-commons-codec'

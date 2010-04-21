@@ -14,8 +14,6 @@
 # permissions and limitations under the License.
 #++
 
-require 'rubygems'
-
 require 'rjack-commons-pool/base'
 
 # Commons Pool wrapper module

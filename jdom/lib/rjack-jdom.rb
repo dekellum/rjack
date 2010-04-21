@@ -4,8 +4,6 @@
 # See README.rdoc for license terms.
 #++
 
-require 'rubygems'
-
 require 'rjack-jdom/base'
 
 # JDOM wrapper module

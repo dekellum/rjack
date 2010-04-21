@@ -1,3 +1,5 @@
+* Remove require 'rubygems' from lib.
+
 === 1.4.0.0 (2010-3-6)
 * Update to commons-dbcp 1.4(.0)
 

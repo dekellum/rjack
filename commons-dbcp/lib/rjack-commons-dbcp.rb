@@ -14,8 +14,6 @@
 # permissions and limitations under the License.
 #++
 
-require 'rubygems'
-
 require 'rjack-commons-pool'
 require 'rjack-commons-dbcp/base'
 

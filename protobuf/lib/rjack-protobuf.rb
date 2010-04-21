@@ -1,5 +1,3 @@
-require 'rubygems'
-
 require 'rjack-protobuf/base'
 
 module RJack

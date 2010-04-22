@@ -1,3 +1,6 @@
+=== 0.7.3.0 (TBD)
+* Remove require 'rubygems' from lib.
+
 === 0.7.2.0 (2010-5-13)
 * Updated to jets3t 0.7.2
 * New S3Bucket wrapper with put/delete methods.

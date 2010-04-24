@@ -1,9 +1,4 @@
 # -*- ruby -*-
-#--
-# Copyright (C) 2009 David Kellum
-#
-# See README.rdoc for license terms.
-#++
 
 $LOAD_PATH << './lib'
 require 'rjack-jdom/base'

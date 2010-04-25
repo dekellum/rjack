@@ -30,6 +30,8 @@ require 'rjack-slf4j/jul-to-slf4j'
 # FIXME: Can't make this a standard test case, as test_slf4j.rb uses
 # slf4j/jdk14 output adapter.
 
+include RJack
+
 SLF4J::JUL.replace_root_handlers
 SLF4J::JUL.root.level = SLF4J::JUL::INFO
 

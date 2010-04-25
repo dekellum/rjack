@@ -24,16 +24,14 @@ gem( 'rjack-logback', '~> 0.9.17' )
 
 require 'rjack-logback'
 
-include RJack
-
-Logback.config_console( :level => Logback::INFO )
+RJack::Logback.config_console( :level => RJack::Logback::INFO )
 
 require 'rjack-jets3t'
 
 require 'test/unit'
 
 class TestJets3t < Test::Unit::TestCase
-  include JetS3t
+  include RJack::JetS3t
 
   def test_loaded
     assert true

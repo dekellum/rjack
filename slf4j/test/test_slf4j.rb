@@ -69,7 +69,7 @@ module Foo
 end
 
 class TestSlf4j < Test::Unit::TestCase
-
+  include RJack
   JdkLogger = java.util.logging.Logger
 
   def setup

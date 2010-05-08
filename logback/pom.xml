@@ -12,14 +12,14 @@
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
-      <version>0.9.19</version>
+      <version>0.9.20</version>
       <scope>runtime</scope>
     </dependency>
 
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-access</artifactId>
-      <version>0.9.19</version>
+      <version>0.9.20</version>
       <scope>runtime</scope>
     </dependency>
 

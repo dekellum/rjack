@@ -8,6 +8,6 @@ lib/rjack-logback/base.rb
 lib/rjack-logback.rb
 lib/rjack-logback/access.rb
 test/test_logback.rb
-lib/rjack-logback/logback-access-0.9.19.jar
-lib/rjack-logback/logback-classic-0.9.19.jar
-lib/rjack-logback/logback-core-0.9.19.jar
+lib/rjack-logback/logback-access-0.9.20.jar
+lib/rjack-logback/logback-classic-0.9.20.jar
+lib/rjack-logback/logback-core-0.9.20.jar

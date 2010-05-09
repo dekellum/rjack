@@ -32,7 +32,7 @@ source with maven:
   gem     'rjack-tarpit', '~> 1.2.1'
   require 'rjack-tarpit'
 
-  t = RJack::TarPit.new( 'mygem', MyGem::VERSION, :no_assembly, :java_package )
+  t = RJack::TarPit.new( 'mygem', MyGem::VERSION, :java_platform )
 
   t.specify do |h|
     h.developer( "David Kellum", "dek-oss@gravitext.com" )

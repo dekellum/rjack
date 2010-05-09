@@ -9,7 +9,8 @@ require 'rjack-tarpit'
 
 include RJack
 
-t = TarPit.new( 'rjack-jets3t', JetS3t::VERSION, :java_platform )
+t = TarPit.new( 'rjack-jets3t', JetS3t::VERSION,
+                :java_platform, :jars_from_assembly )
 
 t.specify do |h|
   h.developer( "David Kellum", "dek-oss@gravitext.com" )
@@ -22,7 +23,6 @@ t.specify do |h|
 end
 
 t.assembly_version = 1.0
-t.jars = [ "jets3t-#{ JetS3t::JETS3T_VERSION }.jar" ]
 file 'Manifest.txt' => [ "lib/#{t.name}/base.rb" ]
 
 task :check_pom_deps do

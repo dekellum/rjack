@@ -18,6 +18,11 @@
       <id>jets3t</id>
       <url>http://jets3t.s3.amazonaws.com/maven2</url>
     </repository>
+    <repository>
+      <name>xmlbuilder</name>
+      <id>xmlbuilder</id>
+      <url>http://java-xmlbuilder.googlecode.com/svn/repo/</url>
+    </repository>
   </repositories>
 
   <dependencies>
@@ -38,6 +43,12 @@
           <artifactId>commons-logging</artifactId>
         </exclusion>
       </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>com.jamesmurty.utils</groupId>
+      <artifactId>java-xmlbuilder</artifactId>
+      <version>0.3</version>
     </dependency>
 
   </dependencies>

@@ -8,6 +8,7 @@
     <dependencySet>
       <includes>
         <include>net.java.dev.jets3t:jets3t</include>
+        <include>com.jamesmurty.utils:java-xmlbuilder</include>
       </includes>
     </dependencySet>
   </dependencySets>

@@ -1,4 +1,6 @@
 === 0.7.3.0 (TBD)
+* Updated to jets3t 0.7.3 (with workaround to
+  {Issue #16}[http://bitbucket.org/jmurty/jets3t/issue/16/classnotfoundexception])
 * Remove require 'rubygems' from lib.
 
 === 0.7.2.0 (2010-5-13)

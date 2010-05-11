@@ -1,6 +1,7 @@
-=== 0.7.2.0 (TBD)
+=== 0.7.2.0 (2010-5-10)
 * Updated to jets3t 0.7.2
 * Set gem platform to java
+* Add write/delete methods for a single bucket.
 * Upgraded to tarpit ~> 1.2.0
 * Remove require 'rubygems' from lib.
 

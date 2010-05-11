@@ -31,15 +31,25 @@ module RJack
       import 'org.jets3t.service.impl.rest.httpclient.RestS3Service'
       import 'org.jets3t.service.security.AWSCredentials'
       import 'org.jets3t.service.Jets3tProperties'
+      import 'org.jets3t.service.acl.AccessControlList'
 
       # The org.jets3t.service.impl.rest.httpclient.RestS3Service
       attr_reader :service
 
+      # Bucket to be access
+      attr_reader :bucket
+
+      # Hostname to use when composing access URLs.
+      attr_reader :host_name
+
       # New REST S3 service instance given options hash.
       # ==== Options (opts)
       # :credentials<Array[String,String]>:: Required [access,secret] key
+      # :host_name<~to_s>:: Host name to use when composing access URLs
+      # :bucket_name<~to_s>:: Bucket name to access
       # :http_client<org.apache.commons.HttpClient>:: A pre-configured replacement
-      #                                               HttpClient (3.x) (Default: JetS3t provided)
+      #                                               HttpClient (3.x)
+      #                                               (Default: JetS3t provided)
       # String<~to_s>:: Other options as defined in
       #                 {JetS3t Properties}[http://jets3t.s3.amazonaws.com/toolkit/configuration.html].
       #                 HTTP client properties only apply to JetS3t's default
@@ -52,6 +62,9 @@ module RJack
       # :RuntimeError:: On failure to provide required options
       def initialize( opts = {} )
         opts = opts.dup
+
+        @bucket_name = opts.delete( :bucket_name )
+        @host_name   = opts.delete( :host_name )
 
         creds = opts.delete( :credentials )
         unless creds && (2..3) === creds.length
@@ -67,11 +80,34 @@ module RJack
         end
 
         props = Jets3tProperties.new
-        opts.each { |k,v| props.set_property( k, v.to_s ) }
+        opts.each { |k,v| props.set_property( k.to_s, v.to_s ) }
 
         @service = RestS3Service.new( creds, nil, nil, props )
 
         @service.http_client = http if http
+
+        @bucket = @service.get_bucket( @bucket_name )
+      end
+
+      # Write object to S3 at the given pathname. Yields S3Object for
+      # setting content, acl or other overrides. Returns external HTTP
+      # url using :host_name.
+      # ==== Raises
+      # :S3ServiceException:: From JetS3t
+      def write( pathname, mime_type )
+        obj = S3Object.new( @bucket, pathname )
+        obj.content_type = mime_type
+        obj.acl = AccessControlList::REST_CANNED_PUBLIC_READ
+        yield obj
+        @service.put_object( @bucket, obj )
+        "http://%s/%s" % [ @host_name, pathname ]
+      end
+
+      # Delete object at given pathname
+      # ==== Raises
+      # :S3ServiceException:: From JetS3t
+      def delete( pathname )
+        @service.delete_object( @bucket, pathname )
       end
 
     end

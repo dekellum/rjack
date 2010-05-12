@@ -20,10 +20,13 @@ require 'rjack-commons-codec'
 require 'rjack-httpclient-3'
 require 'rjack-jets3t/base'
 
+require 'rjack-jets3t/s3_bucket'
+
 module RJack
   module JetS3t
     import 'org.jets3t.service.S3ServiceException'
-    import 'org.jets3t.service.model.S3Bucket'
+
+    JS3Bucket = Java::org.jets3t.service.model.S3Bucket
 
     # Initialization Wrapper around
     # RestS3Service[http://jets3t.s3.amazonaws.com/api/org/jets3t/service/impl/rest/httpclient/RestS3Service.html]
@@ -31,22 +34,16 @@ module RJack
       import 'org.jets3t.service.impl.rest.httpclient.RestS3Service'
       import 'org.jets3t.service.security.AWSCredentials'
       import 'org.jets3t.service.Jets3tProperties'
-      import 'org.jets3t.service.acl.AccessControlList'
+      # import 'org.jets3t.service.acl.AccessControlList'
 
-      # The org.jets3t.service.impl.rest.httpclient.RestS3Service
-      attr_reader :service
+      # The underlying org.jets3t.service.impl.rest.httpclient.RestS3Service
+      attr_reader :jservice
 
-      # Bucket to be access
-      attr_reader :bucket
-
-      # Hostname to use when composing access URLs.
-      attr_reader :host_name
+      alias :service :jservice
 
       # New REST S3 service instance given options hash.
       # ==== Options (opts)
       # :credentials<Array[String,String]>:: Required [access,secret] key
-      # :host_name<~to_s>:: Host name to use when composing access URLs
-      # :bucket_name<~to_s>:: Bucket name to access
       # :http_client<org.apache.commons.HttpClient>:: A pre-configured replacement
       #                                               HttpClient (3.x)
       #                                               (Default: JetS3t provided)
@@ -62,9 +59,6 @@ module RJack
       # :RuntimeError:: On failure to provide required options
       def initialize( opts = {} )
         opts = opts.dup
-
-        @bucket_name = opts.delete( :bucket_name )
-        @host_name   = opts.delete( :host_name )
 
         creds = opts.delete( :credentials )
         unless creds && (2..3) === creds.length
@@ -82,32 +76,36 @@ module RJack
         props = Jets3tProperties.new
         opts.each { |k,v| props.set_property( k.to_s, v.to_s ) }
 
-        @service = RestS3Service.new( creds, nil, nil, props )
+        @jservice = RestS3Service.new( creds, nil, nil, props )
 
-        @service.http_client = http if http
-
-        @bucket = @service.get_bucket( @bucket_name )
+        @jservice.http_client = http if http
       end
 
-      # Write object to S3 at the given pathname. Yields S3Object for
-      # setting content, acl or other overrides. Returns external HTTP
-      # url using :host_name.
-      # ==== Raises
-      # :S3ServiceException:: From JetS3t
-      def write( pathname, mime_type )
-        obj = S3Object.new( @bucket, pathname )
-        obj.content_type = mime_type
-        obj.acl = AccessControlList::REST_CANNED_PUBLIC_READ
-        yield obj
-        @service.put_object( @bucket, obj )
-        "http://%s/%s" % [ @host_name, pathname ]
+      # Return the S3Bucket with the specified name
+      def []( bucket_name, opts = {} )
+        jbucket = @jservice.get_bucket( bucket_name )
+        S3Bucket.new( self, jbucket, opts )
       end
 
-      # Delete object at given pathname
-      # ==== Raises
-      # :S3ServiceException:: From JetS3t
-      def delete( pathname )
-        @service.delete_object( @bucket, pathname )
+      alias :bucket :[]
+
+      # Return Array of all buckets in this S3Service account instance.
+      def buckets( opts = {} )
+        jbuckets = @jservice.list_all_buckets
+        jbuckets.map { |jb| S3Bucket.new( self, jb, opts ) }
+      end
+
+      # Create new bucket with the specified name
+      def create_bucket( bucket_name, opts = {} )
+        jbucket = JS3Bucket.new( bucket_name )
+        yield jbucket if block_given?
+        jbucket = @jservice.create_bucket( jbucket )
+        S3Bucket.new( self, jbucket, opts )
+      end
+
+      # Delete the specified S3Bucket instance
+      def delete_bucket( bucket )
+        @jservice.delete_bucket( bucket.jbucket )
       end
 
     end

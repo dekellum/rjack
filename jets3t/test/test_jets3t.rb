@@ -35,6 +35,8 @@ require 'test/unit'
 class TestJets3t < Test::Unit::TestCase
   include JetS3t
 
+  import "java.io.ByteArrayInputStream"
+
   def test_loaded
     assert true
   end
@@ -48,13 +50,30 @@ class TestJets3t < Test::Unit::TestCase
   #   - secret-key
 
   if File.exists?( 'test_opts.yaml' )
-    def test_list
+
+    def setup
       opts = File.open( 'test_opts.yaml' ) { |f| YAML::load( f ) }
-      s3 = S3Service.new( opts )
-      buckets = s3.service.list_all_buckets
-      assert( buckets.length > 0 )
-      puts buckets.map { |b| b.name }
+      @s3 = S3Service.new( opts )
+      @tbucket = @s3.create_bucket( "test.rjack.rubyforge.org" )
     end
+
+    def teardown
+      @s3.delete_bucket( @tbucket ) if @tbucket
+    end
+
+    def test_write
+      assert( @s3.buckets.any? { |b| b.name == @tbucket.name } )
+
+      url = @tbucket.put( "testkey", "text/plain" ) do |obj|
+        data = "hello"
+        obj.data_input_stream = ByteArrayInputStream.new( data.to_java_bytes )
+        obj.content_length = data.length
+      end
+      assert_equal( 'http://s3.amazonaws.com/test.rjack.rubyforge.org/testkey',
+                    url )
+      @tbucket.delete( "testkey" )
+    end
+
   end
 
 end

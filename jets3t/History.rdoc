@@ -1,9 +1,10 @@
-* Remove require 'rubygems' from lib.
-
-=== 0.7.2.0 (2010-3-6)
+=== 0.7.2.0 (2010-5-13)
 * Updated to jets3t 0.7.2
+* New S3Bucket wrapper with put/delete methods.
+* S3Service provides list, get, create S3Bucket.
 * Set gem platform to java
 * Upgraded to tarpit ~> 1.2.0
+* Remove require 'rubygems' from lib.
 
 === 0.7.1.0 (2009-10-17)
 * Initial release based on jets3t 0.7.1

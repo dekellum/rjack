@@ -7,23 +7,16 @@ The RJack tree contains the source for several distinct gems (per
 rubyforge conventions), in independent directories. Under www/ is the
 public home page documentation pushed to rjack.rubyforge.org.
 
-== GIT
+== Git
 
     % git remote add rubyforge gitosis@rubyforge.org:rjack.git
     % git remote add origin git@github.com:dekellum/rjack.git
 
 == Release
 
-Create new gem package under rjack project:
+Release a gem (from gem dir):
 
-    (rubyforge login)
-    rubyforge create_package rjack rjack-jetty
-
-FIXME: Required now with gemcutter?
-
-Release a gem:
-
-    VERSION=x.y.z jrake push publish_docs post_news
+    jrake push publish_docs
 
 Publish site html:
 

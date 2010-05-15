@@ -1,4 +1,6 @@
 === 1.2.2 (TBD)
+* Actually, use both Gem.configuration['gem'] and [command] in gem
+  command tasks (i.e. .gemrc with install: args)
 
 === 1.2.1 (2010-4-21)
 * Also require 'rubygems/command_manager' for gem tasks (ruby)

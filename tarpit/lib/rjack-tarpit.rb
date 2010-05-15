@@ -257,8 +257,7 @@ module RJack
           require 'rubygems'
           require 'rubygems/command_manager'
           cm = Gem::CommandManager.instance
-          cm.run( gem_config( 'install',
-                              '--local', '--no-ri', '-V', gem_file ) )
+          cm.run( gem_config( 'install', '--local', '-V', gem_file ) )
         end
       end
 
@@ -273,8 +272,11 @@ module RJack
       end
 
       def gem_config( command, *args )
-        cargs = Gem.configuration[ 'gem' ]
-        cargs = cargs.is_a?( String ) ? cargs.split( ' ' ) : cargs.to_a
+        cargs = [ 'gem', command ].map do |cmd|
+          conf = Gem.configuration[ cmd ]
+          conf.is_a?( String ) ? conf.split( ' ' ) : conf.to_a
+        end
+        cargs.flatten!
         [ command ] + cargs + args
       end
 

@@ -1,5 +1,5 @@
-=== 0.9.20.0 (TBD)
-* Upgraded to Logback 0.9.20
+=== 0.9.22.0 (TBD)
+* Upgraded to Logback 0.9.22
 * Remove require 'rubygems' from lib.
 
 === 0.9.18.1 (2010-3-6)

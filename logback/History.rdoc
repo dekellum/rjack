@@ -1,5 +1,7 @@
 === 0.9.22.0 (TBD)
-* Upgraded to Logback 0.9.22
+* Upgraded to Logback 0.9.22 (FIXME: consider breaking with logback
+  version for this.)
+* Logback (as of 0.9.21 actually) now has a hard requirement for SLF4J ~> 1.6.0
 * Remove require 'rubygems' from lib.
 
 === 0.9.18.1 (2010-3-6)

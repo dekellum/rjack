@@ -14,7 +14,7 @@
 #++
 
 require 'rubygems'
-gem( 'rjack-slf4j', '~> 1.5.8' )
+gem( 'rjack-slf4j', '~> 1.6.0' )
 require 'rjack-slf4j'
 
 $LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )

@@ -13,7 +13,7 @@ packaged in the {slf4j gem}[http://rjack.rubyforge.org/slf4j/].
 == Synopsis
 
   require 'rjack-logback'
-  RJack::Logback.config_console( :level => Logback:INFO )
+  RJack::Logback.config_console( :level => RJack::Logback::INFO )
 
   log = RJack::SLF4J[ "my.app.logger" ]
   log.info "Hello World!"

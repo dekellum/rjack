@@ -30,8 +30,7 @@ module RJack
   # === High level configuration
   #
   #   require 'rjack-logback'
-  #
-  #   RJack::Logback.config_console( :thread => true, :level => Logback:INFO )
+  #   RJack::Logback.config_console( :thread => true, :level => RJack::Logback::INFO )
   #
   # === Low level configuration
   #
@@ -48,11 +47,11 @@ module RJack
   #       end
   #     end
   #     RJack::Logback.root.add_appender( console )
-  #     RJack::Logback.root.level = Logback::INFO
+  #     RJack::Logback.root.level = RJack::Logback::INFO
   #   end
   #
   #   # Adjust output levels (also works outside of configure )
-  #   RJack::Logback[ 'example' ].level = Logback::DEBUG
+  #   RJack::Logback[ 'example' ].level = RJack::Logback::DEBUG
   #
   #   log.debug "...after reconfigure."
   #

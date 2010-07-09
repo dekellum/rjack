@@ -1,6 +1,8 @@
-=== 1.2.2 (TBD)
+=== 1.2.2 (2010-7-8)
 * Actually, use both Gem.configuration['gem'] and [command] in gem
   command tasks (i.e. .gemrc with install: args)
+* Perform a 'mvn install' with rake :install task, checking for
+  changes since last .tarpit-install.
 
 === 1.2.1 (2010-4-21)
 * Also require 'rubygems/command_manager' for gem tasks (ruby)

@@ -79,6 +79,9 @@ module RJack
         @hoe_specifier = :unset
         @rdoc_diagram = false
         @spec = nil
+
+        @install_request =
+          Rake.application.top_level_tasks.include?( "install" )
       end
 
       # Return a default jar name built from name and version
@@ -181,12 +184,14 @@ module RJack
 
       # File touched to record the time of last successful 'mvn
       # package' run.
-      MVN_STATE_FILE = 'target/.tarpit'
+      MVN_STATE_FILE         = 'target/.tarpit'
+      MVN_STATE_FILE_INSTALL = 'target/.tarpit-install'
 
       # Define a file task tracking calls to "mvn package"
       def define_maven_package_task
         file MVN_STATE_FILE => maven_dependencies do
-          sh( 'mvn package' ) do |ok,res|
+          mvn = [ 'mvn', @install_request ? 'install' : 'package' ].join(' ')
+          sh( mvn ) do |ok,res|
             if ok
               touch( MVN_STATE_FILE )
             else
@@ -194,6 +199,12 @@ module RJack
             end
           end
         end
+
+        file MVN_STATE_FILE_INSTALL => MVN_STATE_FILE do
+          touch( MVN_STATE_FILE_INSTALL )
+        end
+        task :install => MVN_STATE_FILE_INSTALL
+
       end
 
       # Define file tasks for all jar symlinks and other misc. maven

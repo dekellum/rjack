@@ -29,10 +29,10 @@ source with maven:
   require 'mygem/version'
 
   require 'rubygems'
-  gem     'rjack-tarpit', '~> 1.2.1'
+  gem     'rjack-tarpit', '~> 1.2.2'
   require 'rjack-tarpit'
 
-  t = RJack::TarPit.new( 'mygem', MyGem::VERSION, :no_assembly, :java_package )
+  t = RJack::TarPit.new( 'mygem', MyGem::VERSION, :java_platform )
 
   t.specify do |h|
     h.developer( "David Kellum", "dek-oss@gravitext.com" )

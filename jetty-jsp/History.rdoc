@@ -1,3 +1,6 @@
+=== 6.1.25.2.1.0 (TBD)
+* Update to Jetty 6.1.25 JSP 2.1
+
 === 6.1.24.2.1.0 (2010-5-15)
 * Update to Jetty 6.1.24 JSP 2.1
 

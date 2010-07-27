@@ -1,3 +1,7 @@
+=== 6.1.25.0 (TBD)
+* Update to Jetty 6.1.25
+* Require java for imports
+
 === 6.1.24.0 (2010-5-15)
 * Update to Jetty 6.1.24
 

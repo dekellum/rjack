@@ -19,7 +19,7 @@ require 'rubygems'
 gem( 'rjack-logback', '>= 0.9.17.1' )
 
 require 'rjack-logback'
-Logback.config_console( :level => Logback::DEBUG )
+RJack::Logback.config_console( :level => RJack::Logback::DEBUG )
 
 require 'test/unit'
 

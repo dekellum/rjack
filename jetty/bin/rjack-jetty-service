@@ -23,8 +23,8 @@ require 'rubygems'
 begin
   gem     'rjack-logback'
   require 'rjack-logback'
-  Logback.config_console( :level => Logback::INFO )
-  log = SLF4J[ 'jetty-service' ]
+  RJack::Logback.config_console( :level => RJack::Logback::INFO )
+  log = RJack::SLF4J[ 'jetty-service' ]
 rescue Gem::LoadError => e
   class Log
     def method_missing( method, *args )

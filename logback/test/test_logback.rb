@@ -55,6 +55,7 @@ class TestAppender
 end
 
 class TestLevelSet < Test::Unit::TestCase
+  include RJack
 
   def setup
     @appender = TestAppender.new

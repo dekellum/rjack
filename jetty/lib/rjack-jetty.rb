@@ -16,6 +16,8 @@
 
 require 'rjack-jetty/base'
 
+require 'java'
+
 module RJack
 
   # {Jetty Web Server}[http://www.mortbay.org/jetty/] module including

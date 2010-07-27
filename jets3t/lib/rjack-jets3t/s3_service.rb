@@ -22,6 +22,8 @@ require 'rjack-jets3t/base'
 
 require 'rjack-jets3t/s3_bucket'
 
+require 'java'
+
 module RJack
   module JetS3t
     import 'org.jets3t.service.S3ServiceException'

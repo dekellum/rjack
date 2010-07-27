@@ -20,6 +20,8 @@ require 'rjack-commons-codec'
 require 'rjack-httpclient-3'
 require 'rjack-jets3t/base'
 
+require 'java'
+
 module RJack
   module JetS3t
     import 'org.jets3t.service.acl.AccessControlList'

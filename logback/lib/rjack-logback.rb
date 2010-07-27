@@ -12,10 +12,10 @@
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #++
 
-require 'java'
-
 require 'rjack-slf4j'
 require 'rjack-logback/base'
+
+require 'java'
 
 # Backward compatibility for top level ::Logback module
 Logback = RJack::Logback

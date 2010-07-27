@@ -19,6 +19,8 @@ require 'rjack-slf4j/jcl-over-slf4j'
 require 'rjack-commons-codec'
 require 'rjack-httpclient-3/base'
 
+require 'java'
+
 module RJack
   module HTTPClient3
 

@@ -38,6 +38,7 @@ module RJack
     import 'org.mortbay.jetty.Handler'
     import 'org.mortbay.jetty.NCSARequestLog'
     import 'org.mortbay.jetty.Server'
+    import 'org.mortbay.jetty.handler.AbstractHandler'
     import 'org.mortbay.jetty.handler.ContextHandler'
     import 'org.mortbay.jetty.handler.ContextHandlerCollection'
     import 'org.mortbay.jetty.handler.DefaultHandler'

@@ -35,12 +35,11 @@ require 'rjack-jetty/test-servlets'
 require 'test/unit'
 require 'net/http'
 
-include RJack
-
 class TestJetty < Test::Unit::TestCase
+  include RJack::Jetty
 
   def default_factory
-    factory = Jetty::ServerFactory.new
+    factory = ServerFactory.new
     factory.max_threads = 1
     factory.stop_at_shutdown = false
     factory
@@ -70,7 +69,6 @@ class TestJetty < Test::Unit::TestCase
     server.stop
   end
 
-  import 'org.mortbay.jetty.handler.AbstractHandler'
   class TestHandler < AbstractHandler
     TEST_TEXT = 'test handler text'
 
@@ -115,7 +113,7 @@ class TestJetty < Test::Unit::TestCase
 
     factory.set_context_servlets( '/',
       { '/one' => TestServlet.new( 'resp-one' ),
-        '/snoop' => Jetty::TestServlets::SnoopServlet.new } )
+        '/snoop' => TestServlets::SnoopServlet.new } )
 
     server = factory.create
     server.start
@@ -140,10 +138,10 @@ class TestJetty < Test::Unit::TestCase
   def test_webapp
     factory = default_factory
     index_html = File.read(
-      File.join( Jetty::TestServlets::WEBAPP_TEST_EXPANDED, 'index.html' ) )
+      File.join( TestServlets::WEBAPP_TEST_EXPANDED, 'index.html' ) )
 
-    factory.webapp_contexts[ '/test' ]     = Jetty::TestServlets::WEBAPP_TEST_WAR
-    factory.webapp_contexts[ '/expanded' ] = Jetty::TestServlets::WEBAPP_TEST_EXPANDED
+    factory.webapp_contexts[ '/test' ]     = TestServlets::WEBAPP_TEST_WAR
+    factory.webapp_contexts[ '/expanded' ] = TestServlets::WEBAPP_TEST_EXPANDED
 
     server = factory.create
     server.start

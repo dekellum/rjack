@@ -1,9 +1,12 @@
+#!/usr/bin/env jruby
+#.hashdot.profile += jruby-shortlived
+
 #--
 # Copyright (c) 2010 David Kellum
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you
-# may not use this file except in compliance with the License.  You
-# may obtain a copy of the License at
+# may not use this file except in compliance with the License.  You may
+# obtain a copy of the License at
 #
 #    http://www.apache.org/licenses/LICENSE-2.0
 #
@@ -14,15 +17,20 @@
 # permissions and limitations under the License.
 #++
 
-require 'rjack-nekohtml/base'
+require 'java'
+require 'rubygems'
+require 'test/unit'
 
-require 'rjack-xerces'
+$LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
 
-# CyberNeko HTML Parser wrapper module
-#
-# http://nekohtml.sourceforge.net/
-module RJack
-  module NekoHTML
-    require "#{NEKOHTML_DIR}/nekohtml-#{NEKOHTML_VERSION}.jar"
+require 'rjack-nekohtml'
+
+class TestNekoHTML < Test::Unit::TestCase
+
+  import 'org.cyberneko.html.parsers.SAXParser'
+  import 'org.cyberneko.html.parsers.DOMParser'
+
+  def test_load
+    assert( true )
   end
 end

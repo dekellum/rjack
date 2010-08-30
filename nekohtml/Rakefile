@@ -13,6 +13,7 @@ t = TarPit.new( 'rjack-nekohtml', NekoHTML::VERSION, :java_platform )
 
 t.specify do |h|
   h.developer( "David Kellum", "dek-oss@gravitext.com" )
+  h.extra_deps << [ 'rjack-xerces', '~> 2.9.1' ]
   h.rubyforge_name = "rjack"
   h.remote_rdoc_dir = "nekohtml"
 end

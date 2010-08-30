@@ -4,7 +4,7 @@ Gravitext::DevTools.configure do |c|
 
   c.header do |h|
     h.holder = "David Kellum"
-    h.inception = 2009
+    h.inception = 2010
     h.license = :apache
   end
 

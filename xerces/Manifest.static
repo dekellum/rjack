@@ -1,0 +1,9 @@
+History.rdoc
+Manifest.txt
+NOTICE.txt
+README.rdoc
+Rakefile
+assembly.xml
+pom.xml
+lib/rjack-xerces/base.rb
+lib/rjack-xerces.rb

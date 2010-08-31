@@ -1,8 +1,15 @@
-=== 0.9.22.0 (TBD)
-* Upgraded to Logback 0.9.22 (FIXME: consider breaking with logback
-  version for this.)
+=== 1.0.0.0 (TBD)
+
+The upstream Logback project has introduced several
+non-backward-compatible changes in the 0.9.19+ patch series. In the
+interest of consumers of the gem, I have decided to break with the
+upstream version scheme and release a 1.x major series.
+
+* Upgraded to Logback 0.9.24.
 * Logback (as of 0.9.21 actually) now has a hard requirement for SLF4J ~> 1.6.0
-* Remove require 'rubygems' from lib.
+* Maintain *Appender compatibility (0.9.19+) by mapping a.encoding=x
+  to a.encoder.charset=Charset.forName(x)
+* Remove require 'rubygems' from lib, require 'java' for imports.
 
 === 0.9.18.1 (2010-3-6)
 * Set gem platform to java

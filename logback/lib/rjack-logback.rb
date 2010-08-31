@@ -187,6 +187,8 @@ module RJack
     module AppenderUtil
       @@default_layout = Logback::PatternLayout.new
 
+      Charset = Java::java.nio.charset.Charset
+
       # Set appender defaults.
       def set_defaults
         self.context = Logback.context
@@ -198,6 +200,10 @@ module RJack
       def finish( &block )
         block.call( self ) unless block.nil?
         Util.start( self )
+      end
+
+      def encoding=( enc )
+        self.encoder.charset = Charset::forName( enc )
       end
     end
 
@@ -235,7 +241,7 @@ module RJack
         set_defaults
         self.file = file_name
         self.append = append
-        # self.encoding = "UTF-8" #FIXME: Encoder.charset
+        self.encoding = "UTF-8"
         finish( &block )
       end
     end

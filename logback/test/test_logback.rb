@@ -14,7 +14,7 @@
 #++
 
 require 'rubygems'
-gem( 'rjack-slf4j', '~> 1.5.8' )
+gem( 'rjack-slf4j', '~> 1.6.0' )
 require 'rjack-slf4j'
 
 $LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
@@ -102,6 +102,7 @@ class TestLevelSet < Test::Unit::TestCase
 end
 
 class TestConfigure < Test::Unit::TestCase
+  include RJack
 
   def test_file_appender_config
     log_file = "./test_appends.test_file_appender.log"
@@ -109,7 +110,6 @@ class TestConfigure < Test::Unit::TestCase
     Logback.configure do
       appender = Logback::FileAppender.new( log_file, false ) do |a|
         a.layout = Logback::PatternLayout.new( "%level-%msg" )
-        a.immediate_flush = true
         a.encoding = "ISO-8859-1"
       end
       Logback.root.add_appender( appender )
@@ -139,7 +139,6 @@ class TestConfigure < Test::Unit::TestCase
     appender = TestAppender.new
     Logback.configure do
       console = Logback::ConsoleAppender.new do |a|
-        a.immediate_flush = true
         a.encoding = "UTF-8"
         a.target = "System.out"
       end

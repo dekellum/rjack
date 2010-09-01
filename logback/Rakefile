@@ -13,7 +13,7 @@ t = TarPit.new( 'rjack-logback', Logback::VERSION, :java_platform )
 
 t.specify do |h|
   h.developer( "David Kellum", "dek-oss@gravitext.com" )
-  h.extra_deps << [ 'rjack-slf4j', '~> 1.5.8' ]
+  h.extra_deps << [ 'rjack-slf4j', '~> 1.6.0' ]
   h.rubyforge_name = "rjack"
   h.remote_rdoc_dir = "logback"
 end

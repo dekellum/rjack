@@ -19,9 +19,6 @@
 $LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
 
 require 'rubygems'
-gem( 'rjack-slf4j',   '~> 1.5.8' )
-gem( 'rjack-logback', '~> 0.9.17' )
-
 require 'rjack-logback'
 
 RJack::Logback.config_console( :level => RJack::Logback::INFO )

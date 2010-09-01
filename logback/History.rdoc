@@ -1,4 +1,20 @@
-* Remove require 'rubygems' from lib.
+=== 1.0.0.0 (TBD)
+
+The upstream Logback project has introduced several
+non-backward-compatible changes in the 0.9.19+ "patch" series. In the
+interest of gem consumers, breaking with the upstream version scheme
+in this new 1.x major series. Expect reliable semantic versioning from
+here on out: 100% compatible patch releases for ~> 1.0.0 (1.0.1.0 or
+1.0.0.1).
+
+* Upgraded to Logback 0.9.24.
+* Remove Logback from global namespace (was kept deprecated for
+  compatibility with move to RJack:: in 0.9.17.1)
+* Logback (as of 0.9.21 actually) now has a hard requirement for
+  SLF4J ~> 1.6.0
+* Maintain *Appender compatibility (0.9.19+) by mapping a.encoding=x
+  to a.encoder.charset=Charset.forName(x)
+* Remove require 'rubygems' from lib, require 'java' for imports.
 
 === 0.9.18.1 (2010-3-6)
 * Set gem platform to java

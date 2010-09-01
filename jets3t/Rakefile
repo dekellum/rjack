@@ -13,10 +13,10 @@ t = TarPit.new( 'rjack-jets3t', JetS3t::VERSION, :java_platform )
 
 t.specify do |h|
   h.developer( "David Kellum", "dek-oss@gravitext.com" )
-  h.extra_deps     += [ [ 'rjack-slf4j',         '~> 1.5.8' ],
+  h.extra_deps     += [ [ 'rjack-slf4j',         '>= 1.5.8', '< 1.7' ],
                         [ 'rjack-httpclient-3',  '~> 3.1.3' ],
                         [ 'rjack-commons-codec', '~> 1.4.0' ] ]
-  h.extra_dev_deps <<   [ 'rjack-logback',       '>= 0.9.17']
+  h.extra_dev_deps <<   [ 'rjack-logback',       '>= 0.9.18', '< 2.0' ]
   h.rubyforge_name  = "rjack"
   h.remote_rdoc_dir = "jets3t"
 end

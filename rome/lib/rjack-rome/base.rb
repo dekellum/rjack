@@ -21,7 +21,7 @@ module RJack
     ROME_VERSION = '1.0'
 
     # rjack gem version
-    VERSION = ROME_VERSION + '.1'
+    VERSION = ROME_VERSION + '.2'
 
     ROME_DIR = File.dirname( __FILE__ ) # :nodoc:
   end

@@ -21,7 +21,7 @@ module RJack
     POOL_VERSION = '1.5.4'
 
     # rjack gem version
-    VERSION = POOL_VERSION + '.1'
+    VERSION = POOL_VERSION + '.2'
 
     POOL_DIR = File.dirname( __FILE__ ) # :nodoc:
   end

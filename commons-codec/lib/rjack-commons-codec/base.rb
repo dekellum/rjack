@@ -21,7 +21,7 @@ module RJack
     CODEC_VERSION = '1.4'
 
     # rjack gem version
-    VERSION = CODEC_VERSION + '.1'
+    VERSION = CODEC_VERSION + '.2'
 
     CODEC_DIR = File.dirname( __FILE__ ) # :nodoc:
   end

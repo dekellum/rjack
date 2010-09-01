@@ -12,7 +12,7 @@ module RJack
     JDOM_VERSION = '1.1'
 
     # rjack gem version (reserve one more decimal for jdom itself)
-    VERSION = JDOM_VERSION + '.0.1'
+    VERSION = JDOM_VERSION + '.0.2'
 
     JDOM_DIR = File.dirname( __FILE__ ) # :nodoc:
   end

@@ -15,9 +15,9 @@ t = TarPit.new( 'rjack-httpclient-4',
 
 t.specify do |h|
   h.developer( "David Kellum", "dek-oss@gravitext.com" )
-  h.extra_deps     += [ [ 'rjack-slf4j',         '~> 1.5.8' ],
+  h.extra_deps     += [ [ 'rjack-slf4j',         '>= 1.5.8', '< 1.7' ],
                         [ 'rjack-commons-codec', '~> 1.4.0' ] ]
-  h.extra_dev_deps <<   [ 'rjack-logback',       '>= 0.9.17' ]
+  h.extra_dev_deps <<   [ 'rjack-logback',       '>= 0.9.18', '< 2.0' ]
   h.rubyforge_name = "rjack"
   h.remote_rdoc_dir = "httpclient-4"
 end

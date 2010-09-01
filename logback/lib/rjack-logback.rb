@@ -17,9 +17,6 @@ require 'rjack-logback/base'
 
 require 'java'
 
-# Backward compatibility for top level ::Logback module
-Logback = RJack::Logback
-
 module RJack
 
   # Jruby wrapper module for the Logback[http://logback.qos.ch/] log writer.

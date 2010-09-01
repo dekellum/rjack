@@ -102,6 +102,7 @@ class TestLevelSet < Test::Unit::TestCase
 end
 
 class TestConfigure < Test::Unit::TestCase
+  include RJack
 
   def test_file_appender_config
     log_file = "./test_appends.test_file_appender.log"

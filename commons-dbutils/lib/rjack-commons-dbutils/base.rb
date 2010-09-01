@@ -21,7 +21,7 @@ module RJack
     DBUTILS_VERSION = '1.3'
 
     # rjack gem version
-    VERSION = DBUTILS_VERSION + '.1'
+    VERSION = DBUTILS_VERSION + '.2'
 
     DBUTILS_DIR = File.dirname( __FILE__ ) # :nodoc:
   end

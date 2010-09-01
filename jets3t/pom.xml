@@ -36,7 +36,7 @@
     <dependency>
       <groupId>net.java.dev.jets3t</groupId>
       <artifactId>jets3t</artifactId>
-      <version>0.7.3</version>
+      <version>0.7.4</version>
       <exclusions>
         <exclusion>
           <groupId>commons-logging</groupId>
@@ -44,13 +44,6 @@
         </exclusion>
       </exclusions>
     </dependency>
-
-    <dependency>
-      <groupId>com.jamesmurty.utils</groupId>
-      <artifactId>java-xmlbuilder</artifactId>
-      <version>0.3</version>
-    </dependency>
-
   </dependencies>
 
   <build>

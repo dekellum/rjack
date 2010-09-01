@@ -25,9 +25,6 @@
 require 'rjack-slf4j/base'
 require 'java'
 
-# Backward compatibility for top level ::SLF4J module
-SLF4J = RJack::SLF4J
-
 module RJack
 
   # Wrapper and core Logger compatible adapter for the

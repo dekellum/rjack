@@ -14,10 +14,18 @@ digraph "RJack Gem Dependency Graph" {
     rank=same
     "rjack-rome"   [ target=_parent, URL="rome/" ];
     "rjack-jets3t" [ target=_parent, URL="jets3t/" ];
+    "rjack-nekohtml" [ target=_parent, URL="nekohtml/" ];
   }
 
-  "rjack-jdom"     [ target=_parent, URL="jdom/" ];
+  subgraph l {
+    rank=same
+    "rjack-jdom"     [ target=_parent, URL="jdom/" ];
+    "rjack-xerces"   [ target=_parent, URL="xerces/" ];
+  }
+
   "rjack-rome" -> "rjack-jdom"
+
+  "rjack-nekohtml" -> "rjack-xerces"
 
   "rjack-httpclient" [ target=_parent, URL="httpclient-3/",
                        shape=record, label="rjack-httpclient-[3,4]" ];

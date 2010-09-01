@@ -1,7 +1,9 @@
-=== 0.7.4.0 (TBD)
+=== 0.7.4.0 (2010-8-31)
 * Updated to jets3t 0.7.4 (Note
   {Issue #16}[http://bitbucket.org/jmurty/jets3t/issue/16/classnotfoundexception])
-* Remove require 'rubygems' from lib.
+* Remove require 'rubygems' from lib, require 'java' for imports.
+* Expand slf4j/logback gem deps for compatibility with
+  slf4j-1.6.x/logback-1.x
 
 === 0.7.2.0 (2010-5-13)
 * Updated to jets3t 0.7.2

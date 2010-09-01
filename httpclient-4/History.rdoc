@@ -1,4 +1,7 @@
-* Remove require 'rubygems' from lib.
+=== 4.0.1.2 (2010-8-31)
+* Remove require 'rubygems' from lib, require 'java' for imports.
+* Expand slf4j/logback gem deps for compatibility with
+  slf4j-1.6.x/logback-1.x
 
 === 4.0.1.1 (2010-3-6)
 * Set gem platform to java

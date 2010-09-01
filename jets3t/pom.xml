@@ -18,6 +18,11 @@
       <id>jets3t</id>
       <url>http://jets3t.s3.amazonaws.com/maven2</url>
     </repository>
+    <repository>
+      <name>xmlbuilder</name>
+      <id>xmlbuilder</id>
+      <url>http://java-xmlbuilder.googlecode.com/svn/repo/</url>
+    </repository>
   </repositories>
 
   <dependencies>
@@ -25,7 +30,7 @@
     <dependency>
       <groupId>net.java.dev.jets3t</groupId>
       <artifactId>jets3t</artifactId>
-      <version>0.7.2</version>
+      <version>0.7.4</version>
       <exclusions>
         <exclusion>
           <groupId>commons-logging</groupId>
@@ -33,7 +38,6 @@
         </exclusion>
       </exclusions>
     </dependency>
-
   </dependencies>
 
   <build>

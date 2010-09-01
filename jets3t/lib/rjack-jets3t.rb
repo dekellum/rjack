@@ -22,7 +22,7 @@ require 'rjack-jets3t/base'
 
 module RJack
   module JetS3t
-    require "#{JETS3T_DIR}/jets3t-#{JETS3T_VERSION}.jar"
+    Dir.glob( File.join( JETS3T_DIR, '*.jar' ) ).each { |jar| require jar }
   end
 end
 

@@ -1,5 +1,6 @@
-=== 6.1.25.0 (TBD)
+=== 6.1.25.0 (2010-8-31)
 * Update to Jetty 6.1.25
+* Expand logback gem dev dependency for compatibility with logback-1.x
 * Require java for imports
 
 === 6.1.24.0 (2010-5-15)

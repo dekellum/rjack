@@ -1,0 +1,8 @@
+History.rdoc
+Manifest.txt
+README.rdoc
+Rakefile
+assembly.xml
+pom.xml
+lib/rjack-protobuf/base.rb
+lib/rjack-protobuf.rb

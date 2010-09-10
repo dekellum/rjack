@@ -15,7 +15,8 @@ gems = %w[ tarpit
            rome
            jets3t
            xerces
-           nekohtml ]
+           nekohtml
+           protobuf ]
 
 desc "Run multi['task1 tasks2'] tasks over all sub gems"
 task( :multi, :subtasks ) do |t,args|

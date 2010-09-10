@@ -54,7 +54,12 @@ digraph "RJack Gem Dependency Graph" {
     "rjack-commons-dbutils" [ target=_parent, URL="commons-dbutils/", group=commons ];
   }
 
-  "rjack-commons-pool"    [ target=_parent, URL="commons-pool/", group=commons ];
+  subgraph e {
+    rank=same
+    "rjack-commons-pool"    [ target=_parent, URL="commons-pool/", group=commons ];
+    "rjack-protobuf"        [ target=_parent, URL="protobuf/" ];
+  }
+
   "rjack-commons-dbcp" -> "rjack-commons-pool";
 
   subgraph t {

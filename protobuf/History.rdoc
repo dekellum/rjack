@@ -1,2 +1,2 @@
-=== 2.3.0.0 (TBD)
+=== 2.3.0.0 (2010-9-9)
 * Initial release based on protobuf-java 2.3.0

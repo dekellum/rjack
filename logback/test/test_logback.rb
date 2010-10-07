@@ -86,7 +86,6 @@ class TestLevelSet < Test::Unit::TestCase
     assert_equal( 0, @appender.count )
   end
 
-
   def test_above_level
     Logback.root.level = Logback::TRACE
     assert( @log.trace? )

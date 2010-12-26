@@ -30,7 +30,7 @@
     <dependency>
       <groupId>net.java.dev.jets3t</groupId>
       <artifactId>jets3t</artifactId>
-      <version>0.7.4</version>
+      <version>0.8.0</version>
       <exclusions>
         <exclusion>
           <groupId>commons-logging</groupId>

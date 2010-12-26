@@ -1,3 +1,6 @@
+=== 0.8.0.0 (TBD)
+* Updated to jets3t 0.8.0
+
 === 0.7.4.0 (2010-8-31)
 * Updated to jets3t 0.7.4 (Note
   {Issue #16}[http://bitbucket.org/jmurty/jets3t/issue/16/classnotfoundexception])

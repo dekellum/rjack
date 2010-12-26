@@ -1,3 +1,5 @@
+=== 1.2.3 (TBD)
+
 === 1.2.2 (2010-7-8)
 * Actually, use both Gem.configuration['gem'] and [command] in gem
   command tasks (i.e. .gemrc with install: args)

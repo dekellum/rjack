@@ -104,6 +104,9 @@ module RJack
     # Level::ERROR
     ERROR = Level::ERROR
 
+    # Level::OFF
+    OFF = Level::OFF
+
     DEFAULT_PATTERN = "%date [%thread] %-5level %logger{35} - %msg %ex%n" #:nodoc:
 
     @@context = SLF4J.linked_factory

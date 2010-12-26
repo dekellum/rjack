@@ -77,6 +77,15 @@ class TestLevelSet < Test::Unit::TestCase
     assert_equal( 0, @appender.count )
   end
 
+  def test_off
+    Logback.root.level = Logback::OFF
+    assert( ! @log.debug? )
+    @log.debug( "not logged" )
+    @log.warn { "also not logged" }
+    @log.error { "again; not logged"}
+    assert_equal( 0, @appender.count )
+  end
+
   def test_above_level
     Logback.root.level = Logback::TRACE
     assert( @log.trace? )

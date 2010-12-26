@@ -1,4 +1,5 @@
 === 1.2.3 (TBD)
+* Update rdoc dependency to >= 2.5.11, < 3.1 (3.0.1 works well.)
 
 === 1.2.2 (2010-7-8)
 * Actually, use both Gem.configuration['gem'] and [command] in gem

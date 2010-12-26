@@ -16,6 +16,7 @@
 require 'rubygems'
 gem( 'rjack-slf4j', '~> 1.6.0' )
 require 'rjack-slf4j'
+require 'rjack-slf4j/jul-to-slf4j'
 
 $LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
 require 'rjack-logback'
@@ -110,6 +111,31 @@ class TestLevelSet < Test::Unit::TestCase
 
 end
 
+class TestJULPropagator < Test::Unit::TestCase
+  include RJack
+
+  def test_jul_propagator
+    SLF4J::JUL.replace_root_handlers
+
+    appender = TestAppender.new
+    Logback.configure do |ctx|
+      ctx.add_listener( Logback::LevelChangePropagator.new )
+      Logback.root.add_appender( appender )
+      Logback.root.level = Logback::WARN
+      Logback[ "alt" ].level = Logback::DEBUG
+    end
+
+    assert( ! SLF4J::JUL[ "other"   ].loggable?( SLF4J::JUL::INFO ) )
+    assert(   SLF4J::JUL[ "alt.sub" ].loggable?( SLF4J::JUL::INFO ) )
+
+    SLF4J::JUL[ "other"   ].info( "shouldn't" )
+    assert_equal( 0, appender.count )
+    SLF4J::JUL[ "alt.sub" ].info( "should" )
+    assert_equal( 1, appender.count )
+  end
+
+end
+
 class TestConfigure < Test::Unit::TestCase
   include RJack
 
@@ -162,7 +188,7 @@ class TestConfigure < Test::Unit::TestCase
     assert_equal( 1, appender.count )
   end
 
-  def test_config_console
+  def test_config_console_mdc
     Logback.config_console( :mdc => [ :key1, :key2 ], :mdc_width => 11 )
     log = SLF4J[ self.class ]
     log.info "without"

@@ -246,6 +246,23 @@ module RJack
       end
     end
 
+    JLevelChangePropagator = Java::ch.qos.logback.classic.jul.LevelChangePropagator
+
+    # Extends
+    # ch.qos.logback.classic.jul.LevelChangePropagator[http://logback.qos.ch/apidocs/ch/qos/logback/classic/jul/LevelChangePropagator.html]
+    # with a block initializer.
+    class LevelChangePropagator < JLevelChangePropagator
+
+      def initialize( reset_jul = true )
+        super()
+        self.context = Logback.context
+        self.reset_jul = reset_jul
+        yield( self ) if block_given?
+        Util.start( self )
+      end
+
+    end
+
     # Configure Logback with the specified block. The Logback context is
     # +reset+, yielded to block, and then started after return
     # from the block.
@@ -267,8 +284,15 @@ module RJack
     # :lwidth<~to_s>:: Logger width (default: :full ? 35 : 30)
     # :mdc<String|Array[String]>:: One or more Mapped Diagnostic Context keys
     # :mdc_width<~to_s}:: MDC width (default: unspecified)
+    # :propagate_to_jul:: Propagate level changes to
+    #                     java.util.logging, additionally resetting
+    #                     JUL levels if value is :reset (default: false)
     def self.config_console( options = {} )
-      configure do
+      configure do |ctx|
+        if options[ :propagate_to_jul ]
+          r = ( options[ :propagate_to_jul ] == :reset )
+          ctx.add_listener( LevelChangePropagator.new( r ) )
+        end
         console = Logback::ConsoleAppender.new do |a|
           a.target = "System.err" if options[ :stderr ]
           a.layout = Logback::PatternLayout.new do |layout|
@@ -279,7 +303,7 @@ module RJack
             w = ( options[ :lwidth ] || ( options[ :full ] ? 35 : 30 ) )
             pat << "%logger{#{w}}"
 
-            mdcs = options[ :mdc ].to_a.map { |k| "%X{#{k}}" }
+            mdcs = Array( options[ :mdc ] ).map { |k| "%X{#{k}}" }
             unless mdcs.empty?
               mp = ( '\(' + mdcs.join(',') + '\)' )
               mw = options[ :mdc_width ]

@@ -1,3 +1,5 @@
+=== 1.1.0.0 (TBD)
+
 === 1.0.0.0 (2010-8-31)
 
 The upstream Logback project has introduced several

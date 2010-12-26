@@ -18,7 +18,7 @@ module RJack
     LOGBACK_VERSION = '0.9.24'
 
     # Logback gem version
-    VERSION = '1.0.0.0'
+    VERSION = '1.1.0.0'
 
     LOGBACK_DIR = File.dirname(__FILE__) # :nodoc:
   end

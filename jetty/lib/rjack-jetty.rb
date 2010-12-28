@@ -25,31 +25,37 @@ module RJack
   module Jetty
 
     def self.require_jar( name )
-      require File.join( JETTY_DIR, "#{name}-#{ JETTY_VERSION }.jar" )
+      require File.join( JETTY_DIR, "#{name}-#{ JETTY_VERSION }.#{ JETTY_BUILD }.jar" )
     end
 
-    require_jar 'jetty'
+    require_jar 'jetty-io'
+    require_jar 'jetty-http'
+    require_jar 'jetty-continuation'
+    require_jar 'jetty-server'
+    require_jar 'jetty-security'
+    require_jar 'jetty-servlet'
+    require_jar 'jetty-xml'
+    require_jar 'jetty-webapp'
     require_jar 'jetty-util'
 
-    require File.join( JETTY_DIR,
-      "servlet-api-#{ SERVLET_API_VERSION }-#{ SERVLET_API_DATE }.jar" )
+    require File.join( JETTY_DIR, "servlet-api-#{ SERVLET_API_VERSION }.jar" )
 
-    import 'org.mortbay.jetty.Connector'
-    import 'org.mortbay.jetty.Handler'
-    import 'org.mortbay.jetty.NCSARequestLog'
-    import 'org.mortbay.jetty.Server'
-    import 'org.mortbay.jetty.handler.AbstractHandler'
-    import 'org.mortbay.jetty.handler.ContextHandler'
-    import 'org.mortbay.jetty.handler.ContextHandlerCollection'
-    import 'org.mortbay.jetty.handler.DefaultHandler'
-    import 'org.mortbay.jetty.handler.HandlerCollection'
-    import 'org.mortbay.jetty.handler.RequestLogHandler'
-    import 'org.mortbay.jetty.handler.ResourceHandler'
-    import 'org.mortbay.jetty.nio.SelectChannelConnector'
-    import 'org.mortbay.jetty.servlet.Context'
-    import 'org.mortbay.jetty.servlet.ServletHolder'
-    import 'org.mortbay.jetty.webapp.WebAppContext'
-    import 'org.mortbay.thread.QueuedThreadPool'
+    import 'org.eclipse.jetty.server.Connector'
+    import 'org.eclipse.jetty.server.Handler'
+    import 'org.eclipse.jetty.server.NCSARequestLog'
+    import 'org.eclipse.jetty.server.Server'
+    import 'org.eclipse.jetty.server.handler.AbstractHandler'
+    import 'org.eclipse.jetty.server.handler.ContextHandler'
+    import 'org.eclipse.jetty.server.handler.ContextHandlerCollection'
+    import 'org.eclipse.jetty.server.handler.DefaultHandler'
+    import 'org.eclipse.jetty.server.handler.HandlerCollection'
+    import 'org.eclipse.jetty.server.handler.RequestLogHandler'
+    import 'org.eclipse.jetty.server.handler.ResourceHandler'
+    import 'org.eclipse.jetty.server.nio.SelectChannelConnector'
+    import 'org.eclipse.jetty.servlet.ServletContextHandler'
+    import 'org.eclipse.jetty.servlet.ServletHolder'
+    import 'org.eclipse.jetty.webapp.WebAppContext'
+    import 'org.eclipse.jetty.util.thread.QueuedThreadPool'
 
     # A factory for creating complete org.morbay.jetty.Server
     # instances. Provides a general purpose facade for setup including
@@ -67,7 +73,7 @@ module RJack
     #   factory.static_contexts[ '/html' ] = '/var/www/html'
     #
     #   # Implement custom handler and register it.
-    #   import 'org.mortbay.jetty.handler.AbstractHandler'
+    #   import 'org.eclipse.jetty.handler.AbstractHandler'
     #   class RedirectHandler < AbstractHandler
     #
     #     def initialize( redirects )
@@ -75,11 +81,11 @@ module RJack
     #       @redirects = redirects
     #     end
     #
-    #     def handle( target, request, response, dispatch )
+    #     def handle( target, base_request, request, response )
     #       goto = @redirects[ target ]
     #       unless goto.nil?
     #         response.send_redirect( goto )
-    #         request.handled = true
+    #         base_request.handled = true
     #       end
     #     end
     #   end
@@ -109,7 +115,7 @@ module RJack
     #
     class ServerFactory
       attr_accessor( :port, :max_idle_time_ms,
-                     :max_threads, :low_threads, :min_threads,
+                     :max_threads, :min_threads,
                      :static_contexts, :static_welcome_files,
                      :webapp_contexts,
                      :servlet_contexts,
@@ -119,7 +125,6 @@ module RJack
       def initialize
         @port                 = 0        # Use any available port
         @max_threads          = 20
-        @low_threads          = 0        # No low thread threshold
         @min_threads          = nil      # Compute from max_threads
         @max_idle_time_ms     = 10000
         @static_contexts      = {}
@@ -148,20 +153,19 @@ module RJack
         server
       end
 
-      # Return a org.mortbay.thread.ThreadPool implementation.
+      # Return a org.eclipse.thread.ThreadPool implementation.
       #
-      # This implementation creates a QueuedThreadPool with min_threads
-      # (default max_threads / 4), any low_threads, and max_threads
+      # This implementation creates a QueuedThreadPool with
+      # min_threads (default max_threads / 4), and max_threads
       # (default 20).
       def create_pool
         pool = QueuedThreadPool.new
         pool.min_threads = [ @min_threads || ( @max_threads / 4 ), 1 ].max
-        pool.low_threads = @low_threads
-        pool.max_threads = [ @max_threads, 2 ].max
+        pool.max_threads = [ @max_threads, 3 ].max
         pool
       end
 
-      # Return array of org.mortbay.jetty.Connector instances.
+      # Return array of org.eclipse.jetty.Connector instances.
       #
       # This implementation returns a single SelectChannelConnector
       # listening to the given port or an auto-selected avaiable
@@ -173,7 +177,7 @@ module RJack
         [ connector ]
       end
 
-      # Returns an Array of org.mortbay.jetty.Handler instances.
+      # Returns an Array of org.eclipse.jetty.Handler instances.
       #
       # This implementation concatenates create_pre_handlers and
       # create_post_handlers.
@@ -181,7 +185,7 @@ module RJack
         ( create_pre_handlers + create_post_handlers )
       end
 
-      # Returns an Array of "pre" org.mortbay.jetty.Handler instances.
+      # Returns an Array of "pre" org.eclipse.jetty.Handler instances.
       #
       # This implementation returns an array containing a single
       # ContextHandlerCollection which itself contains the context
@@ -198,7 +202,7 @@ module RJack
         end
       end
 
-      # Returns an Array of "post" org.mortbay.jetty.Handler instances.
+      # Returns an Array of "post" org.eclipse.jetty.Handler instances.
       #
       # This implementation returns a DefaultHandler instance, and any
       # handler returned by create_request_log_handler.
@@ -231,7 +235,7 @@ module RJack
       # Set a context of servlets given context_path, a servlets hash
       # (mapping path to Servlet), and options.
       def set_context_servlets( context_path, servlets,
-                                options = Context::NO_SESSIONS )
+                                options = ServletContextHandler::NO_SESSIONS )
         @servlet_contexts[ context_path ] = [ servlets, options ]
       end
 
@@ -239,7 +243,7 @@ module RJack
       def create_servlet_contexts( context_handler_collection )
         @servlet_contexts.each do |ctx, s_o|
           servlets, options = s_o
-          context = Context.new( context_handler_collection, ctx, options )
+          context = ServletContextHandler.new( context_handler_collection, ctx, options )
           servlets.each do |path, servlet|
             context.add_servlet( ServletHolder.new( servlet ), path )
           end

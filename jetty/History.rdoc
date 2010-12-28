@@ -1,3 +1,13 @@
+=== 7.2.2.0 (TBD)
+
+* Update to Jetty 7.2.2. This is major upgrade with broad java package
+  name changes, class name changes, and API changes. See
+  {Porting to Jetty 7}[http://wiki.eclipse.org/Jetty/Starting/Porting_to_Jetty_7]
+  for general details.  Some notable changes for gem users:
+  * {Handler.handle()}[http://download.eclipse.org/jetty/stable-7/apidocs/org/eclipse/jetty/server/Handler.html#handle%28java.lang.String,%20org.eclipse.jetty.server.Request,%20javax.servlet.http.HttpServletRequest,%20javax.servlet.http.HttpServletResponse%29] interface changed.
+  * Context renamed to ServletContextHandler.
+  * QueuedThreadPool no longer supports a low_threads (low resource) property.
+
 === 6.1.26.0 (2010-12-28)
 * Update to Jetty 6.1.26
 

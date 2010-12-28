@@ -7,10 +7,17 @@
   <dependencySets>
     <dependencySet>
       <includes>
-        <include>org.mortbay.jetty:jetty</include>
-        <include>org.mortbay.jetty:jetty-util</include>
-        <include>org.mortbay.jetty:jetty-rewrite-handler</include>
-        <include>org.mortbay.jetty:servlet-api</include>
+        <include>org.eclipse.jetty:jetty-servlet</include>
+        <include>org.eclipse.jetty:jetty-security</include>
+        <include>org.eclipse.jetty:jetty-server</include>
+        <include>org.eclipse.jetty:jetty-continuation</include>
+        <include>org.eclipse.jetty:jetty-http</include>
+        <include>org.eclipse.jetty:jetty-io</include>
+        <include>org.eclipse.jetty:jetty-xml</include>
+        <include>org.eclipse.jetty:jetty-webapp</include>
+        <include>org.eclipse.jetty:jetty-util</include>
+        <include>org.eclipse.jetty:jetty-rewrite</include>
+        <include>javax.servlet:servlet-api</include>
         <include>rjack:rjack-jetty</include>
       </includes>
     </dependencySet>

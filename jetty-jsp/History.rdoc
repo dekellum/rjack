@@ -1,3 +1,7 @@
+=== 7.2.2.0 (TBD)
+* Update to Jetty 7.2.2 (JSP 2.1 only)
+* Includes jsp-(api)-2.1-glassfish-2.1.v201001227
+
 === 6.1.26.2.1.0 (2010-12-28)
 * Update to Jetty 6.1.26 JSP 2.1
 

@@ -20,9 +20,9 @@ end
 
 t.jars =
   begin
-    mods = %w{ jetty jetty-util jetty-rewrite-handler }
-    l = mods.map { |n| "#{n}-#{ Jetty::JETTY_VERSION }.jar" }
-    l << "servlet-api-#{ Jetty::SERVLET_API_VERSION }-#{ Jetty::SERVLET_API_DATE }.jar"
+    mods = %w[ webapp xml servlet security server continuation http io util rewrite ]
+    l = mods.map { |n| "jetty-#{n}-#{ Jetty::JETTY_VERSION }.#{ Jetty::JETTY_BUILD }.jar" }
+    l << "servlet-api-#{ Jetty::SERVLET_API_VERSION }.jar"
     l << 'rjack-jetty-1.0.jar'
     l
   end
@@ -40,8 +40,8 @@ t.generated_files = 'webapps/test.war'
 t.assembly_version = 1.0
 
 task :check_pom_deps do
-  t.test_line_match( 'pom.xml',
-                     %r[<version>#{ Jetty::JETTY_VERSION }</version>] )
+  v = "#{ Jetty::JETTY_VERSION }.#{ Jetty::JETTY_BUILD }"
+  t.test_line_match( 'pom.xml', %r{<version>#{ v }</version>} )
 end
 task :check_history_version do
   t.test_line_match( 'History.rdoc', /^==/, / #{t.version} / )

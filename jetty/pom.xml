@@ -12,31 +12,31 @@
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-servlet</artifactId>
-      <version>7.2.1.v20101111</version>
+      <version>7.2.2.v20101205</version>
     </dependency>
 
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-server</artifactId>
-      <version>7.2.1.v20101111</version>
+      <version>7.2.2.v20101205</version>
     </dependency>
 
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-webapp</artifactId>
-      <version>7.2.1.v20101111</version>
+      <version>7.2.2.v20101205</version>
     </dependency>
 
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-util</artifactId>
-      <version>7.2.1.v20101111</version>
+      <version>7.2.2.v20101205</version>
     </dependency>
 
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-rewrite</artifactId>
-      <version>7.2.1.v20101111</version>
+      <version>7.2.2.v20101205</version>
     </dependency>
 
   </dependencies>

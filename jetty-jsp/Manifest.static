@@ -6,3 +6,6 @@ assembly.xml
 pom.xml
 lib/rjack-jetty-jsp/base.rb
 lib/rjack-jetty-jsp.rb
+test/test_jsp.rb
+webapps/test/index.jsp
+webapps/test/WEB-INF/web.xml

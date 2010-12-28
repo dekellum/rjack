@@ -1,4 +1,4 @@
-=== 1.1.0.0 (TBD)
+=== 1.1.0.0 (2010-12-28)
 * Upgraded to Logback 0.9.27
 * Added previously missing Logback::OFF level (Bill Dueber)
 * Added LevelChangePropagator extension and config_console

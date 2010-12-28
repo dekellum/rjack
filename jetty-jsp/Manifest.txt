@@ -6,9 +6,7 @@ assembly.xml
 pom.xml
 lib/rjack-jetty-jsp/base.rb
 lib/rjack-jetty-jsp.rb
-lib/rjack-jetty-jsp/ant-1.6.5.jar
-lib/rjack-jetty-jsp/core-3.1.1.jar
 lib/rjack-jetty-jsp/ecj-3.5.1.jar
-lib/rjack-jetty-jsp/jsp-2.1-glassfish-2.1.v20091210.jar
-lib/rjack-jetty-jsp/jsp-2.1-jetty-6.1.26.jar
-lib/rjack-jetty-jsp/jsp-api-2.1-glassfish-2.1.v20091210.jar
+lib/rjack-jetty-jsp/jetty-jsp-2.1-7.2.2.v20101205.jar
+lib/rjack-jetty-jsp/jsp-2.1-glassfish-2.1.v20100127.jar
+lib/rjack-jetty-jsp/jsp-api-2.1-glassfish-2.1.v20100127.jar

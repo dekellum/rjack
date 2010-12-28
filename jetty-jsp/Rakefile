@@ -23,8 +23,8 @@ end
 t.assembly_version = 1.0
 
 task :check_pom_deps do
-  t.test_line_match( 'pom.xml',
-                     %r[<version>#{ Jetty::Jsp::JETTY_VERSION }</version>] )
+  v = "#{ Jetty::Jsp::JETTY_VERSION }.#{ Jetty::Jsp::JETTY_BUILD }"
+  t.test_line_match( 'pom.xml', %r{<version>#{ v }</version>} )
 end
 task :check_history_version do
   t.test_line_match( 'History.rdoc', /^==/, / #{t.version} / )

@@ -72,10 +72,10 @@ class TestJetty < Test::Unit::TestCase
   class TestHandler < AbstractHandler
     TEST_TEXT = 'test handler text'
 
-    def handle( target, request, response, dispatch )
+    def handle( target, base_request, request, response )
       response.content_type = "text/plain"
       response.writer.write( TEST_TEXT )
-      request.handled = true
+      base_request.handled = true
     end
   end
 

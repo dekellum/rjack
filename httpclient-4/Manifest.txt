@@ -9,4 +9,5 @@ lib/rjack-httpclient-4/base.rb
 lib/rjack-httpclient-4.rb
 test/test_httpclient.rb
 lib/rjack-httpclient-4/httpclient-4.0.1.jar
+lib/rjack-httpclient-4/httpclient-4.0.3.jar
 lib/rjack-httpclient-4/httpcore-4.0.1.jar

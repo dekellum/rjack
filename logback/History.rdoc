@@ -1,3 +1,9 @@
+=== 1.1.0.0 (TBD)
+* Upgraded to Logback 0.9.27
+* Added previously missing Logback::OFF level (Bill Dueber)
+* Added LevelChangePropagator extension and config_console
+  :propagate_to_jul flag
+
 === 1.0.0.0 (2010-8-31)
 
 The upstream Logback project has introduced several

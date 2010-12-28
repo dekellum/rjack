@@ -59,8 +59,8 @@ OptionParser.new do |opts|
     factory.webapp_contexts[ '/' ] = v
   end
   opts.on( "-j", "--jsp", "Enable JSP support by loading jetty-jsp gem") do
-    gem( 'jetty-jsp', "~> #{Jetty::JETTY_VERSION}" )
-    require 'jetty-jsp'
+    gem( 'rjack-jetty-jsp', "~> #{Jetty::JETTY_VERSION}" )
+    require 'rjack-jetty-jsp'
   end
   opts.on_tail( "-d", "--debug", "Enable debug logging") do
     Logback.root.level = Logback::DEBUG if defined?( Logback )

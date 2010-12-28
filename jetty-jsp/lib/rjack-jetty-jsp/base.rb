@@ -24,6 +24,8 @@ module RJack
       JSP_VERSION = '2.1'
 
       JETTY_JSP_DIR = File.dirname( __FILE__ ) # :nodoc:
+
+      TEST_WAR = File.join( JETTY_JSP_DIR, '..', '..', 'webapps', 'test.war' )
     end
   end
 end

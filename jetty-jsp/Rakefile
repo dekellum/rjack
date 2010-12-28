@@ -20,6 +20,14 @@ t.specify do |h|
   h.remote_rdoc_dir = 'jetty-jsp'
 end
 
+file 'webapps/test.war' => [ 'webapps/test/index.jsp',
+                             'webapps/test/WEB-INF/web.xml' ] do
+  sh( 'jar cvf webapps/test.war ' +
+      '-C webapps/test index.jsp -C webapps/test WEB-INF/web.xml' )
+end
+
+t.generated_files = 'webapps/test.war'
+
 t.assembly_version = 1.0
 
 task :check_pom_deps do

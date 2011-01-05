@@ -1,0 +1,2 @@
+=== 1.0.10.0 (TBD)
+* Initial release based on mina 1.0.10

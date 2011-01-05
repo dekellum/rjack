@@ -1,0 +1,14 @@
+<assembly>
+  <id>bin</id>
+  <formats>
+    <format>dir</format>
+  </formats>
+  <includeBaseDirectory>false</includeBaseDirectory>
+  <dependencySets>
+    <dependencySet>
+      <includes>
+        <include>org.apache.mina:mina-core</include>
+      </includes>
+    </dependencySet>
+  </dependencySets>
+</assembly>

@@ -5,7 +5,7 @@
   <artifactId>rjack-commons-pool</artifactId>
   <packaging>pom</packaging>
   <version>1.0</version>
-  <name>HTTPClient Assembly for Gem</name>
+  <name>Commons Pool for Gem</name>
 
   <dependencies>
      <dependency>

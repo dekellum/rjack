@@ -1,0 +1,10 @@
+History.rdoc
+Manifest.txt
+NOTICE.txt
+README.rdoc
+Rakefile
+assembly.xml
+pom.xml
+lib/rjack-qpid-client/base.rb
+lib/rjack-qpid-client.rb
+test/test_qpid_client.rb

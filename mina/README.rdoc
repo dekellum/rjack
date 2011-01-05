@@ -5,7 +5,7 @@
 
 == Description
 
-A gem packaging of {MINA}[http://http://mina.apache.org].
+A gem packaging of {MINA}[http://mina.apache.org].
 
 == License
 

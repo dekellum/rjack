@@ -216,7 +216,7 @@ module RJack
           dest = File.join( jar_dest, jar )
           file from => [ MVN_STATE_FILE ]
           file dest => [ from ] do
-            ln_sf( File.join( '..', '..', from ), dest )
+            ln( from, dest, :force => true )
           end
           [ :gem, :test ].each { |t| task t => [ dest ] }
         end

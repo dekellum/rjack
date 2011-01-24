@@ -1,0 +1,47 @@
+# -*- ruby -*-
+
+$LOAD_PATH << './lib'
+require 'rjack-jms/base'
+
+require 'rubygems'
+gem     'rjack-tarpit', '~> 1.2.0'
+require 'rjack-tarpit'
+
+include RJack
+
+t = TarPit.new( 'rjack-jms', JMS::VERSION,
+                :no_assembly, :java_platform )
+
+t.specify do |h|
+  h.developer( "David Kellum", "dek-oss@gravitext.com" )
+
+  h.extra_deps   += [ [ 'rjack-jms-spec',      '~> 1.1.1'           ],
+                      [ 'rjack-slf4j',         '>= 1.5.8',  '< 1.7' ] ]
+
+  h.extra_dev_deps << [ 'rjack-logback',       '>= 0.9.18', '< 2.0' ]
+
+  #FIXME: Logging needed?
+
+  h.rubyforge_name  = "rjack"
+  h.remote_rdoc_dir = "jms"
+end
+
+file 'Manifest.txt' => [ "lib/#{t.name}/base.rb" ]
+
+task :check_pom_deps do
+  t.test_line_match( 'pom.xml',
+                     %r[<version>#{ JMS::VERSION }</version>] )
+end
+
+task :check_history_version do
+  t.test_line_match( 'History.rdoc', /^==/, / #{t.version} / )
+end
+task :check_history_date do
+  t.test_line_match( 'History.rdoc', /^==/, /\([0-9\-]+\)$/ )
+end
+
+task :gem  => [ :check_pom_deps, :check_history_version                      ]
+task :tag  => [ :check_pom_deps, :check_history_version, :check_history_date ]
+task :push => [                                          :check_history_date ]
+
+t.define_tasks

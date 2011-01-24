@@ -14,7 +14,7 @@
  * permissions and limitations under the License.
  */
 
-package iudex.jms;
+package rjack.jms;
 
 import javax.jms.Connection;
 import javax.jms.Destination;

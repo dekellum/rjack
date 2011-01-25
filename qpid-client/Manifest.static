@@ -7,4 +7,5 @@ assembly.xml
 pom.xml
 lib/rjack-qpid-client/base.rb
 lib/rjack-qpid-client.rb
+lib/rjack-qpid-client/qpid_jms_context.rb
 test/test_qpid_client.rb

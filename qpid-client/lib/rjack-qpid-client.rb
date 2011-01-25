@@ -16,11 +16,13 @@
 
 require 'rjack-qpid-client/base'
 
-require 'rjack-jms-spec'
+require 'rjack-jms'
 require 'rjack-mina'
 
 require 'rjack-slf4j'
 require 'rjack-slf4j/jcl-over-slf4j'
+
+require 'rjack-qpid-client/qpid_jms_context'
 
 # QpidClient module
 #

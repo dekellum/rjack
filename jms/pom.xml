@@ -26,6 +26,13 @@
   </licenses>
 
   <distributionManagement>
+    <repository>
+      <id>gravitext-release</id>
+      <name>Gravitext Repo</name>
+      <url>file:///home/david/src/oss/releases</url>
+      <layout>default</layout>
+      <uniqueVersion>false</uniqueVersion>
+    </repository>
     <site>
       <id>rjack-site</id>
       <url>file:///home/david/src/oss/site/rjack-jms</url>

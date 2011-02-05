@@ -1,2 +1,2 @@
-=== 1.1.1 (TBD)
+=== 1.1.1 (2011-2-5)
 * Initial release based on geronimo-jms_1.1_spec version 1.1.1.

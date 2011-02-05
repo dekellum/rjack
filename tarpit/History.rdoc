@@ -1,4 +1,11 @@
-=== 1.3.0 (TBD)
+=== 1.3.0 (2011-2-5)
+* Add new install_deps task to install missing or all gem
+  dev. dependencies.
+* Use hard links for jars to avoid package problems with rubygems 1.4+
+* Update to hoe 2.8.0 and drop now unnecessary explicit dependency on
+  rubyforge.
+* Update rdoc dependency to >= 2.5.11, < 3.6 (3.5.2 works well.)
+* Generate manifest only once per run.
 
 === 1.2.3 (2010-12-28)
 * Update rdoc dependency to >= 2.5.11, < 3.1 (3.0.1 works well.)

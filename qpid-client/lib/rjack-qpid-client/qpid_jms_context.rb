@@ -50,7 +50,7 @@ module RJack::QpidClient
     # See JNDI Properties, 3.2.2 Connection URLs
     attr_accessor :virtual_host
 
-    # Connection 'clientid' (default: 'default-clieint')
+    # Connection 'clientid' (default: 'default-client')
     # See JNDI Properties, 3.2.2 Connection URLs
     attr_accessor :client_id
 

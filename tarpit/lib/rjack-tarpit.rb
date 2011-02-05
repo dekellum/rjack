@@ -275,22 +275,34 @@ module RJack
           end
         end
 
-        desc "gem install any missing dev dependencies"
-        task :install_deps do
+        desc "gem install missing/all dev dependencies"
+        task( :install_deps, :force ) do |t,args|
           require 'rubygems'
           require 'rubygems/command_manager'
+          force = ( args[:force] == 'force' )
           ( @spec.extra_deps + @spec.extra_dev_deps ).each do |dep|
-            begin
-              gem( *dep )
-            rescue Gem::LoadError => e
-              puts "Missing: " + e
-              cm = Gem::CommandManager.instance
-              c = [ 'install', '--remote', '-V', dep.first ]
-              c += dep[1..-1].map { |r| [ '-v', r ] }.flatten
-              cm.run( gem_config( *c ) )
+            if force
+              gem_install_dep( dep )
+            else
+              begin
+                gem( *dep )
+              rescue Gem::LoadError => e
+                puts "Gem dep: " + e.to_s
+                gem_install_dep( dep )
+              end
             end
           end
         end
+      end
+
+      def gem_install_dep( dep )
+        puts "Install: " + dep.inspect
+        cm = Gem::CommandManager.instance
+        c = [ 'install', '--remote', '-V', dep.first ]
+        c += dep[1..-1].map { |r| [ '-v', r ] }.flatten
+        cm.run( gem_config( *c ) )
+      rescue Gem::SystemExitException
+        #ignore
       end
 
       def gem_file

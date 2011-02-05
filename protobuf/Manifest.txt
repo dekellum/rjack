@@ -6,4 +6,4 @@ assembly.xml
 pom.xml
 lib/rjack-protobuf/base.rb
 lib/rjack-protobuf.rb
-lib/rjack-protobuf/protobuf-java-2.3.0.jar
+lib/rjack-protobuf/protobuf-java-2.4.0.jar

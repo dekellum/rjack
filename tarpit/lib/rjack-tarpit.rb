@@ -281,8 +281,9 @@ module RJack
             rescue Gem::LoadError => e
               puts "Missing: " + e
               cm = Gem::CommandManager.instance
-              cm.run( gem_config( 'install', '--remote', '-V', dep.first,
-                                  '--version', dep[1..-1].join(', ') ) )
+              c = [ 'install', '--remote', '-V', dep.first ]
+              c += dep[1..-1].map { |r| [ '-v', r ] }.flatten
+              cm.run( gem_config( *c ) )
             end
           end
         end

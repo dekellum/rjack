@@ -1,0 +1,83 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>rjack</groupId>
+  <artifactId>rjack-jms</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0.0</version>
+  <name>Java Message Service Utilizes</name>
+
+  <developers>
+    <developer>
+      <id>david</id>
+      <name>David Kellum</name>
+      <email>dek-oss@[org]</email>
+      <organization>Gravitext</organization>
+      <organizationUrl>http://gravitext.com</organizationUrl>
+    </developer>
+  </developers>
+
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <distributionManagement>
+    <repository>
+      <id>gravitext-release</id>
+      <name>Gravitext Repo</name>
+      <url>file:///home/david/src/oss/releases</url>
+      <layout>default</layout>
+      <uniqueVersion>false</uniqueVersion>
+    </repository>
+    <site>
+      <id>rjack-site</id>
+      <url>file:///home/david/src/oss/site/rjack-jms</url>
+    </site>
+    <downloadUrl>http://gravitext.com/repo/releases/rjack-jms</downloadUrl>
+  </distributionManagement>
+
+  <dependencies>
+
+    <dependency>
+      <groupId>org.apache.geronimo.specs</groupId>
+      <artifactId>geronimo-jms_1.1_spec</artifactId>
+      <version>[1.1.1,1.2)</version>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <plugins>
+
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+          <optimize>true</optimize>
+          <debug>true</debug>
+          <encoding>UTF-8</encoding>
+          <showDeprecation>true</showDeprecation>
+          <showWarnings>true</showWarnings>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-source-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+    </plugins>
+  </build>
+
+</project>

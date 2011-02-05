@@ -1,0 +1,9 @@
+History.rdoc
+Manifest.txt
+NOTICE.txt
+README.rdoc
+Rakefile
+pom.xml
+lib/rjack-jms/base.rb
+lib/rjack-jms.rb
+test/test_jms.rb

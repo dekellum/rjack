@@ -1,0 +1,11 @@
+History.rdoc
+Manifest.txt
+NOTICE.txt
+README.rdoc
+Rakefile
+assembly.xml
+pom.xml
+lib/rjack-mina/base.rb
+lib/rjack-mina.rb
+test/test_mina.rb
+lib/rjack-mina/mina-core-1.0.10.jar

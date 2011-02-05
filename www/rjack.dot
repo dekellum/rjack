@@ -1,9 +1,10 @@
 digraph "RJack Gem Dependency Graph" {
   bgcolor="transparent";
-  rankdir=TB;
-  size="7.4,10";
+  rankdir=RL;
+  size="7.0,8.0";
   node [ shape=box, style="filled,rounded", fillcolor="#f8df8b",
-         fontname="Arial", margin="0.30,0.1" ];
+         fontname="Arial", margin="0.15,0.1" ];
+  edge [ fontname="Arial" ];
 
   "rjack-jets3t" -> "rjack-httpclient";
   "rjack-jets3t" -> "rjack-commons-codec";
@@ -39,14 +40,25 @@ digraph "RJack Gem Dependency Graph" {
   "rjack-jetty-jsp" -> "rjack-jetty";
 
   "rjack-jetty" -> "rjack-logback" [ style=dashed, label="dev" ];
-  "rjack-jetty" -> "rjack-slf4j"   [ style=dashed, label="opt" ];
+  "rjack-jetty" -> "rjack-slf4j"   [ style=dashed, label="optional" ];
 
   "rjack-slf4j"   [ target=_parent, URL="slf4j/", group=log ];
   "rjack-logback" [ target=_parent, URL="logback/", group=log ];
 
   "rjack-logback" -> "rjack-slf4j";
 
-  "rjack-commons-codec"   [ target=_parent, URL="commons-codec/", group=commons ];
+  "rjack-commons-codec" [ target=_parent, URL="commons-codec/", group=commons ];
+
+  "rjack-jms-spec"    [ target=_parent, URL="jms-spec/", group=net ];
+  "rjack-jms"         [ target=_parent, URL="jms/", group=net ];
+  "rjack-mina"        [ target=_parent, URL="mina/", group=net ];
+  "rjack-qpid-client" [ target=_parent, URL="qpid-client/", group=net ];
+
+  "rjack-jms" -> "rjack-jms-spec";
+  "rjack-mina" -> "rjack-slf4j";
+  "rjack-qpid-client" -> "rjack-mina";
+  "rjack-qpid-client" -> "rjack-jms";
+  "rjack-qpid-client" -> "rjack-slf4j";
 
   subgraph d {
     rank=same
@@ -64,7 +76,7 @@ digraph "RJack Gem Dependency Graph" {
 
   subgraph t {
     rank=sink
-    "rjack-tarpit" [ target=_parent, URL="tarpit/" ];
+    "rjack-tarpit"          [ target=_parent, URL="tarpit/" ];
   }
 
 }

@@ -1,0 +1,7 @@
+rjack-jms-spec gem
+Copyright (c) 2011 David Kellum
+
+This product includes software developed by:
+
+Geronimo JMS 1.1 Spec Implementation (java)
+Copyright (c) 2003-2004 The Apache Software Foundation.

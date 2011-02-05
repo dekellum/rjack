@@ -244,7 +244,7 @@ module RJack
           tag = [ name, version ].join( '-' )
           dname = Rake.original_dir
           dname = '.' if Dir.getwd == dname
-          sh( "git status --only #{dname}" ) do |ok,res|
+          sh( "git status -- #{dname}" ) do |ok,res|
             if ok #changes present
               raise "Commit these changes before tagging."
             end

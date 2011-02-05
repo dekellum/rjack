@@ -270,6 +270,22 @@ module RJack
           cm = Gem::CommandManager.instance
           cm.run( gem_config( 'install', '--local', '-V', gem_file ) )
         end
+
+        desc "gem install any missing dev dependencies"
+        task :install_deps do
+          require 'rubygems'
+          require 'rubygems/command_manager'
+          ( @spec.extra_deps + @spec.extra_dev_deps ).each do |dep|
+            begin
+              gem( *dep )
+            rescue Gem::LoadError => e
+              puts "Missing: " + e
+              cm = Gem::CommandManager.instance
+              cm.run( gem_config( 'install', '--remote', '-V', dep.first,
+                                  '--version', dep[1..-1].join(', ') ) )
+            end
+          end
+        end
       end
 
       def gem_file

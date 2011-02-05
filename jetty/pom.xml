@@ -5,7 +5,7 @@
   <artifactId>rjack-jetty</artifactId>
   <packaging>jar</packaging>
   <version>1.0</version>
-  <name>Gravitext Test Servlets</name> -->
+  <name>Test Servlets</name> -->
 
   <dependencies>
 

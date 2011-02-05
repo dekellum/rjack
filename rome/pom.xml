@@ -5,6 +5,7 @@
   <artifactId>rjack-rome</artifactId>
   <packaging>pom</packaging>
   <version>1.0</version>
+  <name>ROME for Gem</name>
 
   <repositories>
     <repository>

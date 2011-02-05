@@ -5,7 +5,7 @@
   <artifactId>rjack-xerces</artifactId>
   <packaging>pom</packaging>
   <version>1.0</version>
-  <name>rjack xerces gem</name>
+  <name>Xerces for Gem</name>
 
   <dependencies>
      <dependency>

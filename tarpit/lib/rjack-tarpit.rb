@@ -263,12 +263,16 @@ module RJack
           cm.run( gem_config( 'push', '-V', gem_file ) )
         end
 
-        desc "gem install (default install dir)"
+        desc "gem(+maven) install"
         task :install => [ :gem ] do
           require 'rubygems'
           require 'rubygems/command_manager'
           cm = Gem::CommandManager.instance
-          cm.run( gem_config( 'install', '--local', '-V', gem_file ) )
+          begin
+            cm.run( gem_config( 'install', '--local', '-V', gem_file ) )
+          rescue Gem::SystemExitException
+            #ignore
+          end
         end
 
         desc "gem install any missing dev dependencies"

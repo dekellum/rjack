@@ -3,9 +3,12 @@
 $LOAD_PATH << './lib'
 require 'rubygems'
 
-# Use same hoe version for building gem plus this gem's dependency
-hoe_version = '~> 2.3.3'
-gem     'hoe', hoe_version
+tarpit_deps = [ [ 'rdoc', '>= 2.5.11', '< 3.6' ],
+                [ 'hoe',  '~> 2.8.0' ] ]
+
+# gem them here, so we can build tarpit with tarpit_deps
+tarpit_deps.each { |dep| gem( *dep ) }
+
 require 'rjack-tarpit'
 
 include RJack
@@ -14,9 +17,7 @@ t = TarPit.new( 'rjack-tarpit', TarPit::VERSION )
 
 t.specify do |h|
   h.developer( 'David Kellum', 'dek-oss@gravitext.com' )
-  h.extra_deps += [ [ 'rdoc',      '>= 2.5.11', '< 3.1' ],
-                    [ 'rubyforge', '~> 1.0.3'  ],
-                    [ 'hoe',       hoe_version ] ]
+  h.extra_deps += tarpit_deps
   h.rubyforge_name = 'rjack'
   h.remote_rdoc_dir = 'tarpit'
 end

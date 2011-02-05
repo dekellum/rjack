@@ -21,7 +21,7 @@ module RJack
   # Provides glue for Rake, Hoe, and Maven by generating tasks.
   module TarPit
     # Module version
-    VERSION = '1.2.3'
+    VERSION = '1.3.0'
 
     # Construct new task generator by gem name, version, and flags. A descendant
     # of BaseStrategy is returned.
@@ -216,7 +216,7 @@ module RJack
           dest = File.join( jar_dest, jar )
           file from => [ MVN_STATE_FILE ]
           file dest => [ from ] do
-            ln_sf( File.join( '..', '..', from ), dest )
+            ln( from, dest, :force => true )
           end
           [ :gem, :test ].each { |t| task t => [ dest ] }
         end
@@ -263,13 +263,46 @@ module RJack
           cm.run( gem_config( 'push', '-V', gem_file ) )
         end
 
-        desc "gem install (default install dir)"
+        desc "gem(+maven) install"
         task :install => [ :gem ] do
           require 'rubygems'
           require 'rubygems/command_manager'
           cm = Gem::CommandManager.instance
-          cm.run( gem_config( 'install', '--local', '-V', gem_file ) )
+          begin
+            cm.run( gem_config( 'install', '--local', '-V', gem_file ) )
+          rescue Gem::SystemExitException
+            #ignore
+          end
         end
+
+        desc "gem install missing/all dev dependencies"
+        task( :install_deps, :force ) do |t,args|
+          require 'rubygems'
+          require 'rubygems/command_manager'
+          force = ( args[:force] == 'force' )
+          ( @spec.extra_deps + @spec.extra_dev_deps ).each do |dep|
+            if force
+              gem_install_dep( dep )
+            else
+              begin
+                gem( *dep )
+              rescue Gem::LoadError => e
+                puts "Gem dep: " + e.to_s
+                gem_install_dep( dep )
+              end
+            end
+          end
+        end
+      end
+
+      def gem_install_dep( dep )
+        puts "Install: " + dep.inspect
+        cm = Gem::CommandManager.instance
+        c = [ 'install', '--remote', '-V', dep.first ]
+        c += dep[1..-1].map { |r| [ '-v', r ] }.flatten
+        cm.run( gem_config( *c ) )
+      rescue Gem::SystemExitException
+        #ignore
       end
 
       def gem_file
@@ -319,17 +352,20 @@ module RJack
 
       # Generate Manifest.txt
       def generate_manifest
-        remove_dest_jars
+        unless @generated_manifest #only once
+          remove_dest_jars
 
-        m = []
-        if File.exist?( 'Manifest.static' )
-          m += read_file_list( 'Manifest.static' )
+          m = []
+          if File.exist?( 'Manifest.static' )
+            m += read_file_list( 'Manifest.static' )
+          end
+          m += clean_list( generated_files ).sort
+          m += dest_jars
+
+          puts "TARPIT: Updating Manifest.txt"
+          open( 'Manifest.txt', 'w' ) { |out| out.puts m }
+          @generated_manifest = true
         end
-        m += clean_list( generated_files ).sort
-        m += dest_jars
-
-        puts "TARPIT: Updating Manifest.txt"
-        open( 'Manifest.txt', 'w' ) { |out| out.puts m }
       end
 
       # Remove jars in jar_dest by wildcard expression

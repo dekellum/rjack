@@ -319,17 +319,20 @@ module RJack
 
       # Generate Manifest.txt
       def generate_manifest
-        remove_dest_jars
+        unless @generated_manifest #only once
+          remove_dest_jars
 
-        m = []
-        if File.exist?( 'Manifest.static' )
-          m += read_file_list( 'Manifest.static' )
+          m = []
+          if File.exist?( 'Manifest.static' )
+            m += read_file_list( 'Manifest.static' )
+          end
+          m += clean_list( generated_files ).sort
+          m += dest_jars
+
+          puts "TARPIT: Updating Manifest.txt"
+          open( 'Manifest.txt', 'w' ) { |out| out.puts m }
+          @generated_manifest = true
         end
-        m += clean_list( generated_files ).sort
-        m += dest_jars
-
-        puts "TARPIT: Updating Manifest.txt"
-        open( 'Manifest.txt', 'w' ) { |out| out.puts m }
       end
 
       # Remove jars in jar_dest by wildcard expression

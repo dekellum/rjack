@@ -18,8 +18,6 @@ require 'rjack-jms/base'
 
 require 'rjack-jms-spec'
 
-require 'rjack-slf4j' #FIXME: Needed?
-
 module RJack
   module JMS
     require "rjack-jms/rjack-jms-#{VERSION}.jar"

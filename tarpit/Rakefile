@@ -4,7 +4,7 @@ $LOAD_PATH << './lib'
 require 'rubygems'
 
 # Use same hoe version for building gem plus this gem's dependency
-hoe_version = '~> 2.3.3'
+hoe_version = '~> 2.8.0'
 gem     'hoe', hoe_version
 require 'rjack-tarpit'
 

@@ -42,14 +42,6 @@
 
   <dependencies>
 
-    <!-- FIXME: Needed?
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-      <version>[1.6.1,1.7)</version>
-    </dependency>
-    -->
-
     <dependency>
       <groupId>org.apache.geronimo.specs</groupId>
       <artifactId>geronimo-jms_1.1_spec</artifactId>

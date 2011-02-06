@@ -18,8 +18,7 @@ t = TarPit.new( 'rjack-tarpit', TarPit::VERSION )
 t.specify do |h|
   h.developer( 'David Kellum', 'dek-oss@gravitext.com' )
   h.extra_deps += tarpit_deps
-  h.rubyforge_name = 'rjack'
-  h.remote_rdoc_dir = 'tarpit'
+  h.rdoc_locations << "dekellum@rubyforge.org:/var/www/gforge-projects/rjack/tarpit"
 end
 
 task :check_history_version do

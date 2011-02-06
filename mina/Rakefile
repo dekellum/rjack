@@ -15,8 +15,7 @@ t.specify do |h|
   h.developer( "David Kellum", "dek-oss@gravitext.com" )
   h.extra_deps     << [ 'rjack-slf4j',         '>= 1.5.8',  '< 1.7' ]
   h.extra_dev_deps << [ 'rjack-logback',       '>= 0.9.18', '< 2.0' ]
-  h.rubyforge_name  = "rjack"
-  h.remote_rdoc_dir = "mina"
+  h.rdoc_locations << "dekellum@rubyforge.org:/var/www/gforge-projects/rjack/mina"
 end
 
 t.jars = [ "mina-core-#{ Mina::CORE_VERSION }.jar" ]

@@ -71,17 +71,3 @@ Rake::RDocTask.new do |rd|
                            "#{gem}/lib/**/*.rb" )
   end
 end
-
-require 'rubygems'
-require 'yard'
-require 'yard/rake/yardoc_task'
-
-YARD::Rake::YardocTask.new do |t|
-  t.files  << "README.rdoc"
-
-  gems.each do |gem|
-    t.files += [ "#{gem}/README.rdoc",
-                 "#{gem}/History.rdoc",
-                 "#{gem}/lib/**/*.rb" ]
-  end
-end

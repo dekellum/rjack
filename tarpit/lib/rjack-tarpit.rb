@@ -244,10 +244,10 @@ module RJack
           tag = [ name, version ].join( '-' )
           dname = Rake.original_dir
           dname = '.' if Dir.getwd == dname
-          sh( "git status -- #{dname}" ) do |ok,res|
-            if ok #changes present
-              raise "Commit these changes before tagging."
-            end
+          delta = `git status --porcelain -- #{dname} 2>&1`.split(/^/)
+          if delta.length > 0
+            puts delta
+            raise "Commit these changes before tagging"
           end
           sh %{git tag -s -f -m "tag [#{tag}]" "#{tag}"}
         end

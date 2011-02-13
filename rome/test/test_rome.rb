@@ -1,7 +1,7 @@
 #!/usr/bin/env jruby
 #.hashdot.profile += jruby-shortlived
 #--
-# Copyright (c) 2009-2010 David Kellum
+# Copyright (c) 2009-2011 David Kellum
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you
 # may not use this file except in compliance with the License.  You

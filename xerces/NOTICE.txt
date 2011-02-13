@@ -1,5 +1,5 @@
 rjack-xerces gem
-Copyright (c) 2010 David Kellum
+Copyright (c) 2010-2011 David Kellum
 
 This product includes software developed by:
 

@@ -165,6 +165,7 @@ module RJack::QpidClient
       subject = opts.delete( :subject )
       out += '/' + subject.to_s if subject
       out += '; ' + option_serialize( opts ) if opts
+      out
     end
 
     # Serialize addresses options Hash

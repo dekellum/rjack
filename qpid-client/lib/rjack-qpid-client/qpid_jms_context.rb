@@ -106,6 +106,8 @@ module RJack::QpidClient
     # Throws javax.jms.JMSException, javax.naming.NamingException
     def create_connection
       connection_factory.create_connection
+    rescue NativeException => x
+      raise x.cause
     end
 
     # Create a
@@ -115,6 +117,8 @@ module RJack::QpidClient
     # Throws javax.jms.JMSException
     def create_session( connection )
       connection.create_session( false, session_acknowledge_mode )
+    rescue NativeException => x
+      raise x.cause
     end
 
     # Lookup (and thus create) a
@@ -128,6 +132,8 @@ module RJack::QpidClient
                  [ name,
                    address_serialize( name, @destinations[ name ] ) ] )
       context.lookup( name )
+    rescue NativeException => x
+      raise x.cause
     end
 
     # Close the JNDI context (no more lookups may be made.)

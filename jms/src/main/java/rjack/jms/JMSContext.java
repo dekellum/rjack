@@ -24,7 +24,7 @@ import javax.naming.NamingException;
 
 /**
  * A simple JMS setup facade which can hide such details as the JMS
- * Connection Factory, JNDI setup, context, and lookup, and session
+ * Connection Factory, JNDI setup, context, lookup, and session
  * creation options.
  */
 public interface JMSContext

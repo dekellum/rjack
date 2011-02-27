@@ -16,6 +16,9 @@ t.specify do |h|
   h.developer( "David Kellum", "dek-oss@gravitext.com" )
   h.extra_deps   += [ [ 'rjack-jms-spec', '~> 1.1.1' ] ]
   h.rdoc_locations << "dekellum@rubyforge.org:/var/www/gforge-projects/rjack/jms"
+
+  h.testlib = :minitest
+  h.extra_dev_deps += [ [ 'minitest', '>= 1.7.1', '< 2.1' ] ]
 end
 
 file 'Manifest.txt' => [ "lib/#{t.name}/base.rb" ]

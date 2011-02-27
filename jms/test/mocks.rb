@@ -40,8 +40,51 @@ class Context < TrackingMock
     called << :create_connection
     Connection.new
   end
+
+  def create_session( *args )
+    called << :create_session
+    TrackingMock.new
+  end
+
 end
 
 class Listener < TrackingMock
   include RJack::JMS::ConnectListener
+end
+
+class TestSessionStateFactory < TrackingMock
+  include RJack::JMS::SessionStateFactory
+
+  attr_reader :last_session
+  attr_reader :session_count
+
+  def create_session_state( *args )
+    called << :create_session_state
+    @session_count ||= 0
+    @session_count += 1
+    @last_session = TestSessionState.new( *args )
+  end
+
+end
+
+class TestSessionState < RJack::JMS::SessionState
+  def close
+    super
+    @closed = true
+  end
+
+  def closed?
+    @closed
+  end
+end
+
+class TestSessionTask < RJack::JMS::SessionTask
+  def initialize( &block )
+    super()
+    @block = block
+  end
+
+  def runTask( state )
+    @block.call( state )
+  end
 end

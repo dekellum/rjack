@@ -134,13 +134,11 @@ public class SessionExecutor<T extends SessionState>
 
         private void close()
         {
-            if( _state != null ) {
-                try {
-                    _state.close();
-                }
-                catch( JMSException x ) {
-                    _log.warn( "On close: ", x );
-                }
+            try {
+                _state.close();
+            }
+            catch( JMSException x ) {
+                _log.warn( "On close: ", x );
             }
         }
 

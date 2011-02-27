@@ -27,8 +27,7 @@ import javax.naming.NamingException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class JMSConnector
-    implements ExceptionListener, Runnable
+public class JMSConnector implements ExceptionListener
 {
     public JMSConnector( JMSContext context )
     {
@@ -80,7 +79,7 @@ public class JMSConnector
         if( _running ) {
             throw new IllegalStateException( "JMSConnector already running." );
         }
-        _thread = new Thread( this, "jms-cntr" );
+        _thread = new Thread( new ConnectRunner(), "jms-cntr" );
         _thread.setDaemon( true );
         _running = true; //Running as of now, avoid race in awaitConnection()
         _thread.start();
@@ -101,39 +100,11 @@ public class JMSConnector
         if( t != null ) t.join();
     }
 
-    public void run()
-    {
-        try {
-            connectLoop();
-        }
-        catch( JMSException x ) {
-            _log.error( "Connection loop terminated with: ", x );
-        }
-        catch( NamingException x ) {
-            _log.error( "Connection loop terminated with: ", x );
-        }
-    }
-
     public synchronized void connectLoop()
         throws JMSException, NamingException
     {
-        try {
-            _running = true;
-
-            while( _running ) {
-                connect();
-                wait( 1000 );
-            }
-        }
-        catch( InterruptedException i ) {
-            _log.warn( "In connectLoop:", i );
-        }
-        finally {
-            _running = false;
-            notifyAll();
-        }
-
-        //FIXME: Close connection on exit?
+        _running = true;
+        connectLoopPriv();
     }
 
     public synchronized Connection awaitConnection()
@@ -164,6 +135,42 @@ public class JMSConnector
              notifyAll();
          }
          safeClose( connection );
+    }
+
+    private class ConnectRunner implements Runnable
+    {
+        public synchronized void run()
+        {
+            try {
+                connectLoopPriv();
+            }
+            catch( JMSException x ) {
+                _log.error( "Connection loop terminated with: ", x );
+            }
+            catch( NamingException x ) {
+                _log.error( "Connection loop terminated with: ", x );
+            }
+        }
+    }
+
+    private synchronized void connectLoopPriv()
+        throws JMSException, NamingException
+    {
+        try {
+            while( _running ) {
+                connect();
+                wait( 1000 );
+            }
+        }
+        catch( InterruptedException i ) {
+            _log.warn( "In connectLoop:", i );
+        }
+        finally {
+            _running = false;
+            notifyAll();
+        }
+
+        //FIXME: Close connection on exit?
     }
 
     /**

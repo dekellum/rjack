@@ -14,11 +14,13 @@ t = TarPit.new( 'rjack-jms', JMS::VERSION,
 
 t.specify do |h|
   h.developer( "David Kellum", "dek-oss@gravitext.com" )
-  h.extra_deps   += [ [ 'rjack-jms-spec', '~> 1.1.1' ] ]
+  h.extra_deps   += [ [ 'rjack-slf4j',    '>= 1.5.8',  '< 1.7' ],
+                      [ 'rjack-jms-spec', '~> 1.1.1' ] ]
   h.rdoc_locations << "dekellum@rubyforge.org:/var/www/gforge-projects/rjack/jms"
 
   h.testlib = :minitest
-  h.extra_dev_deps += [ [ 'minitest', '>= 1.7.1', '< 2.1' ] ]
+  h.extra_dev_deps += [ [ 'rjack-logback', '>= 0.9.18', '< 2.0' ],
+                        [ 'minitest',      '>= 1.7.1',  '< 2.1' ] ]
 end
 
 file 'Manifest.txt' => [ "lib/#{t.name}/base.rb" ]

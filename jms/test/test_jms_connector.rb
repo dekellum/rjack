@@ -57,9 +57,10 @@ class TestJMSConnector < MiniTest::Unit::TestCase
     assert_includes( con.called, :start )
 
     con.exception_listener.on_exception( JMSException.new( "test" ) )
-    assert_includes( con.called, :close )
 
     con2 = @connector.await_connection
+    assert_includes( con.called, :close ) # closed in connection loop
+
     refute_equal( con, con2 )
     assert_includes( con2.called, :start )
 

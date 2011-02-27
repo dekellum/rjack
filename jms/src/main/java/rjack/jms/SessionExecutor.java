@@ -35,16 +35,29 @@ public class SessionExecutor<T extends SessionState>
     public SessionExecutor( JMSConnector connector,
                             SessionStateFactory<T> factory )
     {
+        this( connector, factory, 100 );
+    }
+
+    public SessionExecutor( JMSConnector connector,
+                            SessionStateFactory<T> factory,
+                            int queueLength )
+    {
+        this( connector, factory, queueLength, 1 );
+    }
+
+    public SessionExecutor( JMSConnector connector,
+                            SessionStateFactory<T> factory,
+                            int queueLength,
+                            int threads )
+    {
         _connector = connector;
         _factory = factory;
 
-        BlockingOfferQueue queue = new BlockingOfferQueue( 1000 );
-
-        //FIXME: Config depth, threads, etc.
+        BlockingOfferQueue queue = new BlockingOfferQueue( queueLength );
 
         _execService =
-            new ThreadPoolExecutor( 1, 1,
-                                    1, TimeUnit.SECONDS,
+            new ThreadPoolExecutor( threads, threads,
+                                    30, TimeUnit.SECONDS,
                                     queue,
                                     new SessionThreadFactory() );
     }

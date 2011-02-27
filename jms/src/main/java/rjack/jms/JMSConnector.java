@@ -128,13 +128,14 @@ public class JMSConnector implements ExceptionListener
          if( _log.isDebugEnabled() ) _log.warn( "onException: ", x );
          else _log.warn( "onException: {}", x.toString() );
 
-         Connection connection = null;
+         // Don't close the old connection here, since this can cause
+         // the JMS impl. to deadlock, e.g. Qpid 0.8
+         // Instead notify the connection loop to do it.
          synchronized( this ) {
-             connection = _connection;
+             _connectionToClose = _connection;
              _connection = null;
              notifyAll();
          }
-         safeClose( connection );
     }
 
     private class ConnectRunner implements Runnable
@@ -158,6 +159,11 @@ public class JMSConnector implements ExceptionListener
     {
         try {
             while( _running ) {
+                if( _connectionToClose != null ) {
+                    safeClose( _connectionToClose );
+                    _connectionToClose = null;
+                }
+
                 connect();
                 wait( 1000 );
             }
@@ -255,6 +261,7 @@ public class JMSConnector implements ExceptionListener
     private volatile boolean _running = false;
 
     private Connection _connection = null;
+    private Connection _connectionToClose = null;
 
     private Thread _thread = null;
 }

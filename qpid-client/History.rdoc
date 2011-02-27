@@ -1,2 +1,4 @@
+=== 0.8.1 (TBD)
+
 === 0.8.0 (2011-2-5)
 * Initial release based on Qpid java client 0.8

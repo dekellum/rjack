@@ -238,7 +238,9 @@ public class JMSConnector implements ExceptionListener
     private void safeClose( Connection connection )
     {
         try {
-            if( connection != null ) connection.close();
+            if( ( connection != null ) && _doCloseConnections ) {
+                connection.close();
+            }
         }
         catch( JMSException x ) {
             if( _log.isDebugEnabled() ) {
@@ -262,6 +264,7 @@ public class JMSConnector implements ExceptionListener
 
     private Connection _connection = null;
     private Connection _connectionToClose = null;
+    private boolean _doCloseConnections = false;
 
     private Thread _thread = null;
 }

@@ -54,10 +54,12 @@ public class SessionExecutor<T extends SessionState>
     {
         try {
             _execService.execute( task );
-
-            //FIXME: Or possibly just log these, as would be the case
-            //if added to queue?
         }
+
+        // A failure to connect via awaitConnection() could result in any of the
+        // following being thrown.
+        // FIXME: Or possibly just log these, as would be the case
+        // if added to queue?
         catch( JMSRuntimeException x ) {
             Throwable cause = x.getCause();
 
@@ -131,7 +133,6 @@ public class SessionExecutor<T extends SessionState>
 
         private final T _state;
         private final Logger _log = LoggerFactory.getLogger( getClass() );
-
     }
 
     static final class JMSRuntimeException
@@ -191,9 +192,10 @@ public class SessionExecutor<T extends SessionState>
             }
         }
     }
+
     private final ExecutorService _execService;
     private final JMSConnector _connector;
     private final SessionStateFactory<T> _factory;
 
-    private static AtomicInteger _factoryCounter = new AtomicInteger( 0 );
+    private static final AtomicInteger _factoryCounter = new AtomicInteger( 0 );
 }

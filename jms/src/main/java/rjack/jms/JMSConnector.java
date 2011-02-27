@@ -236,6 +236,9 @@ public class JMSConnector
     }
 
     private final JMSContext _context;
+    private final List<ConnectListener> _listeners =
+        new ArrayList<ConnectListener>();
+
     private final Logger _log = LoggerFactory.getLogger( getClass() );
 
     private int _minConnectPoll  =    16; //ms
@@ -245,8 +248,6 @@ public class JMSConnector
     private volatile boolean _running = false;
 
     private Connection _connection = null;
-
-    private List<ConnectListener> _listeners = new ArrayList<ConnectListener>();
 
     private Thread _thread = null;
 }

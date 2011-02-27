@@ -17,6 +17,7 @@
 require 'rjack-jms/base'
 
 require 'rjack-jms-spec'
+require 'rjack-slf4j'
 
 require 'java'
 

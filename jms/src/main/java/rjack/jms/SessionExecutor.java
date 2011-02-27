@@ -194,14 +194,15 @@ public class SessionExecutor<T extends SessionState>
         public boolean offer( Runnable e )
         {
             try {
-                put( e );
-                return true;
+                return offer( e, _offerTimeout, TimeUnit.MILLISECONDS );
             }
             catch( InterruptedException x ) {
                 Thread.currentThread().interrupt();
                 return false;
             }
         }
+
+        private final int _offerTimeout = 10000; //ms
     }
 
     private final ExecutorService _execService;

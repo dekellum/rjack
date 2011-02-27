@@ -6,5 +6,6 @@ Rakefile
 pom.xml
 lib/rjack-jms/base.rb
 lib/rjack-jms.rb
+test/mocks.rb
 test/setup.rb
 test/test_jms_connector.rb

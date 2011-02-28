@@ -46,6 +46,8 @@ class TestJets3t < Test::Unit::TestCase
 
   if File.exists?( 'test_opts.yaml' )
 
+    require 'yaml'
+
     def setup
       opts = File.open( 'test_opts.yaml' ) { |f| YAML::load( f ) }
       @s3 = S3Service.new( opts )

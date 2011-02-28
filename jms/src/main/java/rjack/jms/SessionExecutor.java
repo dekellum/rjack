@@ -62,6 +62,16 @@ public class SessionExecutor<T extends SessionState>
                                     new SessionThreadFactory() );
     }
 
+    public boolean isDoCloseSessions()
+    {
+        return _doCloseSessions;
+    }
+
+    public void setDoCloseSessions( boolean doCloseSessions )
+    {
+        _doCloseSessions = doCloseSessions;
+    }
+
     public void execute( SessionTask<T> task )
         throws JMSException, NamingException, InterruptedException
     {
@@ -99,16 +109,19 @@ public class SessionExecutor<T extends SessionState>
         return _execService.awaitTermination( timeout, unit );
     }
 
-    static class SessionThread<T extends SessionState> extends Thread
+    static class SessionThread<S extends SessionState> extends Thread
     {
         public SessionThread( Runnable r,
                               JMSConnector connector,
-                              SessionStateFactory<T> factory,
+                              SessionStateFactory<S> factory,
                               int factoryId,
-                              int threadId )
+                              int threadId,
+                              boolean doCloseSessions )
+
             throws InterruptedException, JMSException, NamingException
         {
             super( r, String.format( "jms-st-%d-%d", factoryId, threadId ) );
+            _doClose = doCloseSessions;
             Connection connection = connector.awaitConnection();
             _state = factory.createSessionState( connector.context(),
                                                  connection );
@@ -127,7 +140,7 @@ public class SessionExecutor<T extends SessionState>
             }
         }
 
-        public T state()
+        public S state()
         {
             return _state;
         }
@@ -135,14 +148,15 @@ public class SessionExecutor<T extends SessionState>
         private void close()
         {
             try {
-                _state.close();
+                if( _doClose ) _state.close();
             }
             catch( JMSException x ) {
                 _log.warn( "On close: ", x );
             }
         }
 
-        private final T _state;
+        private final S _state;
+        private final boolean _doClose;
         private final Logger _log = LoggerFactory.getLogger( getClass() );
     }
 
@@ -164,7 +178,8 @@ public class SessionExecutor<T extends SessionState>
                                              _connector,
                                              _factory,
                                              _factoryId,
-                                             _threadCounter.incrementAndGet() );
+                                             _threadCounter.incrementAndGet(),
+                                             _doCloseSessions );
             }
             catch( InterruptedException x ) {
                 Thread.currentThread().interrupt();
@@ -207,6 +222,7 @@ public class SessionExecutor<T extends SessionState>
     private final ExecutorService _execService;
     private final JMSConnector _connector;
     private final SessionStateFactory<T> _factory;
+    private boolean _doCloseSessions = true;
 
     private static final AtomicInteger _factoryCounter = new AtomicInteger( 0 );
 }

@@ -74,6 +74,16 @@ public class JMSConnector implements ExceptionListener
         _maxConnectDelay = maxConnectDelay;
     }
 
+    public boolean isDoCloseConnections()
+    {
+        return _doCloseConnections;
+    }
+
+    public void setDoCloseConnections( boolean doCloseConnections )
+    {
+        _doCloseConnections = doCloseConnections;
+    }
+
     public synchronized void start()
     {
         if( _running ) {
@@ -259,12 +269,12 @@ public class JMSConnector implements ExceptionListener
     private int _minConnectPoll  =    16; //ms
     private int _maxConnectPoll  =  2048;
     private int _maxConnectDelay = 30704;
+    private boolean _doCloseConnections = true;
 
     private volatile boolean _running = false;
 
     private Connection _connection = null;
     private Connection _connectionToClose = null;
-    private boolean _doCloseConnections = false;
 
     private Thread _thread = null;
 }

@@ -50,10 +50,20 @@ public class SessionExecutor<T extends SessionState>
                             int queueLength,
                             int threads )
     {
+        this( connector, factory, queueLength, threads, 10 * 1000 );
+    }
+
+    public SessionExecutor( JMSConnector connector,
+                            SessionStateFactory<T> factory,
+                            int queueLength,
+                            int threads,
+                            int offerTimeout )
+    {
         _connector = connector;
         _factory = factory;
 
-        BlockingOfferQueue queue = new BlockingOfferQueue( queueLength );
+        BlockingOfferQueue queue =
+            new BlockingOfferQueue( queueLength, offerTimeout );
 
         _execService =
             new ThreadPoolExecutor( threads, threads,
@@ -200,23 +210,25 @@ public class SessionExecutor<T extends SessionState>
     private static final class BlockingOfferQueue
         extends LinkedBlockingQueue<Runnable>
     {
-        public BlockingOfferQueue( int capacity )
+        public BlockingOfferQueue( int capacity, int offerTimeout )
         {
             super( capacity );
+            _offerTimeout = offerTimeout;
         }
 
         @Override
         public boolean offer( Runnable e )
         {
             try {
-                put( e );
-                return true;
+                return offer( e, _offerTimeout, TimeUnit.MILLISECONDS );
             }
             catch( InterruptedException x ) {
                 Thread.currentThread().interrupt();
                 return false;
             }
         }
+
+        private final int _offerTimeout; //ms
     }
 
     private final ExecutorService _execService;

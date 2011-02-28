@@ -17,12 +17,20 @@
 require 'rjack-jms/base'
 
 require 'rjack-jms-spec'
+require 'rjack-slf4j'
+
+require 'java'
 
 module RJack
   module JMS
     require "rjack-jms/rjack-jms-#{VERSION}.jar"
 
+    import 'rjack.jms.ConnectListener'
+    import 'rjack.jms.JMSConnector'
     import 'rjack.jms.JMSContext'
-
+    import 'rjack.jms.SessionExecutor'
+    import 'rjack.jms.SessionState'
+    import 'rjack.jms.SessionStateFactory'
+    import 'rjack.jms.SessionTask'
   end
 end

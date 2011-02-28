@@ -14,7 +14,7 @@ t = TarPit.new( 'rjack-qpid-client', QpidClient::VERSION, :java_platform )
 t.specify do |h|
   h.developer( "David Kellum", "dek-oss@gravitext.com" )
 
-  h.extra_deps   += [ [ 'rjack-jms',           '~> 1.0.0'           ],
+  h.extra_deps   += [ [ 'rjack-jms',           '>= 1.0.0',  '< 1.2' ],
                       [ 'rjack-mina',          '~> 1.0.10'          ],
                       [ 'rjack-slf4j',         '>= 1.5.8',  '< 1.7' ] ]
 

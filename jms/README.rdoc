@@ -5,7 +5,7 @@
 
 == Description
 
-Java Messaging Service utilities, with gem packaging.
+Java Messaging Service (JMS) utilities, with gem packaging.
 
 == License
 

@@ -1,4 +1,8 @@
 === 1.1.0 (TBD)
+* Added JMSConnector and ConnectListener for JMS (re-)connect.
+* Added SessionExecutor, SessionStateFactory, SessionTask for client
+  session thread pool support.
+* slf4j (and dev: logback) dependency for logging in above.
 
 === 1.0.0 (2011-2-5)
 * Initial release.

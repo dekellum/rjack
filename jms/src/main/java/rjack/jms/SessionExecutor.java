@@ -170,15 +170,6 @@ public class SessionExecutor<T extends SessionState>
         private final Logger _log = LoggerFactory.getLogger( getClass() );
     }
 
-    static final class JMSRuntimeException
-        extends RuntimeException
-    {
-        public JMSRuntimeException( Exception cause )
-        {
-            super( cause );
-        }
-    }
-
     private final class SessionThreadFactory implements ThreadFactory
     {
         public Thread newThread( Runnable r )

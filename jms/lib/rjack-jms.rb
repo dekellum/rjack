@@ -28,6 +28,7 @@ module RJack
     import 'rjack.jms.ConnectListener'
     import 'rjack.jms.JMSConnector'
     import 'rjack.jms.JMSContext'
+    import 'rjack.jms.JMSRuntimeException'
     import 'rjack.jms.SessionExecutor'
     import 'rjack.jms.SessionState'
     import 'rjack.jms.SessionStateFactory'

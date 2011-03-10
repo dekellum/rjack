@@ -16,25 +16,15 @@
 
 package rjack.jms;
 
-import javax.jms.JMSException;
-
-import rjack.jms.SessionExecutor.SessionThread;
-
-public abstract class SessionTask<T extends SessionState>
-    implements Runnable
+/**
+ * A unchecked wrapper for otherwise checked JMSException's or logical
+ * equivalents.
+ */
+public class JMSRuntimeException
+    extends RuntimeException
 {
-    public void run()
+    public JMSRuntimeException( Exception cause )
     {
-        @SuppressWarnings("unchecked")
-        SessionThread<T> st = ( SessionThread<T> ) Thread.currentThread();
-
-        try {
-            runTask( st.state() );
-        }
-        catch( JMSException x ) {
-            throw new JMSRuntimeException( x );
-        }
+        super( cause );
     }
-
-    public abstract void runTask( T state ) throws JMSException;
 }

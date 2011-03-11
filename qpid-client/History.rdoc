@@ -1,4 +1,4 @@
-=== 0.8.1 (TBD)
+=== 0.8.1 (2011-3-10)
 * Support rjack-jms [1.0,1.2)
 * Make sure Native exceptions in QpidJMSContext are raised as Java
   types to Java.

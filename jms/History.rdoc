@@ -1,4 +1,4 @@
-=== 1.1.0 (TBD)
+=== 1.1.0 (2011-3-10)
 * Added JMSConnector and ConnectListener for JMS (re-)connect.
 * Added SessionExecutor, SessionStateFactory, SessionTask for client
   session thread pool support.

@@ -1,0 +1,15 @@
+<assembly>
+  <id>bin</id>
+  <formats>
+    <format>dir</format>
+  </formats>
+  <includeBaseDirectory>false</includeBaseDirectory>
+  <dependencySets>
+    <dependencySet>
+      <includes>
+        <include>com.ning:async-http-client</include>
+        <include>org.jboss.netty:netty</include>
+      </includes>
+    </dependencySet>
+  </dependencySets>
+</assembly>

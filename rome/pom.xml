@@ -7,6 +7,10 @@
   <version>1.0</version>
   <name>ROME for Gem</name>
 
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
   <repositories>
     <repository>
       <id>maven2-repository.dev.java.net</id>
@@ -17,31 +21,29 @@
   </repositories>
 
   <dependencies>
-
     <dependency>
       <groupId>rome</groupId>
       <artifactId>rome</artifactId>
       <version>1.0</version>
     </dependency>
-
   </dependencies>
 
   <build>
     <plugins>
       <plugin>
         <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.1</version>
         <configuration>
           <descriptors>
             <descriptor>assembly.xml</descriptor>
           </descriptors>
-          <tarLongFileMode>gnu</tarLongFileMode>
         </configuration>
         <executions>
           <execution>
             <id>assembly</id>
             <phase>package</phase>
             <goals>
-              <goal>attached</goal>
+              <goal>single</goal>
             </goals>
           </execution>
         </executions>

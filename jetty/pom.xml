@@ -5,7 +5,11 @@
   <artifactId>rjack-jetty</artifactId>
   <packaging>jar</packaging>
   <version>1.0</version>
-  <name>Test Servlets</name> -->
+  <name>Test Servlets</name>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
 
   <dependencies>
 
@@ -45,24 +49,25 @@
     <plugins>
       <plugin>
         <artifactId>maven-assembly-plugin</artifactId>
+        <version>2.1</version>
         <configuration>
           <descriptors>
             <descriptor>assembly.xml</descriptor>
           </descriptors>
-          <tarLongFileMode>gnu</tarLongFileMode>
         </configuration>
         <executions>
           <execution>
             <id>assembly</id>
             <phase>package</phase>
             <goals>
-              <goal>attached</goal>
+              <goal>single</goal>
             </goals>
           </execution>
         </executions>
       </plugin>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.2</version>
         <configuration>
           <source>1.5</source>
           <target>1.5</target>

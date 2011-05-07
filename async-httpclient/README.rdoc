@@ -5,8 +5,9 @@
 
 == Description
 
-A gem packaging of the (Ning Inc., Jeanfrancois Arcand) {Async Http
-Client}[http://groups.google.com/group/asynchttpclient] for JRuby.
+A gem packaging of the (Ning Inc., Sonatype Inc., Jeanfrancois Arcand)
+{Async Http Client}[http://groups.google.com/group/asynchttpclient]
+for JRuby.
 
 * Provides async-http-client and netty jars.
 * Provides simple adaption for jruby based configuration.
@@ -57,6 +58,7 @@ permissions and limitations under the License.
 === Async Http Client (java)
 
 Copyright (c) 2010 Ning, Inc.
+Copyright (c) 2010-2011 Sonatype, Inc. All rights reserved.
 
 Ning licenses this file to you under the Apache License, version 2.0
 (the "License"); you may not use this file except in compliance with

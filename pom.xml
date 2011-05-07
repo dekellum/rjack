@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>rjack</groupId>
+  <artifactId>rjack-modules</artifactId>
+  <packaging>pom</packaging>
+  <version>1.0</version>
+  <name>Rjack maven modules list</name>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <modules>
+    <module>commons-codec</module>
+    <module>commons-dbcp</module>
+    <module>commons-dbutils</module>
+    <module>commons-pool</module>
+    <module>httpclient-3</module>
+    <module>httpclient-4</module>
+    <module>jdom</module>
+    <module>jets3t</module>
+    <module>jetty-jsp</module>
+    <module>jetty</module>
+    <module>jms</module>
+    <module>jms-spec</module>
+    <module>logback</module>
+    <module>mina</module>
+    <module>nekohtml</module>
+    <module>protobuf</module>
+    <module>qpid-client</module>
+    <module>rome</module>
+    <module>slf4j</module>
+    <module>xerces</module>
+  </modules>
+
+</project>

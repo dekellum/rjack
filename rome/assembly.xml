@@ -6,10 +6,9 @@
   <includeBaseDirectory>false</includeBaseDirectory>
   <dependencySets>
     <dependencySet>
+      <useProjectArtifact>false</useProjectArtifact>
       <includes>
-
         <include>rome:rome</include>
-
       </includes>
     </dependencySet>
   </dependencySets>

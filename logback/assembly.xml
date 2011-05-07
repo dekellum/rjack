@@ -6,6 +6,7 @@
   <includeBaseDirectory>false</includeBaseDirectory>
   <dependencySets>
     <dependencySet>
+      <useProjectArtifact>false</useProjectArtifact>
       <includes>
         <include>ch.qos.logback:logback-classic</include>
         <include>ch.qos.logback:logback-core</include>

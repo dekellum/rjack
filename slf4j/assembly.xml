@@ -6,6 +6,7 @@
   <includeBaseDirectory>false</includeBaseDirectory>
   <dependencySets>
     <dependencySet>
+      <useProjectArtifact>false</useProjectArtifact>
       <includes>
         <include>org.slf4j:slf4j-api</include>
         <include>org.slf4j:jcl-over-slf4j</include>

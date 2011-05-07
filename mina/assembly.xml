@@ -6,6 +6,7 @@
   <includeBaseDirectory>false</includeBaseDirectory>
   <dependencySets>
     <dependencySet>
+      <useProjectArtifact>false</useProjectArtifact>
       <includes>
         <include>org.apache.mina:mina-core</include>
       </includes>

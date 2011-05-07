@@ -6,6 +6,7 @@
   <includeBaseDirectory>false</includeBaseDirectory>
   <dependencySets>
     <dependencySet>
+      <useProjectArtifact>false</useProjectArtifact>
       <includes>
         <include>org.eclipse.jetty:jetty-jsp-2.1</include>
         <include>org.mortbay.jetty:jsp-api-2.1-glassfish</include>

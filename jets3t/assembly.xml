@@ -6,6 +6,7 @@
   <includeBaseDirectory>false</includeBaseDirectory>
   <dependencySets>
     <dependencySet>
+      <useProjectArtifact>false</useProjectArtifact>
       <includes>
         <include>net.java.dev.jets3t:jets3t</include>
         <include>com.jamesmurty.utils:java-xmlbuilder</include>

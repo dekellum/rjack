@@ -6,6 +6,7 @@
   <includeBaseDirectory>false</includeBaseDirectory>
   <dependencySets>
     <dependencySet>
+      <useProjectArtifact>false</useProjectArtifact>
       <includes>
         <include>com.ning:async-http-client</include>
         <include>org.jboss.netty:netty</include>

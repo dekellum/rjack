@@ -13,8 +13,7 @@ t = TarPit.new( 'rjack-commons-dbutils', CommonsDbUtils::VERSION, :java_platform
 
 t.specify do |h|
   h.developer( "David Kellum", "dek-oss@gravitext.com" )
-  h.rubyforge_name  = "rjack"
-  h.remote_rdoc_dir = "commons-dbutils"
+  h.rdoc_locations << "dekellum@rubyforge.org:/var/www/gforge-projects/rjack/commons-dbutils"
 end
 
 t.jars = [ "commons-dbutils-#{ CommonsDbUtils::DBUTILS_VERSION }.jar" ]

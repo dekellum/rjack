@@ -16,8 +16,7 @@ t = TarPit.new( 'rjack-jetty-jsp',
 t.specify do |h|
   h.developer( "David Kellum", "dek-oss@gravitext.com" )
   h.extra_deps << [ 'rjack-jetty', "~> #{Jetty::Jsp::JETTY_VERSION}.0" ]
-  h.rubyforge_name  = 'rjack'
-  h.remote_rdoc_dir = 'jetty-jsp'
+  h.rdoc_locations << "dekellum@rubyforge.org:/var/www/gforge-projects/rjack/jetty-jsp"
 end
 
 file 'webapps/test.war' => [ 'webapps/test/index.jsp',

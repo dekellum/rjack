@@ -14,7 +14,7 @@
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-jsp-2.1</artifactId>
-      <version>7.2.2.v20101205</version>
+      <version>7.4.1.v20110513</version>
     </dependency>
     <dependency>
       <groupId>org.mortbay.jetty</groupId>

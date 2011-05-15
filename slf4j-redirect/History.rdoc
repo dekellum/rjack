@@ -1,0 +1,24 @@
+=== 1.6 (TBD)
+* Re-release under the "slf4j" name as a simple wrapper for
+  rjack-slf4j ~> 1.6.1.
+
+=== 1.5.6.3 (2009-4-25)
+* Added SLF4J::JUL for controlling java.util.logging, including
+  JUL.replace_root_handlers which removes all existing handlers and
+  add SLF4JBridgeHandler for exclusive routing to SLF4J for use with
+  'jul-to-slf4j'.
+* Added require 'slf4j' to each adapter loader.
+* Use rdoc 2.4.3 and hoe 1.12.2 for build.
+
+=== 1.5.6.2 (2009-4-4)
+* Fixed previously lost rdoc due to base vs slf4j.rb manifest order.
+
+=== 1.5.6.1 (2008-12-6)
+* Upgraded to SLF4J 1.5.6
+* SLF4JBase -rename-> SLF4J
+
+=== 1.5.5.1 (2008-11-1)
+* Upgraded to SLF4J 1.5.5
+
+=== 1.5.3.1 (2008-10-8)
+* Initial release based on SLF4J 1.5.3

@@ -1,0 +1,16 @@
+Manifest.txt
+README.rdoc
+History.rdoc
+Rakefile
+lib/slf4j/base.rb
+lib/slf4j.rb
+test/test_slf4j.rb
+lib/slf4j/jcl-over-slf4j.rb
+lib/slf4j/jcl.rb
+lib/slf4j/jdk14.rb
+lib/slf4j/jul-to-slf4j.rb
+lib/slf4j/jul.rb
+lib/slf4j/log4j-over-slf4j.rb
+lib/slf4j/log4j12.rb
+lib/slf4j/nop.rb
+lib/slf4j/simple.rb

@@ -54,6 +54,7 @@ class TestJetty < Test::Unit::TestCase
       assert( server.is_started )
       assert( server.connectors[0].local_port > 0 )
       server.stop
+      server.join
       assert( server.is_stopped )
     end
   end
@@ -67,6 +68,7 @@ class TestJetty < Test::Unit::TestCase
     test_text = get( '/test.txt', port ).body
     assert_equal( File.read( File.join( TEST_DIR, 'test.txt' ) ), test_text )
     server.stop
+    server.join
   end
 
   class TestHandler < AbstractHandler
@@ -90,6 +92,7 @@ class TestJetty < Test::Unit::TestCase
     resp = get( '/whatever', port )
     assert_equal( TestHandler::TEST_TEXT, resp.body )
     server.stop
+    server.join
   end
 
   import 'javax.servlet.http.HttpServlet'
@@ -112,7 +115,7 @@ class TestJetty < Test::Unit::TestCase
         '/other' => TestServlet.new( 'resp-other' ) } )
 
     factory.set_context_servlets( '/',
-      { '/one' => TestServlet.new( 'resp-one' ),
+      { '/one'   => TestServlet.new( 'resp-one' ),
         '/snoop' => TestServlets::SnoopServlet.new } )
 
     server = factory.create
@@ -128,6 +131,7 @@ class TestJetty < Test::Unit::TestCase
     assert( get( '/snoop', port ).is_a?( Net::HTTPSuccess ) )
 
     server.stop
+    server.join
   end
 
   def test_webapp
@@ -148,6 +152,7 @@ class TestJetty < Test::Unit::TestCase
     assert( get( '/test/snoop/info?i=33', port ).is_a?( Net::HTTPSuccess ) )
 
     server.stop
+    server.join
   end
 
   def get( path, port )

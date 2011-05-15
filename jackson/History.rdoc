@@ -1,0 +1,2 @@
+=== 1.8.0.0 (TBD)
+* Initial release based on Jackson 1.8.0

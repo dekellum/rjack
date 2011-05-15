@@ -64,7 +64,7 @@ class TestJetty < Test::Unit::TestCase
     server = factory.create
     server.start
     port = server.connectors[0].local_port
-    test_text = Net::HTTP.get( 'localhost', '/test.txt', port )
+    test_text = get( '/test.txt', port ).body
     assert_equal( File.read( File.join( TEST_DIR, 'test.txt' ) ), test_text )
     server.stop
   end
@@ -87,8 +87,8 @@ class TestJetty < Test::Unit::TestCase
     server = factory.create
     server.start
     port = server.connectors[0].local_port
-    assert_equal( TestHandler::TEST_TEXT,
-                  Net::HTTP.get( 'localhost', '/whatever', port ) )
+    resp = get( '/whatever', port )
+    assert_equal( TestHandler::TEST_TEXT, resp.body )
     server.stop
   end
 
@@ -119,18 +119,13 @@ class TestJetty < Test::Unit::TestCase
     server.start
     port = server.connectors[0].local_port
 
-    assert_equal( 'resp-test',
-                  Net::HTTP.get( 'localhost', '/some/test', port ) )
-    assert_equal( 'resp-other',
-                  Net::HTTP.get( 'localhost', '/some/other', port ) )
-    assert_equal( 'resp-one',
-                  Net::HTTP.get( 'localhost', '/one', port ) )
+    assert_equal( 'resp-test',  get( '/some/test', port ).body )
+    assert_equal( 'resp-other', get( '/some/other', port ).body )
+    assert_equal( 'resp-one',   get( '/one', port ).body )
 
-    response = Net::HTTP.get_response( 'localhost', '/', port )
-    assert( response.is_a?( Net::HTTPNotFound ) )
+    assert( get( '/', port ).is_a?( Net::HTTPNotFound ) )
 
-    response = Net::HTTP.get_response( 'localhost', '/snoop', port )
-    assert( response.is_a?( Net::HTTPSuccess ) )
+    assert( get( '/snoop', port ).is_a?( Net::HTTPSuccess ) )
 
     server.stop
   end
@@ -147,12 +142,20 @@ class TestJetty < Test::Unit::TestCase
     server.start
     port = server.connectors[0].local_port
 
-    assert_equal( index_html, Net::HTTP.get( 'localhost', '/test/', port ) )
-    assert_equal( index_html, Net::HTTP.get( 'localhost', '/expanded/', port ) )
+    assert_equal( index_html, get( '/test/', port ).body )
+    assert_equal( index_html, get( '/expanded/', port ).body )
 
-    response = Net::HTTP.get_response( 'localhost', '/test/snoop/info?i=33', port )
-    assert( response.is_a?( Net::HTTPSuccess ) )
+    assert( get( '/test/snoop/info?i=33', port ).is_a?( Net::HTTPSuccess ) )
 
     server.stop
   end
+
+  def get( path, port )
+    Net::HTTP.start( 'localhost', port ) do |http|
+      http.open_timeout = 1.0
+      http.read_timeout = 1.0
+      http.get( path )
+    end
+  end
+
 end

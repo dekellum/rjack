@@ -11,8 +11,7 @@ t = RJack::TarPit.new( 'rjack-slf4j', RJack::SLF4J::VERSION, :java_platform )
 
 t.specify do |h|
   h.developer( "David Kellum", "dek-oss@gravitext.com" )
-  h.rubyforge_name = "rjack"
-  h.remote_rdoc_dir = "slf4j"
+  h.rdoc_locations << "dekellum@rubyforge.org:/var/www/gforge-projects/rjack/slf4j"
 end
 
 loaders =

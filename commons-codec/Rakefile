@@ -13,8 +13,7 @@ t = TarPit.new( 'rjack-commons-codec', CommonsCodec::VERSION, :java_platform )
 
 t.specify do |h|
   h.developer( "David Kellum", "dek-oss@gravitext.com" )
-  h.rubyforge_name = "rjack"
-  h.remote_rdoc_dir = "commons-codec"
+  h.rdoc_locations << "dekellum@rubyforge.org:/var/www/gforge-projects/rjack/commons-codec"
 end
 
 t.jars = [ "commons-codec-#{ CommonsCodec::CODEC_VERSION }.jar" ]

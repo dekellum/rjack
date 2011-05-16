@@ -119,8 +119,10 @@ module RJack
                      :static_contexts, :static_welcome_files,
                      :webapp_contexts,
                      :servlet_contexts,
-                     :stop_at_shutdown,
-                     :request_log_file )
+                     :stop_at_shutdown )
+
+      # Request log output to :stderr or file name (default: nil, no log)
+      attr_accessor  :request_log_file
 
       def initialize
         @port                 = 0        # Use any available port
@@ -160,7 +162,7 @@ module RJack
       # (default 20).
       def create_pool
         pool = QueuedThreadPool.new
-        pool.min_threads = [ @min_threads || ( @max_threads / 4 ), 1 ].max
+        pool.min_threads = [ @min_threads || ( @max_threads / 4 ), 2 ].max
         pool.max_threads = [ @max_threads, 3 ].max
         pool
       end
@@ -268,7 +270,11 @@ module RJack
 
       # Create a NCSARequestLog to append to log_file
       def create_request_log( log_file )
-        log = NCSARequestLog.new( log_file )
+        log = if log_file == :stderr
+                NCSARequestLog.new
+              else
+                NCSARequestLog.new( log_file )
+              end
         log.log_time_zone = java.util.TimeZone::getDefault.getID
         log.append = true;
         log

@@ -11,7 +11,6 @@
         <include>org.eclipse.jetty:jetty-jsp-2.1</include>
         <include>org.mortbay.jetty:jsp-api-2.1-glassfish</include>
         <include>org.mortbay.jetty:jsp-2.1-glassfish</include>
-        <include>org.eclipse.jdt:core</include>
         <include>org.eclipse.jdt.core.compiler:ecj</include>
       </includes>
     </dependencySet>

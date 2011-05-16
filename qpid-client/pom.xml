@@ -15,13 +15,7 @@
     <dependency>
       <groupId>org.apache.qpid</groupId>
       <artifactId>qpid-client</artifactId>
-      <version>0.8</version>
-    </dependency>
-
-    <dependency>
-      <groupId>org.apache.qpid</groupId>
-      <artifactId>qpid-common</artifactId>
-      <version>0.8</version>
+      <version>0.10</version>
     </dependency>
   </dependencies>
 

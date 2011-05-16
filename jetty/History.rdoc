@@ -1,4 +1,4 @@
-=== 7.4.1.0 (TBD)
+=== 7.4.1.0 (2011-5-15)
 * Update to Jetty 7.4.1.v20110513
 * Increase thread pool min_threads to 2 (fixes test hang with 7.3+)
 * Support creating NCSARequestLog to :stderr

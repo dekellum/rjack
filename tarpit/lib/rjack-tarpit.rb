@@ -270,8 +270,8 @@ module RJack
           cm = Gem::CommandManager.instance
           begin
             cm.run( gem_config( 'install', '--local', '-V', gem_file ) )
-          rescue Gem::SystemExitException
-            #ignore
+          rescue Gem::SystemExitException => x
+            raise "Install failed (#{x.exit_code})" if x.exit_code != 0
           end
         end
 
@@ -301,8 +301,8 @@ module RJack
         c = [ 'install', '--remote', '-V', dep.first ]
         c += dep[1..-1].map { |r| [ '-v', r ] }.flatten
         cm.run( gem_config( *c ) )
-      rescue Gem::SystemExitException
-        #ignore
+      rescue Gem::SystemExitException => x
+        raise "Install failed (#{x.exit_code})" if x.exit_code != 0
       end
 
       def gem_file

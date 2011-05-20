@@ -1,7 +1,7 @@
 = logback
 
+* http://rjack.rubyforge.org/logback-redirect
 * http://rjack.rubyforge.org
-* http://rubyforge.org/projects/rjack
 
 == Description
 

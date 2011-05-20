@@ -21,7 +21,7 @@ module RJack
   # Provides glue for Rake, Hoe, and Maven by generating tasks.
   module TarPit
     # Module version
-    VERSION = '1.3.0'
+    VERSION = '1.3.1'
 
     # Construct new task generator by gem name, version, and flags. A descendant
     # of BaseStrategy is returned.
@@ -270,8 +270,8 @@ module RJack
           cm = Gem::CommandManager.instance
           begin
             cm.run( gem_config( 'install', '--local', '-V', gem_file ) )
-          rescue Gem::SystemExitException
-            #ignore
+          rescue Gem::SystemExitException => x
+            raise "Install failed (#{x.exit_code})" if x.exit_code != 0
           end
         end
 
@@ -301,8 +301,8 @@ module RJack
         c = [ 'install', '--remote', '-V', dep.first ]
         c += dep[1..-1].map { |r| [ '-v', r ] }.flatten
         cm.run( gem_config( *c ) )
-      rescue Gem::SystemExitException
-        #ignore
+      rescue Gem::SystemExitException => x
+        raise "Install failed (#{x.exit_code})" if x.exit_code != 0
       end
 
       def gem_file

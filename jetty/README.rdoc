@@ -21,7 +21,7 @@ jetty-jsp[http://rjack.rubyforge.org/jetty-jsp/] gem.
 
 == Synopsis
 
-  % jetty-service -v
+  % rjack-jetty-service -v
   Usage: jetty-service [options]
       -p, --port N           Port to listen on (default: auto)
       -t, --threads N        Maximum pool threads (default: 20)
@@ -36,7 +36,7 @@ or
   require 'rjack-jetty'
   require 'rjack-jetty/test-servlets'
 
-  factory = Jetty::ServerFactory.new
+  factory = RJack::Jetty::ServerFactory.new
   factory.port = 8080
 
   factory.set_context_servlets( '/', '/*' => Jetty::TestServlets::SnoopServlet.new )

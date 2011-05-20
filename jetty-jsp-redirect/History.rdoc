@@ -1,4 +1,4 @@
-=== 6.2 (TBD)
+=== 6.2 (2011-5-19)
 * Re-release under the "jetty-jsp" name as a simple wrapper for
   rjack-jetty-jsp >= 6.1.26, < 7.
 

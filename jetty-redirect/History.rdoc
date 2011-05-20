@@ -1,4 +1,4 @@
-=== 6.2 (TBD)
+=== 6.2 (2011-5-19)
 * Re-release under the "jetty" name as a simple wrapper for
   rjack-jetty >= 6.1.26, < 7.
 

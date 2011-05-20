@@ -1,4 +1,4 @@
-=== 1.6 (TBD)
+=== 1.6 (2011-5-19)
 * Re-release under the "slf4j" name as a simple wrapper for
   rjack-slf4j ~> 1.6.1.
 

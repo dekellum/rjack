@@ -2,6 +2,7 @@
 
 * http://rjack.rubyforge.org/jetty-redirect
 * http://rjack.rubyforge.org
+* https://github.com/dekellum/rjack
 
 == Description
 

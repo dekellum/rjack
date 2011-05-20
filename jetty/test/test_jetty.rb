@@ -31,7 +31,10 @@ rescue Gem::LoadError
 end
 
 require 'rjack-jetty'
+
+require 'rjack-jetty/rewrite'
 require 'rjack-jetty/test-servlets'
+
 require 'test/unit'
 require 'net/http'
 

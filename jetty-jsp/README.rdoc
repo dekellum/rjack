@@ -1,7 +1,8 @@
 = rjack-jetty-jsp
 
+* http://rjack.rubyforge.org/jetty-jsp
 * http://rjack.rubyforge.org
-* http://rubyforge.org/projects/rjack
+* https://github.com/dekellum/rjack
 
 == Description
 

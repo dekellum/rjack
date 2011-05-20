@@ -1,7 +1,8 @@
 = rjack-commons-dbcp
 
+* http://rjack.rubyforge.org/commons-dbcp
 * http://rjack.rubyforge.org
-* http://rubyforge.org/projects/rjack
+* https://github.com/dekellum/rjack
 
 == Description
 

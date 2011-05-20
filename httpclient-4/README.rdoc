@@ -1,7 +1,8 @@
 = rjack-httpclient-4
 
+* http://rjack.rubyforge.org/httpclient-4
 * http://rjack.rubyforge.org
-* http://rubyforge.org/projects/rjack
+* https://github.com/dekellum/rjack
 
 == Description
 

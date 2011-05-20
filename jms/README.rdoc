@@ -1,7 +1,8 @@
 = rjack-jms
 
+* http://rjack.rubyforge.org/jms
 * http://rjack.rubyforge.org
-* http://rubyforge.org/projects/rjack
+* https://github.com/dekellum/rjack
 
 == Description
 

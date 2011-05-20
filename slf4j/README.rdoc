@@ -1,7 +1,8 @@
 = rjack-slf4j
 
+* http://rjack.rubyforge.org/slf4j
 * http://rjack.rubyforge.org
-* http://rubyforge.org/projects/rjack
+* https://github.com/dekellum/rjack
 
 == Description
 

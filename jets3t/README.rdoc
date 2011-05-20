@@ -1,7 +1,8 @@
 = rjack-jets3t
 
+* http://rjack.rubyforge.org/jets3t
 * http://rjack.rubyforge.org
-* http://rubyforge.org/projects/rjack
+* https://github.com/dekellum/rjack
 
 == Description
 

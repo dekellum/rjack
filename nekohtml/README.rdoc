@@ -1,7 +1,8 @@
 = rjack-nekohtml
 
+* http://rjack.rubyforge.org/nekohtml
 * http://rjack.rubyforge.org
-* http://rubyforge.org/projects/rjack
+* https://github.com/dekellum/rjack
 
 == Description
 

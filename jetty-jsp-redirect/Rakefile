@@ -1,0 +1,31 @@
+# -*- ruby -*-
+
+$LOAD_PATH << './lib'
+require 'jetty-jsp/base'
+
+require 'rubygems'
+gem     'rjack-tarpit', '~> 1.3.0'
+require 'rjack-tarpit'
+
+include RJack
+
+t = TarPit.new( 'jetty-jsp', JettyJspRedirect::VERSION, :java_platform )
+
+t.specify do |h|
+  h.developer( "David Kellum", "dek-oss@gravitext.com" )
+  h.extra_deps << [ 'rjack-jetty-jsp', '>= 6.1.26', '< 7' ]
+  h.rdoc_locations << "dekellum@rubyforge.org:/var/www/gforge-projects/rjack/jetty-jsp-redirect"
+end
+
+task :check_history_version do
+  t.test_line_match( 'History.rdoc', /^==/, / #{t.version} / )
+end
+task :check_history_date do
+  t.test_line_match( 'History.rdoc', /^==/, /\([0-9\-]+\)$/ )
+end
+
+task :gem  => [ :check_history_version                      ]
+task :tag  => [ :check_history_version, :check_history_date ]
+task :push => [                         :check_history_date ]
+
+t.define_tasks

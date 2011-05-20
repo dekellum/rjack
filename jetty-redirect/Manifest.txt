@@ -1,0 +1,10 @@
+History.rdoc
+Manifest.txt
+README.rdoc
+Rakefile
+bin/jetty-service
+lib/jetty/base.rb
+lib/jetty.rb
+lib/jetty/rewrite.rb
+lib/jetty/test-servlets.rb
+test/test_jetty.rb

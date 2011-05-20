@@ -1,0 +1,27 @@
+=== 6.2 (TBD)
+* Re-release under the "jetty-jsp" name as a simple wrapper for
+  rjack-jetty-jsp >= 6.1.26, < 7.
+
+=== 6.1.19.2.1.1 (2009-7-22)
+* Update to Jetty 6.1.19 JSP 2.1
+
+=== 6.1.18.2.1.1 (2009-5-29)
+* Update to Jetty 6.1.18 JSP 2.1
+
+=== 6.1.17.2.1.1 (2009-5-2)
+* Update to Jetty 6.1.17 JSP 2.1
+* Includes jsp-api-2.1-glassfish (9.1.1.B60.25.p0).
+
+=== 6.1.16.2.1.1 (2009-4-4)
+* Update to Jetty 6.1.16 JSP 2.1, which now uses externalized
+  jsp-2.1-glassfish and jsp-api-2.1-glassfish (9.1.1.B51.25.p1) jars.
+
+=== 6.1.14.2.1.1 (2008-12-6)
+* Update to Jetty 6.1.14
+* JettyJspBase -rename-> JettyJsp
+
+=== 6.1.12.2.1.1 (2008-11-7)
+* Update to Jetty 6.1.12
+
+=== 6.1.11.2.1.1 (2008-11-2)
+* Initial release based on Jetty Web Server 6.1.11 JSP 2.1

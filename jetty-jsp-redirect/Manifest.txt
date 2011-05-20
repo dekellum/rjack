@@ -1,0 +1,7 @@
+History.rdoc
+Manifest.txt
+README.rdoc
+Rakefile
+lib/jetty-jsp/base.rb
+lib/jetty-jsp.rb
+test/test_jsp.rb

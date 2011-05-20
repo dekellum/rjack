@@ -1,0 +1,46 @@
+= logback
+
+* http://rjack.rubyforge.org/logback-redirect
+* http://rjack.rubyforge.org
+* https://github.com/dekellum/rjack
+
+== Description
+
+*DEPRECATED*: Use the actively maintained rjack-logback instead. This
+gem has been re-released as a simple compatibly wrapper for the
+rjack-logback gem.
+
+== Synopsis
+
+  require 'logback'
+  Logback.config_console( :level => Logback::INFO )
+
+  log = RJack::SLF4J[ "my.app.logger" ]
+  log.info "Hello World!"
+
+== License
+
+=== logback gem
+
+Copyright (c) 2008-2011 David Kellum
+
+logback is free software: you can redistribute it and/or modify it
+under the terms of either of following licenses:
+
+* {GNU Lesser General Public License}[http://www.gnu.org/licenses/lgpl.html]
+  v3 or later
+* {Eclipse Public License v1.0}[http://www.eclipse.org/legal/epl-v10.html]
+
+rjack-logback is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+=== Logback (java)
+
+Copyright (c) 1999-2009, QOS.ch
+
+This program and the accompanying materials are dual-licensed under
+either the terms of the Eclipse Public License v1.0 as published by
+the Eclipse Foundation or (per the licensee's choosing) under the
+terms of the GNU Lesser General Public License version 2.1 as
+published by the Free Software Foundation.

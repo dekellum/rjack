@@ -49,8 +49,8 @@ source with maven:
 
 Besides the explicit gem dependencies, TarPit requires:
 
-* rake 0.8.7+ (currently bundled with JRuby 1.3)
-* Apache Maven 2.x ('mvn' command on path)
+* rake 0.8.7+ (bundled with JRuby 1.3+)
+* Apache Maven 2+ ('mvn' command on path)
 
 == License
 

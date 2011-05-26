@@ -109,6 +109,15 @@ class TestLevelSet < Test::Unit::TestCase
     assert( ! @log.warn? )
   end
 
+  def test_with_level
+    Logback.root.level = Logback::INFO
+    assert( ! @log.debug? )
+    Logback.root.with_level( Logback::DEBUG ) do
+      assert( @log.debug? )
+    end
+    assert( ! @log.debug? )
+  end
+
 end
 
 class TestJULPropagator < Test::Unit::TestCase

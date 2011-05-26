@@ -141,6 +141,18 @@ module RJack
         @jlogger.level = level
       end
 
+      # Adjust output level temporarily for block. This is not
+      # internally synchronized.
+      # ==== Parameters
+      # :level<Level>:: output Level.
+      def with_level( level )
+        orig = @jlogger.level
+        @jlogger.level = level
+        yield
+      ensure
+        @jlogger.level = orig
+      end
+
       # Add appender to this logger
       # ==== Parameters
       # :appender<ch.qos.logback.core.Appender>:: Appender

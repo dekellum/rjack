@@ -189,22 +189,26 @@ module RJack
 
       # Define a file task tracking calls to "mvn package"
       def define_maven_package_task
-        file MVN_STATE_FILE => maven_dependencies do
-          mvn = [ 'mvn', @install_request ? 'install' : 'package' ].join(' ')
-          sh( mvn ) do |ok,res|
-            if ok
-              touch( MVN_STATE_FILE )
-            else
-              raise "TARPIT: 'mvn package' failed."
-            end
+        [ MVN_STATE_FILE, MVN_STATE_FILE_INSTALL ].each do |sf|
+          file sf => maven_dependencies do
+            run_maven
           end
         end
 
-        file MVN_STATE_FILE_INSTALL => MVN_STATE_FILE do
-          touch( MVN_STATE_FILE_INSTALL )
-        end
         task :install => MVN_STATE_FILE_INSTALL
+      end
 
+      # Run Maven mvn package or install and touch state files.
+      def run_maven
+        mvn = [ 'mvn', @install_request ? 'install' : 'package' ].join( ' ' )
+        sh( mvn ) do |ok,res|
+          if ok
+            touch( MVN_STATE_FILE )
+            touch( MVN_STATE_FILE_INSTALL ) if @install_request
+          else
+            raise "TARPIT: '#{mvn}' failed."
+          end
+        end
       end
 
       # Define file tasks for all jar symlinks and other misc. maven

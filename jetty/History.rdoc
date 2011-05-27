@@ -1,3 +1,8 @@
+=== 7.4.2.0 (2011-5-27)
+* Update to Jetty 7.4.2.v20110526
+* Fix rjack-jetty/rewrite loading
+* Fix README for old rjack- changes
+
 === 7.4.1.0 (2011-5-15)
 * Update to Jetty 7.4.1.v20110513
 * Increase thread pool min_threads to 2 (fixes test hang with 7.3+)

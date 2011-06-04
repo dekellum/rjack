@@ -43,6 +43,9 @@ module RJack
     # Rakefile (not :jars_from_assembly)
     class BaseStrategy
 
+      #For rack ~> 0.9.0
+      include Rake::DSL if defined?( Rake::DSL )
+
       # Name of gem as constructed.
       attr_reader :name
       # Version of gem as constructed.
@@ -461,8 +464,12 @@ module RJack
 end
 
 # Replace special Hoe development dependency with rjack-tarpit (which
-# itself depends on constrained version of Hoe.)
+# itself depends on a constrained version of Hoe.)
 class Hoe
+  # FIXME: Adjust Hoe for rack ~> 0.9.0 until we can update to a hoe
+  # that includes Rake::DSL itself.
+  include Rake::DSL if defined?( Rake::DSL )
+
   def add_dependencies
     self.extra_deps     = normalize_deps extra_deps
     self.extra_dev_deps = normalize_deps extra_dev_deps

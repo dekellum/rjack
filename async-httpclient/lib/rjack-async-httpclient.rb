@@ -27,6 +27,12 @@ module RJack
     import 'com.ning.http.client.AsyncHttpClientConfig'
     import 'com.ning.http.client.AsyncHttpClient'
 
+    module_function
+
+    def build_client( options )
+      AsyncHttpClient.new( build_client_config( options ) )
+    end
+
     def build_client_config( options )
       builder = AsyncHttpClientConfig::Builder.new
       options.each do |k,v|
@@ -34,8 +40,6 @@ module RJack
       end
       builder.build
     end
-
-    module_function :build_client_config
 
   end
 end

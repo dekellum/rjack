@@ -16,7 +16,7 @@
 
 module RJack
   module AsyncHTTPClient
-    CLIENT_VERSION = '1.6.3'
+    CLIENT_VERSION = '1.6.4'
     VERSION = CLIENT_VERSION + '.0'
 
     CLIENT_DIR = File.dirname( __FILE__ ) # :nodoc:

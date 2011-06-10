@@ -27,7 +27,7 @@ module RJack
   # === High level configuration
   #
   #   require 'rjack-logback'
-  #   RJack::Logback.config_console( :thread => true, :level => RJack::Logback::INFO )
+  #   RJack::Logback.config_console( :thread => true, :level => :info )
   #
   # === Low level configuration
   #
@@ -138,7 +138,7 @@ module RJack
       # ==== Parameters
       # :level<Level>:: New output Level.
       def level=( level )
-        @jlogger.level = level
+        @jlogger.level = Logback.to_level( level )
       end
 
       # Adjust output level temporarily for block. This is not
@@ -147,10 +147,10 @@ module RJack
       # :level<Level>:: output Level.
       def with_level( level )
         orig = @jlogger.level
-        @jlogger.level = level
+        self.level = level
         yield
       ensure
-        @jlogger.level = orig
+        self.level = orig
       end
 
       # Add appender to this logger
@@ -345,6 +345,15 @@ module RJack
     # Returns the special "root" Logger
     def self.root
       logger( "root" )
+    end
+
+    # Converts Symbol to Level constant, or return Level unaltered.
+    def self.to_level( l )
+      if l.is_a?( Symbol )
+        const_get( l.to_s.upcase.to_sym )
+      else
+        l
+      end
     end
 
   end

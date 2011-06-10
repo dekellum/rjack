@@ -18,15 +18,19 @@
 require 'rubygems'
 
 require 'rjack-logback'
-RJack::Logback.config_console( :level => RJack::Logback::DEBUG )
+RJack::Logback.config_console( :stderr => true, :level => RJack::Logback::WARN )
 
-require 'test/unit'
+require 'minitest/unit'
+require 'minitest/autorun'
 
 $LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
+if ARGV.include?( '-v' ) || ARGV.include?( '--verbose' )
+  RJack::Logback.root.level = RJack::Logback::DEBUG
+end
 
 require 'rjack-async-httpclient'
 
-class TestClient < Test::Unit::TestCase
+class TestClient < MiniTest::Unit::TestCase
   include RJack::AsyncHTTPClient
 
   def test_load
@@ -37,6 +41,29 @@ class TestClient < Test::Unit::TestCase
     client = AsyncHttpClient.new( cfg )
     client.close
 
+  end
+
+  def test_default_config
+    RJack::SLF4J[ self.class ].debug do
+      "Default config:\n" + build_client_config( {} ).to_s
+    end
+    pass
+  end
+
+  def test_config_as_hash_round_trip
+    sfun = method :select_basic
+
+    cfg0 = build_client_config( {} )
+    basics0 = cfg0.to_hash.select &sfun
+
+    cfg1 = build_client_config( basics0 )
+    basics1 = cfg1.to_hash.select &sfun
+
+    assert_equal( basics0, basics1 )
+  end
+
+  def select_basic( _, value )
+    ! value.respond_to?( :java_class )
   end
 
 end

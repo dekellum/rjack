@@ -109,6 +109,22 @@ class TestLevelSet < Test::Unit::TestCase
     assert( ! @log.warn? )
   end
 
+  def test_with_level
+    Logback.root.level = Logback::INFO
+    assert( ! @log.debug? )
+    Logback.root.with_level( Logback::DEBUG ) do
+      assert( @log.debug? )
+    end
+    assert( ! @log.debug? )
+  end
+
+   def test_symbol_level
+     Logback.root.level = :trace
+     assert( @log.trace? )
+     Logback.root.level = :info
+     assert( ! @log.debug? )
+   end
+
 end
 
 class TestJULPropagator < Test::Unit::TestCase
@@ -186,6 +202,13 @@ class TestConfigure < Test::Unit::TestCase
     log = SLF4J[ log_name ]
     log.debug( "test write to console" )
     assert_equal( 1, appender.count )
+  end
+
+  def test_config_console
+    Logback.config_console( :level => :info, :stderr => true )
+    log = SLF4J[ self.class.name ]
+    assert( log.info? )
+    assert( ! log.debug? )
   end
 
   def test_config_console_mdc

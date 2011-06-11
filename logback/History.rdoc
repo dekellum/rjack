@@ -1,5 +1,8 @@
 === 1.2.0.0 (TBD)
 * Upgraded to Logback 0.9.29
+* Add Logger.with_level &block utility for temporary level
+  changes. Useful in tests.
+* Allow equivalent symbols for Level constants
 
 === 1.1.1.0 (2011-2-5)
 * Upgraded to Logback 0.9.28

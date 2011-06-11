@@ -1,3 +1,6 @@
+=== 4.1.1.0 (TBD)
+* Upgrade to HttpClient 4.1.1
+
 === 4.0.3.0 (2010-12-28)
 * Upgrade to HttpComponents HttpClient 4.0.3
 

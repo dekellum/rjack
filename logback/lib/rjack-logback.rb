@@ -136,7 +136,7 @@ module RJack
 
       # Set output level
       # ==== Parameters
-      # :level<Level>:: New output Level.
+      # :level<Level || Symbol>:: New output Level.
       def level=( level )
         @jlogger.level = Logback.to_level( level )
       end
@@ -144,7 +144,7 @@ module RJack
       # Adjust output level temporarily for block. This is not
       # internally synchronized.
       # ==== Parameters
-      # :level<Level>:: output Level.
+      # :level<Level || Symbol>:: output Level.
       def with_level( level )
         orig = @jlogger.level
         self.level = level
@@ -292,7 +292,7 @@ module RJack
     # :stderr:: Output to standard error? (default: false)
     # :full:: Output full date? (default: false, milliseconds)
     # :thread:: Output thread name? (default: false)
-    # :level<Level>:: Set root level (default: INFO)
+    # :level<Level || Symbol>:: Set root level (default: INFO)
     # :lwidth<~to_s>:: Logger width (default: :full ? 35 : 30)
     # :mdc<String|Array[String]>:: One or more Mapped Diagnostic Context keys
     # :mdc_width<~to_s}:: MDC width (default: unspecified)

@@ -206,6 +206,9 @@ class TestConfigure < Test::Unit::TestCase
 
   def test_config_console
     Logback.config_console( :level => :info, :stderr => true )
+    log = SLF4J[ self.class.name ]
+    assert( log.info? )
+    assert( ! log.debug? )
   end
 
   def test_config_console_mdc

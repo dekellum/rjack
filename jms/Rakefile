@@ -20,7 +20,7 @@ t.specify do |h|
 
   h.testlib = :minitest
   h.extra_dev_deps += [ [ 'rjack-logback', '>= 0.9.18', '< 2.0' ],
-                        [ 'minitest',      '>= 1.7.1',  '< 2.1' ] ]
+                        [ 'minitest',      '>= 1.7.1',  '< 2.3' ] ]
 end
 
 file 'Manifest.txt' => [ "lib/#{t.name}/base.rb" ]

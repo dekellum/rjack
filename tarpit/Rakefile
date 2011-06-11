@@ -3,7 +3,7 @@
 $LOAD_PATH << './lib'
 require 'rubygems'
 
-tarpit_deps = [ [ 'rdoc', '>= 2.5.11', '< 3.6' ],
+tarpit_deps = [ [ 'rdoc', '>= 2.5.11', '< 3.7' ],
                 [ 'hoe',  '~> 2.8.0' ] ]
 
 # gem them here, so we can build tarpit with tarpit_deps

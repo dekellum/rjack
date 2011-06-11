@@ -2,6 +2,7 @@
 * Fix case where :install task would omit running "mvn install" due to
   prior run of "mvn package".
 * Add conditional Rake::DSL includes for rake ~> 0.9.0.
+* Update rdoc dependency to >= 2.5.11, < 3.7 (3.6.1 works well.)
 
 === 1.3.1 (2011-5-19)
 * On gem install(_deps), only ignore gem SystemExitException when

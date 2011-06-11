@@ -55,10 +55,10 @@ class TestClient < MiniTest::Unit::TestCase
     sfun = method :select_basic
 
     cfg0 = build_client_config( {} )
-    basics0 = cfg0.to_hash.select &sfun
+    basics0 = cfg0.to_hash.select( &sfun )
 
     cfg1 = build_client_config( basics0 )
-    basics1 = cfg1.to_hash.select &sfun
+    basics1 = cfg1.to_hash.select( &sfun )
 
     assert_equal( basics0, basics1 )
   end

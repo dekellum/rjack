@@ -27,7 +27,7 @@ module RJack
   # === High level configuration
   #
   #   require 'rjack-logback'
-  #   RJack::Logback.config_console( :thread => true, :level => RJack::Logback::INFO )
+  #   RJack::Logback.config_console( :thread => true, :level => :info )
   #
   # === Low level configuration
   #
@@ -136,21 +136,21 @@ module RJack
 
       # Set output level
       # ==== Parameters
-      # :level<Level>:: New output Level.
+      # :level<Level || Symbol>:: New output Level.
       def level=( level )
-        @jlogger.level = level
+        @jlogger.level = Logback.to_level( level )
       end
 
       # Adjust output level temporarily for block. This is not
       # internally synchronized.
       # ==== Parameters
-      # :level<Level>:: output Level.
+      # :level<Level || Symbol>:: output Level.
       def with_level( level )
         orig = @jlogger.level
-        @jlogger.level = level
+        self.level = level
         yield
       ensure
-        @jlogger.level = orig
+        self.level = orig
       end
 
       # Add appender to this logger
@@ -292,7 +292,7 @@ module RJack
     # :stderr:: Output to standard error? (default: false)
     # :full:: Output full date? (default: false, milliseconds)
     # :thread:: Output thread name? (default: false)
-    # :level<Level>:: Set root level (default: INFO)
+    # :level<Level || Symbol>:: Set root level (default: INFO)
     # :lwidth<~to_s>:: Logger width (default: :full ? 35 : 30)
     # :mdc<String|Array[String]>:: One or more Mapped Diagnostic Context keys
     # :mdc_width<~to_s}:: MDC width (default: unspecified)
@@ -345,6 +345,15 @@ module RJack
     # Returns the special "root" Logger
     def self.root
       logger( "root" )
+    end
+
+    # Converts Symbol to Level constant, or return Level unaltered.
+    def self.to_level( l )
+      if l.is_a?( Symbol )
+        const_get( l.to_s.upcase.to_sym )
+      else
+        l
+      end
     end
 
   end

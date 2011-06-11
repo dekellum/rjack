@@ -1,4 +1,5 @@
 === 4.1.1.1 (TBD)
+* Explicitly include HttpCore 4.1.1 (HttpClient only requires 4.1)
 
 === 4.1.1.0 (2011-6-11)
 * Upgrade to HttpClient 4.1.1

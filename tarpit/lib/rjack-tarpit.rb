@@ -21,7 +21,7 @@ module RJack
   # Provides glue for Rake, Hoe, and Maven by generating tasks.
   module TarPit
     # Module version
-    VERSION = '1.3.1'
+    VERSION = '1.3.2'
 
     # Construct new task generator by gem name, version, and flags. A descendant
     # of BaseStrategy is returned.
@@ -42,6 +42,9 @@ module RJack
     # Base strategy implementation where jars are known by the
     # Rakefile (not :jars_from_assembly)
     class BaseStrategy
+
+      #For rack ~> 0.9.0
+      include Rake::DSL if defined?( Rake::DSL )
 
       # Name of gem as constructed.
       attr_reader :name
@@ -189,22 +192,26 @@ module RJack
 
       # Define a file task tracking calls to "mvn package"
       def define_maven_package_task
-        file MVN_STATE_FILE => maven_dependencies do
-          mvn = [ 'mvn', @install_request ? 'install' : 'package' ].join(' ')
-          sh( mvn ) do |ok,res|
-            if ok
-              touch( MVN_STATE_FILE )
-            else
-              raise "TARPIT: 'mvn package' failed."
-            end
+        [ MVN_STATE_FILE, MVN_STATE_FILE_INSTALL ].each do |sf|
+          file sf => maven_dependencies do
+            run_maven
           end
         end
 
-        file MVN_STATE_FILE_INSTALL => MVN_STATE_FILE do
-          touch( MVN_STATE_FILE_INSTALL )
-        end
         task :install => MVN_STATE_FILE_INSTALL
+      end
 
+      # Run Maven mvn package or install and touch state files.
+      def run_maven
+        mvn = [ 'mvn', @install_request ? 'install' : 'package' ].join( ' ' )
+        sh( mvn ) do |ok,res|
+          if ok
+            touch( MVN_STATE_FILE )
+            touch( MVN_STATE_FILE_INSTALL ) if @install_request
+          else
+            raise "TARPIT: '#{mvn}' failed."
+          end
+        end
       end
 
       # Define file tasks for all jar symlinks and other misc. maven
@@ -457,8 +464,12 @@ module RJack
 end
 
 # Replace special Hoe development dependency with rjack-tarpit (which
-# itself depends on constrained version of Hoe.)
+# itself depends on a constrained version of Hoe.)
 class Hoe
+  # FIXME: Adjust Hoe for rack ~> 0.9.0 until we can update to a hoe
+  # that includes Rake::DSL itself.
+  include Rake::DSL if defined?( Rake::DSL )
+
   def add_dependencies
     self.extra_deps     = normalize_deps extra_deps
     self.extra_dev_deps = normalize_deps extra_dev_deps

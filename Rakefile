@@ -3,6 +3,7 @@
 gems = %w[ tarpit
            slf4j
            logback
+           async-httpclient
            commons-pool
            commons-codec
            commons-dbcp

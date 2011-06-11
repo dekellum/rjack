@@ -13,6 +13,7 @@
   </properties>
 
   <modules>
+    <module>async-httpclient</module>
     <module>commons-codec</module>
     <module>commons-dbcp</module>
     <module>commons-dbutils</module>

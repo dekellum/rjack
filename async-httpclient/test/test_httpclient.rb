@@ -18,15 +18,16 @@
 require 'rubygems'
 
 require 'rjack-logback'
+
 RJack::Logback.config_console( :stderr => true, :level => RJack::Logback::WARN )
+if ARGV.include?( '-v' ) || ARGV.include?( '--verbose' )
+  RJack::Logback.root.level = RJack::Logback::DEBUG
+end
 
 require 'minitest/unit'
 require 'minitest/autorun'
 
 $LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
-if ARGV.include?( '-v' ) || ARGV.include?( '--verbose' )
-  RJack::Logback.root.level = RJack::Logback::DEBUG
-end
 
 require 'rjack-async-httpclient'
 

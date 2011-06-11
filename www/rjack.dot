@@ -55,10 +55,15 @@ digraph "RJack Gem Dependency Graph" {
   "rjack-logback"      -> "rjack-slf4j";
 
   "rjack-jms"          -> "rjack-jms-spec";
+  "rjack-jms"          -> "rjack-logback" [ style=dashed, label="dev" ];
+
   "rjack-mina"         -> "rjack-slf4j";
+  "rjack-mina"         -> "rjack-logback" [ style=dashed, label="dev" ];
+
   "rjack-qpid-client"  -> "rjack-mina";
   "rjack-qpid-client"  -> "rjack-jms";
   "rjack-qpid-client"  -> "rjack-slf4j";
+#  "rjack-qpid-client"  -> "rjack-logback" [ style=dashed, label="dev" ];
 
   "rjack-commons-dbcp" -> "rjack-commons-pool";
 

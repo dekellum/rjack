@@ -1,4 +1,4 @@
-=== 1.2.0.0 (TBD)
+=== 1.2.0.0 (2011-6-11)
 * Upgraded to Logback 0.9.29
 * Add Logger.with_level &block utility for temporary level
   changes. Useful in tests.

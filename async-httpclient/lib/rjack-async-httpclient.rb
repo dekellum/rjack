@@ -42,6 +42,8 @@ module RJack
         :ssl_connection_pool_enabled    => :allow_ssl_connection_pool
       }
 
+      # Return a Hash represention of self, suitable for use a template to
+      # AsyncHTTPClient.build_client
       def to_hash
         props = self.methods.
           map { |m| m =~ /^(is|get)_([a-z0-9_]+)$/ && $2 }.
@@ -57,6 +59,7 @@ module RJack
         end
       end
 
+      # Return sorted, multi-line print of to_hash
       def to_s
         out = "{ "
         kv = to_hash.sort { |p,n| p[0].to_s <=> n[0].to_s }
@@ -77,10 +80,15 @@ module RJack
 
     module_function
 
+    # Build a new AsyncHttpClient from build_client_config( options )
+    # Caller should close this client when done with it.
     def build_client( options )
       AsyncHttpClient.new( build_client_config( options ) )
     end
 
+    # Build AsyncHttpClientConfig from an options Hash
+    # Use AsyncHttpClientConfig.new.to_s or test_httpclient.rb -v to
+    # see available settings and defaults in Hash notation.
     def build_client_config( options )
       builder = AsyncHttpClientConfig::Builder.new
       options.each do |k,v|

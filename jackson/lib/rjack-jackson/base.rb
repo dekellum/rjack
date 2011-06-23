@@ -17,7 +17,7 @@
 module RJack
   module Jackson
 
-    JACKSON_VERSION = '1.8.1'
+    JACKSON_VERSION = '1.8.2'
 
     # rjack gem version
     VERSION = JACKSON_VERSION + '.0'

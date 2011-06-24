@@ -1,0 +1,15 @@
+<assembly>
+  <id>bin</id>
+  <formats>
+    <format>dir</format>
+  </formats>
+  <includeBaseDirectory>false</includeBaseDirectory>
+  <dependencySets>
+    <dependencySet>
+      <useProjectArtifact>false</useProjectArtifact>
+      <includes>
+        <include>com.ibm.icu:icu4j</include>
+      </includes>
+    </dependencySet>
+  </dependencySets>
+</assembly>

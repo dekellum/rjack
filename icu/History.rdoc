@@ -1,0 +1,2 @@
+=== 4.8.0 (TBD)
+* Initial release based on icu4j 4.8

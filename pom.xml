@@ -19,6 +19,7 @@
     <module>commons-pool</module>
     <module>httpclient-3</module>
     <module>httpclient-4</module>
+    <module>icu</module>
     <module>jackson</module>
     <module>jdom</module>
     <module>jets3t</module>

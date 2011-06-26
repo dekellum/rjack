@@ -47,7 +47,8 @@ additional gem release number.</p>
 </div>
 
 <table class="gems">
-<tr class="odd">
+
+<tr <% if row.next %>class="odd"<% end %>>
 <td class="gemlink">
 <a title="rdoc" href="tarpit/">rjack-tarpit</a>
 </td>
@@ -62,7 +63,7 @@ projects.</p>
 </td>
 </tr>
 
-<tr>
+<tr <% if row.next %>class="odd"<% end %>>
 <td class="gemlink">
 <div><a title="rdoc" href="slf4j/"  >rjack-slf4j</a></div>
 <div><a title="rdoc" href="logback/">rjack-logback</a></div>
@@ -79,7 +80,23 @@ provides a facade for programmatic logback configuration in ruby. </p>
 </td>
 </tr>
 
-<tr class="odd">
+<tr <% if row.next %>class="odd"<% end %>>
+<td class="gemlink">
+<div><a title="rdoc" href="commons-codec/"  >rjack-commons-codec</a></div>
+<div><a title="rdoc" href="commons-dbcp/"   >rjack-commons-dbcp</a></div>
+<div><a title="rdoc" href="commons-dbutils/">rjack-commons-dbutils</a></div>
+<div><a title="rdoc" href="commons-pool/"   >rjack-commons-pool</a></div>
+</td>
+<td>
+<p><span class="sh">Commons:</span>
+
+Gems for various components from the
+<a href="http://commons.apache.org/">Commons</a> project.</p>
+
+</td>
+</tr>
+
+<tr <% if row.next %>class="odd"<% end %>>
 <td class="gemlink">
 <div><a title="rdoc" href="httpclient-3/">rjack-httpclient-3</a></div>
 <div><a title="rdoc" href="httpclient-4/">rjack-httpclient-4</a></div>
@@ -93,7 +110,8 @@ major version numbers to allow them to coexist in the same process and
 allow incremental upgrade to 4.x.</p>
 </td>
 </tr>
-<tr>
+
+<tr <% if row.next %>class="odd"<% end %>>
 <td class="gemlink">
 <div><a title="rdoc" href="jetty/"    >rjack-jetty</a></div>
 <div><a title="rdoc" href="jetty-jsp/">rjack-jetty-jsp</a></div>
@@ -111,7 +129,7 @@ when needed.</p>
 </td>
 </tr>
 
-<tr class="odd">
+<tr <% if row.next %>class="odd"<% end %>>
 <td class="gemlink">
 <div><a title="rdoc" href="jets3t/">rjack-jets3t</a></div>
 </td>
@@ -123,7 +141,7 @@ client to Amazon Simple Storage Service (S3) and CloudFront.</p>
 </td>
 </tr>
 
-<tr>
+<tr <% if row.next %>class="odd"<% end %>>
 <td class="gemlink">
 <div><a title="rdoc" href="jdom/">rjack-jdom</a></div>
 </td>
@@ -135,7 +153,7 @@ XML processor.</p>
 </td>
 </tr>
 
-<tr class="odd">
+<tr <% if row.next %>class="odd"<% end %>>
 <td class="gemlink">
 <div><a title="rdoc" href="rome/">rjack-rome</a></div>
 </td>
@@ -147,23 +165,7 @@ RSS/Atom feed parser and generator.</p>
 </td>
 </tr>
 
-<tr>
-<td class="gemlink">
-<div><a title="rdoc" href="commons-codec/"  >rjack-commons-codec</a></div>
-<div><a title="rdoc" href="commons-dbcp/"   >rjack-commons-dbcp</a></div>
-<div><a title="rdoc" href="commons-dbutils/">rjack-commons-dbutils</a></div>
-<div><a title="rdoc" href="commons-pool/"   >rjack-commons-pool</a></div>
-</td>
-<td>
-<p><span class="sh">Commons:</span>
-
-Gems for various components from the
-<a href="http://commons.apache.org/">Commons</a> project.</p>
-
-</td>
-</tr>
-
-<tr class="odd">
+<tr <% if row.next %>class="odd"<% end %>>
 <td class="gemlink">
 <div><a title="rdoc" href="nekohtml/">rjack-nekohtml</a></div>
 </td>
@@ -174,7 +176,7 @@ Parser.</p>
 </td>
 </tr>
 
-<tr>
+<tr <% if row.next %>class="odd"<% end %>>
 <td class="gemlink">
 <div><a title="rdoc" href="xerces/">rjack-xerces</a></div>
 </td>
@@ -185,7 +187,7 @@ XML Parser.</p>
 </td>
 </tr>
 
-<tr class="odd">
+<tr <% if row.next %>class="odd"<% end %>>
 <td class="gemlink">
 <div><a title="rdoc" href="jackson/">rjack-jackson</a></div>
 </td>
@@ -196,7 +198,7 @@ JSON Processor.</p>
 </td>
 </tr>
 
-<tr>
+<tr <% if row.next %>class="odd"<% end %>>
 <td class="gemlink">
 <div><a title="rdoc" href="protobuf/">rjack-protobuf</a></div>
 <div><a title="rdoc" href="jms/">rjack-jms</a></div>

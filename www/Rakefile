@@ -32,9 +32,22 @@ def erb_generate( src, target, bindvar )
   end
 end
 
+class RowCounter
+  def initialize
+    @row = 0
+  end
+
+  def next
+    @row += 1
+    !( ( @row % 2 ) == 0 )
+  end
+
+end
+
 file 'index.html' => [ 'index.erb', 'rjack.png' ] do
   id = `identify rjack.png`.strip
   m = id.match( /PNG (\d+)x(\d+)/ ) or raise id
   g = OpenStruct.new( :w => m[1], :h => m[2] )
+  row = RowCounter.new
   erb_generate( 'index.erb', 'index.html', binding )
 end

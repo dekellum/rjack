@@ -9,6 +9,7 @@ gems = %w[ tarpit
            commons-dbutils
            httpclient-3
            httpclient-4
+           icu
            jackson
            jdom
            jetty

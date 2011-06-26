@@ -1,0 +1,10 @@
+History.rdoc
+Manifest.txt
+README.rdoc
+Rakefile
+assembly.xml
+pom.xml
+lib/rjack-icu/base.rb
+lib/rjack-icu.rb
+test/test_icu.rb
+lib/rjack-icu/icu4j-4.8.jar

@@ -21,7 +21,7 @@ module RJack
   # Provides glue for Rake, Hoe, and Maven by generating tasks.
   module TarPit
     # Module version
-    VERSION = '1.3.2'
+    VERSION = '1.3.3'
 
     # Construct new task generator by gem name, version, and flags. A descendant
     # of BaseStrategy is returned.
@@ -126,13 +126,13 @@ module RJack
       # line_regex, and that first line additionally matches (optional)
       # pass_line_regex.
       # ==== Parameters
-      # files<~to_a>:: List of files to test
+      # files<Array(~)>:: List of files to test
       # line_regex<Regexp>:: Test first matching line
       # pass_line_regex:: Further test on match line (default: match all)
       # ==== Raises
       # RuntimeError:: on test failure.
       def test_line_match( files, line_regex, pass_line_regex = // )
-        files.to_a.each do |mfile|
+        Array( files ).each do |mfile|
           found = false
           open( mfile ) do |mf|
             num = 0
@@ -325,7 +325,7 @@ module RJack
       def gem_config( command, *args )
         cargs = [ 'gem', command ].map do |cmd|
           conf = Gem.configuration[ cmd ]
-          conf.is_a?( String ) ? conf.split( ' ' ) : conf.to_a
+          conf.is_a?( String ) ? conf.split( ' ' ) : Array( conf )
         end
         cargs.flatten!
         [ command ] + cargs + args
@@ -406,7 +406,7 @@ module RJack
 
       # Cleanup a list of files
       def clean_list( l )
-        l = l.to_a.compact
+        l = Array( l ).compact
         l.map! { |f| f.strip }
         l.map! { |f| f.empty? ? nil : f }
         l.compact!

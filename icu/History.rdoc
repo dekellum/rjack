@@ -1,2 +1,2 @@
-=== 4.8.0 (TBD)
-* Initial release based on icu4j 4.8
+=== 4.8.0 (2011-6-26)
+* Initial release based on ICU4J 4.8

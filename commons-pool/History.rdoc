@@ -1,3 +1,6 @@
+=== 1.5.6.0 (TBD)
+* Upgrade to commons-pool 1.5.6
+
 === 1.5.5.0 (2010-12-28)
 * Upgrade to commons-pool 1.5.5
 

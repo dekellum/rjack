@@ -18,7 +18,7 @@ module RJack
   module CommonsPool
 
     # Commons pool (java) version
-    POOL_VERSION = '1.5.5'
+    POOL_VERSION = '1.5.6'
 
     # rjack gem version
     VERSION = POOL_VERSION + '.0'

@@ -1,4 +1,5 @@
 History.rdoc
+Manifest.txt
 README.rdoc
 Rakefile
 assembly.xml

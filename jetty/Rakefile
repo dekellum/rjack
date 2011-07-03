@@ -19,7 +19,7 @@ end
 
 t.jars =
   begin
-    mods = %w[ webapp xml servlet security server continuation http io util rewrite ]
+    mods = %w[ webapp xml servlet security server continuation http io util rewrite client ]
     l = mods.map { |n| "jetty-#{n}-#{ Jetty::JETTY_VERSION }.#{ Jetty::JETTY_BUILD }.jar" }
     l << "servlet-api-#{ Jetty::SERVLET_API_VERSION }.jar"
     l << 'rjack-jetty-1.0.jar'

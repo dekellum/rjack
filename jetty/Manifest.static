@@ -7,6 +7,7 @@ pom.xml
 bin/rjack-jetty-service
 lib/rjack-jetty/base.rb
 lib/rjack-jetty.rb
+lib/rjack-jetty/client.rb
 lib/rjack-jetty/rewrite.rb
 lib/rjack-jetty/test-servlets.rb
 test/test.txt

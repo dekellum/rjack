@@ -1,3 +1,6 @@
+#!/usr/bin/env jruby
+#.hashdot.profile += jruby-shortlived
+
 #--
 # Copyright (c) 2010-2011 David Kellum
 # All rights reserved.
@@ -28,12 +31,16 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #++
 
-require 'rjack-protobuf/base'
+$LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
 
-require 'java'
+require 'rjack-protobuf'
 
-module RJack
-  module ProtoBuf
-    require "#{PB_DIR}/protobuf-java-#{PB_VERSION}.jar"
+require 'test/unit'
+
+class TestProtobuf < Test::Unit::TestCase
+  import 'com.google.protobuf.Message'
+
+  def test_load
+    assert true
   end
 end

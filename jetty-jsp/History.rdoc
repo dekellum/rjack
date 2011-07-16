@@ -1,5 +1,5 @@
-=== 7.4.3.0 (TBD)
-* Update to Jetty 7.4.3.v20110701
+=== 7.4.4.0 (TBD)
+* Update to Jetty 7.4.4.v20110707
 
 === 7.4.2.0 (2011-5-27)
 * Update to Jetty 7.4.2.v20110526

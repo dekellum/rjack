@@ -1,3 +1,7 @@
+=== 7.4.4.0 (TBD)
+* Update to Jetty 7.4.4.v20110707
+* Add jetty-client jar and rjack-jetty/client.rb loader.
+
 === 7.4.2.0 (2011-5-27)
 * Update to Jetty 7.4.2.v20110526
 * Fix rjack-jetty/rewrite loading

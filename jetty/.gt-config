@@ -7,6 +7,7 @@ Gravitext::DevTools.configure do |c|
     h.inception = 2008
     h.license = :apache
     h.exclusions += %w[ lib/rjack-jetty/rewrite.rb
+                        lib/rjack-jetty/client.rb
                         test/test.txt
                         webapps/test/**/* ]
   end

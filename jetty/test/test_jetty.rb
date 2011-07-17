@@ -32,6 +32,7 @@ end
 
 require 'rjack-jetty'
 
+require 'rjack-jetty/client'
 require 'rjack-jetty/rewrite'
 require 'rjack-jetty/test-servlets'
 

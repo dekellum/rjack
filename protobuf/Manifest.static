@@ -6,3 +6,4 @@ assembly.xml
 pom.xml
 lib/rjack-protobuf/base.rb
 lib/rjack-protobuf.rb
+test/test_protobuf.rb

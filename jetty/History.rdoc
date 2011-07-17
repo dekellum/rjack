@@ -1,4 +1,4 @@
-=== 7.4.4.0 (TBD)
+=== 7.4.4.0 (2011-7-16)
 * Update to Jetty 7.4.4.v20110707
 * Add jetty-client jar and rjack-jetty/client.rb loader.
 

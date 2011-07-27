@@ -1,2 +1,5 @@
+=== 4.8.1.0 (TBD)
+* Upgrade to ICU4J 4.8.1
+
 === 4.8.0 (2011-6-26)
 * Initial release based on ICU4J 4.8

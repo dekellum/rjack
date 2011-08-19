@@ -26,7 +26,7 @@ module RJack
   module SLF4J
 
     # SLF4J-java version
-    SLF4J_VERSION = '1.6.1'
+    SLF4J_VERSION = '1.6.2'
     # SLF4J gem version
     VERSION = SLF4J_VERSION + '.0'
 

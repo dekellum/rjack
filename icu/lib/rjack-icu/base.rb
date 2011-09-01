@@ -26,10 +26,10 @@ module RJack
   module ICU
 
     # icu4j (java) version
-    J_VERSION = '4.8.1'
+    J_VERSION = '4.8.1.1'
 
     # rjack gem version
-    VERSION = J_VERSION + '.0'
+    VERSION = J_VERSION + ''
 
     LIB_DIR = File.dirname( __FILE__ ) # :nodoc:
   end

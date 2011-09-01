@@ -162,8 +162,8 @@ module RJack
       # (default 20).
       def create_pool
         pool = QueuedThreadPool.new
-        pool.min_threads = [ @min_threads || ( @max_threads / 4 ), 2 ].max
-        pool.max_threads = [ @max_threads, 3 ].max
+        pool.min_threads = [ @min_threads || ( @max_threads / 4 ), 4 ].max
+        pool.max_threads = [ @max_threads, 5 ].max
         pool
       end
 

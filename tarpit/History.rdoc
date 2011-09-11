@@ -1,3 +1,5 @@
+=== 1.3.4 (TBD)
+
 === 1.3.3 (2011-6-26)
 * Ruby 1.9 compatibility fix; to_a -> Array()
 

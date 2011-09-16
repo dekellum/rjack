@@ -28,7 +28,7 @@ module RJack
 
     import 'org.apache.http.client.params.ClientParamBean'
     import 'org.apache.http.client.params.CookiePolicy'
-    import 'org.apache.http.conn.MultihomePlainSocketFactory'
+    import 'org.apache.http.conn.scheme.PlainSocketFactory'
     import 'org.apache.http.conn.params.ConnManagerParamBean'
     import 'org.apache.http.conn.params.ConnPerRouteBean'
     import 'org.apache.http.conn.scheme.Scheme'
@@ -119,14 +119,14 @@ module RJack
       # Create a default SchemeRegistry with http and https enabled.
       def create_scheme_registry
         sr = SchemeRegistry.new
-        sr.register( Scheme.new( "http",  plain_factory,  80 ) )
-        sr.register( Scheme.new( "https", ssl_factory,   443 ) )
+        sr.register( Scheme.new( "http",  80, plain_factory ) )
+        sr.register( Scheme.new( "https", 443, ssl_factory ) )
         sr
       end
 
       # Return MultihomePlainSocketFactory instance
       def plain_factory
-        MultihomePlainSocketFactory::socket_factory
+        PlainSocketFactory::socket_factory
       end
 
       # Return SSLSocketFactory instance

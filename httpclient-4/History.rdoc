@@ -1,4 +1,4 @@
-=== 4.1.2.1 (TBD)
+=== 4.1.2.1 (2011-9-16)
 * Adjust SchemaRegistry factory for backward incompatible change/bug
   in 4.1.2, adversely affecting SSL, as described and disregarded
   {here}[http://old.nabble.com/HttpClient-4.1.2-hostname-in-certificate-didn%27t-match-to32222087.html].

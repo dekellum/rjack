@@ -4,7 +4,7 @@ $LOAD_PATH << './lib'
 require 'rjack-rome/base'
 
 require 'rubygems'
-gem     'rjack-tarpit', '~> 1.3.0'
+gem     'rjack-tarpit', '~> 1.4'
 require 'rjack-tarpit'
 
 include RJack

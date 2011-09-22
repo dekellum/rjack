@@ -25,7 +25,7 @@ module RJack
   module Jetty
 
     def self.require_jar( name )
-      require File.join( JETTY_DIR, "#{name}-#{ JETTY_VERSION }.#{ JETTY_BUILD }.jar" )
+      require Dir.glob( "#{JETTY_DIR}/#{name}-*.jar" ).first
     end
 
     require_jar 'jetty-io'

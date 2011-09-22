@@ -21,7 +21,7 @@ module RJack
   # Provides glue for Rake, Hoe, and Maven by generating tasks.
   module TarPit
     # Module version
-    VERSION = '1.3.4'
+    VERSION = '1.4.0'
 
     # Construct new task generator by gem name, version, and flags. A descendant
     # of BaseStrategy is returned.

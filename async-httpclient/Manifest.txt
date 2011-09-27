@@ -7,5 +7,5 @@ pom.xml
 lib/rjack-async-httpclient/base.rb
 lib/rjack-async-httpclient.rb
 test/test_httpclient.rb
-lib/rjack-async-httpclient/async-http-client-1.6.4.jar
-lib/rjack-async-httpclient/netty-3.2.4.Final.jar
+lib/rjack-async-httpclient/async-http-client-1.6.5.jar
+lib/rjack-async-httpclient/netty-3.2.5.Final.jar

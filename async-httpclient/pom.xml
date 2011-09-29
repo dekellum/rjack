@@ -11,14 +11,6 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 
-  <repositories>
-    <repository>
-      <id>Sonatype</id>
-      <name>Sonatype Release</name>
-      <url>http://oss.sonatype.org/content/repositories/releases </url>
-    </repository>
-  </repositories>
-
   <dependencies>
     <dependency>
       <groupId>com.ning</groupId>

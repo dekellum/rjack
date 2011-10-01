@@ -5,7 +5,7 @@
 
 == Description
 
-A gem packaging of the (Ning Inc., Sonatype Inc., Jeanfrancois Arcand)
+A gem packaging of the
 {Async Http Client}[http://groups.google.com/group/asynchttpclient]
 for JRuby.
 
@@ -19,8 +19,8 @@ for JRuby.
 
  include RJack::AsyncHTTPClient
 
- client = build_client( { :idle_connection_timeout_in_ms => 10_000,
-                          :connection_timeout_in_ms => 4_000 } )
+ client = build_client( :idle_connection_timeout_in_ms => 10_000,
+                        :connection_timeout_in_ms => 4_000 )
  #...
  client.close
 
@@ -44,9 +44,8 @@ permissions and limitations under the License.
 
 === Async Http Client (java)
 
+Copyright (c) 2010-2011 Sonatype, Inc.
 Copyright (c) 2010 Ning, Inc.
-
-Copyright (c) 2010-2011 Sonatype, Inc. All rights reserved.
 
 Ning licenses this file to you under the Apache License, version 2.0
 (the "License"); you may not use this file except in compliance with

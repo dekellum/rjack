@@ -1,0 +1,9 @@
+History.rdoc
+Manifest.txt
+README.rdoc
+Rakefile
+assembly.xml
+pom.xml
+lib/rjack-async-httpclient/base.rb
+lib/rjack-async-httpclient.rb
+test/test_httpclient.rb

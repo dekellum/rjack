@@ -1,0 +1,2 @@
+=== 1.6.5.0 (TBD)
+* Inital release based on Async Http Client 1.6.5

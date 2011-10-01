@@ -1,0 +1,77 @@
+= rjack-async-httpclient
+
+* http://rjack.rubyforge.org
+* http://rubyforge.org/projects/rjack
+
+== Description
+
+A gem packaging of the (Ning Inc., Sonatype Inc., Jeanfrancois Arcand)
+{Async Http Client}[http://groups.google.com/group/asynchttpclient]
+for JRuby.
+
+* Provides async-http-client and netty jars.
+* Provides simple adaption for jruby based configuration.
+
+== Synopsis
+
+ require 'rjack-logback'
+ require 'rjack-async-httpclient'
+
+ include RJack::AsyncHTTPClient
+
+ client = build_client( { :idle_connection_timeout_in_ms => 10_000,
+                          :connection_timeout_in_ms => 4_000 } )
+ #...
+ client.close
+
+== License
+
+=== rjack-async-httpclient gem
+
+Copyright (c) 2011 David Kellum
+
+Licensed under the Apache License, Version 2.0 (the "License"); you
+may not use this file except in compliance with the License.  You
+may obtain a copy of the License at:
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+implied.  See the License for the specific language governing
+permissions and limitations under the License.
+
+=== Async Http Client (java)
+
+Copyright (c) 2010 Ning, Inc.
+
+Copyright (c) 2010-2011 Sonatype, Inc. All rights reserved.
+
+Ning licenses this file to you under the Apache License, version 2.0
+(the "License"); you may not use this file except in compliance with
+the License. You may obtain a copy of the License at:
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+implied. See the License for the specific language governing
+permissions and limitations under the License.
+
+=== Netty (java)
+
+Copyright (c) 2009 Red Hat, Inc.
+
+Red Hat licenses this file to you under the Apache License, version
+2.0 (the "License"); you may not use this file except in compliance
+with the License. You may obtain a copy of the License at:
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+implied. See the License for the specific language governing
+permissions and limitations under the License.

@@ -39,6 +39,8 @@ digraph "RJack Gem Dependency Graph" {
   "rjack-tarpit"        [ target=_parent, URL="tarpit/" ];
   "rjack-jackson"       [ target=_parent, URL="jackson/" ];
 
+  "rjack-async-httpclient" [ target=_parent, URL="async-httpclient/" ];
+
   "rjack-jets3t"       -> "rjack-logback" [ style=dashed, label="dev" ];
   "rjack-jets3t"       -> "rjack-httpclient";
   "rjack-jets3t"       -> "rjack-commons-codec";
@@ -68,6 +70,9 @@ digraph "RJack Gem Dependency Graph" {
 #  "rjack-qpid-client"  -> "rjack-logback" [ style=dashed, label="dev" ];
 
   "rjack-commons-dbcp" -> "rjack-commons-pool";
+
+  "rjack-async-httpclient" -> "rjack-slf4j"
+  "rjack-async-httpclient" -> "rjack-logback" [ style=dashed, label="dev" ];
 
 # for fitting only
   "rjack-jackson"         -> "rjack-icu"      [ style=invis ];

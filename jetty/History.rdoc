@@ -1,5 +1,7 @@
-=== 7.5.2.0 (TBD)
+=== 7.5.2.0 (2011-10-10)
 * Update to Jetty 7.5.2.v20111006
+* Upgraded to tarpit ~> 1.4 (dev)
+* Build test servlets with Java 1.6 source/target
 
 === 7.5.1.0 (2011-9-16)
 * Update to Jetty 7.5.1.v20110908

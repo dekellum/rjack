@@ -1,5 +1,6 @@
-=== 1.2.1.0 (TBD)
+=== 1.2.1.0 (2011-10-10)
 * Upgraded to Logback 0.9.30
+* Upgraded to tarpit ~> 1.4 (dev)
 
 === 1.2.0.0 (2011-6-11)
 * Upgraded to Logback 0.9.29

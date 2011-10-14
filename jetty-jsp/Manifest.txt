@@ -11,6 +11,6 @@ webapps/test/index.jsp
 webapps/test/WEB-INF/web.xml
 webapps/test.war
 lib/rjack-jetty-jsp/ecj-3.5.1.jar
-lib/rjack-jetty-jsp/jetty-jsp-2.1-7.5.2.v20111006.jar
+lib/rjack-jetty-jsp/jetty-jsp-2.1-7.5.3.v20111011.jar
 lib/rjack-jetty-jsp/jsp-2.1-glassfish-2.1.v20100127.jar
 lib/rjack-jetty-jsp/jsp-api-2.1-glassfish-2.1.v20100127.jar

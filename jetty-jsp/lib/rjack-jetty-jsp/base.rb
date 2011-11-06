@@ -17,10 +17,10 @@
 module RJack
   module Jetty
     module Jsp
-      JETTY_VERSION = '7.5.3'
+      JETTY_VERSION = '7.5.4'
       GEM_VERSION = '0'
       VERSION = [ JETTY_VERSION, GEM_VERSION ].join( '.' )
-      JETTY_BUILD = 'v20111011'
+      JETTY_BUILD = 'v20111024'
       JSP_VERSION = '2.1'
 
       JETTY_JSP_DIR = File.dirname( __FILE__ ) # :nodoc:

@@ -1,4 +1,4 @@
-=== 7.5.4.0 (TBD)
+=== 7.5.4.0 (2011-11-5)
 * Update to Jetty 7.5.4.v20111024
 * Includes glassfish jsp-impl 2.3.1-b10, ecj 3.7
 

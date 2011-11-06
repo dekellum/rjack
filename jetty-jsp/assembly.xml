@@ -9,9 +9,10 @@
       <useProjectArtifact>false</useProjectArtifact>
       <includes>
         <include>org.eclipse.jetty:jetty-jsp-2.1</include>
-        <include>org.mortbay.jetty:jsp-api-2.1-glassfish</include>
-        <include>org.mortbay.jetty:jsp-2.1-glassfish</include>
+        <include>org.glassfish.web:jsp-impl</include>
         <include>org.eclipse.jdt.core.compiler:ecj</include>
+        <include>javax.servlet.jsp:jsp-api</include>
+        <include>javax.el:el-api</include>
       </includes>
     </dependencySet>
   </dependencySets>

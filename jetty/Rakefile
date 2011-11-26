@@ -9,22 +9,13 @@ require 'rjack-tarpit'
 
 include RJack
 
-t = TarPit.new( 'rjack-jetty', Jetty::VERSION, :java_platform )
+t = TarPit.new( 'rjack-jetty', Jetty::VERSION, :jars_from_assembly, :java_platform )
 
 t.specify do |h|
   h.developer( "David Kellum", "dek-oss@gravitext.com" )
   h.extra_dev_deps << [ 'rjack-logback', '>= 0.9.18', '< 2.0' ]
   h.rdoc_locations << "dekellum@rubyforge.org:/var/www/gforge-projects/rjack/jetty"
 end
-
-t.jars =
-  begin
-    mods = %w[ webapp xml servlet security server continuation http io util rewrite client ]
-    l = mods.map { |n| "jetty-#{n}-#{ Jetty::JETTY_VERSION }.#{ Jetty::JETTY_BUILD }.jar" }
-    l << "servlet-api-#{ Jetty::SERVLET_API_VERSION }.jar"
-    l << 'rjack-jetty-1.0.jar'
-    l
-  end
 
 file 'Manifest.txt' => [ "lib/#{t.name}/base.rb" ]
 

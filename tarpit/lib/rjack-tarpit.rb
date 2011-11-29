@@ -14,14 +14,12 @@
 # permissions and limitations under the License.
 #++
 
-require 'hoe'
+require 'rjack-tarpit/base'
+require 'rjack-tarpit/spec'
+require 'rjack-tarpit/gem'
+require 'rjack-tarpit/clean'
 
-module RJack
-
-  # Provides glue for Rake, Hoe, and Maven by generating tasks.
-  module TarPit
-    # Module version
-    VERSION = '2.0.a.0'
+module RJack::TarPit
 
     # Construct new task generator by gem name, version, and flags. A descendant
     # of BaseStrategy is returned.
@@ -30,12 +28,11 @@ module RJack
     #                       set in Rakefile.
     # :no_assembly:: One jar created from source, jars=[default_jar],
     #                no assembly setup in maven.
-    # :java_platform:: Set gem specification platform to java.
-    def self.new( name, version, *flags )
+    def self.new( name, *flags )
       if flags.include?( :jars_from_assembly )
-        JarsFromAssembly.new( name, version, flags )
+        JarsFromAssembly.new( name, flags )
       else
-        BaseStrategy.new( name, version, flags )
+        BaseStrategy.new( name, flags )
       end
     end
 
@@ -46,10 +43,11 @@ module RJack
       #For rack ~> 0.9.0
       include Rake::DSL if defined?( Rake::DSL )
 
+      include GemTaskDefiner
+      include CleanTaskDefiner
+
       # Name of gem as constructed.
       attr_reader :name
-      # Version of gem as constructed.
-      attr_reader :version
 
       # The set of jar file names (without path) to include. May be
       # lazily computed by other strategies.
@@ -72,24 +70,33 @@ module RJack
       # [Default: version]
       attr_writer :assembly_version
 
+      attr_reader :spec
+
       # See TarPit.new
-      def initialize( name, version, flags )
+      def initialize( name, flags )
+        @defines = []
+        super()
+
+        @spec = nil
+        load_spec( name )
+
         @name = name
-        @version = version
         @flags = flags
         @jars = [ default_jar ] if @flags.include?( :no_assembly )
         @jar_dest = File.join( 'lib', @name )
-        @hoe_specifier = :unset
         @rdoc_diagram = false
-        @spec = nil
 
         @install_request =
           Rake.application.top_level_tasks.include?( "install" )
       end
 
+      def add_define_hook( sym )
+        @defines << sym
+      end
+
       # Return a default jar name built from name and version
       def default_jar
-        "#{name}-#{version}.jar"
+        "#{name}-#{spec.version}.jar"
       end
 
       # Specify gem project details, yielding Hoe instance to block
@@ -97,7 +104,7 @@ module RJack
       # valid in this block. The actual Hoe construction and execution
       # of block is deferred to define_tasks.
       def specify( &block )
-        @hoe_specifier = block
+        #FIXME: Adapt to Spec?
       end
 
       # Define all tasks based on provided details. In this strategy,
@@ -108,18 +115,14 @@ module RJack
         define_maven_package_task if jars
 
         if jars || generated_files
-          mtask = define_manifest_task
-
-          # The manifest needs to run before hoe_specify
-          mtask.invoke
+          define_manifest_task
         end
 
         define_post_maven_tasks if jars
 
-        hoe_specify
-
         define_git_tag
         define_gem_tasks
+        @defines.each { |sym| send( sym ) }
       end
 
       # Test that all specified files have at least one line matching
@@ -248,7 +251,7 @@ module RJack
       def define_git_tag
         desc "git tag current version"
         task :tag do
-          tag = [ name, version ].join( '-' )
+          tag = [ name, spec.version ].join( '-' )
           dname = Rake.original_dir
           dname = '.' if Dir.getwd == dname
           delta = `git status --porcelain -- #{dname} 2>&1`.split(/^/)
@@ -313,11 +316,9 @@ module RJack
       end
 
       def gem_file
-        parts = [ name, version ]
-        if @spec
-          pform = @spec.spec_extras[ :platform ]
-          parts << 'java' if ( pform && pform.os == 'java' )
-        end
+        parts = [ spec.name, spec.version ]
+        pform = spec.platform
+        parts << 'java' if ( pform && pform.os == 'java' )
 
         "pkg/#{ parts.join( '-' ) }.gem"
       end
@@ -329,32 +330,6 @@ module RJack
         end
         cargs.flatten!
         [ command ] + cargs + args
-      end
-
-      # Setup Hoe via Hoe.spec
-      def hoe_specify
-
-        unless @rdoc_diagram
-          # Silly Hoe sets up DOT with rdoc unless this is set.
-          ENV['NODOT'] = "no thanks"
-        end
-
-        unless @hoe_specifier == :unset
-          tp = self
-          outer = @hoe_specifier
-          jplat = @flags.include?( :java_platform )
-          @spec = Hoe.spec( @name ) do |h|
-
-            h.version = tp.version
-            h.readme_file  =  'README.rdoc' if File.exist?(  'README.rdoc' )
-            h.history_file = 'History.rdoc' if File.exist?( 'History.rdoc' )
-            h.extra_rdoc_files = FileList[ '*.rdoc' ]
-
-            h.spec_extras[ :platform ] = Gem::Platform.new( "java" ) if jplat
-
-            outer.call( h )
-          end
-        end
       end
 
       # Generate Manifest.txt
@@ -392,7 +367,7 @@ module RJack
 
         unless @flags.include?( :no_assembly )
           dirs << [ @assembly_name || name,
-                    @assembly_version || version,
+                    @assembly_version || spec.version,
                     'bin.dir' ].join('-')
         end
 
@@ -413,6 +388,11 @@ module RJack
         l
       end
 
+      def load_spec( name )
+        load "#{name}.gemspec"
+        @spec = RJack::TarPit.last_spec
+      end
+
     end
 
     # Strategy in which the jars are inferred only by inspecting the
@@ -421,8 +401,7 @@ module RJack
     # incorporated by explicitly running "jrake manifest"
     class JarsFromAssembly < BaseStrategy
 
-      # Define all tasks based on provided details. Don't invoke
-      # Manifest.txt before Hoe, just use whats already in place.
+      # Define all tasks based on provided details.
       def define_tasks
         define_maven_package_task
 
@@ -432,10 +411,9 @@ module RJack
 
         define_post_maven_tasks
 
-        hoe_specify
-
         define_git_tag
         define_gem_tasks
+        @defines.each { |sym| send( sym ) }
       end
 
       # For manifest, map destination jars from available jars in
@@ -459,23 +437,4 @@ module RJack
 
     end
 
-  end
-
-end
-
-# Replace special Hoe development dependency with rjack-tarpit (which
-# itself depends on a constrained version of Hoe.)
-class Hoe
-  # FIXME: Adjust Hoe for rack ~> 0.9.0 until we can update to a hoe
-  # that includes Rake::DSL itself.
-  include Rake::DSL if defined?( Rake::DSL )
-
-  def add_dependencies
-    self.extra_deps     = normalize_deps extra_deps
-    self.extra_dev_deps = normalize_deps extra_dev_deps
-
-    unless name == 'rjack-tarpit'
-      extra_dev_deps << [ 'rjack-tarpit', "~> #{ RJack::TarPit::VERSION }" ]
-    end
-  end
 end

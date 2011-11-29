@@ -1,0 +1,5 @@
+# -*- ruby -*-
+
+source :rubygems
+
+gemspec :name => 'rjack-tarpit'

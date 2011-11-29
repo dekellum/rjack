@@ -23,4 +23,6 @@ RJack::TarPit.specify do |s|
 
   s.extra_deps += [ [ 'rake', '~> 0.9.2' ],
                     [ 'rdoc', '~> 3.6'   ] ]
+
+  s.extra_dev_deps += [ [ 'minitest', '~> 2.3' ] ]
 end

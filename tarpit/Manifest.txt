@@ -5,6 +5,11 @@ README.rdoc
 Rakefile
 lib/rjack-tarpit/base.rb
 lib/rjack-tarpit.rb
+lib/rjack-tarpit/base_strategy.rb
 lib/rjack-tarpit/clean.rb
 lib/rjack-tarpit/gem.rb
+lib/rjack-tarpit/jars_from_assembly.rb
+lib/rjack-tarpit/line_match.rb
 lib/rjack-tarpit/spec.rb
+test/setup.rb
+test/test_tarpit.rb

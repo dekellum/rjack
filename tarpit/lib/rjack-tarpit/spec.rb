@@ -1,5 +1,7 @@
 require 'rjack-tarpit/base'
 
+require 'rake/file_list'
+
 module RJack::TarPit
 
   class << self
@@ -13,11 +15,13 @@ module RJack::TarPit
   class Spec < Gem::Specification
 
     # FIXME: Hoe
-    # Optional: The filename for the project readme. [default: README.txt]
+    # The filename for the project README
+    # (default: README.rdoc or README.txt is present)
     attr_accessor :readme_file
 
     # FIXME: Hoe
-    # Optional: The filename for the project history. [default: History.txt]
+    # The filename for the project History
+    # (default: History.rdoc or History.txt is present)
     attr_accessor :history_file
 
     # FIXME: Hoe
@@ -43,7 +47,7 @@ module RJack::TarPit
       @readme_file  = existing( %w[ README.rdoc README.txt ] )
       @history_file = existing( %w[ History.rdoc History.txt ] )
 
-      self.extra_rdoc_files += [ FileList[ '*.rdoc' ],
+      self.extra_rdoc_files += [ Rake::FileList[ '*.rdoc' ],
                                  @readme_file,
                                  @history_file ].flatten.compact.sort.uniq
 

@@ -16,6 +16,8 @@
 
 require 'rjack-tarpit/base'
 require 'rjack-tarpit/spec'
+
+require 'rjack-tarpit/test'
 require 'rjack-tarpit/gem'
 require 'rjack-tarpit/clean'
 require 'rjack-tarpit/line_match'
@@ -29,6 +31,7 @@ module RJack::TarPit
     #For rack ~> 0.9.0
     include Rake::DSL if defined?( Rake::DSL )
 
+    include TestTaskDefiner
     include GemTaskDefiner
     include CleanTaskDefiner
     include LineMatchTaskDefiner

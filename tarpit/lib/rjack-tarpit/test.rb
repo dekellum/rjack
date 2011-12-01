@@ -22,6 +22,8 @@ module RJack::TarPit
 
     def define_test_tasks
 
+      #FIXME: Add spec support like Hoe
+
       if test_loader == :mini_in_proc
 
         desc "Run minitest tests (in rake process)"
@@ -37,9 +39,10 @@ module RJack::TarPit
           FileList[ "test/test*.rb" ].each { |f| load f }
 
           MiniTest::Unit.new.run( ( ENV['TESTOPTS'] || '' ).split )
+          puts
         end
 
-     else
+      else
 
         require 'rake/testtask'
 
@@ -49,6 +52,9 @@ module RJack::TarPit
         end
 
       end
+
+      #FIXME: Make this conditional with above test (avoid empty?)
+      task :default => [ :test ]
 
     end
 

@@ -1,8 +1,6 @@
 # -*- ruby -*- encoding: utf-8 -*-
 
 $LOAD_PATH.unshift( File.join( File.dirname( __FILE__ ), 'lib' ) )
-# gem 'rjack-tarpit', '~> 2.0.a'
-
 require 'rjack-tarpit/spec'
 
 RJack::TarPit.specify do |s|

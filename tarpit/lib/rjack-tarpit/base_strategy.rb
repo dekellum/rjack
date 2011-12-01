@@ -21,6 +21,7 @@ require 'rjack-tarpit/test'
 require 'rjack-tarpit/gem'
 require 'rjack-tarpit/clean'
 require 'rjack-tarpit/line_match'
+require 'rjack-tarpit/doc'
 
 module RJack::TarPit
 
@@ -35,6 +36,7 @@ module RJack::TarPit
     include GemTaskDefiner
     include CleanTaskDefiner
     include LineMatchTaskDefiner
+    include DocTaskDefiner
 
     # Name of gem as constructed.
     attr_reader :name

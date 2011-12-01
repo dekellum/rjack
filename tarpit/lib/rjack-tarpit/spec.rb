@@ -7,12 +7,26 @@ module RJack::TarPit
   class << self
     attr_reader :last_spec
 
+    # Produce a Gem::Specification embellished with SpecHelper
+    # conveniences and yield to block
     def specify( &block )
-      @last_spec = Spec.new( &block )
+
+      # Embellish a Specification instance with SpecHelper.
+      #
+      # This way spec.to_yaml continues to be a Gem::Specification
+      # object. Deriving our own Specification subclass would cause
+      # problems with to_yaml.
+      spec = Gem::Specification.new
+      class << spec
+        include SpecHelper
+      end
+      spec.specify &block
+
+      @last_spec = spec
     end
   end
 
-  class Spec < Gem::Specification
+  module SpecHelper
 
     # FIXME: Hoe
     # The filename for the project README
@@ -26,22 +40,18 @@ module RJack::TarPit
 
     # FIXME: Hoe
     # Optional: An array of rubygem dependencies.
-    #
-    #   extra_deps << ['blah', '~> 1.0']
     attr_accessor :extra_deps
 
     # FIXME: Hoe
     # Optional: An array of rubygem developer dependencies.
     attr_accessor :extra_dev_deps
 
-    def initialize
-
-      # call with empty block
-      super() {}
-
+    def specify
       # Better defaults
       if File.exist?( 'Manifest.txt' )
-        self.files = File.open( 'Manifest.txt' ) { |fin| fin.readlines }.map { |f| f.strip }
+        self.files =
+          File.open( 'Manifest.txt' ) { |fin| fin.readlines }.
+          map { |f| f.strip }
       end
 
       @readme_file  = existing( %w[ README.rdoc README.txt ] )
@@ -89,7 +99,8 @@ module RJack::TarPit
       super( val.gsub( /\s+/, ' ' ).strip )
     end
 
-    # Override Gem::Specification to support simple platform symbol/string, i.e. :java
+    # Override Gem::Specification to support simple platform
+    # symbol/string, i.e. :java
     def platform=( val )
       if val.is_a?( Symbol ) || val.is_a?( String )
         val = Gem::Platform.new( val.to_s )

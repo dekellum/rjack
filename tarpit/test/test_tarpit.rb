@@ -24,8 +24,10 @@ class TestTarpit < MiniTest::Unit::TestCase
   include RJack
 
   def test
-    TarPit.new( "rjack-tarpit" )
-    pass
+    tp = TarPit.new( "rjack-tarpit" )
+    pass #load worked
+
+    assert_instance_of( Gem::Specification, tp.spec )
   end
 
 end

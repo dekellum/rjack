@@ -16,7 +16,8 @@ module RJack::TarPit
     def define_clean_tasks
       desc 'Clean up (common backup file patterns)'
       task :clean do
-        files = clean_globs.map { |p| Dir[ p ] }
+        globs = clean_globs + [ 'pkg', rdoc_dir ]
+        files = globs.map { |p| Dir[ p ] }.flatten
         rm_rf( files, :verbose => true ) unless files.empty?
       end
     end

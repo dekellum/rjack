@@ -1,7 +1,5 @@
 require 'rjack-tarpit/base'
 
-require 'rake/file_list'
-
 module RJack::TarPit
 
   class << self
@@ -57,7 +55,7 @@ module RJack::TarPit
       @readme_file  = existing( %w[ README.rdoc README.txt ] )
       @history_file = existing( %w[ History.rdoc History.txt ] )
 
-      self.extra_rdoc_files += [ Rake::FileList[ '*.rdoc' ],
+      self.extra_rdoc_files += [ Dir[ '*.rdoc' ],
                                  @readme_file,
                                  @history_file ].flatten.compact.sort.uniq
 

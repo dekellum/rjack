@@ -8,7 +8,7 @@ require 'jproject'
 class TestJProject < MiniTest::Unit::TestCase
 
   def test
-    pass
+    assert_equal( "Hello", JProject::Sample.hello )
   end
 
 end

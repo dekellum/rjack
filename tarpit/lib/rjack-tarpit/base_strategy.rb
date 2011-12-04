@@ -277,8 +277,7 @@ module RJack::TarPit
 
     def gem_file
       parts = [ spec.name, spec.version ]
-      pform = spec.platform
-      parts << 'java' if ( pform && pform.os == 'java' )
+      parts << 'java' if spec.platform == 'java'
 
       "pkg/#{ parts.join( '-' ) }.gem"
     end

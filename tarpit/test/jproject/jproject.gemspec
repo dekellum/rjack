@@ -21,10 +21,7 @@ RJack::TarPit.specify do |s|
       Project with a maven built java jar included
   DESC
 
-  s.platform = :java
+  s.platform = :java #FIXME: Should be default given the jar?
 
-  s.extra_deps += [ [ 'rjack-slf4j', '~> 1.6' ] ]
-
-  s.extra_dev_deps += [ [ 'minitest',      '~> 2.3' ],
-                        [ 'rjack-logback', '~> 1.2' ] ]
+  s.depend 'minitest', '~> 2.3', :dev
 end

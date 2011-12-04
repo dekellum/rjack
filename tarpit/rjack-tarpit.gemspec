@@ -19,8 +19,8 @@ RJack::TarPit.specify do |s|
 
   # s.platform = :java
 
-  s.extra_deps += [ [ 'rake', '~> 0.9.2' ],
-                    [ 'rdoc', '~> 3.6'   ] ]
+  s.depend 'rake',            '~> 0.9.2'
+  s.depend 'rdoc',            '~> 3.6'
+  s.depend 'minitest',        '~> 2.3',       :dev
 
-  s.extra_dev_deps += [ [ 'minitest', '~> 2.3' ] ]
 end

@@ -68,17 +68,18 @@ module RJack::TarPit
 
       yield self if block_given?
 
+      # Add any of the Hoe style dependencies
       @extra_deps.each do |dep|
         add_dependency( *dep )
       end
 
-      unless ( name == 'rjack-tarpit' ||
-               extra_dev_deps.find { |n,*v| n == 'rjack-tarpit' } )
-        extra_dev_deps << [ 'rjack-tarpit', "~> #{ RJack::TarPit::VERSION }" ]
-      end
-
       @extra_dev_deps.each do |dep|
         add_development_dependency( *dep )
+      end
+
+      unless ( name == 'rjack-tarpit' ||
+               dependencies.find { |n,*v| n == 'rjack-tarpit' } )
+        extra_dev_deps << [ 'rjack-tarpit', "~> #{ RJack::TarPit::VERSION }" ]
       end
 
     end
@@ -90,6 +91,18 @@ module RJack::TarPit
 
     # FIXME: Hoe compatible
     alias :developer :add_developer
+
+    # Add a dependencies by name, version requirements, and a final
+    # optional :dev or :development symbol indicating its for
+    # development.
+    def depend( name, *args )
+      if args.last == :dev || args.last == :development
+        args.pop
+        add_development_dependency( name, *args )
+      else
+        add_dependency( name, *args )
+      end
+    end
 
     def summary=( val )
       super( val.gsub( /\s+/, ' ' ).strip )

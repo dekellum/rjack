@@ -38,7 +38,8 @@ module RJack::TarPit
 
           FileList[ "test/test*.rb" ].each { |f| load f }
 
-          MiniTest::Unit.new.run( ( ENV['TESTOPTS'] || '' ).split )
+          code = MiniTest::Unit.new.run( ( ENV['TESTOPTS'] || '' ).split )
+          fail "test failed (#{code})" if code && code > 0
           puts
         end
 

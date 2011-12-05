@@ -38,9 +38,6 @@ module RJack::TarPit
     include LineMatchTaskDefiner
     include DocTaskDefiner
 
-    # Name of gem as constructed.
-    attr_reader :name
-
     # The set of jar file names (without path) to include. May be
     # lazily computed by other strategies.
     attr_accessor :jars
@@ -72,10 +69,9 @@ module RJack::TarPit
       @spec = nil
       load_spec( name )
 
-      @name = name
       @flags = flags
       @jars = [ default_jar ] if @flags.include?( :no_assembly )
-      @jar_dest = File.join( 'lib', @name )
+      @jar_dest = File.join( 'lib', spec.name )
       @rdoc_diagram = false
 
       @install_request =
@@ -88,7 +84,7 @@ module RJack::TarPit
 
     # Return a default jar name built from name and version
     def default_jar
-      "#{name}-#{spec.version}.jar"
+      "#{spec.name}-#{spec.version}.jar"
     end
 
     # Specify gem project details, yielding Hoe instance to block
@@ -211,7 +207,7 @@ module RJack::TarPit
     def define_git_tag
       desc "git tag current version"
       task :tag do
-        tag = [ name, spec.version ].join( '-' )
+        tag = [ spec.name, spec.version ].join( '-' )
         dname = Rake.original_dir
         dname = '.' if Dir.getwd == dname
         delta = `git status --porcelain -- #{dname} 2>&1`.split(/^/)
@@ -325,7 +321,7 @@ module RJack::TarPit
       dirs = [ 'target' ]
 
       unless @flags.include?( :no_assembly )
-        dirs << [ @assembly_name || name,
+        dirs << [ @assembly_name || spec.name,
                   @assembly_version || spec.version,
                   'bin.dir' ].join('-')
       end

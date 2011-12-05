@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    tarpit-test-jproject (1.0.0-java)
+    jproject (1.0.0-java)
 
 PATH
   remote: ../..
@@ -23,6 +23,6 @@ PLATFORMS
   java
 
 DEPENDENCIES
+  jproject!
   minitest (~> 2.3)
   rjack-tarpit!
-  tarpit-test-jproject!

@@ -77,7 +77,7 @@ module RJack::TarPit
 
       unless ( name == 'rjack-tarpit' ||
                dependencies.find { |n,*v| n == 'rjack-tarpit' } )
-        extra_dev_deps << [ 'rjack-tarpit', "~> #{ RJack::TarPit::VERSION }" ]
+        depend( 'rjack-tarpit', "~> #{ RJack::TarPit::VERSION }", :dev )
       end
 
     end

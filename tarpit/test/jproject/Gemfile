@@ -1,7 +1,0 @@
-# -*- ruby -*-
-
-source :rubygems
-
-gem "rjack-tarpit", :path => '../..' #, :group => :development
-
-gemspec :name => 'jproject'

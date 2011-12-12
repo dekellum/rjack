@@ -1,11 +1,8 @@
-Gemfile
-Gemfile.lock
 History.rdoc
 Manifest.txt
 NOTICE.txt
 README.rdoc
 Rakefile
-jproject.gemspec
 pom.xml
 lib/jproject/base.rb
 lib/jproject.rb

@@ -16,8 +16,6 @@ lib/rjack-tarpit/test.rb
 test/setup.rb
 test/test_projects.rb
 test/test_tarpit.rb
-test/jproject/Gemfile
-test/jproject/Gemfile.lock
 test/jproject/History.rdoc
 test/jproject/Manifest.txt
 test/jproject/NOTICE.txt

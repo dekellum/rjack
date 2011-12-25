@@ -8,7 +8,6 @@ require 'jproject/base'
 
 RJack::TarPit.specify do |s|
 
-  s.name     = 'jproject'
   s.version  = JProject::VERSION
   s.homepage = 'http://rjack.rubyforge.org/tarpit'
 

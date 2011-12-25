@@ -18,6 +18,10 @@ module RJack::TarPit
       class << spec
         include SpecHelper
       end
+
+      # Default name to the (name).gemspec that should be calling us
+      spec.name = caller[0] =~ /([^\\\/]+)\.gemspec/ && $1
+
       spec.specify &block
 
       @last_spec = spec

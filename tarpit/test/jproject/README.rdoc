@@ -1,10 +1,11 @@
-= tarpit-test-jproject
+= jproject
 
 * http://rjack.rubyforge.org/tarpit
 
 == Description
 
-Basic Java project for testing
+A simple project for testing. This project contains a single java jar
+built from source.
 
 == License
 

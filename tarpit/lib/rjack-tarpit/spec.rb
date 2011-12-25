@@ -1,4 +1,5 @@
 require 'rjack-tarpit/base'
+require 'rjack-tarpit/readme_parser'
 
 module RJack::TarPit
 
@@ -17,6 +18,7 @@ module RJack::TarPit
       spec = Gem::Specification.new
       class << spec
         include SpecHelper
+        include ReadmeParser
       end
 
       # Default name to the (name).gemspec that should be calling us
@@ -87,6 +89,8 @@ module RJack::TarPit
       @jar_dest        = nil
       @generated_files = nil
       @maven_strategy  = nil
+
+      parse_readme( @readme_file ) if @readme_file
 
       yield self if block_given?
 

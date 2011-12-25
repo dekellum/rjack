@@ -6,7 +6,6 @@ require 'rjack-tarpit/spec'
 RJack::TarPit.specify do |s|
 
   s.version  = RJack::TarPit::VERSION
-  s.homepage = 'http://rjack.rubyforge.org/tarpit'
 
   s.add_developer( 'David Kellum', 'dek-oss@gravitext.com' )
 

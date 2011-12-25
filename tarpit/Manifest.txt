@@ -17,6 +17,7 @@ test/setup.rb
 test/test_projects.rb
 test/test_tarpit.rb
 test/jproject/History.rdoc
+test/jproject/Manifest.static
 test/jproject/Manifest.txt
 test/jproject/NOTICE.txt
 test/jproject/README.rdoc

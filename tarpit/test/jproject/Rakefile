@@ -4,6 +4,6 @@ require 'rubygems'
 require 'bundler/setup'
 require 'rjack-tarpit'
 
-tp = RJack::TarPit.new( "jproject", :no_assembly )
+tp = RJack::TarPit.new( "jproject" )
 
 tp.define_tasks

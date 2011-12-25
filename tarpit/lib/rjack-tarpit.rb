@@ -15,23 +15,23 @@
 #++
 
 require 'rjack-tarpit/base'
+require 'rjack-tarpit/spec'
 require 'rjack-tarpit/base_strategy'
 
 module RJack::TarPit
 
-  # Construct new task generator by gem name, version, and flags. A descendant
-  # of BaseStrategy is returned.
-  # ==== flags
-  # :jars_from_assembly:: jars will be found in assembly rather then
-  #                       set in Rakefile.
-  # :no_assembly:: One jar created from source, jars=[default_jar],
-  #                no assembly setup in maven.
-  def self.new( name, *flags )
-    if flags.include?( :jars_from_assembly )
+  # New task generator given name matching a spec name in the current
+  # directory.
+  def self.new( name )
+
+    load "#{name}.gemspec"
+    spec = last_spec
+
+    if spec.maven_strategy == :jars_from_assembly
       require 'rjack-tarpit/jars_from_assembly'
-      JarsFromAssembly.new( name, flags )
+      JarsFromAssembly.new( spec )
     else
-      BaseStrategy.new( name, flags )
+      BaseStrategy.new( spec )
     end
   end
 

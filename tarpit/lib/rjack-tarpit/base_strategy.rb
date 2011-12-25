@@ -38,18 +38,7 @@ module RJack::TarPit
     include LineMatchTaskDefiner
     include DocTaskDefiner
 
-    # The set of jar file names (without path) to include. May be
-    # lazily computed by other strategies.
-    attr_accessor :jars
-
-    # Destination path for any jars [Default: lib/name]
-    attr_accessor :jar_dest
-
-    # Any additional generated files to be included [Default: nil]
-    attr_accessor :generated_files
-
-    # Use rdoc --diagram (requires http://graphiz.org 'dot' in PATH)
-    attr_accessor :rdoc_diagram
+    include Util
 
     # The name of the assembly [Default: name]
     attr_writer :assembly_name
@@ -62,17 +51,11 @@ module RJack::TarPit
     attr_reader :spec
 
     # See TarPit.new
-    def initialize( name, flags )
+    def initialize( spec )
       @defines = []
       super()
 
-      @spec = nil
-      load_spec( name )
-
-      @flags = flags
-      @jars = [ default_jar ] if @flags.include?( :no_assembly )
-      @jar_dest = File.join( 'lib', spec.name )
-      @rdoc_diagram = false
+      @spec = spec
 
       @install_request =
         Rake.application.top_level_tasks.include?( "install" )
@@ -82,31 +65,18 @@ module RJack::TarPit
       @defines << sym
     end
 
-    # Return a default jar name built from name and version
-    def default_jar
-      "#{spec.name}-#{spec.version}.jar"
-    end
-
-    # Specify gem project details, yielding Hoe instance to block
-    # after setting various defaults. Thus all Hoe.spec setters are
-    # valid in this block. The actual Hoe construction and execution
-    # of block is deferred to define_tasks.
-    def specify( &block )
-      #FIXME: Adapt to Spec?
-    end
-
     # Define all tasks based on provided details. In this strategy,
     # the Manifest.txt task will be invoked prior to calling
     # Hoe.spec, thus any additional Manifest.txt dependencies
     # should be specified prior to this call.
     def define_tasks
-      define_maven_package_task if jars
+      define_maven_package_task if spec.jars
 
-      if jars || generated_files
+      if spec.jars || spec.generated_files
         define_manifest_task
       end
 
-      define_post_maven_tasks if jars
+      define_post_maven_tasks if spec.jars
 
       define_git_tag
       define_gem_tasks
@@ -122,7 +92,7 @@ module RJack::TarPit
         file 'Manifest.txt' => [ 'Manifest.static' ]
       end
 
-      gf = clean_list( generated_files ).sort
+      gf = clean_list( spec.generated_files ).sort
       [ :gem, :test ].each { |t| task t => gf }
 
       unless gf.empty?
@@ -177,9 +147,9 @@ module RJack::TarPit
     # associated tasks like :mvn_clean.
     def define_post_maven_tasks
       jfrom = jar_from
-      jars.each do |jar|
+      spec.jars.each do |jar|
         from = File.join( jfrom, jar )
-        dest = File.join( jar_dest, jar )
+        dest = File.join( spec.jar_dest, jar )
         file from => [ MVN_STATE_FILE ]
         file dest => [ from ] do
           ln( from, dest, :force => true )
@@ -296,7 +266,7 @@ module RJack::TarPit
         if File.exist?( 'Manifest.static' )
           m += read_file_list( 'Manifest.static' )
         end
-        m += clean_list( generated_files ).sort
+        m += clean_list( spec.generated_files ).sort
         m += dest_jars
 
         puts "TARPIT: Updating Manifest.txt"
@@ -307,45 +277,26 @@ module RJack::TarPit
 
     # Remove jars in jar_dest by wildcard expression
     def remove_dest_jars
-      jars = FileList[ File.join( jar_dest, "*.jar" ) ].sort
+      jars = FileList[ File.join( spec.jar_dest, "*.jar" ) ].sort
       rm_f jars unless jars.empty?
     end
 
     # The list of jars in jar_dest path, used during manifest generation
     def dest_jars
-      clean_list( jars ).sort.map { |j| File.join( jar_dest, j ) }
+      clean_list( spec.jars ).sort.map { |j| File.join( spec.jar_dest, j ) }
     end
 
     # The target/assembly path from which jars are linked
     def jar_from
       dirs = [ 'target' ]
 
-      unless @flags.include?( :no_assembly )
+      unless spec.maven_strategy == :no_assembly
         dirs << [ @assembly_name || spec.name,
                   @assembly_version || spec.version,
                   'bin.dir' ].join('-')
       end
 
       File.join( dirs )
-    end
-
-    # Read a list of files and return a cleaned list.
-    def read_file_list( sfile )
-      clean_list( open( sfile ) { |f| f.readlines } )
-    end
-
-    # Cleanup a list of files
-    def clean_list( l )
-      l = Array( l ).compact
-      l.map! { |f| f.strip }
-      l.map! { |f| f.empty? ? nil : f }
-      l.compact!
-      l
-    end
-
-    def load_spec( name )
-      load "#{name}.gemspec"
-      @spec = RJack::TarPit.last_spec
     end
 
   end

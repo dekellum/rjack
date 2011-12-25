@@ -7,11 +7,12 @@ $LOAD_PATH.unshift( File.join( File.dirname( __FILE__ ), 'lib' ) )
 require 'jproject/base'
 
 RJack::TarPit.specify do |s|
+
   s.name     = 'jproject'
   s.version  = JProject::VERSION
   s.homepage = 'http://rjack.rubyforge.org/tarpit'
 
-  s.add_developer( 'David Kellum', 'dek-oss@gravitext.com' )
+  s.add_developer 'David Kellum', 'dek-oss@gravitext.com'
 
   s.summary = 'Simple Java Test Project.'
 
@@ -19,7 +20,8 @@ RJack::TarPit.specify do |s|
       Project with a maven built java jar included
   DESC
 
-  s.platform = :java #FIXME: Should be default given the jar?
+  s.maven_strategy = :no_assembly
 
   s.depend 'minitest', '~> 2.3', :dev
+
 end

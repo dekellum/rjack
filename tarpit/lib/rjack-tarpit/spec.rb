@@ -44,12 +44,27 @@ module RJack::TarPit
     # Optional: An array of rubygem developer dependencies.
     attr_accessor :extra_dev_deps
 
+    # The set of jar file names (without path) to include. May be
+    # lazily computed by other strategies.
+    attr_accessor :jars
+
+    # Destination path for any jars [Default: lib/name]
+    attr_accessor :jar_dest
+
+    # Any additional generated files to be included [Default: nil]
+    attr_accessor :generated_files
+
+    # FIXME: :no_assembly or :jars_from_assembly [Default: nil]
+    # :jars_from_assembly:: jars will be found in assembly rather then
+    #                       set in Rakefile.
+    # :no_assembly:: One jar created from source, jars=[default_jar],
+    #                no assembly setup in maven.
+    attr_accessor :maven_strategy
+
     def specify
       # Better defaults
       if File.exist?( 'Manifest.txt' )
-        self.files =
-          File.open( 'Manifest.txt' ) { |fin| fin.readlines }.
-          map { |f| f.strip }
+        self.files = Util::read_file_list( 'Manifest.txt' )
       end
 
       @readme_file  = existing( %w[ README.rdoc README.txt ] )
@@ -61,20 +76,35 @@ module RJack::TarPit
 
       self.rdoc_options += [ '--main', @readme_file ] if @readme_file
 
-      @extra_deps     = []
-      @extra_dev_deps = []
+      @extra_deps      = []
+      @extra_dev_deps  = []
+
+      @jars            = nil
+      @jar_dest        = nil
+      @generated_files = nil
+      @maven_strategy  = nil
 
       yield self if block_given?
 
+      @jar_dest ||= File.join( 'lib', name )
+
+      @jars = Array( @jars ).compact
+      @jars = nil if @jars.empty?
+
+      if ( @jars.nil? &&
+           ( ( @maven_strategy == :no_assembly ) ||
+             ( @maven_strategy.nil? && File.exist?( 'pom.xml' ) ) ) )
+        @jars = [ default_jar ]
+      end
+
+      # The platform is java if jars are specified.
+      self.platform = :java if @jars
+
       # Add any of the Hoe style dependencies
-      @extra_deps.each do |dep|
-        add_dependency( *dep )
-      end
+      @extra_deps.each { |dep| add_dependency( *dep ) }
+      @extra_dev_deps.each { |dep| add_development_dependency( *dep ) }
 
-      @extra_dev_deps.each do |dep|
-        add_development_dependency( *dep )
-      end
-
+      # Add this tarpit version as dev dep unless already present
       unless ( name == 'rjack-tarpit' ||
                dependencies.find { |n,*v| n == 'rjack-tarpit' } )
         depend( 'rjack-tarpit', "~> #{ RJack::TarPit::VERSION }", :dev )
@@ -123,6 +153,11 @@ module RJack::TarPit
 
     def existing( files )
       files.find { |f| File.exist?( f ) }
+    end
+
+    # Return a default jar name built from name and version
+    def default_jar
+      "#{name}-#{version}.jar"
     end
 
   end

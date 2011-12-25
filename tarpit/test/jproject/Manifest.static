@@ -8,4 +8,3 @@ lib/jproject/base.rb
 lib/jproject.rb
 test/setup.rb
 test/test_jproject.rb
-lib/jproject/jproject-1.0.0.jar

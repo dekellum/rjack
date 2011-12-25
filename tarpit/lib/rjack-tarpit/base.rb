@@ -17,5 +17,24 @@
 module RJack
   module TarPit
     VERSION = '2.0.a.0'
+
+    module Util
+
+      module_function
+
+      # Read a list of files and return a cleaned list.
+      def read_file_list( sfile )
+        clean_list( open( sfile ) { |f| f.readlines } )
+      end
+
+      # Cleanup a list of files
+      def clean_list( l )
+        Array( l ).
+          compact.
+          map { |f| f.strip }.
+          reject { |f| f.empty? }
+      end
+    end
+
   end
 end

@@ -4,7 +4,7 @@ require 'rjack-slf4j'
 
 require 'java'
 
-module RJack::ZooKeeper
+module RJack::RZooKeeper
 
   Dir.glob( File.join( LIB_DIR, '*.jar' ) ).each { |jar| require jar }
 

@@ -1,11 +1,10 @@
-= jproject
+= rjack-zookeeper
 
 * http://rjack.rubyforge.org/tarpit
 
 == Description
 
-A simple project for testing. This project contains a single java jar
-built from source.
+A gem packaging of {ZooKeeper}[http://zookeeper.apache.org/] for JRuby.
 
 == License
 

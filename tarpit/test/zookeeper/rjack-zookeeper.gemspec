@@ -7,7 +7,7 @@ $LOAD_PATH.unshift( File.join( File.dirname( __FILE__ ), 'lib' ) )
 require 'rjack-zookeeper/base'
 
 RJack::TarPit.specify do |s|
-  s.version  = RJack::ZooKeeper::VERSION
+  s.version  = RJack::RZooKeeper::VERSION
 
   s.add_developer 'David Kellum', 'dek-oss@gravitext.com'
 

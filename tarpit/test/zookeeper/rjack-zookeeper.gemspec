@@ -1,10 +1,5 @@
 # -*- ruby -*- encoding: utf-8 -*-
 
-# Special case load required while we have a Gemfile for this test project.
-# Not to worry, would normally just do:
-# gem 'rjack-tarpit'
-$LOAD_PATH.unshift( File.join( File.dirname( __FILE__ ), '..', '..', 'lib' ) )
-
 require 'rjack-tarpit/spec'
 
 $LOAD_PATH.unshift( File.join( File.dirname( __FILE__ ), 'lib' ) )

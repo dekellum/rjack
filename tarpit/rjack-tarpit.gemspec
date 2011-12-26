@@ -19,4 +19,7 @@ RJack::TarPit.specify do |s|
   s.depend 'rake',            '~> 0.9.2'
   s.depend 'rdoc',            '~> 3.6'
   s.depend 'minitest',        '~> 2.3',       :dev
+  s.depend 'rjack-slf4j',     '~> 1.6.4',     :dev
+  s.depend 'rjack-logback',   '~> 1.2',       :dev
+
 end

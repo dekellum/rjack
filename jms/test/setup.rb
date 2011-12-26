@@ -32,7 +32,7 @@ require 'minitest/autorun'
 
 RJack::Logback.config_console( :stderr => true )
 
-if ARGV.include?( '-v' ) || ARGV.include?( '-verbose' )
+if ARGV.include?( '-v' ) || ARGV.include?( '--verbose' )
 
   RJack::Logback.root.level = RJack::Logback::DEBUG
   RJack::Logback[ 'rjack.jms.JMSConnector' ].level = RJack::Logback::INFO

@@ -1,13 +1,31 @@
+#--
+# Copyright (c) 2009-2011 David Kellum
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you
+# may not use this file except in compliance with the License.  You may
+# obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+# implied.  See the License for the specific language governing
+# permissions and limitations under the License.
+#++
+
 require 'rjack-tarpit/base'
 require 'rjack-tarpit/readme_parser'
 
 module RJack::TarPit
 
   class << self
+
+    # The result of the last call to specify.
     attr_reader :last_spec
 
-    # Produce a Gem::Specification embellished with SpecHelper
-    # conveniences and yield to block
+    # Produce a Gem::Specification embellished with SpecHelper,
+    # ReadmeParser, and yield to block
     def specify( &block )
 
       # Embellish a Specification instance with SpecHelper.
@@ -24,58 +42,66 @@ module RJack::TarPit
       # Default name to the (name).gemspec that should be calling us
       spec.name = caller[0] =~ /([^\\\/]+)\.gemspec/ && $1
 
-      spec.specify &block
+      spec.tarpit_specify &block
 
       @last_spec = spec
     end
   end
 
+  # Helper mixin for Gem::Specification, adding Manifest awareness,
+  # maven strategy, jars and other generaated_files declarations, as
+  # well as several convience methods and defaults. Many of these were
+  # Hoe inspired or remain compatible with Hoe.spec
   module SpecHelper
 
-    # FIXME: Hoe
     # The filename for the project README
     # (default: README.rdoc or README.txt is present)
     attr_accessor :readme_file
 
-    # FIXME: Hoe
     # The filename for the project History
     # (default: History.rdoc or History.txt is present)
     attr_accessor :history_file
 
-    # FIXME: Hoe
+    # FIXME: Remove?
     # Optional: An array of rubygem dependencies.
     attr_accessor :extra_deps
 
-    # FIXME: Hoe
+    # FIXME: Remove?
     # Optional: An array of rubygem developer dependencies.
     attr_accessor :extra_dev_deps
 
     # The set of jar file names (without path) to include. May be
-    # lazily computed by other strategies.
+    # auto-computed for :no_assembly (default_jar) or
+    # :jars_from_assembly (from Manifest.txt) maven_strategy.
     attr_writer :jars
 
-    # Destination path for any jars [Default: lib/name]
+    # Destination path for any jar links
+    # (default: lib/<name>)
     attr_accessor :jar_dest
 
-    # Any additional generated files to be included [Default: nil]
+    # Any additional generated files to be included.
+    # (default: nil)
     attr_accessor :generated_files
 
-    # FIXME: :no_assembly or :jars_from_assembly [Default: nil]
+    # Strategy for interacting with maven
+    # (default: nil, none )
     # :jars_from_assembly:: jars will be found in assembly rather then
     #                       set in Rakefile.
     # :no_assembly:: One jar created from source, jars=[default_jar],
     #                no assembly setup in maven.
     attr_accessor :maven_strategy
 
-    # The name of the assembly [Default: name]
+    # The name of the assembly (default: name)
     attr_accessor :assembly_name
 
-    # The version of the assembly, which might be static
-    # (i.e. "1.0") if the pom is not shared (dependency jars only)
-    # [Default: version]
+    # The version of the assembly, which might be static, i.e. "1.0",
+    # if the pom is not shared (dependency jars only) (default:
+    # version)
     attr_accessor :assembly_version
 
-    def specify
+    # Set defaults, yields self to block, and finalizes
+    def tarpit_specify
+
       # Better defaults
       if File.exist?( 'Manifest.txt' )
         self.files = Util::read_file_list( 'Manifest.txt' )
@@ -131,12 +157,13 @@ module RJack::TarPit
 
     end
 
-    def add_developer( author, email )
+    # Add developer with optional email.
+    def add_developer( author, email = nil )
       ( self.authors ||= [] ) << author
-      ( self.email   ||= [] ) << email
+      ( self.email   ||= [] ) << email if email
     end
 
-    # FIXME: Hoe compatible
+    # FIXME: Remove?
     alias :developer :add_developer
 
     # Add a dependencies by name, version requirements, and a final
@@ -151,10 +178,12 @@ module RJack::TarPit
       end
     end
 
+    # Set summary. This override cleans up whitespace.
     def summary=( val )
       super( val.gsub( /\s+/, ' ' ).strip )
     end
 
+    # Set summary. This override cleans up whitespace.
     def description=( val )
       super( val.gsub( /\s+/, ' ' ).strip )
     end
@@ -168,6 +197,7 @@ module RJack::TarPit
       super( val )
     end
 
+    # Return set or defaulted jar file names (without path)
     def jars
       if @jars.nil? && ( maven_strategy == :jars_from_assembly )
 

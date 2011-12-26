@@ -22,6 +22,7 @@ require 'rjack-tarpit/gem'
 require 'rjack-tarpit/clean'
 require 'rjack-tarpit/line_match'
 require 'rjack-tarpit/doc'
+require 'rjack-tarpit/git'
 
 module RJack::TarPit
 
@@ -37,6 +38,7 @@ module RJack::TarPit
     include CleanTaskDefiner
     include LineMatchTaskDefiner
     include DocTaskDefiner
+    include GitTaskDefiner
 
     include Util
 
@@ -70,7 +72,6 @@ module RJack::TarPit
 
       define_post_maven_tasks unless spec.jars.empty?
 
-      define_git_tag
       define_gem_tasks
       @defines.each { |sym| send( sym ) }
     end
@@ -163,22 +164,6 @@ module RJack::TarPit
       deps << 'assembly.xml' if File.exist?( 'assembly.xml' )
       deps += FileList[ "src/**/*" ].exclude { |f| ! File.file?( f ) }
       deps
-    end
-
-    # Define git based :tag task
-    def define_git_tag
-      desc "git tag current version"
-      task :tag do
-        tag = [ spec.name, spec.version ].join( '-' )
-        dname = Rake.original_dir
-        dname = '.' if Dir.getwd == dname
-        delta = `git status --porcelain -- #{dname} 2>&1`.split(/^/)
-        if delta.length > 0
-          puts delta
-          raise "Commit these changes before tagging"
-        end
-        sh %{git tag -s -f -m "tag [#{tag}]" "#{tag}"}
-      end
     end
 
     # Define gem push and install tasks

@@ -37,7 +37,6 @@ module RJack::TarPit
 
       define_post_maven_tasks
 
-      define_git_tag
       define_gem_tasks
       @defines.each { |sym| send( sym ) }
     end

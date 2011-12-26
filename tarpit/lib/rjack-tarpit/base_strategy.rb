@@ -70,13 +70,13 @@ module RJack::TarPit
     # Hoe.spec, thus any additional Manifest.txt dependencies
     # should be specified prior to this call.
     def define_tasks
-      define_maven_package_task if spec.jars
+      define_maven_package_task unless spec.jars.empty?
 
-      if spec.jars || spec.generated_files
+      if !spec.jars.empty? || spec.generated_files
         define_manifest_task
       end
 
-      define_post_maven_tasks if spec.jars
+      define_post_maven_tasks unless spec.jars.empty?
 
       define_git_tag
       define_gem_tasks

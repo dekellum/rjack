@@ -48,17 +48,7 @@ module RJack::TarPit
     def dest_jars
       jars = FileList[ File.join( jar_from, "*.jar" ) ]
       jars = jars.map { |j| File.basename( j ) }.sort
-      jars.map { |j| File.join( jar_dest, j ) }
-    end
-
-    # Extract jar files from saved Manifest state, since
-    # neither from or dest jars may be available at call time.
-    def jars
-      unless @jars
-        files = read_file_list( 'Manifest.txt' ).select { |f| f =~ /\.jar$/ }
-        @jars = files.map { |f| File.basename( f ) }
-      end
-      @jars
+      jars.map { |j| File.join( spec.jar_dest, j ) }
     end
 
   end

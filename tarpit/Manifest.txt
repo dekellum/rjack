@@ -29,3 +29,15 @@ test/jproject/lib/jproject/base.rb
 test/jproject/lib/jproject.rb
 test/jproject/test/setup.rb
 test/jproject/test/test_jproject.rb
+test/zookeeper/History.rdoc
+test/zookeeper/Manifest.static
+test/zookeeper/Manifest.txt
+test/zookeeper/README.rdoc
+test/zookeeper/Rakefile
+test/zookeeper/assembly.xml
+test/zookeeper/pom.xml
+test/zookeeper/rjack-zookeeper.gemspec
+test/zookeeper/lib/rjack-zookeeper/base.rb
+test/zookeeper/lib/rjack-zookeeper.rb
+test/zookeeper/test/setup.rb
+test/zookeeper/test/test_zookeeper.rb

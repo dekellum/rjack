@@ -1,0 +1,10 @@
+History.rdoc
+Manifest.txt
+README.rdoc
+Rakefile
+assembly.xml
+pom.xml
+lib/rjack-zookeeper/base.rb
+lib/rjack-zookeeper.rb
+test/setup.rb
+test/test_zookeeper.rb

@@ -52,7 +52,7 @@ module RJack::TarPit
 
     # The set of jar file names (without path) to include. May be
     # lazily computed by other strategies.
-    attr_accessor :jars
+    attr_writer :jars
 
     # Destination path for any jars [Default: lib/name]
     attr_accessor :jar_dest
@@ -155,6 +155,19 @@ module RJack::TarPit
         val = Gem::Platform.new( val.to_s )
       end
       super( val )
+    end
+
+    def jars
+      if @jars.nil? && ( maven_strategy == :jars_from_assembly )
+
+        # Extract jar files from saved Manifest state, since neither
+        # from or dest jars may be available at call time.
+        @jars =
+          Util::read_file_list( 'Manifest.txt' ).
+          select { |f| f =~ /\.jar$/ }.
+          map    { |f| File.basename( f ) }
+      end
+      @jars ||= Array( @jars )
     end
 
     private

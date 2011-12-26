@@ -22,13 +22,6 @@ class TestProjects < MiniTest::Unit::TestCase
       rm_rf( path( p, 'target' ) )
       rm_rf( path( p, 'pkg' ) )
     end
-
-    # Disable seemingly lame bundler ENV mods to make these tests work
-    # the same as if we ran it in our own shell. Apologies if your
-    # environment needs these.
-    %w[ GEM_PATH RUBYOPT BUNDLE_GEMFILE BUNDLE_BIN_PATH ].each do |e|
-      ENV.delete( e )
-    end
   end
 
   def test_jproject
@@ -48,7 +41,9 @@ class TestProjects < MiniTest::Unit::TestCase
     c = "jruby -S rake #{targets}"
     puts
     puts "=== #{Dir.pwd} > #{c} ==="
-    r = system( c )
+    # Disable seemingly lame bundler ENV mods to make these tests work
+    # the same as if we ran it in our own shell.
+    r = Bundler.with_clean_env { system( c ) }
     puts
     r
   end

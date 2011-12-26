@@ -40,14 +40,7 @@ module RJack::TarPit
 
     include Util
 
-    # The name of the assembly [Default: name]
-    attr_writer :assembly_name
-
-    # The version of the assembly, which might be static
-    # (i.e. "1.0") if the pom is not shared (dependency jars only)
-    # [Default: version]
-    attr_writer :assembly_version
-
+    # The augmented Gem::Specification as constructed.
     attr_reader :spec
 
     # See TarPit.new
@@ -57,8 +50,7 @@ module RJack::TarPit
 
       @spec = spec
 
-      @install_request =
-        Rake.application.top_level_tasks.include?( "install" )
+      @install_request = Rake.application.top_level_tasks.include?( "install" )
     end
 
     def add_define_hook( sym )
@@ -291,9 +283,9 @@ module RJack::TarPit
       dirs = [ 'target' ]
 
       unless spec.maven_strategy == :no_assembly
-        dirs << [ @assembly_name || spec.name,
-                  @assembly_version || spec.version,
-                  'bin.dir' ].join('-')
+        dirs << [ spec.assembly_name,
+                  spec.assembly_version,
+                  'bin.dir' ].join( '-' )
       end
 
       File.join( dirs )

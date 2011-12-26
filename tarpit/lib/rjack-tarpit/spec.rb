@@ -67,6 +67,14 @@ module RJack::TarPit
     #                no assembly setup in maven.
     attr_accessor :maven_strategy
 
+    # The name of the assembly [Default: name]
+    attr_accessor :assembly_name
+
+    # The version of the assembly, which might be static
+    # (i.e. "1.0") if the pom is not shared (dependency jars only)
+    # [Default: version]
+    attr_accessor :assembly_version
+
     def specify
       # Better defaults
       if File.exist?( 'Manifest.txt' )
@@ -93,6 +101,9 @@ module RJack::TarPit
       parse_readme( @readme_file ) if @readme_file
 
       yield self if block_given?
+
+      @assembly_name ||= name
+      @assembly_version ||= version
 
       @jar_dest ||= File.join( 'lib', name )
 

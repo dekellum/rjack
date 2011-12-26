@@ -151,7 +151,7 @@ module RJack::TarPit
 
       task :mvn_clean do
         remove_dest_jars
-        sh 'mvn clean'
+        rm_rf 'target' if File.directory?( 'target' )
       end
       task :clean => :mvn_clean
     end

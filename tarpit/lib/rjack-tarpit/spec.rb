@@ -106,7 +106,7 @@ module RJack::TarPit
       end
 
       # The platform is java if jars are specified.
-      self.platform = :java if @jars
+      self.platform = :java if !jars.empty?
 
       # Add any of the Hoe style dependencies
       @extra_deps.each { |dep| add_dependency( *dep ) }

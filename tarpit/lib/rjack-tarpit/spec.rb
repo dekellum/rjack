@@ -62,14 +62,6 @@ module RJack::TarPit
     # (default: History.rdoc or History.txt is present)
     attr_accessor :history_file
 
-    # FIXME: Remove?
-    # Optional: An array of rubygem dependencies.
-    attr_accessor :extra_deps
-
-    # FIXME: Remove?
-    # Optional: An array of rubygem developer dependencies.
-    attr_accessor :extra_dev_deps
-
     # The set of jar file names (without path) to include. May be
     # auto-computed for :no_assembly (default_jar) or
     # :jars_from_assembly (from Manifest.txt) maven_strategy.
@@ -116,9 +108,6 @@ module RJack::TarPit
 
       self.rdoc_options += [ '--main', @readme_file ] if @readme_file
 
-      @extra_deps      = []
-      @extra_dev_deps  = []
-
       @jars            = nil
       @jar_dest        = nil
       @generated_files = nil
@@ -145,10 +134,6 @@ module RJack::TarPit
       # The platform is java if jars are specified.
       self.platform = :java if !jars.empty?
 
-      # Add any of the Hoe style dependencies
-      @extra_deps.each { |dep| add_dependency( *dep ) }
-      @extra_dev_deps.each { |dep| add_development_dependency( *dep ) }
-
       # Add this tarpit version as dev dep unless already present
       unless ( name == 'rjack-tarpit' ||
                dependencies.find { |n,*v| n == 'rjack-tarpit' } )
@@ -162,9 +147,6 @@ module RJack::TarPit
       ( self.authors ||= [] ) << author
       ( self.email   ||= [] ) << email if email
     end
-
-    # FIXME: Remove?
-    alias :developer :add_developer
 
     # Add a dependencies by name, version requirements, and a final
     # optional :dev or :development symbol indicating its for

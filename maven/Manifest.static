@@ -1,0 +1,5 @@
+Manifest.txt
+Rakefile
+assembly.xml
+pom.xml
+lib/rjack-maven/base.rb

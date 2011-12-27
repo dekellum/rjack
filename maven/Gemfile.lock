@@ -1,0 +1,24 @@
+PATH
+  remote: .
+  specs:
+    rjack-maven (3.0.3.0-java)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    json (1.6.4-java)
+    minitest (2.10.0)
+    rake (0.9.2.2)
+    rdoc (3.12)
+      json (~> 1.4)
+    rjack-tarpit (2.0.a.0)
+      rake (~> 0.9.2)
+      rdoc (~> 3.6)
+
+PLATFORMS
+  java
+
+DEPENDENCIES
+  minitest (~> 2.3)
+  rjack-maven!
+  rjack-tarpit (~> 2.0.a.0)

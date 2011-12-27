@@ -15,6 +15,7 @@
 #++
 
 require 'rjack-tarpit/base'
+require 'rjack-tarpit/util'
 require 'rjack-tarpit/readme_parser'
 
 module RJack::TarPit

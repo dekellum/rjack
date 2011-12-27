@@ -15,6 +15,7 @@ lib/rjack-tarpit/line_match.rb
 lib/rjack-tarpit/readme_parser.rb
 lib/rjack-tarpit/spec.rb
 lib/rjack-tarpit/test.rb
+lib/rjack-tarpit/util.rb
 test/setup.rb
 test/test_projects.rb
 test/test_tarpit.rb

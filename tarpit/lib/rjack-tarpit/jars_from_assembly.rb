@@ -28,7 +28,7 @@ module RJack::TarPit
   class JarsFromAssembly < BaseStrategy
 
     # Define all tasks based on provided details.
-    def define_tasks
+    def define_maven_tasks
       define_maven_package_task
 
       mtask = define_manifest_task
@@ -36,9 +36,6 @@ module RJack::TarPit
       task :manifest => [ MVN_STATE_FILE ]
 
       define_post_maven_tasks
-
-      define_gem_tasks
-      @defines.each { |sym| send( sym ) }
     end
 
     # For manifest, map destination jars from available jars in

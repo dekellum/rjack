@@ -47,7 +47,7 @@ module RJack::TarPit
 
     # See TarPit.new
     def initialize( spec )
-      @defines = []
+      @defines = [ :define_maven_tasks ]
       super()
 
       @spec = spec
@@ -59,11 +59,15 @@ module RJack::TarPit
       @defines << sym
     end
 
+    def define_tasks
+      @defines.each { |sym| send( sym ) }
+    end
+
     # Define all tasks based on provided details. In this strategy,
     # the Manifest.txt task will be invoked prior to calling
     # Hoe.spec, thus any additional Manifest.txt dependencies
     # should be specified prior to this call.
-    def define_tasks
+    def define_maven_tasks
       define_maven_package_task unless spec.jars.empty?
 
       if !spec.jars.empty? || spec.generated_files
@@ -71,9 +75,6 @@ module RJack::TarPit
       end
 
       define_post_maven_tasks unless spec.jars.empty?
-
-      define_gem_tasks
-      @defines.each { |sym| send( sym ) }
     end
 
     # Define task for dynamically generating Manifest.txt, by
@@ -164,74 +165,6 @@ module RJack::TarPit
       deps << 'assembly.xml' if File.exist?( 'assembly.xml' )
       deps += FileList[ "src/**/*" ].exclude { |f| ! File.file?( f ) }
       deps
-    end
-
-    # Define gem push and install tasks
-    def define_gem_tasks
-      desc "gem push (gemcutter)"
-      task :push => [ :gem ] do
-        require 'rubygems'
-        require 'rubygems/command_manager'
-        cm = Gem::CommandManager.instance
-        cm.run( gem_config( 'push', '-V', gem_file ) )
-      end
-
-      desc "gem(+maven) install"
-      task :install => [ :gem ] do
-        require 'rubygems'
-        require 'rubygems/command_manager'
-        cm = Gem::CommandManager.instance
-        begin
-          cm.run( gem_config( 'install', '--local', '-V', gem_file ) )
-        rescue Gem::SystemExitException => x
-          raise "Install failed (#{x.exit_code})" if x.exit_code != 0
-        end
-      end
-
-      desc "gem install missing/all dev dependencies"
-      task( :install_deps, :force ) do |t,args|
-        require 'rubygems'
-        require 'rubygems/command_manager'
-        force = ( args[:force] == 'force' )
-        ( @spec.extra_deps + @spec.extra_dev_deps ).each do |dep|
-          if force
-            gem_install_dep( dep )
-          else
-            begin
-              gem( *dep )
-            rescue Gem::LoadError => e
-              puts "Gem dep: " + e.to_s
-              gem_install_dep( dep )
-            end
-          end
-        end
-      end
-    end
-
-    def gem_install_dep( dep )
-      puts "Install: " + dep.inspect
-      cm = Gem::CommandManager.instance
-      c = [ 'install', '--remote', '-V', dep.first ]
-      c += dep[1..-1].map { |r| [ '-v', r ] }.flatten
-      cm.run( gem_config( *c ) )
-    rescue Gem::SystemExitException => x
-      raise "Install failed (#{x.exit_code})" if x.exit_code != 0
-    end
-
-    def gem_file
-      parts = [ spec.name, spec.version ]
-      parts << 'java' if spec.platform == 'java'
-
-      "pkg/#{ parts.join( '-' ) }.gem"
-    end
-
-    def gem_config( command, *args )
-      cargs = [ 'gem', command ].map do |cmd|
-        conf = Gem.configuration[ cmd ]
-        conf.is_a?( String ) ? conf.split( ' ' ) : Array( conf )
-      end
-      cargs.flatten!
-      [ command ] + cargs + args
     end
 
     # Generate Manifest.txt

@@ -32,10 +32,10 @@ module RJack::TarPit
       @need_tar = false
       @need_zip = false
 
-      add_define_hook( :define_new_gem_tasks )
+      add_define_hook( :define_gem_tasks )
     end
 
-    def define_new_gem_tasks
+    def define_gem_tasks
 
       Gem::PackageTask.new( spec ) do |pkg|
         pkg.need_tar = @need_tar
@@ -47,6 +47,70 @@ module RJack::TarPit
         puts spec.to_ruby
       end
 
+      desc "gem push (gemcutter)"
+      task :push => [ :gem ] do
+        require 'rubygems'
+        require 'rubygems/command_manager'
+        cm = Gem::CommandManager.instance
+        cm.run( gem_config( 'push', '-V', gem_file ) )
+      end
+
+      desc "gem(+maven) install"
+      task :install => [ :gem ] do
+        require 'rubygems'
+        require 'rubygems/command_manager'
+        cm = Gem::CommandManager.instance
+        begin
+          cm.run( gem_config( 'install', '--local', '-V', gem_file ) )
+        rescue Gem::SystemExitException => x
+          raise "Install failed (#{x.exit_code})" if x.exit_code != 0
+        end
+      end
+
+      desc "gem install missing/all dev dependencies"
+      task( :install_deps, :force ) do |t,args|
+        require 'rubygems'
+        require 'rubygems/command_manager'
+        force = ( args[:force] == 'force' )
+        ( @spec.extra_deps + @spec.extra_dev_deps ).each do |dep|
+          if force
+            gem_install_dep( dep )
+          else
+            begin
+              gem( *dep )
+            rescue Gem::LoadError => e
+              puts "Gem dep: " + e.to_s
+              gem_install_dep( dep )
+            end
+          end
+        end
+      end
+    end
+
+    def gem_install_dep( dep )
+      puts "Install: " + dep.inspect
+      cm = Gem::CommandManager.instance
+      c = [ 'install', '--remote', '-V', dep.first ]
+      c += dep[1..-1].map { |r| [ '-v', r ] }.flatten
+      cm.run( gem_config( *c ) )
+    rescue Gem::SystemExitException => x
+      raise "Install failed (#{x.exit_code})" if x.exit_code != 0
+    end
+
+    def gem_file
+      parts = [ spec.name, spec.version ]
+      parts << 'java' if spec.platform == 'java'
+
+      "pkg/#{ parts.join( '-' ) }.gem"
+    end
+
+    def gem_config( command, *args )
+      cargs = [ 'gem', command ].map do |cmd|
+        conf = Gem.configuration[ cmd ]
+        conf.is_a?( String ) ? conf.split( ' ' ) : Array( conf )
+      end
+      cargs.flatten!
+      [ command ] + cargs + args
     end
 
   end

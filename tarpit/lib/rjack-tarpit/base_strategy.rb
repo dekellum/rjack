@@ -78,9 +78,7 @@ module RJack::TarPit
       define_post_maven_tasks unless spec.jars.empty?
     end
 
-    # Define task for dynamically generating Manifest.txt, by
-    # appending array returned by the given block to specified files, or
-    # contents of Manifest.static.
+    # Define task for dynamically generating Manifest.txt
     def define_manifest_task
 
       if File.exist?( 'Manifest.static' )
@@ -99,11 +97,11 @@ module RJack::TarPit
 
       desc "Force update of Manifest.txt"
       task :manifest do
-        generate_manifest
+        spec.generate_manifest
       end
 
       mtask = file 'Manifest.txt' do
-        generate_manifest
+        spec.generate_manifest
       end
 
       mtask
@@ -141,7 +139,7 @@ module RJack::TarPit
     # Define file tasks for all jar symlinks and other misc. maven
     # associated tasks like :mvn_clean.
     def define_post_maven_tasks
-      jfrom = jar_from
+      jfrom = spec.jar_from
       spec.jars.each do |jar|
         from = File.join( jfrom, jar )
         dest = File.join( spec.jar_dest, jar )
@@ -153,7 +151,7 @@ module RJack::TarPit
       end
 
       task :mvn_clean do
-        remove_dest_jars
+        spec.remove_dest_jars
         rm_rf 'target' if File.directory?( 'target' )
       end
       task :clean => :mvn_clean
@@ -166,48 +164,6 @@ module RJack::TarPit
       deps << 'assembly.xml' if File.exist?( 'assembly.xml' )
       deps += FileList[ "src/**/*" ].exclude { |f| ! File.file?( f ) }
       deps
-    end
-
-    # Generate Manifest.txt
-    def generate_manifest
-      unless @generated_manifest #only once
-        remove_dest_jars
-
-        m = []
-        if File.exist?( 'Manifest.static' )
-          m += read_file_list( 'Manifest.static' )
-        end
-        m += clean_list( spec.generated_files ).sort
-        m += dest_jars
-
-        puts "TARPIT: Updating Manifest.txt"
-        open( 'Manifest.txt', 'w' ) { |out| out.puts m }
-        @generated_manifest = true
-      end
-    end
-
-    # Remove jars in jar_dest by wildcard expression
-    def remove_dest_jars
-      jars = FileList[ File.join( spec.jar_dest, "*.jar" ) ].sort
-      rm_f jars unless jars.empty?
-    end
-
-    # The list of jars in jar_dest path, used during manifest generation
-    def dest_jars
-      clean_list( spec.jars ).sort.map { |j| File.join( spec.jar_dest, j ) }
-    end
-
-    # The target/assembly path from which jars are linked
-    def jar_from
-      dirs = [ 'target' ]
-
-      unless spec.maven_strategy == :no_assembly
-        dirs << [ spec.assembly_name,
-                  spec.assembly_version,
-                  'bin.dir' ].join( '-' )
-      end
-
-      File.join( dirs )
     end
 
   end

@@ -38,15 +38,6 @@ module RJack::TarPit
       define_post_maven_tasks
     end
 
-    # For manifest, map destination jars from available jars in
-    # (jar_from) target/assembly. These are available since mvn
-    # package will be run first for the :manifest target.
-    def dest_jars
-      jars = FileList[ File.join( jar_from, "*.jar" ) ]
-      jars = jars.map { |j| File.basename( j ) }.sort
-      jars.map { |j| File.join( spec.jar_dest, j ) }
-    end
-
   end
 
 end

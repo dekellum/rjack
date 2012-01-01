@@ -3,9 +3,9 @@
 gem 'rjack-tarpit', '~> 2.0.a.0'
 require 'rjack-tarpit/spec'
 
-$LOAD_PATH.unshift( File.join( File.dirname( __FILE__ ), 'lib' ) )
-
-require 'rjack-maven/base'
+# Avoid adding lib to $LOAD_PATH since we want to use an installed
+# rjack-maven (via tarpit) to build self.
+load File.join( File.dirname( __FILE__ ), 'lib', 'rjack-maven', 'base.rb' )
 
 RJack::TarPit.specify do |s|
 
@@ -17,4 +17,13 @@ RJack::TarPit.specify do |s|
   s.assembly_version = 1.0
 
   s.depend 'minitest',        '~> 2.3',       :dev
+
+  # Since an install'd rjack-maven will be used to build this, avoid warnings
+  # by removing constants already used above.
+  RJack::Maven.module_eval do
+    %w[ VERSION MAVEN_VERSION LIB_DIR ].each do |c|
+      remove_const( c )
+    end
+  end
+
 end

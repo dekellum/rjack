@@ -17,6 +17,7 @@ RJack::TarPit.specify do |s|
   s.assembly_version = 1.0
 
   s.depend 'minitest',        '~> 2.3',       :dev
+  s.depend 'rjack-tarpit',    '~> 2.0',       :dev
 
   # Since an install'd rjack-maven will be used to build this, avoid warnings
   # by removing constants already used above.

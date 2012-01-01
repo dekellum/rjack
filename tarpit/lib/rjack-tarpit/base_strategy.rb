@@ -125,15 +125,16 @@ module RJack::TarPit
 
     # Run Maven mvn package or install and touch state files.
     def run_maven
-      mvn = [ 'mvn', @install_request ? 'install' : 'package' ].join( ' ' )
-      sh( mvn ) do |ok,res|
-        if ok
-          touch( MVN_STATE_FILE )
-          touch( MVN_STATE_FILE_INSTALL ) if @install_request
-        else
-          raise "TARPIT: '#{mvn}' failed."
-        end
-      end
+      # Delay till now, in case we were not running on jvm
+      require 'rjack-maven'
+
+      target = @install_request ? 'install' : 'package'
+
+      status = RJack::Maven.launch( [ target ] )
+      raise "Maven #{target} failed (exit code: #{status})" unless status == 0
+
+      touch( MVN_STATE_FILE )
+      touch( MVN_STATE_FILE_INSTALL ) if @install_request
     end
 
     # Define file tasks for all jar symlinks and other misc. maven

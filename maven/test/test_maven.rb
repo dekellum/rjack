@@ -7,8 +7,8 @@ require 'rjack-maven'
 
 class TestMaven < MiniTest::Unit::TestCase
 
-  def test
-    pass #FIXME
+  def test_launch
+    assert_equal( 0, RJack::Maven.launch( %w[ -v ] ) )
   end
 
 end

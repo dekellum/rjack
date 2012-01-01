@@ -20,8 +20,26 @@ require 'java'
 
 module RJack::Maven
 
+  BASE_DIR = File.expand_path( '..', File.dirname(__FILE__) )
+
   Dir.glob( File.join( LIB_DIR, '*.jar' ) ).each { |jar| require jar }
 
-  java_import "org.apache.maven.Maven"
+  import 'org.codehaus.plexus.classworlds.launcher.Launcher'
+
+  def self.setup_system_properties
+    sys = Java::java.lang.System
+
+    sys.set_property( "maven.home", BASE_DIR )
+    sys.set_property( "classworlds.conf",
+                      File.join( BASE_DIR, 'config', 'm2.conf' ) )
+  end
+
+  setup_system_properties
+
+  # Launch maven with args, using plexis launcher.
+  # Returns exit status.
+  def self.launch( args = ARGV )
+    Launcher.main_with_exit_code( args )
+  end
 
 end

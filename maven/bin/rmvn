@@ -1,0 +1,17 @@
+#!/usr/bin/env jruby
+# -*- ruby -*-
+
+require 'java'
+
+module BinScript
+
+  BIN_DIR = File.dirname(__FILE__)
+  BASE_DIR = File.expand_path( '..', BIN_DIR )
+
+  $LOAD_PATH.unshift File.join( BASE_DIR, "lib" )
+
+  require 'rubygems'
+  require 'rjack-maven'
+
+  exit RJack::Maven.launch
+end

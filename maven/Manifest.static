@@ -2,4 +2,9 @@ Manifest.txt
 Rakefile
 assembly.xml
 pom.xml
+bin/rmvn
+config/m2.conf
 lib/rjack-maven/base.rb
+lib/rjack-maven.rb
+test/setup.rb
+test/test_maven.rb

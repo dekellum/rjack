@@ -149,7 +149,7 @@ module RJack::TarPit
 
       # Add this tarpit version as dev dep unless already present
       unless ( name == 'rjack-tarpit' ||
-               dependencies.find { |n,*v| n == 'rjack-tarpit' } )
+               dependencies.find { |d| d.name == 'rjack-tarpit' } )
         depend( 'rjack-tarpit', "~> #{ RJack::TarPit::VERSION }", :dev )
       end
 

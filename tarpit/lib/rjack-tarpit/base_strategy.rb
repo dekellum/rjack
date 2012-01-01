@@ -131,7 +131,9 @@ module RJack::TarPit
       target = @install_request ? 'install' : 'package'
 
       status = RJack::Maven.launch( [ target ] )
-      raise "Maven #{target} failed (exit code: #{status})" unless status == 0
+      unless status == 0
+        raise "TARPIT: Maven #{target} failed (exit code: #{status})"
+      end
 
       touch( MVN_STATE_FILE )
       touch( MVN_STATE_FILE_INSTALL ) if @install_request

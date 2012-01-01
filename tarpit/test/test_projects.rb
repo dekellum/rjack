@@ -28,29 +28,33 @@ class TestProjects < MiniTest::Unit::TestCase
 
   BASEDIR = File.dirname( __FILE__ )
 
+  if RUBY_PLATFORM =~ /java/
+
+    def setup
+      # We clean anyway, but for test consistency...
+      %w[ jproject zookeeper ].each do |p|
+        rm_rf( path( p, 'target' ) )
+        rm_rf( path( p, 'pkg' ) )
+      end
+    end
+
+    def test_jproject
+      Dir.chdir( path( 'jproject' ) ) do
+        assert runv( "clean test gem" )
+      end
+    end
+
+    def test_zookeeper
+      Dir.chdir( path( 'zookeeper' ) ) do
+        assert runv( "manifest" )
+        assert runv( "clean test gem" )
+      end
+    end
+
+  end
+
   def path( *args )
     File.join( BASEDIR, *args )
-  end
-
-  def setup
-    # We clean anyway, but for test consistency...
-    %w[ jproject zookeeper ].each do |p|
-      rm_rf( path( p, 'target' ) )
-      rm_rf( path( p, 'pkg' ) )
-    end
-  end
-
-  def test_jproject
-    Dir.chdir( path( 'jproject' ) ) do
-      assert runv( "clean test gem" )
-    end
-  end
-
-  def test_zookeeper
-    Dir.chdir( path( 'zookeeper' ) ) do
-      assert runv( "manifest" )
-      assert runv( "clean test gem" )
-    end
   end
 
   def runv( targets )

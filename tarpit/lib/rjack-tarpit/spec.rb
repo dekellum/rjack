@@ -204,6 +204,8 @@ module RJack::TarPit
           Util::read_file_list( 'Manifest.txt' ).
           select { |f| f =~ /\.jar$/ }.
           map    { |f| File.basename( f ) }
+
+        #FIXME: Test Manifest.txt exists yet?
       end
       @jars ||= Array( @jars )
     end

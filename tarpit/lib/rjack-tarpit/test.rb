@@ -42,21 +42,29 @@ module RJack::TarPit
 
       if test_loader == :mini_in_proc
 
-        desc "Run minitest tests (in rake process)"
-        task :test do |t,args|
-          require 'minitest/unit'
+        tfiles = FileList[ "test/test*.rb" ]
+        if !tfiles.empty?
 
-          MiniTest::Unit.class_eval do
-            def self.autorun
-              # disable autorun, as we are running ourselves
+          desc "Run minitest tests (in rake process)"
+          task :test do |t,args|
+            require 'minitest/unit'
+
+            MiniTest::Unit.class_eval do
+              def self.autorun
+                # disable autorun, as we are running ourselves
+              end
             end
+
+            tfiles.each { |f| load f }
+
+            code = MiniTest::Unit.new.run( ( ENV['TESTOPTS'] || '' ).split )
+            fail "test failed (#{code})" if code && code > 0
+            puts
           end
 
-          FileList[ "test/test*.rb" ].each { |f| load f }
-
-          code = MiniTest::Unit.new.run( ( ENV['TESTOPTS'] || '' ).split )
-          fail "test failed (#{code})" if code && code > 0
-          puts
+        else
+          desc "No-op"
+          task :test
         end
 
       else

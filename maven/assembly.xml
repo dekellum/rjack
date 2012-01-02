@@ -7,11 +7,6 @@
   <dependencySets>
     <dependencySet>
       <useProjectArtifact>false</useProjectArtifact>
-<!--
-      <includes>
-        <include></include>
-      </includes>
--->
     </dependencySet>
   </dependencySets>
 </assembly>

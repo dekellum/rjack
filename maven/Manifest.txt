@@ -11,10 +11,11 @@ lib/rjack-maven/base.rb
 lib/rjack-maven.rb
 test/setup.rb
 test/test_maven.rb
-lib/rjack-maven/aether-api-1.11.jar
-lib/rjack-maven/aether-impl-1.11.jar
-lib/rjack-maven/aether-spi-1.11.jar
-lib/rjack-maven/aether-util-1.11.jar
+lib/rjack-maven/aether-api-1.13.1.jar
+lib/rjack-maven/aether-connector-wagon-1.13.1.jar
+lib/rjack-maven/aether-impl-1.13.1.jar
+lib/rjack-maven/aether-spi-1.13.1.jar
+lib/rjack-maven/aether-util-1.13.1.jar
 lib/rjack-maven/commons-cli-1.2.jar
 lib/rjack-maven/maven-aether-provider-3.0.3.jar
 lib/rjack-maven/maven-artifact-3.0.3.jar
@@ -36,4 +37,6 @@ lib/rjack-maven/plexus-utils-2.0.6.jar
 lib/rjack-maven/sisu-guice-2.9.4-no_aop.jar
 lib/rjack-maven/sisu-inject-bean-2.1.1.jar
 lib/rjack-maven/sisu-inject-plexus-2.1.1.jar
-lib/rjack-maven/wagon-provider-api-1.0-beta-7.jar
+lib/rjack-maven/wagon-http-lightweight-1.0.jar
+lib/rjack-maven/wagon-http-shared-1.0.jar
+lib/rjack-maven/wagon-provider-api-1.0.jar

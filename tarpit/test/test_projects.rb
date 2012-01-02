@@ -39,16 +39,14 @@ class TestProjects < MiniTest::Unit::TestCase
     end
 
     def test_jproject
-      Dir.chdir( path( 'jproject' ) ) do
-        assert runv( "clean test gem" )
-      end
+      pt = path( 'jproject' )
+      assert runv( pt, "clean test gem" )
     end
 
     def test_zookeeper
-      Dir.chdir( path( 'zookeeper' ) ) do
-        assert runv( "manifest" )
-        assert runv( "clean test gem" )
-      end
+      pt = path( 'zookeeper' )
+      assert runv( pt, "manifest" )
+      assert runv( pt, "clean test gem" )
     end
 
   end
@@ -57,10 +55,12 @@ class TestProjects < MiniTest::Unit::TestCase
     File.join( BASEDIR, *args )
   end
 
-  def runv( targets )
-    c = "jruby -S rake #{targets}"
+  def runv( dir, targets )
+    # Shell cd is most reliabe, given java path duality and potential
+    # for jruby to attempt inproc otherwise.
+    c = "cd #{dir} && jruby -S rake #{targets}"
     puts
-    puts "=== #{Dir.pwd} > #{c} ==="
+    puts "=== #{c} ==="
     # Disable seemingly lame bundler ENV mods to make these tests work
     # the same as if we ran it in our own shell.
     r = Bundler.with_clean_env { system( c ) }

@@ -28,6 +28,19 @@ module RJack::TarPit
     # validate the version of the latest history entry.
     attr_accessor :history_version_regexp
 
+    # Array of "init" files to check for gem version references in
+    # (default: [ init/<spec.name> ], if exists)
+    attr_accessor :init_files
+
+    # Proc given spec and returning regexp mathing gem line to find in
+    # init_files. (default: /^gem.+<spec.name>/)
+    attr_accessor :init_line_regexp
+
+    # Proc returning regexp given gem version as parameter, to use to
+    # validate the gem version of gem line in init_files.
+    # (default: /= <spec.version>/)
+    attr_accessor :init_version_regexp
+
     def initialize
       super
 
@@ -35,13 +48,17 @@ module RJack::TarPit
       @history_date_regexp    = /\([0-9\-]+\)$/
       @history_version_regexp = Proc.new { |v| / #{v} / }
 
+      @init_files             = :default
+      @init_line_regexp       = Proc.new { |s| /^gem.+#{s.name}/ }
+      @init_version_regexp    = Proc.new { |v| /= #{v}/ }
+
       add_define_hook( :define_line_match_tasks )
     end
 
     def define_line_match_tasks
 
       if spec.history_file && history_regexp
-        desc "Check that #{spec.history_file} has lastest version"
+        desc "Check that #{spec.history_file} has latest version"
         task :check_history_version do
           test_line_match( spec.history_file,
                            history_regexp,
@@ -58,6 +75,24 @@ module RJack::TarPit
                            history_date_regexp )
         end
         [ :tag, :push ].each { |t| task t => :check_history_date }
+      end
+
+      if init_files == :default
+        init_files = [ File.join( 'init', spec.name ) ].
+          select { |f| File.exist?( f ) }
+      end
+
+      init_files.each do |inf|
+        desc "Check that #{init_files.join(", ")} has latest version"
+        task :check_init_version do
+          test_line_match( inf,
+                           init_line_regexp.call( spec ),
+                           init_version_regexp.call( spec.version ) )
+        end
+      end
+
+      unless init_files.empty?
+        [ :gem, :tag ].each { |t| task t => :check_init_version }
       end
 
     end

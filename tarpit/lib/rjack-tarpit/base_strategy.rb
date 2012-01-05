@@ -64,18 +64,19 @@ module RJack::TarPit
       @defines.each { |sym| send( sym ) }
     end
 
-    # Define all tasks based on provided details. In this strategy,
-    # the Manifest.txt task will be invoked prior to calling
-    # Hoe.spec, thus any additional Manifest.txt dependencies
-    # should be specified prior to this call.
+    # Define maven tasks based on spec strategy and other details.
     def define_maven_tasks
-      define_maven_package_task unless spec.jars.empty?
+      from_assembly = ( spec.maven_strategy == :jars_from_assembly )
+      do_maven = from_assembly || spec.jars.size > 0
 
-      if !spec.jars.empty? || spec.generated_files
+      define_maven_package_task if do_maven
+
+      if do_maven || spec.generated_files
         define_manifest_task
+        task( :manifest => [ MVN_STATE_FILE ] ) if from_assembly
       end
 
-      define_post_maven_tasks unless spec.jars.empty?
+      define_post_maven_tasks if do_maven
     end
 
     # Define task for dynamically generating Manifest.txt

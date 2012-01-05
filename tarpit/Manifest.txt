@@ -10,7 +10,6 @@ lib/rjack-tarpit/clean.rb
 lib/rjack-tarpit/doc.rb
 lib/rjack-tarpit/gem.rb
 lib/rjack-tarpit/git.rb
-lib/rjack-tarpit/jars_from_assembly.rb
 lib/rjack-tarpit/line_match.rb
 lib/rjack-tarpit/readme_parser.rb
 lib/rjack-tarpit/spec.rb

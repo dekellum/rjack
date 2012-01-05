@@ -23,16 +23,8 @@ module RJack::TarPit
   # New task generator given name matching a spec name in the current
   # directory.
   def self.new( name )
-
     load "#{name}.gemspec"
-    spec = last_spec
-
-    if spec.maven_strategy == :jars_from_assembly
-      require 'rjack-tarpit/jars_from_assembly'
-      JarsFromAssembly.new( spec )
-    else
-      BaseStrategy.new( spec )
-    end
+    BaseStrategy.new( last_spec )
   end
 
 end

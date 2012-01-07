@@ -12,8 +12,8 @@ RJack::TarPit.specify do |s|
   s.summary = 'Glue for Maven in Rake.'
 
   s.description = <<-DESC
-    Runs mvn package/install and links jars as needed to gem lib directory.
-    Provides related utilities.
+    Runs maven package/install and links jars as needed to the gem lib
+    directory. Provides related utilities.
   DESC
 
   s.depend 'rake',            '~> 0.9.2'

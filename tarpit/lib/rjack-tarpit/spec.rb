@@ -107,6 +107,9 @@ module RJack::TarPit
         self.files = Util::read_file_list( 'Manifest.txt' )
       end
 
+      self.executables =
+        self.files.grep( /^bin\/.+/ ) { |f| File.basename( f ) }
+
       @readme_file  = existing( %w[ README.rdoc README.txt ] )
       @history_file = existing( %w[ History.rdoc History.txt ] )
 

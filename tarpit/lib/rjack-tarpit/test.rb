@@ -27,18 +27,40 @@ module RJack::TarPit
     # runs in (rake) process.
     attr_accessor :test_loader
 
+    # Proc for setting RSpec::Core::RakeTask options
+    # (default: nil, no-op)
+    attr_accessor :rspec_task_config
+
     def initialize
       super
 
-      @test_loader = :mini_in_proc
-      @test_task_config = nil
+      @test_loader       = :mini_in_proc
+      @test_task_config  = nil
+      @rspec_task_config = nil
 
       add_define_hook( :define_test_tasks )
+      add_define_hook( :define_spec_tasks )
+    end
+
+    def define_spec_tasks
+
+      if File.directory?( "spec" ) || rspec_task_config
+        require 'rspec/core/rake_task'
+
+        desc "Run RSpec on specifications"
+        RSpec::Core::RakeTask.new( :spec ) do |t|
+          t.rspec_opts ||= []
+          t.rspec_opts += %w[ -Ispec:lib ]
+          rspec_task_config.call( t ) if rspec_task_config
+        end
+
+        task :test => [ :spec ]
+        task :default => [ :test ]
+      end
+
     end
 
     def define_test_tasks
-
-      #FIXME: Add spec support like Hoe
 
       if test_loader == :mini_in_proc
 
@@ -78,9 +100,7 @@ module RJack::TarPit
 
       end
 
-      #FIXME: Make this conditional with above test (avoid empty?)
       task :default => [ :test ]
-
     end
 
   end

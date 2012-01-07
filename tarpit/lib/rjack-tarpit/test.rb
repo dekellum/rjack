@@ -54,7 +54,9 @@ module RJack::TarPit
           rspec_task_config.call( t ) if rspec_task_config
         end
 
+        desc "Run RSpec on specifications"
         task :test => [ :spec ]
+
         task :default => [ :test ]
       end
 

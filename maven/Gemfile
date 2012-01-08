@@ -7,5 +7,5 @@ source :rubygems
 # gemspec :name => 'rjack-maven'
 
 # Instead specify separately
-gem 'rjack-tarpit', '~> 2.0.a.0'
+gem 'rjack-tarpit', '~> 2.0'
 gem 'minitest',     '~> 2.3',     :group => :development

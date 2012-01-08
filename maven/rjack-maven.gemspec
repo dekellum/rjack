@@ -1,6 +1,6 @@
 # -*- ruby -*- encoding: utf-8 -*-
 
-gem 'rjack-tarpit', '~> 2.0.a.0'
+gem 'rjack-tarpit', '~> 2.0'
 require 'rjack-tarpit/spec'
 
 RJack::TarPit.specify do |s|

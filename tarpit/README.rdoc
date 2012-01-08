@@ -6,51 +6,69 @@
 
 == Description
 
-TarPit provides the glue for an unholy union of build tools. Namely:
+TarPit provides the glue for an unholy union of build tools. TarPit
+includes general automation for any rubygems project. It originally
+used and remains heavily influenced by
+Hoe[http://seattlerb.rubyforge.org/hoe/] (ex: use of Manifest.txt.)
+However, it fully supports use of Bundler[http://gembundler.com/]. The
+gemspec benefits from sensible automation but remains in
+a <project>.gemspec per Bundler's requirements.
 
-* Rake[http://github.com/jimweirich/rake] with
-  Hoe[http://seattlerb.rubyforge.org/hoe/] for gem publishing
-* Maven[http://maven.apache.org/] for Java builds with dependencies.
-
-In particular, it runs "mvn package" when needed, links jars to the
-gem lib directory, and provides (semi-)automatic Manifest.txt
-generation with these jar files without offending Hoe.
-
-* The Maven pom.xml (and assembly.xml if needed) must be managed
-  independently.
-* A Manifest.static file holds the static elements of the manifest.
+For java platform projects, TarPit offers Maven integration via the
+rjack-maven[http://rjack.rubyforge.org/maven] gem. Maven
+package/install is run as needed, and jars are linked to the gem lib
+directory for inclusion, with semi-automatic Manifest.txt production.
+No need to bloat your git repo by checking in every version of every
+jar for all time.  The standard Maven layout and configuration
+(i.e. src, target, pom.xml, assembly.xml) is otherwise retained for
+complete java tool set compatibility. Use Maven only for what is it
+good at: java compilation with dependencies, and Rake for everything
+else.
 
 == Synopsis
 
-Rakefile example for a gem including a single jar, built from java
-source with maven:
+Sample gemspec for a gem including a single jar, built from java
+source with maven (see also included test/jproject):
 
-  # -*- ruby -*-
-  $LOAD_PATH << './lib'
-  require 'mygem/version'
+  gem 'rjack-tarpit', '~> 2.0'
+  require 'rjack-tarpit/spec'
 
-  require 'rubygems'
-  gem     'rjack-tarpit', '~> 2.0.a.0'
-  require 'rjack-tarpit'
+  $LOAD_PATH.unshift( File.join( File.dirname( __FILE__ ), 'lib' ) )
 
-  t = RJack::TarPit.new( 'mygem', MyGem::VERSION, :java_platform )
+  require 'jproject/base'
 
-  t.specify do |h|
-    h.developer( "David Kellum", "dek-oss@gravitext.com" )
-    h.extra_deps += [ [ 'rjack-slf4j',  '~> 1.6.2' ],
-                      [ 'rjack-logback, '~> 1.2'   ] ]
+  RJack::TarPit.specify do |s|
+    s.version = JProject::VERSION
+
+    s.add_developer 'David Kellum', 'dek-oss@gravitext.com'
+
+    s.maven_strategy = :no_assembly
+
+    s.depend 'rjack-slf4j',   '~> 1.6.4'
+    s.depend 'minitest',      '~> 2.3',     :dev
   end
 
-  file 'Manifest.txt' => [ 'lib/mygem/version.rb' ]
+And the associated Rakefile (assuming use of Bundler):
 
-  t.define_tasks
+  require 'rubygems'
+  require 'bundler/setup'
+  require 'rjack-tarpit'
+
+  RJack::TarPit.new( "jproject" ).define_tasks
+
+And a Bundler Gemfile:
+
+  source :rubygems
+  gemspec
+
+Java projects should provide a Manifest.static. Jars or other
+generated files will be added to this to produce Manifest.txt for use
+as the gemspec's files.
 
 == Dependencies
 
-Besides the explicit gem dependencies, TarPit requires:
-
-* rake 0.8.7+ (bundled with JRuby 1.3+)
-* Apache Maven 2+ ('mvn' command on path)
+See the gem dependencies. The rjack-maven gem is only a dependency for
+on the java platform.
 
 == License
 

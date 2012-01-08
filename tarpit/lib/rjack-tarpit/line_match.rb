@@ -32,7 +32,7 @@ module RJack::TarPit
     # (default: [ init/<spec.name> ], if exists)
     attr_accessor :init_files
 
-    # Proc given spec and returning regexp mathing gem line to find in
+    # Proc given spec and returning regexp matching gem line to find in
     # init_files. (default: /^gem.+<spec.name>/)
     attr_accessor :init_line_regexp
 

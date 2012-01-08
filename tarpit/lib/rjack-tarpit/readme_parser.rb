@@ -48,6 +48,7 @@ module RJack::TarPit
       sentences = desc.
         gsub( /\s+/, ' ' ). #Simplify whitespace
         gsub( /\{([^\}]+)\}\[[^\]]*\]/, '\1' ). #Replace rdoc link with its text
+        gsub( /(\S)\[\s*http:[^\]]*\]/, '\1' ). #And bare rdoc links
         split( /[!?:.]\s/ )
 
       self.summary     = sentences[0]           + '.' if sentences.length > 0

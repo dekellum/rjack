@@ -265,7 +265,7 @@ module RJack::TarPit
 
     # Remove jars in jar_dest by wildcard expression
     def remove_dest_jars
-      jars = FileList[ File.join( jar_dest, "*.jar" ) ].sort
+      jars = Dir[ File.join( jar_dest, "*.jar" ) ].sort
       FileUtils::rm_f jars unless jars.empty?
     end
 
@@ -291,7 +291,7 @@ module RJack::TarPit
         # For manifest, map destination jars from available jars in
         # (jar_from) target/assembly. These are available since mvn
         # package will be run first for the :manifest target.
-        FileList[ File.join( jar_from, "*.jar" ) ].
+        Dir[ File.join( jar_from, "*.jar" ) ].
           map { |j| File.basename( j ) }.
           sort.
           map { |j| File.join( jar_dest, j ) }

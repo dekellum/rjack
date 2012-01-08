@@ -30,7 +30,7 @@ else.
 Sample gemspec for a gem including a single jar, built from java
 source with maven (see also included test/jproject):
 
-  gem 'rjack-tarpit', '~> 2.0'
+  gem 'rjack-tarpit', '~> 2.0.a.0'
   require 'rjack-tarpit/spec'
 
   $LOAD_PATH.unshift( File.join( File.dirname( __FILE__ ), 'lib' ) )

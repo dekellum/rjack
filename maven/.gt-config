@@ -2,12 +2,11 @@
 
 Gravitext::DevTools.configure do |c|
 
-  c.header do |h|
+  c.setup_header do |h|
     h.holder = "David Kellum"
     h.inception = 2012
     h.license = :apache
-    h.exclusions += %w[ rjack-maven.gemspec Gemfile Gemfile.lock
-                        config/m2.conf test/setup.rb ]
+    h.exclusions += %w[ config/m2.conf test/setup.rb ]
   end
 
 end

@@ -9,8 +9,8 @@ tp = RJack::TarPit.new( "rjack-tarpit" )
 
 task :check_sample_version do
   tp.test_line_match( 'README.rdoc',
-                      /^\s*gem.+#{ tp.spec.name }/,
-                      /#{ tp.spec.version }/ )
+                      /^\s*gem.+rjack-tarpit/,
+                      /#{ RJack::TarPit::MINOR_VERSION }/ )
 end
 [ :gem, :tag, :push ].each { |t| task t => :check_sample_version }
 

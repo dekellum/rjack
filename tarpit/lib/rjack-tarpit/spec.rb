@@ -156,13 +156,13 @@ module RJack::TarPit
         @jars = [ default_jar ]
       end
 
-      # The platform is java if jars are specified.
+      # The platform must be java if jars are specified.
       self.platform = :java if !jars.empty?
 
-      # Add this tarpit version as dev dep unless already present
+      # Add tarpit as dev dependency unless already present
       unless ( name == 'rjack-tarpit' ||
                dependencies.find { |d| d.name == 'rjack-tarpit' } )
-        depend( 'rjack-tarpit', "~> #{ RJack::TarPit::VERSION }", :dev )
+        depend( 'rjack-tarpit', "~> #{ RJack::TarPit::MINOR_VERSION }", :dev )
       end
 
       check_generate_manifest

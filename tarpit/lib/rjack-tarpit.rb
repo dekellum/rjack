@@ -23,7 +23,9 @@ module RJack::TarPit
   # New task generator given name matching a spec name in the current
   # directory.
   def self.new( name )
-    load "#{name}.gemspec"
+
+    load( "#{name}.gemspec", true )
+
     BaseStrategy.new( last_spec )
   end
 

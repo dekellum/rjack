@@ -74,7 +74,7 @@ module RJack::TarPit
             require 'minitest/unit'
 
             MiniTest::Unit.class_eval do
-              def self.autorun
+              def self.autorun # :nodoc:
                 # disable autorun, as we are running ourselves
               end
             end

@@ -9,7 +9,7 @@
 TarPit provides the glue for an unholy union of build tools. TarPit
 includes general automation for any rubygems project. It originally
 used and remains heavily influenced by
-Hoe[http://seattlerb.rubyforge.org/hoe/] (ex: use of Manifest.txt.)
+Hoe[http://seattlerb.rubyforge.org/hoe/] (e.g. Manifest.txt.)
 However, it fully supports use of Bundler[http://gembundler.com/]. The
 gemspec benefits from sensible automation but remains in
 a <project>.gemspec per Bundler's requirements.
@@ -22,8 +22,47 @@ No need to bloat your git repo by checking in every version of every
 jar for all time.  The standard Maven layout and configuration
 (i.e. src, target, pom.xml, assembly.xml) is otherwise retained for
 complete java tool set compatibility. Use Maven only for what is it
-good at: java compilation with dependencies, and Rake for everything
+good at: java compilation with dependencies. Use Rake for everything
 else.
+
+=== Features
+
+* In Rake/JVM process Maven execution via rjack-maven (speed)
+* Default, in Rake process
+  Minitest[http://docs.seattlerb.org/minitest/] launcher (speed)
+* Manifest.txt for gem file contents, derived from Manifest.static
+  plus jars in Java projects
+* ReadmeParser for default specication url, summary, description
+  values
+* Specification name defaults from <name>.gemspec
+* LineMatchTaskDefiner defines check_(history|init)_(version|date)
+  tasks where appropriate to avoid missing history or version updates
+  on release
+
+=== Java strategies
+
+Java projects require different strategies for integrating Maven,
+specified via +s.maven_strategy=+ and summarized below:
+
++:no_assembly+ :: pom.xml builds a single jar, default same name and
+                  same version as gem project (SpecHelper.default_jar)
+                  or specified via +s.jars=+.
+
++:jars_from_assembly+ :: assembly.xml defines the jars at Maven
+                         package time. Changes to this set of jars
+                         must be incorporated by explicitly running
+                         the `rake manifest` task.
+
+Default :: No java, or use assembly for multiple jars but specify
+           +s.jars=+ when they can be computed, for example from
+           common version number or other gem data. This avoids the
+           need for the `rake manifest` step of +:jars_from_assembly+.
+
+Assemblies are built and located with the pom version number. This
+defaults to gem project version, but can be fixed
+(i.e. s.assembly_version='1.0') to avoid a separate version to bump,
+where the project will not export the pom, for example when the
+project is re-packaging upstream jars as a gem.
 
 == Synopsis
 
@@ -67,8 +106,8 @@ as the gemspec's files.
 
 == Dependencies
 
-See the gem dependencies. The rjack-maven gem is only a dependency for
-on the java platform.
+See the gem dependencies. The rjack-maven gem is only a dependency on
+the java platform.
 
 == License
 

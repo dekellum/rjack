@@ -255,7 +255,7 @@ module RJack::TarPit
         m += Util::clean_list( generated_files ).sort
         m += dest_jars
 
-        puts "TARPIT: Updating Manifest.txt"
+        puts "TARPIT: Regenerating #{ File.expand_path( 'Manifest.txt' ) }"
         open( 'Manifest.txt', 'w' ) { |out| out.puts m }
         @generated_manifest = true
       else

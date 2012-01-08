@@ -2,6 +2,7 @@
 
 $LOAD_PATH.unshift( File.join( File.dirname( __FILE__ ), 'lib' ) )
 require 'rjack-tarpit/spec'
+$LOAD_PATH.shift
 
 RJack::TarPit.specify do |s|
 

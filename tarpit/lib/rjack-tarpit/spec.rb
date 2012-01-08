@@ -28,7 +28,9 @@ module RJack::TarPit
     attr_reader :last_spec
 
     # Produce a Gem::Specification embellished with SpecHelper,
-    # ReadmeParser, and yield to block
+    # ReadmeParser, and yield to block.
+    # The specification name defaults to <name>.gemspec calling this.
+    # Within block, $LOAD_PATH will have the projects lib included.
     def specify( &block )
 
       # Embellish a Specification instance with SpecHelper.
@@ -42,10 +44,17 @@ module RJack::TarPit
         include ReadmeParser
       end
 
+      specfile = caller[0] =~ /^(.*\.gemspec)/ && $1
+
       # Default name to the (name).gemspec that should be calling us
-      spec.name = caller[0] =~ /([^\\\/]+)\.gemspec/ && $1
+      spec.name = File.basename( specfile, ".gemspec" )
+
+      # Add project's lib/ to LOAD_PATH for block...
+      $LOAD_PATH.unshift( File.join( File.dirname( specfile ), 'lib' ) )
 
       spec.tarpit_specify &block
+
+      $LOAD_PATH.shift # ...then remove it to avoid pollution
 
       @last_spec = spec
     end

@@ -14,11 +14,11 @@
 #++
 
 require 'rubygems'
-gem( 'rjack-slf4j', '~> 1.6.0' )
+require 'bundler/setup'
+
 require 'rjack-slf4j'
 require 'rjack-slf4j/jul-to-slf4j'
 
-$LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
 require 'rjack-logback'
 
 require 'rjack-slf4j/mdc'

@@ -16,6 +16,7 @@
 #++
 
 require 'rubygems'
+require 'bundler/setup'
 
 require 'rjack-logback'
 
@@ -26,8 +27,6 @@ end
 
 require 'minitest/unit'
 require 'minitest/autorun'
-
-$LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
 
 require 'rjack-async-httpclient'
 

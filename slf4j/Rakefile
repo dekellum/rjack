@@ -1,60 +1,17 @@
 # -*- ruby -*-
 
-$LOAD_PATH << './lib'
-require 'rjack-slf4j/base'
-
 require 'rubygems'
-gem     'rjack-tarpit', '~> 1.4'
+require 'bundler/setup'
 require 'rjack-tarpit'
 
-t = RJack::TarPit.new( 'rjack-slf4j', RJack::SLF4J::VERSION, :java_platform )
+tp = RJack::TarPit.new( 'rjack-slf4j' )
 
-t.specify do |h|
-  h.developer( "David Kellum", "dek-oss@gravitext.com" )
-  h.rdoc_locations << "dekellum@rubyforge.org:/var/www/gforge-projects/rjack/slf4j"
-end
+tp.define_tasks
 
-loaders =
-  begin
-    l = RJack::SLF4J::ADAPTERS.flatten.compact
-    l.delete( "jul-to-slf4j" ) # exception: maintained as source
-    l
-  end
-
-t.generated_files = loaders.map { |adp| "lib/#{t.name}/#{adp}.rb" }
-
-t.jars =
-  begin
-    j = [ 'slf4j-api' ]
-    j += RJack::SLF4J::ADAPTERS.map { |i,o| [ i, "slf4j-#{o}" ] }.flatten.compact
-    j.map { |n| "#{n}-#{RJack::SLF4J::SLF4J_VERSION}.jar" }
-  end
-
-file 'Manifest.txt' => [ "lib/#{t.name}/base.rb" ]
-
-t.assembly_version = 1.0
-
-task :check_pom_deps do
-  t.test_line_match( 'pom.xml',
-                     %r[<version>#{RJack::SLF4J::SLF4J_VERSION}</version>] )
-end
-
-task :check_history_version do
-  t.test_line_match( 'History.rdoc', /^==/, / #{t.version} / )
-end
-task :check_history_date do
-  t.test_line_match( 'History.rdoc', /^==/, /\([0-9\-]+\)$/ )
-end
-
-task :gem  => [ :check_pom_deps, :check_history_version                      ]
-task :tag  => [ :check_pom_deps, :check_history_version, :check_history_date ]
-task :push => [                                          :check_history_date ]
-
-t.define_tasks
-
-loaders.each do |adapter|
-  file "lib/#{t.name}/#{adapter}.rb" => [ "lib/#{t.name}/base.rb", 'Rakefile' ] do
-    open( "lib/#{t.name}/#{adapter}.rb", 'w' ) do |out|
+tp.spec.loaders.each do |adapter|
+  file( "lib/rjack-slf4j/#{adapter}.rb" =>
+        [ "lib/rjack-slf4j/base.rb", 'Rakefile' ] ) do
+    open( "lib/rjack-slf4j/#{adapter}.rb", 'w' ) do |out|
       out.write <<END
 require 'rjack-slf4j'
 RJack::SLF4J.require_adapter( '#{adapter}' )

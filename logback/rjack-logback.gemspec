@@ -5,9 +5,8 @@ require 'rjack-tarpit/spec'
 
 RJack::TarPit.specify do |s|
   require 'rjack-logback/base'
-  include RJack
 
-  s.version  = Logback::VERSION
+  s.version  = RJack::Logback::VERSION
 
   s.add_developer( 'David Kellum', 'dek-oss@gravitext.com' )
 
@@ -18,7 +17,7 @@ RJack::TarPit.specify do |s|
   s.assembly_version = '1.0'
 
   s.jars = %w[ core classic access ].
-    map { |j| "logback-#{j}-#{ Logback::LOGBACK_VERSION }.jar" }
+    map { |j| "logback-#{j}-#{ RJack::Logback::LOGBACK_VERSION }.jar" }
 
   # FIXME: s.rdoc_locations <<
   # "dekellum@rubyforge.org:/var/www/gforge-projects/rjack/logback"

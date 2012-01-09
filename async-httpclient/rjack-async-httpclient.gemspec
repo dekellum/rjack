@@ -3,12 +3,10 @@
 gem 'rjack-tarpit', '~> 2.0'
 require 'rjack-tarpit/spec'
 
-include RJack
-
-TarPit.specify do |s|
+RJack::TarPit.specify do |s|
   require 'rjack-async-httpclient/base'
 
-  s.version  = AsyncHTTPClient::VERSION
+  s.version  = RJack::AsyncHTTPClient::VERSION
 
   s.add_developer( 'David Kellum', 'dek-oss@gravitext.com' )
 

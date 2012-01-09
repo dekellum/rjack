@@ -20,8 +20,6 @@ require 'rjack-commons-pool/base'
 #
 # http://commons.apache.org/pool/
 #
-module RJack
-  module CommonsPool
-    require "#{POOL_DIR}/commons-pool-#{POOL_VERSION}.jar"
-  end
+module RJack::CommonsPool
+  require "#{POOL_DIR}/commons-pool-#{POOL_VERSION}.jar"
 end

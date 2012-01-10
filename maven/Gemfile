@@ -1,0 +1,11 @@
+# -*- ruby -*-
+
+source :rubygems
+
+# Special case: If referenced this gemspec, bundler would use self as
+# the rjack-maven impl. for rjack-tarpit, which has ordering issues.
+# gemspec :name => 'rjack-maven'
+
+# Instead specify separately
+gem 'rjack-tarpit', '~> 2.0'
+gem 'minitest',     '~> 2.3',     :group => :development

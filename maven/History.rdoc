@@ -1,0 +1,2 @@
+=== 3.0.3.1 (TBD)
+* Initial release based on maven 3.0.3

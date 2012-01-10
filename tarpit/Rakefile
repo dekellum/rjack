@@ -5,13 +5,17 @@ require 'bundler/setup'
 
 require 'rjack-tarpit'
 
-tp = RJack::TarPit.new( "rjack-tarpit" )
+RJack::TarPit.new( 'rjack-tarpit' ) do |tp|
 
-task :check_sample_version do
-  tp.test_line_match( 'README.rdoc',
-                      /^\s*gem.+rjack-tarpit/,
-                      /#{ RJack::TarPit::MINOR_VERSION }/ )
+  tp.rdoc_destinations <<
+    'dekellum@rubyforge.org:/var/www/gforge-projects/rjack/tarpit'
+
+  desc "Check that README sample has latest version"
+  task :check_sample_version do
+    tp.test_line_match( 'README.rdoc',
+                        /^\s*gem.+rjack-tarpit/,
+                        /#{ RJack::TarPit::MINOR_VERSION }/ )
+  end
+  [ :gem, :tag, :push ].each { |t| task t => :check_sample_version }
+
 end
-[ :gem, :tag, :push ].each { |t| task t => :check_sample_version }
-
-tp.define_tasks

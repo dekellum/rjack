@@ -5,6 +5,11 @@ PATH
       rjack-slf4j (~> 1.6.1)
 
 PATH
+  remote: commons-codec
+  specs:
+    rjack-commons-codec (1.4.2-java)
+
+PATH
   remote: commons-pool
   specs:
     rjack-commons-pool (1.5.6.0-java)
@@ -40,6 +45,7 @@ PLATFORMS
 DEPENDENCIES
   minitest (~> 2.2)
   rjack-async-httpclient!
+  rjack-commons-codec!
   rjack-commons-pool!
   rjack-logback!
   rjack-slf4j!

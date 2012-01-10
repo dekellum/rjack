@@ -14,19 +14,24 @@
 # permissions and limitations under the License.
 #++
 
-require 'rjack-tarpit/base'
-require 'rjack-tarpit/spec'
-require 'rjack-tarpit/base_strategy'
-
 module RJack::TarPit
+  module Util
 
-  # New task generator given name matching a spec name in the current
-  # directory.
-  def self.new( name )
+    module_function
 
-    load( "#{name}.gemspec", true )
+    # Read a list of files and return a cleaned list.
+    def read_file_list( sfile )
+      clean_list( open( sfile ) { |f| f.readlines } )
+    end
 
-    BaseStrategy.new( last_spec )
+    # Cleanup a list of files
+    def clean_list( l )
+      Array( l ).
+        compact.
+        map { |f| f.strip }.
+        reject { |f| f.empty? }
+    end
+
   end
 
 end

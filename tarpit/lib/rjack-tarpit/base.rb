@@ -14,19 +14,9 @@
 # permissions and limitations under the License.
 #++
 
-require 'rjack-tarpit/base'
-require 'rjack-tarpit/spec'
-require 'rjack-tarpit/base_strategy'
-
-module RJack::TarPit
-
-  # New task generator given name matching a spec name in the current
-  # directory.
-  def self.new( name )
-
-    load( "#{name}.gemspec", true )
-
-    BaseStrategy.new( last_spec )
+module RJack
+  module TarPit
+    MINOR_VERSION = '2.0'
+    VERSION = MINOR_VERSION + '.0'
   end
-
 end

@@ -1,40 +1,17 @@
 # -*- ruby -*-
 
-$LOAD_PATH << './lib'
 require 'rubygems'
-
-tarpit_deps = [ [ 'rdoc', '~> 3.6'    ],
-                [ 'hoe',  '~> 2.12.3' ] ]
-
-# gem them here, so we can build tarpit with tarpit_deps
-tarpit_deps.each { |dep| gem( *dep ) }
+require 'bundler/setup'
 
 require 'rjack-tarpit'
 
-include RJack
+tp = RJack::TarPit.new( "rjack-tarpit" )
 
-t = TarPit.new( 'rjack-tarpit', TarPit::VERSION )
-
-t.specify do |h|
-  h.developer( 'David Kellum', 'dek-oss@gravitext.com' )
-  h.extra_deps += tarpit_deps
-  h.rdoc_locations << "dekellum@rubyforge.org:/var/www/gforge-projects/rjack/tarpit"
-end
-
-task :check_history_version do
-  t.test_line_match( 'History.rdoc', /^==/, / #{ t.version } / )
-end
 task :check_sample_version do
-  t.test_line_match( 'README.rdoc', /^\s*gem.+#{ t.name }/, /#{ t.version }/ )
+  tp.test_line_match( 'README.rdoc',
+                      /^\s*gem.+rjack-tarpit/,
+                      /#{ RJack::TarPit::MINOR_VERSION }/ )
 end
-task :check_history_date do
-  t.test_line_match( 'History.rdoc', /^==/, /\([0-9\-]+\)$/ )
-end
+[ :gem, :tag, :push ].each { |t| task t => :check_sample_version }
 
-task :gem  => [ :check_history_version, :check_sample_version  ]
-task :tag  => [ :check_history_version, :check_sample_version, :check_history_date ]
-task :push => [ :check_history_version, :check_sample_version, :check_history_date ]
-
-task :test #noop
-
-t.define_tasks
+tp.define_tasks

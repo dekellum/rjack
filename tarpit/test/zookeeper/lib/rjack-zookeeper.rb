@@ -2,8 +2,8 @@
 # Copyright (c) 2009-2012 David Kellum
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you
-# may not use this file except in compliance with the License.  You
-# may obtain a copy of the License at
+# may not use this file except in compliance with the License.  You may
+# obtain a copy of the License at
 #
 #    http://www.apache.org/licenses/LICENSE-2.0
 #
@@ -14,19 +14,16 @@
 # permissions and limitations under the License.
 #++
 
-require 'rjack-tarpit/base'
-require 'rjack-tarpit/spec'
-require 'rjack-tarpit/base_strategy'
+require 'rjack-zookeeper/base'
 
-module RJack::TarPit
+require 'rjack-slf4j'
 
-  # New task generator given name matching a spec name in the current
-  # directory.
-  def self.new( name )
+require 'java'
 
-    load( "#{name}.gemspec", true )
+module RJack::RZooKeeper
 
-    BaseStrategy.new( last_spec )
-  end
+  Dir.glob( File.join( LIB_DIR, '*.jar' ) ).each { |jar| require jar }
+
+  java_import "org.apache.zookeeper.ZooKeeper"
 
 end

@@ -1,0 +1,14 @@
+# -*- ruby -*-
+
+source :rubygems
+
+gemspec :name => 'rjack-tarpit'
+
+platforms :jruby do
+  gem 'rjack-maven', '~> 3.0'
+
+  group :development do
+    gem 'rjack-slf4j', '~> 1.6.4'
+    gem 'rjack-logback', '~> 1.2'
+  end
+end

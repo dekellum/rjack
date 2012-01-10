@@ -2,10 +2,14 @@
 
 Gravitext::DevTools.configure do |c|
 
-  c.header do |h|
+  c.setup_header do |h|
     h.holder = "David Kellum"
     h.inception = 2009
     h.license = :apache
+    h.exclusions += %w[ test/setup.rb
+                        test/jproject/**/*
+                        **/*.gemspec
+                        test/zookeeper/test/* ]
   end
 
 end

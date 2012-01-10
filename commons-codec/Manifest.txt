@@ -7,4 +7,5 @@ assembly.xml
 pom.xml
 lib/rjack-commons-codec/base.rb
 lib/rjack-commons-codec.rb
+test/test_codec.rb
 lib/rjack-commons-codec/commons-codec-1.4.jar

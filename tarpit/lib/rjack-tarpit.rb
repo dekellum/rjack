@@ -20,13 +20,21 @@ require 'rjack-tarpit/base_strategy'
 
 module RJack::TarPit
 
-  # New task generator given name matching a spec name in the current
-  # directory.
+  # New task generator given name matching <name>.gemspec in the
+  # current directory. If block is given, yields self (err, actually
+  # the BaseStrategy) to block and calls define_tasks upon exit.
   def self.new( name )
 
     load( "#{name}.gemspec", true )
 
-    BaseStrategy.new( last_spec )
+    tp = BaseStrategy.new( last_spec )
+
+    if block_given?
+      yield tp
+      tp.define_tasks
+    end
+
+    tp
   end
 
 end

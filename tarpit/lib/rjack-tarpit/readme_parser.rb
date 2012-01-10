@@ -29,12 +29,12 @@ module RJack::TarPit
       in_desc = false
       desc = ""
 
-      File.open( file, 'r' ) do |fin|
+      readme_file_open( file ) do |fin|
         fin.each do |line|
           if homepage.nil? && line =~ /^\s*\*\s*(http\S+)\s*$/
             self.homepage = $1
           elsif line =~ /^=/ # section header
-            in_desc = ( line =~ /^=+\s*Description\s*$/ )
+            in_desc = ( line =~ /^=+\s*Description\s*$/i )
             # Stop at new section if we already have a description
             break unless desc.empty?
           elsif in_desc
@@ -45,14 +45,25 @@ module RJack::TarPit
         end
       end
 
-      sentences = desc.
+      desc = desc.
         gsub( /\s+/, ' ' ). #Simplify whitespace
         gsub( /\{([^\}]+)\}\[[^\]]*\]/, '\1' ). #Replace rdoc link with its text
         gsub( /(\S)\[\s*http:[^\]]*\]/, '\1' ). #And bare rdoc links
-        split( /[!?:.]\s/ )
+        strip
 
-      self.summary     = sentences[0]           + '.' if sentences.length > 0
-      self.description = sentences.join( '. ' ) + '.' if sentences.length > 1
+      # Summary is first sentence if we find one, or entire desc otherwise
+      s = ( desc =~ /^(.+[!?:.])\s/ && $1.sub( /:$/, '.' ) ) || desc
+      self.summary = s unless s.empty?
+
+      # Description is entire desc if not already completely used by summary
+      self.description = desc unless ( desc == self.summary ) || desc.empty?
+    end
+
+    private
+
+    # Open, and test hook
+    def readme_file_open( file, &block )
+      File.open( file, 'r', &block )
     end
 
   end

@@ -50,7 +50,7 @@ TXT
     assert_nil( description )
   end
 
-  def test_two_sentinces
+  def test_two_sentences
     self.desc = <<TXT
 A gem packaging of Marbles!
 Highly valued!

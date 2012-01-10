@@ -6,7 +6,7 @@ require 'rjack-tarpit/spec'
 RJack::TarPit.specify do |s|
   require 'rjack-slf4j/base'
 
-  s.version  = RJack::SLF4J::VERSION
+  s.version = RJack::SLF4J::VERSION
 
   s.add_developer( 'David Kellum', 'dek-oss@gravitext.com' )
 

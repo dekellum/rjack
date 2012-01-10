@@ -6,7 +6,7 @@ require 'rjack-tarpit/spec'
 RJack::TarPit.specify do |s|
   require 'rjack-logback/base'
 
-  s.version  = RJack::Logback::VERSION
+  s.version = RJack::Logback::VERSION
 
   s.add_developer( 'David Kellum', 'dek-oss@gravitext.com' )
 

@@ -6,7 +6,7 @@ require 'rjack-tarpit/spec'
 RJack::TarPit.specify do |s|
   require 'rjack-async-httpclient/base'
 
-  s.version  = RJack::AsyncHTTPClient::VERSION
+  s.version = RJack::AsyncHTTPClient::VERSION
 
   s.add_developer( 'David Kellum', 'dek-oss@gravitext.com' )
 

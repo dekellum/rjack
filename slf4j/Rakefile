@@ -4,18 +4,21 @@ require 'rubygems'
 require 'bundler/setup'
 require 'rjack-tarpit'
 
-tp = RJack::TarPit.new( 'rjack-slf4j' )
+RJack::TarPit.new( 'rjack-slf4j' ) do |tp|
 
-tp.define_tasks
+  tp.rdoc_destinations <<
+    'dekellum@rubyforge.org:/var/www/gforge-projects/rjack/slf4j'
 
-tp.spec.loaders.each do |adapter|
-  file( "lib/rjack-slf4j/#{adapter}.rb" =>
-        [ "lib/rjack-slf4j/base.rb", 'Rakefile' ] ) do
-    open( "lib/rjack-slf4j/#{adapter}.rb", 'w' ) do |out|
-      out.write <<END
+  tp.spec.loaders.each do |adapter|
+    file( "lib/rjack-slf4j/#{adapter}.rb" =>
+          [ "lib/rjack-slf4j/base.rb", 'Rakefile' ] ) do
+      open( "lib/rjack-slf4j/#{adapter}.rb", 'w' ) do |out|
+        out.write <<END
 require 'rjack-slf4j'
 RJack::SLF4J.require_adapter( '#{adapter}' )
 END
+      end
     end
   end
+
 end

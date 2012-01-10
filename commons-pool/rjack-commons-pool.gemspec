@@ -15,7 +15,4 @@ RJack::TarPit.specify do |s|
   s.assembly_version = '1.0'
 
   s.jars = [ "commons-pool-#{ RJack::CommonsPool::POOL_VERSION }.jar" ]
-
-  # FIXME: s.rdoc_locations <<
-  # "dekellum@rubyforge.org:/var/www/gforge-projects/rjack/commons-pool"
 end

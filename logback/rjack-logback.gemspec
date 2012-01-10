@@ -18,7 +18,4 @@ RJack::TarPit.specify do |s|
 
   s.jars = %w[ core classic access ].
     map { |j| "logback-#{j}-#{ RJack::Logback::LOGBACK_VERSION }.jar" }
-
-  # FIXME: s.rdoc_locations <<
-  # "dekellum@rubyforge.org:/var/www/gforge-projects/rjack/logback"
 end

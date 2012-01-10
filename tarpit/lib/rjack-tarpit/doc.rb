@@ -18,13 +18,22 @@ module RJack::TarPit
 
   module DocTaskDefiner
 
-    # Destination directory for RDoc generated files. (default: doc)
+    # Local destination directory for RDoc generated files.
+    # (default: doc)
     attr_accessor :rdoc_dir
+
+    # Remote destinations array for publish_rdoc. (default: [])
+    attr_accessor :rdoc_destinations
+
+    # Rsync flags for publish_rdoc. (default: %w[ -a -u -i ])
+    attr_accessor :publish_rdoc_rsync_flags
 
     def initialize
       super
 
       @rdoc_dir = 'doc'
+      @rdoc_destinations = []
+      @publish_rdoc_rsync_flags = %w[ -a -u -i ]
 
       add_define_hook( :define_doc_tasks )
     end
@@ -39,6 +48,16 @@ module RJack::TarPit
         t.options = spec.rdoc_options
       end
 
+      unless rdoc_destinations.empty?
+        desc "Publish rdoc to #{ rdoc_destinations.join( ', ' ) }"
+        task :publish_rdoc => [ :docs ] do
+          rdoc_destinations.each do |dest|
+            sh( *[ 'rsync', publish_rdoc_rsync_flags, rdoc_dir, dest ].flatten )
+          end
+        end
+      end
+
+      desc "Alias rdoc task"
       task :docs => [ :rdoc ]
     end
 

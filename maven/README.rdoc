@@ -6,7 +6,8 @@
 
 == Description
 
-A gem packaging of {Maven}[http://maven.apache.org].
+A gem packaging of {Maven}[http://maven.apache.org]. Supports jruby
+convenient installation and in-process launching for speed.
 
 == License
 

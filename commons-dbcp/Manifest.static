@@ -7,3 +7,4 @@ assembly.xml
 pom.xml
 lib/rjack-commons-dbcp/base.rb
 lib/rjack-commons-dbcp.rb
+test/test_dbcp.rb

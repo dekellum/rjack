@@ -5,7 +5,7 @@ require 'rjack-tarpit/spec'
 RJack::TarPit.specify do |s|
   require 'jproject/base'
 
-  s.version  = JProject::VERSION
+  s.version = JProject::VERSION
 
   s.add_developer 'David Kellum', 'dek-oss@gravitext.com'
 

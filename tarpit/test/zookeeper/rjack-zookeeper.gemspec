@@ -5,7 +5,7 @@ require 'rjack-tarpit/spec'
 RJack::TarPit.specify do |s|
   require 'rjack-zookeeper/base'
 
-  s.version  = RJack::RZooKeeper::VERSION
+  s.version = RJack::RZooKeeper::VERSION
 
   s.add_developer 'David Kellum', 'dek-oss@gravitext.com'
 

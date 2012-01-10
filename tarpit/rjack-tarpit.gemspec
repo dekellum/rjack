@@ -6,7 +6,7 @@ $LOAD_PATH.shift
 
 RJack::TarPit.specify do |s|
 
-  s.version  = RJack::TarPit::VERSION
+  s.version = RJack::TarPit::VERSION
 
   s.add_developer( 'David Kellum', 'dek-oss@gravitext.com' )
 

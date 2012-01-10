@@ -9,7 +9,7 @@ RJack::TarPit.specify do |s|
   # self.
   load 'rjack-maven/base.rb'
 
-  s.version  = RJack::Maven::VERSION
+  s.version = RJack::Maven::VERSION
 
   s.add_developer( 'David Kellum', 'dek-oss@gravitext.com' )
 

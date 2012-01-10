@@ -17,6 +17,7 @@ lib/rjack-tarpit/test.rb
 lib/rjack-tarpit/util.rb
 test/setup.rb
 test/test_projects.rb
+test/test_readme_parser.rb
 test/test_tarpit.rb
 test/jproject/History.rdoc
 test/jproject/Manifest.static

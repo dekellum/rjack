@@ -7,15 +7,22 @@
 # See README.rdoc for license terms.
 #++
 
-require 'java'
 require 'rubygems'
-require 'test/unit'
+require 'bundler/setup'
 
-$LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
+require 'rjack-logback'
+
+RJack::Logback.config_console( :level => RJack::Logback::DEBUG )
+if ARGV.include?( '-v' ) || ARGV.include?( '--verbose' )
+  RJack::Logback.root.level = RJack::Logback::DEBUG
+end
+
+require 'minitest/unit'
+require 'minitest/autorun'
 
 require 'rjack-jdom'
 
-class TestJdom < Test::Unit::TestCase
+class TestJdom < MiniTest::Unit::TestCase
 
   import 'org.jdom.Element'
   import 'org.jdom.Document'

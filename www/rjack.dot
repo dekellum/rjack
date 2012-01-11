@@ -37,9 +37,13 @@ digraph "RJack Gem Dependency Graph" {
   "rjack-protobuf"      [ target=_parent, URL="protobuf/" ];
 
   "rjack-tarpit"        [ target=_parent, URL="tarpit/" ];
+  "rjack-maven"         [ target=_parent, URL="maven/" ];
+
   "rjack-jackson"       [ target=_parent, URL="jackson/" ];
 
   "rjack-async-httpclient" [ target=_parent, URL="async-httpclient/" ];
+
+  "rjack-tarpit"       -> "rjack-maven" [ style=dashed, label="java" ];
 
   "rjack-jets3t"       -> "rjack-logback" [ style=dashed, label="dev" ];
   "rjack-jets3t"       -> "rjack-httpclient";
@@ -75,8 +79,8 @@ digraph "RJack Gem Dependency Graph" {
   "rjack-async-httpclient" -> "rjack-logback" [ style=dashed, label="dev" ];
 
 # for fitting only
-  "rjack-jackson"         -> "rjack-icu"      [ style=invis ];
-  "rjack-icu"             -> "rjack-tarpit"   [ style=invis ];
+  "rjack-jackson"         -> "rjack-tarpit"   [ style=invis ];
+  "rjack-jdom"            -> "rjack-icu"      [ style=invis ];
   "rjack-protobuf"        -> "rjack-jackson"  [ style=invis ];
   "rjack-commons-pool"    -> "rjack-nekohtml" [ style=invis ];
   "rjack-commons-dbutils" -> "rjack-rome"     [ style=invis ];

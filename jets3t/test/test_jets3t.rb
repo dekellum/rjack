@@ -16,18 +16,22 @@
 # permissions and limitations under the License.
 #++
 
-$LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
-
 require 'rubygems'
+require 'bundler/setup'
+
 require 'rjack-logback'
 
-RJack::Logback.config_console( :level => RJack::Logback::INFO )
+RJack::Logback.config_console( :stderr => true )
+if ARGV.include?( '-v' ) || ARGV.include?( '--verbose' )
+  RJack::Logback.root.level = RJack::Logback::DEBUG
+end
+
+require 'minitest/unit'
+require 'minitest/autorun'
 
 require 'rjack-jets3t'
 
-require 'test/unit'
-
-class TestJets3t < Test::Unit::TestCase
+class TestJets3t < MiniTest::Unit::TestCase
   include RJack::JetS3t
 
   import "java.io.ByteArrayInputStream"

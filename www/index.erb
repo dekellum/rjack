@@ -50,16 +50,17 @@ additional gem release number.</p>
 
 <tr <% if row.next %>class="odd"<% end %>>
 <td class="gemlink">
-<a title="rdoc" href="tarpit/">rjack-tarpit</a>
+<div><a title="rdoc" href="tarpit/">rjack-tarpit</a></div>
+<div><a title="rdoc" href="maven/" >rjack-maven</a></div>
 </td>
 <td>
-<p>
-TarPit provides the glue for an unholy union of build tools,
-namely <a href="http://github.com/jimweirich/rake">Rake</a> with
-<a href="http://seattlerb.rubyforge.org/hoe/">Hoe</a>,
-and <a href="http://maven.apache.org/">Maven</a>. Its used for
-building all the rjack gems, as well as other java-in-gem
-projects.</p>
+<p>TarPit provides the glue for an unholy union of build tools.
+TarPit includes general automation for any rubygems project. For java
+platform projects it offers
+in-<a href="http://github.com/jimweirich/rake">Rake</a> process
+execution of
+<a href="http://maven.apache.org/">Maven</a>,
+via the rjack-maven gem.</p>
 </td>
 </tr>
 
@@ -76,7 +77,7 @@ toolkit for unifying and controlling logging in a heterogeneous
 application containing ruby and java components.  The slf4j gem may
 simply be used to satisfy common java logging dependencies, but also
 offers a ruby core Logger compatible adapter. The logback gem
-provides a facade for programmatic logback configuration in ruby. </p>
+provides a facade for programmatic logback configuration in ruby.</p>
 </td>
 </tr>
 
@@ -131,7 +132,7 @@ Gem packaging of the
 The jetty gem includes an extensible
 <a href="jetty/RJack/Jetty/ServerFactory.html">ServerFactory</a>
 for Server setup in ruby. The jetty-jsp companion gem adds JSP support
-when needed.</p>
+if needed.</p>
 </td>
 </tr>
 

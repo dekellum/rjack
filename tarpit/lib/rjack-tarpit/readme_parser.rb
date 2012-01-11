@@ -47,16 +47,19 @@ module RJack::TarPit
 
       desc = desc.
         gsub( /\s+/, ' ' ). #Simplify whitespace
-        gsub( /\{([^\}]+)\}\[[^\]]*\]/, '\1' ). #Replace rdoc link with its text
-        gsub( /(\S)\[\s*http:[^\]]*\]/, '\1' ). #And bare rdoc links
-        strip
+        gsub( /\{([^\}]+)\}\[[^\]]*\]/, '\1' ). # Replace rdoc link \w anchor
+        gsub( /(\S)\[\s*http:[^\]]*\]/, '\1' ). # Replace bare rdoc links
+        strip.
+        sub( /:$/, '.' ) # Replace a final ':', like when term. at list
 
       # Summary is first sentence if we find one, or entire desc otherwise
-      s = ( desc =~ /^(.+[!?:.])\s/ && $1.sub( /:$/, '.' ) ) || desc
-      self.summary = s unless s.empty?
+      if desc =~ /^(.+[!?:.])\s/
+        self.summary = $1.strip
+        self.description = desc # Use remainder for description
+      else
+        self.summary = desc
+      end
 
-      # Description is entire desc if not already completely used by summary
-      self.description = desc unless ( desc == self.summary ) || desc.empty?
     end
 
     private

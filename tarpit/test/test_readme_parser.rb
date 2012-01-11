@@ -61,6 +61,19 @@ TXT
     assert_equal( "A gem packaging of Marbles! Highly valued!", description )
   end
 
+  def test_colon
+    self.desc = <<TXT
+A gem packaging of special sauces:
+
+* Mustard
+* Honey
+TXT
+    parse_readme( nil )
+
+    assert_equal( "A gem packaging of special sauces.", summary )
+    assert_nil( description )
+  end
+
   def readme_file_open( file )
     yield StringIO.new( @test_readme_input )
   end

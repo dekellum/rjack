@@ -7,3 +7,4 @@ assembly.xml
 pom.xml
 lib/rjack-commons-dbutils/base.rb
 lib/rjack-commons-dbutils.rb
+test/test_dbutils.rb

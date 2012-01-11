@@ -16,19 +16,15 @@
 # permissions and limitations under the License.
 #++
 
-TEST_DIR = File.dirname(__FILE__)
-
-$LOAD_PATH.unshift File.join( TEST_DIR, "..", "lib" )
-
 require 'rubygems'
+require 'bundler/setup'
 
-# Disable jetty logging if rjack-slf4j is available
-begin
-  gem( 'rjack-slf4j', '~> 1.5' )
-  require 'rjack-slf4j'
-  require 'rjack-slf4j/nop'
-rescue Gem::LoadError
-end
+# Disable Jetty Logging
+require 'rjack-slf4j'
+require 'rjack-slf4j/nop'
+
+require 'minitest/unit'
+require 'minitest/autorun'
 
 require 'rjack-jetty'
 
@@ -36,11 +32,12 @@ require 'rjack-jetty/client'
 require 'rjack-jetty/rewrite'
 require 'rjack-jetty/test-servlets'
 
-require 'test/unit'
 require 'net/http'
 
-class TestJetty < Test::Unit::TestCase
+class TestJetty < MiniTest::Unit::TestCase
   include RJack::Jetty
+
+  TEST_DIR = File.dirname(__FILE__)
 
   def default_factory
     factory = ServerFactory.new

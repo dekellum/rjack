@@ -18,15 +18,18 @@
 require 'rubygems'
 
 require 'rjack-logback'
+
 RJack::Logback.config_console( :level => RJack::Logback::DEBUG )
+if ARGV.include?( '-v' ) || ARGV.include?( '--verbose' )
+  RJack::Logback.root.level = RJack::Logback::DEBUG
+end
 
-require 'test/unit'
-
-$LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
+require 'minitest/unit'
+require 'minitest/autorun'
 
 require 'rjack-httpclient-4'
 
-class TestClient < Test::Unit::TestCase
+class TestClient < MiniTest::Unit::TestCase
   include RJack::HTTPClient4
   def test_setup
     mf = ManagerFacade.new
@@ -50,7 +53,7 @@ class TestClient < Test::Unit::TestCase
 
     mf.start
 
-    assert_not_nil mf.client
+    refute_nil mf.client
 
     mf.shutdown
 

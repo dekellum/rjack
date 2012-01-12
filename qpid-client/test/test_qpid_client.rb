@@ -1,5 +1,6 @@
 #!/usr/bin/env jruby
 #.hashdot.profile += jruby-shortlived
+
 #--
 # Copyright (c) 2011 David Kellum
 #
@@ -16,19 +17,22 @@
 # permissions and limitations under the License.
 #++
 
-$LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
-
-require 'java'
 require 'rubygems'
+require 'bundler/setup'
 
-require 'rjack-qpid-client'
 require 'rjack-logback'
 
 RJack::Logback.config_console( :stderr => true )
+if ARGV.include?( '-v' ) || ARGV.include?( '--verbose' )
+  RJack::Logback.root.level = RJack::Logback::DEBUG
+end
 
-require 'test/unit'
+require 'minitest/unit'
+require 'minitest/autorun'
 
-class TestQpidClient < Test::Unit::TestCase
+require 'rjack-qpid-client'
+
+class TestQpidClient < MiniTest::Unit::TestCase
   include RJack::QpidClient
 
   import 'org.apache.qpid.jms.Session'

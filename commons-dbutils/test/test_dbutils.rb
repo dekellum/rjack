@@ -1,4 +1,6 @@
 #!/usr/bin/env jruby
+#.hashdot.profile += jruby-shortlived
+
 #--
 # Copyright (c) 2012 David Kellum
 #

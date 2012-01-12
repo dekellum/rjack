@@ -5,6 +5,7 @@
 #++
 
 require 'rjack-jdom/base'
+require 'java'
 
 # JDOM wrapper module
 module RJack

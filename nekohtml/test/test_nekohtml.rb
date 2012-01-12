@@ -17,20 +17,20 @@
 # permissions and limitations under the License.
 #++
 
-require 'java'
 require 'rubygems'
-require 'test/unit'
+require 'bundler/setup'
 
-$LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
+require 'minitest/unit'
+require 'minitest/autorun'
 
 require 'rjack-nekohtml'
 
-class TestNekoHTML < Test::Unit::TestCase
+class TestNekoHTML < MiniTest::Unit::TestCase
 
   import 'org.cyberneko.html.parsers.SAXParser'
   import 'org.cyberneko.html.parsers.DOMParser'
 
   def test_load
-    assert( true )
+    pass
   end
 end

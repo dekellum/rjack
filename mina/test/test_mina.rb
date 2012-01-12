@@ -1,5 +1,6 @@
 #!/usr/bin/env jruby
 #.hashdot.profile += jruby-shortlived
+
 #--
 # Copyright (c) 2011 David Kellum
 #
@@ -16,19 +17,21 @@
 # permissions and limitations under the License.
 #++
 
-$LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
-
-require 'java'
 require 'rubygems'
+require 'bundler/setup'
+
+require 'minitest/unit'
+require 'minitest/autorun'
+
 require 'rjack-mina'
 
-require 'test/unit'
+class TestMina < MiniTest::Unit::TestCase
 
-class TestMina < Test::Unit::TestCase
   import 'org.apache.mina.transport.socket.nio.SocketIoProcessor'
   import 'org.apache.mina.util.SessionLog'
 
   def test_load
-    assert( true ) #FIXME: Just asserting that the load works for now
+    pass
   end
+
 end

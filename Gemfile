@@ -32,10 +32,5 @@ gems = %w[ slf4j
 bdir = File.dirname( __FILE__ )
 
 gems.each do |sname|
-  gname = 'rjack-' + sname
-
-  #FIXME: Drop conditional once we are done converting.
-  if File.exist? File.join( bdir, sname, gname + ".gemspec" )
-    gemspec :path => sname, :name => gname
-  end
+  gemspec :path => sname, :name => "rjack-#{sname}"
 end

@@ -1,0 +1,26 @@
+PATH
+  remote: .
+  specs:
+    rjack-commons-codec (1.4.2-java)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    json (1.6.4-java)
+    minitest (2.10.0)
+    rake (0.9.2.2)
+    rdoc (3.12)
+      json (~> 1.4)
+    rjack-maven (3.0.3.1-java)
+    rjack-tarpit (2.0.0-java)
+      rake (~> 0.9.2)
+      rdoc (~> 3.6)
+      rjack-maven (~> 3.0)
+
+PLATFORMS
+  java
+
+DEPENDENCIES
+  minitest (~> 2.2)
+  rjack-commons-codec!
+  rjack-tarpit (~> 2.0)

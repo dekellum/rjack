@@ -64,3 +64,33 @@ task( :multish, :subtasks ) do |t,args|
     end
   end
 end
+
+desc "Generate per-gem Gemfiles and jbundle install each"
+task :generate_gemfile_per_gem do
+
+  ( gems - %w[ tarpit maven ] ).each do |sname|
+    Dir.chdir( sname ) do
+
+      puts "=== Gemfile: #{sname} ==="
+
+      File.open( 'Gemfile', 'w' ) do |fout|
+        fout.write <<RUBY
+# -*- ruby -*-
+source :rubygems
+gemspec :path => '.', :name => 'rjack-#{sname}'
+
+RJack::TarPit.last_spec.dependencies.each do |d|
+  if d.name =~ /^rjack-(.+)$/ && ! %w[ tarpit maven ].include?( $1 )
+    gem( d.name, :path => "../\#\{$1\}" )
+  end
+end
+RUBY
+      end
+
+      system "jbundle install --path /home/david/.gem --local" or
+        raise "Failed with #{$?}"
+
+    end
+  end
+
+end

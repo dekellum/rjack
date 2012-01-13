@@ -1,6 +1,7 @@
 # -*- ruby -*-
 
 gems = %w[ tarpit
+           maven
            slf4j
            logback
            async-httpclient

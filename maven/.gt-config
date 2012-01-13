@@ -1,0 +1,12 @@
+# -*- ruby -*-
+
+Gravitext::DevTools.configure do |c|
+
+  c.setup_header do |h|
+    h.holder = "David Kellum"
+    h.inception = 2012
+    h.license = :apache
+    h.exclusions += %w[ config/m2.conf test/setup.rb ]
+  end
+
+end

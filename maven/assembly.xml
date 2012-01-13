@@ -1,0 +1,12 @@
+<assembly>
+  <id>bin</id>
+  <formats>
+    <format>dir</format>
+  </formats>
+  <includeBaseDirectory>false</includeBaseDirectory>
+  <dependencySets>
+    <dependencySet>
+      <useProjectArtifact>false</useProjectArtifact>
+    </dependencySet>
+  </dependencySets>
+</assembly>

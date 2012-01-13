@@ -1,4 +1,6 @@
 #!/usr/bin/env jruby
+#.hashdot.profile += jruby-shortlived
+
 #--
 # Copyright (c) 2008-2011 David Kellum
 #
@@ -16,16 +18,21 @@
 #++
 
 require 'rubygems'
+require 'bundler/setup'
+
 require 'rjack-logback'
+
 RJack::Logback.config_console( :level => RJack::Logback::DEBUG )
+if ARGV.include?( '-v' ) || ARGV.include?( '--verbose' )
+  RJack::Logback.root.level = RJack::Logback::DEBUG
+end
 
-require 'test/unit'
-
-$LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
+require 'minitest/unit'
+require 'minitest/autorun'
 
 require 'rjack-httpclient-3'
 
-class TestClient < Test::Unit::TestCase
+class TestClient < MiniTest::Unit::TestCase
   include RJack::HTTPClient3
   def test_setup
     m = ManagerFacade.new
@@ -33,7 +40,7 @@ class TestClient < Test::Unit::TestCase
     m.client_params.so_timeout = 3000 #ms
     m.start
 
-    assert_not_nil m.client
+    refute_nil m.client
 
     m.shutdown
 

@@ -1,43 +1,12 @@
 # -*- ruby -*-
 
-$LOAD_PATH << './lib'
-require 'rjack-async-httpclient/base'
-
 require 'rubygems'
-gem     'rjack-tarpit', '~> 1.4'
+require 'bundler/setup'
 require 'rjack-tarpit'
 
-include RJack
+RJack::TarPit.new( 'rjack-async-httpclient' ) do |tp|
 
-t = TarPit.new( 'rjack-async-httpclient',
-                AsyncHTTPClient::VERSION,
-                :jars_from_assembly, :java_platform )
+  tp.rdoc_destinations <<
+    'dekellum@rubyforge.org:/var/www/gforge-projects/rjack/async-httpclient'
 
-t.specify do |h|
-  h.developer( "David Kellum", "dek-oss@gravitext.com" )
-  h.extra_deps += [ [ 'rjack-slf4j', '~> 1.6.1' ] ]
-
-  h.testlib = :minitest
-  h.extra_dev_deps += [ [ 'rjack-logback', '~> 1.0' ],
-                        [ 'minitest',      '~> 2.3' ] ]
-  h.rdoc_locations << "dekellum@rubyforge.org:/var/www/gforge-projects/rjack/async-httpclient"
 end
-
-t.assembly_version = 1.0
-
-task :check_pom_deps do
-  t.test_line_match( 'pom.xml',
-                     %r[<version>#{ AsyncHTTPClient::CLIENT_VERSION }</version>] )
-end
-task :check_history_version do
-  t.test_line_match( 'History.rdoc', /^==/, / #{t.version} / )
-end
-task :check_history_date do
-  t.test_line_match( 'History.rdoc', /^==/, /\([0-9\-]+\)$/ )
-end
-
-task :gem  => [ :check_pom_deps, :check_history_version                      ]
-task :tag  => [ :check_pom_deps, :check_history_version, :check_history_date ]
-task :push => [                                          :check_history_date ]
-
-t.define_tasks

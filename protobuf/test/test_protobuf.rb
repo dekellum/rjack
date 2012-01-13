@@ -31,16 +31,19 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #++
 
-$LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
+require 'bundler/setup'
+
+require 'minitest/unit'
+require 'minitest/autorun'
 
 require 'rjack-protobuf'
 
-require 'test/unit'
+class TestProtobuf < MiniTest::Unit::TestCase
 
-class TestProtobuf < Test::Unit::TestCase
   import 'com.google.protobuf.Message'
 
   def test_load
-    assert true
+    pass
   end
+
 end

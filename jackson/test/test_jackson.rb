@@ -17,16 +17,18 @@
 # permissions and limitations under the License.
 #++
 
-$LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
+require 'rubygems'
+require 'bundler/setup'
+
+require 'minitest/unit'
+require 'minitest/autorun'
 
 require 'rjack-jackson'
 
 require 'rjack-jackson/jaxrs'
 require 'rjack-jackson/xc'
 
-require 'test/unit'
-
-class TestJackson < Test::Unit::TestCase
+class TestJackson < MiniTest::Unit::TestCase
   include RJack
 
   import 'org.codehaus.jackson.JsonParser'
@@ -35,7 +37,6 @@ class TestJackson < Test::Unit::TestCase
   import 'org.codehaus.jackson.xc.DataHandlerJsonDeserializer' #xc
 
   def test_load
-
-    assert true
+    pass
   end
 end

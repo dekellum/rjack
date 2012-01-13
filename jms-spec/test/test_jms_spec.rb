@@ -1,5 +1,6 @@
 #!/usr/bin/env jruby
 #.hashdot.profile += jruby-shortlived
+
 #--
 # Copyright (c) 2011 David Kellum
 #
@@ -16,18 +17,20 @@
 # permissions and limitations under the License.
 #++
 
-$LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
-
-require 'java'
 require 'rubygems'
+require 'bundler/setup'
+
+require 'minitest/unit'
+require 'minitest/autorun'
+
 require 'rjack-jms-spec'
 
-require 'test/unit'
+class TestJmsSpec < MiniTest::Unit::TestCase
 
-class TestJmsSpec < Test::Unit::TestCase
   import 'javax.jms.Session'
 
   def test_load
-    assert( true ) #FIXME: Just asserting that the load works for now
+    pass
   end
+
 end

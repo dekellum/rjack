@@ -1,5 +1,6 @@
 #!/usr/bin/env jruby
 #.hashdot.profile += jruby-shortlived
+
 #--
 # Copyright (c) 2009-2011 David Kellum
 #
@@ -16,19 +17,20 @@
 # permissions and limitations under the License.
 #++
 
-$LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
-
-require 'java'
 require 'rubygems'
+require 'bundler/setup'
+
+require 'minitest/unit'
+require 'minitest/autorun'
+
 require 'rjack-rome'
 
-require 'test/unit'
+class TestRome < MiniTest::Unit::TestCase
 
-include RJack
-
-class TestRome < Test::Unit::TestCase
   import 'com.sun.syndication.feed.synd.SyndFeedImpl'
-  def test_me
-    assert( true ) #FIXME: Just asserting that the load works for now
+
+  def test_load
+    pass
   end
+
 end

@@ -7,4 +7,5 @@ assembly.xml
 pom.xml
 lib/rjack-xerces/base.rb
 lib/rjack-xerces.rb
+test/test_xerces.rb
 lib/rjack-xerces/xercesImpl-2.9.1.jar

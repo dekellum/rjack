@@ -1,56 +1,18 @@
 # -*- ruby -*-
 
-$LOAD_PATH << './lib'
-require 'rjack-jetty/base'
-
 require 'rubygems'
-gem     'rjack-tarpit', '~> 1.4'
+require 'bundler/setup'
 require 'rjack-tarpit'
 
-include RJack
+RJack::TarPit.new( 'rjack-jetty' ) do |tp|
 
-t = TarPit.new( 'rjack-jetty', Jetty::VERSION, :java_platform )
+  tp.rdoc_destinations <<
+    'dekellum@rubyforge.org:/var/www/gforge-projects/rjack/jetty'
 
-t.specify do |h|
-  h.developer( "David Kellum", "dek-oss@gravitext.com" )
-  h.extra_dev_deps << [ 'rjack-logback', '>= 0.9.18', '< 2.0' ]
-  h.rdoc_locations << "dekellum@rubyforge.org:/var/www/gforge-projects/rjack/jetty"
 end
-
-t.jars =
-  begin
-    mods = %w[ webapp xml servlet security server continuation http io util rewrite client ]
-    l = mods.map { |n| "jetty-#{n}-#{ Jetty::JETTY_VERSION }.#{ Jetty::JETTY_BUILD }.jar" }
-    l << "servlet-api-#{ Jetty::SERVLET_API_VERSION }.jar"
-    l << 'rjack-jetty-1.0.jar'
-    l
-  end
-
-file 'Manifest.txt' => [ "lib/#{t.name}/base.rb" ]
 
 file 'webapps/test.war' => [ 'webapps/test/index.html',
                              'webapps/test/WEB-INF/web.xml' ] do
   sh( 'jar cvf webapps/test.war ' +
       '-C webapps/test index.html -C webapps/test WEB-INF/web.xml' )
 end
-
-t.generated_files = 'webapps/test.war'
-
-t.assembly_version = 1.0
-
-task :check_pom_deps do
-  v = "#{ Jetty::JETTY_VERSION }.#{ Jetty::JETTY_BUILD }"
-  t.test_line_match( 'pom.xml', %r{<version>#{ v }</version>} )
-end
-task :check_history_version do
-  t.test_line_match( 'History.rdoc', /^==/, / #{t.version} / )
-end
-task :check_history_date do
-  t.test_line_match( 'History.rdoc', /^==/, /\([0-9\-]+\)$/ )
-end
-
-task :gem  => [ :check_pom_deps, :check_history_version                      ]
-task :tag  => [ :check_pom_deps, :check_history_version, :check_history_date ]
-task :push => [                                          :check_history_date ]
-
-t.define_tasks

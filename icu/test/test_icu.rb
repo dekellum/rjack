@@ -25,16 +25,20 @@
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #++
 
-$LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
+require 'rubygems'
+require 'bundler/setup'
+
+require 'minitest/unit'
+require 'minitest/autorun'
 
 require 'rjack-icu'
 
-require 'test/unit'
+class TestICU < MiniTest::Unit::TestCase
 
-class TestICU < Test::Unit::TestCase
   import 'com.ibm.icu.text.CharsetDetector'
 
   def test_load
-    assert( true )
+    pass
   end
+
 end

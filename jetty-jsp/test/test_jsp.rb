@@ -1,5 +1,6 @@
 #!/usr/bin/env jruby
 #.hashdot.profile += jruby-shortlived
+
 #--
 # Copyright (c) 2008-2011 David Kellum
 #
@@ -16,25 +17,20 @@
 # permissions and limitations under the License.
 #++
 
-TEST_DIR = File.dirname(__FILE__)
-
-$LOAD_PATH.unshift File.join( TEST_DIR, "..", "lib" )
-
 require 'rubygems'
+require 'bundler/setup'
 
-# Disable jetty logging if rjack-slf4j is available
-begin
-  gem( 'rjack-slf4j', '~> 1.5' )
-  require 'rjack-slf4j'
-  require 'rjack-slf4j/nop'
-rescue Gem::LoadError
-end
+# Disable Jetty Logging
+require 'rjack-slf4j'
+require 'rjack-slf4j/nop'
+
+require 'minitest/unit'
+require 'minitest/autorun'
 
 require 'rjack-jetty-jsp'
-require 'test/unit'
 require 'net/http'
 
-class TestJsp < Test::Unit::TestCase
+class TestJsp < MiniTest::Unit::TestCase
   include RJack::Jetty
 
   def default_factory

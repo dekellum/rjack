@@ -1,4 +1,6 @@
 #!/usr/bin/env jruby
+#.hashdot.profile += jruby-shortlived
+
 #--
 # Copyright (c) 2008-2011 David Kellum
 #
@@ -23,7 +25,8 @@
 # SOFTWARE.
 #++
 
-$LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
+require 'rubygems'
+require 'bundler/setup'
 
 require 'rjack-slf4j'
 
@@ -37,7 +40,8 @@ require 'rjack-slf4j/mdc'
 require 'rjack-slf4j/jcl-over-slf4j'
 require 'rjack-slf4j/log4j-over-slf4j'
 
-require 'test/unit'
+require 'minitest/unit'
+require 'minitest/autorun'
 
 class TestHandler < java.util.logging.Handler
   attr_accessor :count, :last
@@ -68,7 +72,7 @@ module Foo
   end
 end
 
-class TestSlf4j < Test::Unit::TestCase
+class TestSlf4j < MiniTest::Unit::TestCase
   include RJack
   JdkLogger = java.util.logging.Logger
 
@@ -139,7 +143,7 @@ class TestSlf4j < Test::Unit::TestCase
   end
 
   def test_circular_ban
-    assert_raise( RuntimeError ) do
+    assert_raises( RuntimeError ) do
       require 'rjack-slf4j/jul-to-slf4j'
     end
   end

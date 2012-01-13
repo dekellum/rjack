@@ -7,3 +7,4 @@ assembly.xml
 pom.xml
 lib/rjack-commons-pool/base.rb
 lib/rjack-commons-pool.rb
+test/test_pool.rb

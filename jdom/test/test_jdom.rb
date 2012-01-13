@@ -7,15 +7,15 @@
 # See README.rdoc for license terms.
 #++
 
-require 'java'
 require 'rubygems'
-require 'test/unit'
+require 'bundler/setup'
 
-$LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
+require 'minitest/unit'
+require 'minitest/autorun'
 
 require 'rjack-jdom'
 
-class TestJdom < Test::Unit::TestCase
+class TestJdom < MiniTest::Unit::TestCase
 
   import 'org.jdom.Element'
   import 'org.jdom.Document'
@@ -25,4 +25,5 @@ class TestJdom < Test::Unit::TestCase
     doc = Document.new( Element.new( "document" ) )
     assert( XMLOutputter.new.outputString( doc ) =~ /<document/ )
   end
+
 end

@@ -1,4 +1,6 @@
 #!/usr/bin/env jruby
+#.hashdot.profile += jruby-shortlived
+
 #--
 # Copyright (c) 2008-2011 David Kellum
 #
@@ -14,11 +16,11 @@
 #++
 
 require 'rubygems'
-gem( 'rjack-slf4j', '~> 1.6.0' )
+require 'bundler/setup'
+
 require 'rjack-slf4j'
 require 'rjack-slf4j/jul-to-slf4j'
 
-$LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
 require 'rjack-logback'
 
 require 'rjack-slf4j/mdc'
@@ -26,7 +28,8 @@ require 'rjack-slf4j/mdc'
 # Test load works
 require 'rjack-logback/access'
 
-require 'test/unit'
+require 'minitest/unit'
+require 'minitest/autorun'
 
 class TestAppender
   import 'ch.qos.logback.core.Appender'
@@ -55,7 +58,7 @@ class TestAppender
   end
 end
 
-class TestLevelSet < Test::Unit::TestCase
+class TestLevelSet < MiniTest::Unit::TestCase
   include RJack
 
   def setup
@@ -127,7 +130,7 @@ class TestLevelSet < Test::Unit::TestCase
 
 end
 
-class TestJULPropagator < Test::Unit::TestCase
+class TestJULPropagator < MiniTest::Unit::TestCase
   include RJack
 
   def test_jul_propagator
@@ -152,7 +155,7 @@ class TestJULPropagator < Test::Unit::TestCase
 
 end
 
-class TestConfigure < Test::Unit::TestCase
+class TestConfigure < MiniTest::Unit::TestCase
   include RJack
 
   def test_file_appender_config
@@ -186,7 +189,7 @@ class TestConfigure < Test::Unit::TestCase
   end
 
   def test_console_config
-    log_name = "#{self.class.name}.#{self.method_name}"
+    log_name = "#{self.class.name}.test_console_config"
     appender = TestAppender.new
     Logback.configure do
       console = Logback::ConsoleAppender.new do |a|

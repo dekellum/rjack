@@ -1,3 +1,8 @@
+PATH
+  remote: .
+  specs:
+    rjack-xerces (2.9.1.0-java)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -20,5 +25,6 @@ PLATFORMS
   java
 
 DEPENDENCIES
-  minitest (~> 2.10)
+  minitest (~> 2.2)
   rjack-tarpit (~> 2.0)
+  rjack-xerces!

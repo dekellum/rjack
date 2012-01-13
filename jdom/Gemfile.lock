@@ -1,3 +1,8 @@
+PATH
+  remote: .
+  specs:
+    rjack-jdom (1.1.0.2-java)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -20,5 +25,6 @@ PLATFORMS
   java
 
 DEPENDENCIES
-  minitest (~> 2.10)
+  minitest (~> 2.2)
+  rjack-jdom!
   rjack-tarpit (~> 2.0)

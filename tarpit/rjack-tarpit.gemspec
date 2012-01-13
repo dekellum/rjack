@@ -16,6 +16,7 @@ RJack::TarPit.specify do |s|
 
   if RUBY_PLATFORM =~ /java/
     s.depend 'rjack-maven',   '~> 3.0.3'
+    s.depend 'jruby-openssl', '~> 0.7.4'
 
     # These are deps of test/zookeeper
     s.depend 'rjack-slf4j',   '~> 1.6.4',     :dev

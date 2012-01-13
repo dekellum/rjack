@@ -32,7 +32,7 @@ else.
   Minitest[http://docs.seattlerb.org/minitest/] launcher (speed)
 * Manifest.txt for gem file contents, derived from Manifest.static
   plus jars in Java projects
-* ReadmeParser for default specication url, summary, description
+* ReadmeParser for default specification url, summary, description
   values
 * Specification name defaults from <name>.gemspec
 * LineMatchTaskDefiner defines check_(history|init)_(version|date)

@@ -27,8 +27,7 @@ require 'rjack-tarpit/git'
 
 module RJack::TarPit
 
-  # Base strategy implementation where jars are known by the
-  # Rakefile (not :jars_from_assembly)
+  # Base class for Rake task generation.
   class BaseStrategy
 
     #For rack ~> 0.9.0
@@ -60,6 +59,7 @@ module RJack::TarPit
       @defines << sym
     end
 
+    # Define rake tasks (given settings)
     def define_tasks
       @defines.each { |sym| send( sym ) }
     end

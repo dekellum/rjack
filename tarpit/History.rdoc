@@ -1,4 +1,16 @@
 === 2.0.0 (TBD)
+* Major rewrite. Consumer project changes are required on upgrade!
+  See also updated README.
+* Gem specification details are now in a separate, but highly
+  automated and generally improved gemspec file. This allows full
+  interoperability with Bundler.
+* Improved ReadmeParser for spec automation.
+* For Java projects, Maven is now executed in process via the
+  rjack-maven gem (speed improvement)
+* Hoe is no longer a dependency, however many Hoe compatible tasks are
+  still supported.
+* New default, in process Minitest launcher (speed improvement,
+  particularly on JRuby)
 
 === 1.4.0 (2011-9-21)
 * Update/broaden to rdoc ~> 3.6

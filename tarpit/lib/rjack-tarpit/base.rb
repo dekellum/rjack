@@ -14,27 +14,9 @@
 # permissions and limitations under the License.
 #++
 
-require 'rjack-tarpit/base'
-require 'rjack-tarpit/spec'
-require 'rjack-tarpit/base_strategy'
-
-module RJack::TarPit
-
-  # New task generator given name matching <name>.gemspec in the
-  # current directory. If block is given, yields self (err, actually
-  # the BaseStrategy) to block and calls define_tasks upon exit.
-  def self.new( name )
-
-    load( "#{name}.gemspec", true )
-
-    tp = BaseStrategy.new( last_spec )
-
-    if block_given?
-      yield tp
-      tp.define_tasks
-    end
-
-    tp
+module RJack
+  module TarPit
+    MINOR_VERSION = '2.0'
+    VERSION = MINOR_VERSION + '.0'
   end
-
 end

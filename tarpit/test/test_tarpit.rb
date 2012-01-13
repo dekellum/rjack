@@ -1,3 +1,5 @@
+#!/usr/bin/env jruby
+#.hashdot.profile += jruby-shortlived
 #--
 # Copyright (c) 2009-2012 David Kellum
 #
@@ -14,27 +16,18 @@
 # permissions and limitations under the License.
 #++
 
-require 'rjack-tarpit/base'
-require 'rjack-tarpit/spec'
-require 'rjack-tarpit/base_strategy'
+require File.join( File.dirname( __FILE__ ), "setup" )
 
-module RJack::TarPit
+require 'rjack-tarpit'
 
-  # New task generator given name matching <name>.gemspec in the
-  # current directory. If block is given, yields self (err, actually
-  # the BaseStrategy) to block and calls define_tasks upon exit.
-  def self.new( name )
+class TestTarpit < MiniTest::Unit::TestCase
+  include RJack
 
-    load( "#{name}.gemspec", true )
+  def test
+    tp = TarPit.new( "rjack-tarpit" )
+    pass #load worked
 
-    tp = BaseStrategy.new( last_spec )
-
-    if block_given?
-      yield tp
-      tp.define_tasks
-    end
-
-    tp
+    assert_instance_of( Gem::Specification, tp.spec )
   end
 
 end

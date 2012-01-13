@@ -1,0 +1,10 @@
+History.rdoc
+Manifest.txt
+NOTICE.txt
+README.rdoc
+Rakefile
+pom.xml
+lib/jproject/base.rb
+lib/jproject.rb
+test/setup.rb
+test/test_jproject.rb

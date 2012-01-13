@@ -52,7 +52,8 @@ module RJack::TarPit
         desc "Publish rdoc to #{ rdoc_destinations.join( ', ' ) }"
         task :publish_rdoc => [ :docs ] do
           rdoc_destinations.each do |dest|
-            sh( *[ 'rsync', publish_rdoc_rsync_flags, rdoc_dir, dest ].flatten )
+            sh( *[ 'rsync', publish_rdoc_rsync_flags,
+                   rdoc_dir + '/', dest ].flatten )
           end
         end
       end

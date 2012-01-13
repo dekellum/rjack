@@ -16,5 +16,5 @@ PLATFORMS
   java
 
 DEPENDENCIES
-  minitest (~> 2.3)
+  minitest (~> 2.10)
   rjack-tarpit (~> 2.0)

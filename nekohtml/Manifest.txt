@@ -7,4 +7,5 @@ assembly.xml
 pom.xml
 lib/rjack-nekohtml/base.rb
 lib/rjack-nekohtml.rb
+test/test_nekohtml.rb
 lib/rjack-nekohtml/nekohtml-1.9.15.jar

@@ -1,5 +1,5 @@
 #--
-# Copyright (c) 2010-2011 David Kellum
+# Copyright (c) 2010-2012 David Kellum
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without

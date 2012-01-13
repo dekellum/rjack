@@ -2,7 +2,7 @@
 
 Gravitext::DevTools.configure do |c|
 
-  c.header do |h|
+  c.setup_header do |h|
     h.holder = "David Kellum"
     h.inception = 2008
     h.license = :mit

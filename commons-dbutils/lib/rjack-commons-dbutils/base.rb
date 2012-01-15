@@ -18,10 +18,10 @@ module RJack
   module CommonsDbUtils
 
     # Commons dbutils (java) version
-    DBUTILS_VERSION = '1.3'
+    DBUTILS_VERSION = '1.4'
 
     # rjack gem version
-    VERSION = DBUTILS_VERSION + '.2'
+    VERSION = DBUTILS_VERSION + '.0'
 
     DBUTILS_DIR = File.dirname( __FILE__ ) # :nodoc:
   end

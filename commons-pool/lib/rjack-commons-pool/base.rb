@@ -18,10 +18,10 @@ module RJack
   module CommonsPool
 
     # Commons pool (java) version
-    POOL_VERSION = '1.5.7'
+    POOL_VERSION = '1.6'
 
     # rjack gem version
-    VERSION = POOL_VERSION + '.0'
+    VERSION = POOL_VERSION + '.0.0'
 
     POOL_DIR = File.dirname( __FILE__ ) # :nodoc:
   end

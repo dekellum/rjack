@@ -1,3 +1,5 @@
+=== 4.1.2.2 (TBD)
+
 === 4.1.2.1 (2011-9-16)
 * Adjust SchemaRegistry factory for backward incompatible change/bug
   in 4.1.2, adversely affecting SSL, as described and disregarded

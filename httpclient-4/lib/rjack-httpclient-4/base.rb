@@ -17,7 +17,7 @@
 module RJack
   module HTTPClient4
     HTTPCLIENT_VERSION = '4.1.2'
-    VERSION = HTTPCLIENT_VERSION + '.1'
+    VERSION = HTTPCLIENT_VERSION + '.2'
 
     HTTPCLIENT_DIR = File.dirname( __FILE__ ) # :nodoc:
   end

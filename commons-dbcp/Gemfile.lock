@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rjack-commons-dbcp (1.4.0.1-java)
+    rjack-commons-dbcp (1.4.0.2-java)
       rjack-commons-pool (~> 1.5.3)
 
 GEM

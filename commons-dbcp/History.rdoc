@@ -1,3 +1,5 @@
+=== 1.4.0.2 (TBD)
+
 === 1.4.0.1 (2010-9-1)
 * Remove require 'rubygems' from lib.
 

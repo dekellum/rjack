@@ -10,7 +10,7 @@ RJack::TarPit.specify do |s|
 
   s.add_developer( 'David Kellum', 'dek-oss@gravitext.com' )
 
-  s.depend 'rjack-commons-pool',    '~> 1.5.3'
+  s.depend 'rjack-commons-pool',    '~> 1.6.0'
   s.depend 'minitest',              '~> 4.7.4',     :dev
 
   s.assembly_version = '1.0'

@@ -26,7 +26,7 @@ gems = %w[ tarpit
            mina
            qpid-client ]
 
-subtasks = %w[ clean install_deps test gem docs tag install publish_docs push ]
+subtasks = %w[ clean install_deps test gem docs tag install publish_rdoc push ]
 
 task :default => :test
 

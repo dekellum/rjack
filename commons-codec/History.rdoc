@@ -1,4 +1,6 @@
-=== 1.5.0 (TBD)
+=== 1.5.0 (2012-1-15)
+* Upgrade to commons-codec 1.5
+* Upgrade to tarpit ~> 2.0 (build)
 
 === 1.4.2 (2010-9-1)
 * Remove require 'rubygems' from lib.

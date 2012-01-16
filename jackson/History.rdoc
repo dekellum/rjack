@@ -1,3 +1,6 @@
+=== 1.8.6.0 (TBD)
+* Update to Jackson 1.8.6
+
 === 1.8.5.0 (2011-8-29)
 * Update to Jackson 1.8.5
 

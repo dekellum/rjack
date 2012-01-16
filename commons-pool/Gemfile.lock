@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rjack-commons-pool (1.5.6.0-java)
+    rjack-commons-pool (1.5.7.0-java)
 
 GEM
   remote: http://rubygems.org/

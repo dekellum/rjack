@@ -1,5 +1,6 @@
-=== 1.8.6.0 (TBD)
+=== 1.8.6.0 (2012-1-15)
 * Update to Jackson 1.8.6
+* Update to tarpit ~> 2.0 (build)
 
 === 1.8.5.0 (2011-8-29)
 * Update to Jackson 1.8.5

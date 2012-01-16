@@ -18,10 +18,10 @@ module RJack
   module CommonsCodec
 
     # Commons codec (java) version
-    CODEC_VERSION = '1.4'
+    CODEC_VERSION = '1.5'
 
     # rjack gem version
-    VERSION = CODEC_VERSION + '.2'
+    VERSION = CODEC_VERSION + '.0'
 
     CODEC_DIR = File.dirname( __FILE__ ) # :nodoc:
   end

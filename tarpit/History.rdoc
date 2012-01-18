@@ -1,4 +1,4 @@
-=== 2.0.0 (2011-1-12)
+=== 2.0.0 (2012-1-12)
 * Major rewrite. Consumer project changes are required on upgrade!
   See also updated README.
 * Gem specification details are now in a separate, but highly

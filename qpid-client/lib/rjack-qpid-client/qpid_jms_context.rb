@@ -22,11 +22,11 @@ require 'rjack-jms'
 module RJack::QpidClient
 
   # Implementation of RJack::JMS::JMSContext for Qpid, using the
-  # {Qpid JNDI Properties}[http://qpid.apache.org/books/0.8/Programming-In-Apache-Qpid/html/ch03s02.html]
+  # {Qpid JNDI Properties}[http://qpid.apache.org/books/0.12/Programming-In-Apache-Qpid/html/ch03s02.html]
   # syntax. Provides scripted setup and a factory for JMS Connection,
   # Session, and Destinations (including full AMQP queue and exchange
   # creation) via Qpid
-  # {Addresses}[http://qpid.apache.org/books/0.8/Programming-In-Apache-Qpid/html/ch02s04.html]
+  # {Addresses}[http://qpid.apache.org/books/0.12/Programming-In-Apache-Qpid/html/ch02s04.html]
   # created from ruby.
   class QpidJMSContext
     include RJack::JMS::JMSContext
@@ -65,7 +65,7 @@ module RJack::QpidClient
     # The option hash may use ruby Symbol or String keys, and
     # true, false, Symbol, String, Hash, or Array values. This will be
     # serialized into the Qpid
-    # {Addresses}[http://qpid.apache.org/books/0.8/Programming-In-Apache-Qpid/html/ch02s04.html]
+    # {Addresses}[http://qpid.apache.org/books/0.12/Programming-In-Apache-Qpid/html/ch02s04.html]
     # Syntax. The special keys :address (default: same as JNDI name)
     # and :subject (optional address/subject) are also supported when
     # serializing. (Default: empty)
@@ -100,7 +100,7 @@ module RJack::QpidClient
     end
 
     # Creates a new
-    # {javax.jms.Connection}[http://download.oracle.com/javaee/5/api/javax/jms/Connection.html]
+    # {javax.jms.Connection}[http://download.oracle.com/javaee/6/api/javax/jms/Connection.html]
     # from the connection_factory. Caller should close this connection when done with it.
     #
     # Throws javax.jms.JMSException, javax.naming.NamingException
@@ -111,7 +111,7 @@ module RJack::QpidClient
     end
 
     # Create a
-    # {javax.jms.Session}[http://download.oracle.com/javaee/5/api/javax/jms/Session.html]
+    # {javax.jms.Session}[http://download.oracle.com/javaee/6/api/javax/jms/Session.html]
     # from the connection previously obtained via create_connection.
     #
     # Throws javax.jms.JMSException
@@ -122,7 +122,7 @@ module RJack::QpidClient
     end
 
     # Lookup (and thus create) a
-    # {javax.jms.Destination}[http://download.oracle.com/javaee/5/api/javax/jms/Destination.html]
+    # {javax.jms.Destination}[http://download.oracle.com/javaee/6/api/javax/jms/Destination.html]
     # by JNDI name as key into destination.  The name and full address
     # specification is logged at this point.
     #
@@ -163,7 +163,7 @@ module RJack::QpidClient
     end
 
     # Serialize destination
-    # {Addresses}[http://qpid.apache.org/books/0.8/Programming-In-Apache-Qpid/html/ch02s04.html]
+    # {Addresses}[http://qpid.apache.org/books/0.12/Programming-In-Apache-Qpid/html/ch02s04.html]
     # (new format). Reference: section 2.4.3.5
     def address_serialize( name, opts = nil )
       opts = opts.dup

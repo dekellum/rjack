@@ -59,6 +59,7 @@ module RJack::TarPit
 
       @last_spec = spec
     end
+
   end
 
   # Helper mixin for Gem::Specification, adding Manifest awareness,
@@ -228,7 +229,7 @@ module RJack::TarPit
       # list, compare, and report and write if change from read in
       # list?
 
-      unless @generated_manifest
+      unless ManifestTracker.generated?( name )
         if File.exist?( 'Manifest.static' )
           mtime = [ 'Manifest.static', version_file ].
             compact.
@@ -246,7 +247,7 @@ module RJack::TarPit
 
     # Generate Manifest.txt
     def generate_manifest
-      unless @generated_manifest #only once
+      ManifestTracker.once( name ) do
         remove_dest_jars
 
         m = []
@@ -258,9 +259,6 @@ module RJack::TarPit
 
         puts "TARPIT: Regenerating #{ File.expand_path( 'Manifest.txt' ) }"
         open( 'Manifest.txt', 'w' ) { |out| out.puts m }
-        @generated_manifest = true
-      else
-        puts "already generated"
       end
     end
 
@@ -312,4 +310,26 @@ module RJack::TarPit
       "#{name}-#{version}.jar"
     end
   end
+
+  module ManifestTracker
+
+    class << self
+      def generated?( name )
+        @generated_manifest.include?( name )
+      end
+
+      def once( name )
+        if generated?( name )
+          false
+        else
+          yield
+          @generated_manifest[ name ] = true
+          true
+        end
+      end
+    end
+
+    @generated_manifest = {}
+  end
+
 end

@@ -50,7 +50,8 @@ module RJack::TarPit
       spec.name = File.basename( specfile, ".gemspec" )
 
       # Add project's lib/ to LOAD_PATH for block...
-      $LOAD_PATH.unshift( File.join( File.dirname( specfile ), 'lib' ) )
+      ldir = File.expand_path( File.join( File.dirname( specfile ), 'lib' ) )
+      $LOAD_PATH.unshift( ldir )
 
       spec.tarpit_specify( &block )
 

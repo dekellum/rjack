@@ -52,7 +52,7 @@ module RJack::TarPit
       # Add project's lib/ to LOAD_PATH for block...
       $LOAD_PATH.unshift( File.join( File.dirname( specfile ), 'lib' ) )
 
-      spec.tarpit_specify &block
+      spec.tarpit_specify( &block )
 
       $LOAD_PATH.shift # ...then remove it to avoid pollution
 

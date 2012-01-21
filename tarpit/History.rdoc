@@ -1,4 +1,8 @@
 === 2.0.1 (TBD)
+* Avoid initialization warnings and remaining case of double manifest
+generation (via new ManifestTracker)
+* Use expand_path for temporary LOAD_PATH addition of lib dir
+* Fix a &block call warning
 
 === 2.0.0 (2012-1-12)
 * Major rewrite. Consumer project changes are required on upgrade!

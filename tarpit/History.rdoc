@@ -18,6 +18,16 @@ generation (via new ManifestTracker)
 * New default, in process Minitest launcher (speed improvement,
   particularly on JRuby)
 
+=== 1.4.1 (2012-1-26)
+This is likely the last maintenance release of the TarPit 1.4.x
+series. Please take the time to review and upgrade to TarPit 2.x.
+
+* Narrow and fix Hoe release to version = 2.12.3. An incompatibly was
+  introduced in Hoe 2.12.5, causing loss of gem specification
+  dependencies.
+* Upgrade/narrow and fix RDoc to version 3.12 for long term
+  compatibility.
+
 === 1.4.0 (2011-9-21)
 * Update/broaden to rdoc ~> 3.6
 * Update to hoe ~> 2.12.3

@@ -1,3 +1,4 @@
 # -*- ruby -*-
 source :rubygems
 gemspec :path => '.', :name => 'rjack-jetty-jsp'
+gemspec :path => '../jetty', :name => 'rjack-jetty'

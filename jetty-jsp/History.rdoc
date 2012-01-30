@@ -1,3 +1,8 @@
+=== 7.6.0.0 (TBD)
+* Update to Jetty 7.6.0.v20120127. The jetty-jsp-2.1 jar is no longer
+  required or available with jetty 7.6.0,
+* Upgrade to tarpit ~> 2.0 (build)
+
 === 7.5.4.0 (2011-11-5)
 * Update to Jetty 7.5.4.v20111024
 * Includes glassfish jsp-impl 2.3.1-b10, ecj 3.7

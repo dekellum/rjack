@@ -22,7 +22,7 @@ jetty-jsp[http://rjack.rubyforge.org/jetty-jsp/] gem.
 == Synopsis
 
   % rjack-jetty-service -v
-  Usage: jetty-service [options]
+  Usage: rjack-jetty-service [options]
       -p, --port N           Port to listen on (default: auto)
       -t, --threads N        Maximum pool threads (default: 20)
       -w, --webapp PATH      Load PATH as root context webapp

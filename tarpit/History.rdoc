@@ -1,4 +1,10 @@
-=== 2.0.0 (2011-1-12)
+=== 2.0.1 (TBD)
+* Avoid initialization warnings and remaining case of double manifest
+generation (via new ManifestTracker)
+* Use expand_path for temporary LOAD_PATH addition of lib dir
+* Fix a &block call warning
+
+=== 2.0.0 (2012-1-12)
 * Major rewrite. Consumer project changes are required on upgrade!
   See also updated README.
 * Gem specification details are now in a separate, but highly
@@ -11,6 +17,16 @@
   still supported.
 * New default, in process Minitest launcher (speed improvement,
   particularly on JRuby)
+
+=== 1.4.1 (2012-1-26)
+This is likely the last maintenance release of the TarPit 1.4.x
+series. Please take the time to review and upgrade to TarPit 2.x.
+
+* Narrow and fix Hoe release to version = 2.12.3. An incompatibly was
+  introduced in Hoe 2.12.5, causing loss of gem specification
+  dependencies.
+* Upgrade/narrow and fix RDoc to version 3.12 for long term
+  compatibility.
 
 === 1.4.0 (2011-9-21)
 * Update/broaden to rdoc ~> 3.6

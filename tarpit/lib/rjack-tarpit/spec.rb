@@ -50,14 +50,16 @@ module RJack::TarPit
       spec.name = File.basename( specfile, ".gemspec" )
 
       # Add project's lib/ to LOAD_PATH for block...
-      $LOAD_PATH.unshift( File.join( File.dirname( specfile ), 'lib' ) )
+      ldir = File.expand_path( File.join( File.dirname( specfile ), 'lib' ) )
+      $LOAD_PATH.unshift( ldir )
 
-      spec.tarpit_specify &block
+      spec.tarpit_specify( &block )
 
       $LOAD_PATH.shift # ...then remove it to avoid pollution
 
       @last_spec = spec
     end
+
   end
 
   # Helper mixin for Gem::Specification, adding Manifest awareness,
@@ -227,7 +229,7 @@ module RJack::TarPit
       # list, compare, and report and write if change from read in
       # list?
 
-      unless @generated_manifest
+      unless ManifestTracker.generated?( name )
         if File.exist?( 'Manifest.static' )
           mtime = [ 'Manifest.static', version_file ].
             compact.
@@ -245,7 +247,7 @@ module RJack::TarPit
 
     # Generate Manifest.txt
     def generate_manifest
-      unless @generated_manifest #only once
+      ManifestTracker.once( name ) do
         remove_dest_jars
 
         m = []
@@ -257,9 +259,6 @@ module RJack::TarPit
 
         puts "TARPIT: Regenerating #{ File.expand_path( 'Manifest.txt' ) }"
         open( 'Manifest.txt', 'w' ) { |out| out.puts m }
-        @generated_manifest = true
-      else
-        puts "already generated"
       end
     end
 
@@ -311,4 +310,26 @@ module RJack::TarPit
       "#{name}-#{version}.jar"
     end
   end
+
+  module ManifestTracker
+
+    class << self
+      def generated?( name )
+        @generated_manifest.include?( name )
+      end
+
+      def once( name )
+        if generated?( name )
+          false
+        else
+          yield
+          @generated_manifest[ name ] = true
+          true
+        end
+      end
+    end
+
+    @generated_manifest = {}
+  end
+
 end

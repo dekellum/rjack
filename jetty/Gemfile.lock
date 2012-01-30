@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rjack-jetty (7.6.0.b-java)
+    rjack-jetty (7.6.0.0-java)
 
 GEM
   remote: http://rubygems.org/

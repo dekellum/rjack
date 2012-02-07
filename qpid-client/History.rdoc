@@ -1,3 +1,5 @@
+=== 0.14.0 (TBD)
+
 === 0.12.0 (2011-8-29)
 * Upgrade to Qpid java client 0.12
 

@@ -22,11 +22,11 @@ require 'rjack-jms'
 module RJack::QpidClient
 
   # Implementation of RJack::JMS::JMSContext for Qpid, using the
-  # {Qpid JNDI Properties}[http://qpid.apache.org/books/0.12/Programming-In-Apache-Qpid/html/ch03s02.html]
+  # {Qpid JNDI Properties}[http://qpid.apache.org/books/0.14/Programming-In-Apache-Qpid/html/ch03s02.html]
   # syntax. Provides scripted setup and a factory for JMS Connection,
   # Session, and Destinations (including full AMQP queue and exchange
   # creation) via Qpid
-  # {Addresses}[http://qpid.apache.org/books/0.12/Programming-In-Apache-Qpid/html/ch02s04.html]
+  # {Addresses}[http://qpid.apache.org/books/0.14/Programming-In-Apache-Qpid/html/ch02s04.html]
   # created from ruby.
   class QpidJMSContext
     include RJack::JMS::JMSContext
@@ -65,7 +65,7 @@ module RJack::QpidClient
     # The option hash may use ruby Symbol or String keys, and
     # true, false, Symbol, String, Hash, or Array values. This will be
     # serialized into the Qpid
-    # {Addresses}[http://qpid.apache.org/books/0.12/Programming-In-Apache-Qpid/html/ch02s04.html]
+    # {Addresses}[http://qpid.apache.org/books/0.14/Programming-In-Apache-Qpid/html/ch02s04.html]
     # Syntax. The special keys :address (default: same as JNDI name)
     # and :subject (optional address/subject) are also supported when
     # serializing. (Default: empty)
@@ -163,7 +163,7 @@ module RJack::QpidClient
     end
 
     # Serialize destination
-    # {Addresses}[http://qpid.apache.org/books/0.12/Programming-In-Apache-Qpid/html/ch02s04.html]
+    # {Addresses}[http://qpid.apache.org/books/0.14/Programming-In-Apache-Qpid/html/ch02s04.html]
     # (new format). Reference: section 2.4.3.5
     def address_serialize( name, opts = nil )
       opts = opts.dup

@@ -1,4 +1,5 @@
 === 0.14.0 (TBD)
+* Upgrade to Qpid java client 0.14 (mina no longer a dependency)
 
 === 0.12.0 (2011-8-29)
 * Upgrade to Qpid java client 0.12

@@ -1,3 +1,6 @@
+=== 7.6.2.0 (TBD)
+* Update to Jetty 7.6.2.v20120308
+
 === 7.6.0.0 (2012-1-29)
 * Update to Jetty 7.6.0.v20120127. The jetty-jsp-2.1 jar is no longer
   required or available with jetty 7.6.0,

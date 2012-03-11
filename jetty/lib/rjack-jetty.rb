@@ -39,7 +39,7 @@ module RJack
     require_jar 'jetty-util'
 
     require File.join( JETTY_DIR,
-      "servlet-api-#{ SERVLET_API_VERSION }.#{ SERVLET_API_BUILD }.jar" )
+      "javax.servlet-#{ SERVLET_API_VERSION }.#{ SERVLET_API_BUILD }.jar" )
 
     import 'org.eclipse.jetty.server.Connector'
     import 'org.eclipse.jetty.server.Handler'

@@ -15,6 +15,7 @@ test/test_jetty.rb
 webapps/test/index.html
 webapps/test/WEB-INF/web.xml
 webapps/test.war
+lib/rjack-jetty/javax.servlet-3.0.0.v201112011016.jar
 lib/rjack-jetty/jetty-client-8.1.2.v20120308.jar
 lib/rjack-jetty/jetty-continuation-8.1.2.v20120308.jar
 lib/rjack-jetty/jetty-http-8.1.2.v20120308.jar
@@ -27,4 +28,3 @@ lib/rjack-jetty/jetty-util-8.1.2.v20120308.jar
 lib/rjack-jetty/jetty-webapp-8.1.2.v20120308.jar
 lib/rjack-jetty/jetty-xml-8.1.2.v20120308.jar
 lib/rjack-jetty/rjack-jetty-1.0.jar
-lib/rjack-jetty/servlet-api-3.0.20100224.jar

@@ -1,5 +1,5 @@
 #--
-# Copyright (c) 2011-2012 David Kellum
+# Copyright (c) 2012 David Kellum
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you
 # may not use this file except in compliance with the License.  You
@@ -15,7 +15,26 @@
 #++
 
 require 'rjack-opennlp/base'
+require 'java'
 
 module RJack::OpenNLP
   Dir.glob( File.join( LIB_DIR, '*.jar' ) ).each { |jar| require jar }
+
+  import 'opennlp.tools.sentdetect.SentenceModel'
+  import 'opennlp.tools.sentdetect.SentenceDetectorME'
+
+  MODELS_DIR = File.expand_path( '../../models', __FILE__ )
+
+  module_function
+
+  # Load the sentence model for the specified language (if available)
+  # Raises java.io.IOException on read error
+  def load_sentence_model( lang = 'en' )
+    input =
+      Java::java.io.FileInputStream.new( "#{MODELS_DIR}/#{lang}-sent.bin" )
+    SentenceModel.new( input )
+  ensure
+    input.close if input
+  end
+
 end

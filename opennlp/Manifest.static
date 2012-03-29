@@ -8,3 +8,4 @@ pom.xml
 lib/rjack-opennlp/base.rb
 lib/rjack-opennlp.rb
 models/en-sent.bin
+test/test_opennlp.rb

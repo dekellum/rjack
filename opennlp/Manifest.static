@@ -5,6 +5,7 @@ README.rdoc
 Rakefile
 assembly.xml
 pom.xml
+bin/rjack-opennlp-tool
 lib/rjack-opennlp/base.rb
 lib/rjack-opennlp.rb
 models/en-sent.bin

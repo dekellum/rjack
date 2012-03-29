@@ -1,0 +1,7 @@
+rjack-opennlp gem
+Copyright (c) 2012 David Kellum
+
+This product includes software developed by:
+
+OpenNLP
+Copyright (c) 2010-2011 The Apache Software Foundation

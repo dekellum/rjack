@@ -1,0 +1,14 @@
+History.rdoc
+Manifest.txt
+NOTICE.txt
+README.rdoc
+Rakefile
+assembly.xml
+pom.xml
+lib/rjack-opennlp/base.rb
+lib/rjack-opennlp.rb
+models/en-sent.bin
+lib/rjack-opennlp/jwnl-1.3.3.jar
+lib/rjack-opennlp/opennlp-maxent-3.0.2-incubating.jar
+lib/rjack-opennlp/opennlp-tools-1.5.2-incubating.jar
+lib/rjack-opennlp/opennlp-uima-1.5.2-incubating.jar

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rjack-icu (4.8.1.1-java)
+    rjack-icu (4.49.1.0-java)
 
 GEM
   remote: http://rubygems.org/

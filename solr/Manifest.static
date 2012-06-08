@@ -1,0 +1,10 @@
+History.rdoc
+Manifest.txt
+NOTICE.txt
+README.rdoc
+Rakefile
+assembly.xml
+pom.xml
+lib/rjack-solr/base.rb
+lib/rjack-solr.rb
+test/test_solr.rb

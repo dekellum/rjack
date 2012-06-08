@@ -1,0 +1,2 @@
+=== 3.6.0.0 (TBD)
+* Initial release based on Solr 3.6.0

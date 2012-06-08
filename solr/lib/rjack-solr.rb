@@ -17,7 +17,7 @@
 require 'rjack-commons-codec'
 require 'rjack-lucene'
 require 'rjack-jetty'
-require 'rjack-jetty-jsp'
+require 'rjack-httpclient-3'
 
 require 'rjack-solr/base'
 

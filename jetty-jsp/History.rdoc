@@ -1,5 +1,13 @@
 === 7.6.4.0 (TBD)
-* Update to jetty ~> 7.6.4 (support future jetty patch releases)
+* Update to jetty 7.6.4.v20120524 level dependencies. This includes
+  jdt.core 3.7.1.
+* Broaden,upgrade to rjack-jetty ~> 7.6.4, supporting inter-op with
+  future patch releases. Note: there is no longer any jetty specific
+  code for the JSP support, only tested and packaged
+  dependencies. Future releases will only be made with these
+  dependencies are updated. Thus, for example, you might want to be
+  running rjack-jetty 7.6.5.0 (as yet not released) with
+  rjack-jetty-jsp 7.6.4.0.
 
 === 7.6.2.0 (2012-3-11)
 * Update to Jetty 7.6.2.v20120308

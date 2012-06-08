@@ -24,6 +24,7 @@ require 'minitest/unit'
 require 'minitest/autorun'
 
 require 'rjack-lucene'
+require 'rjack-lucene/icu'
 
 class TestLucene < MiniTest::Unit::TestCase
 

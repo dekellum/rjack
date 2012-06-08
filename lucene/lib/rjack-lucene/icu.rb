@@ -14,16 +14,15 @@
 # permissions and limitations under the License.
 #++
 
-require 'rjack-commons-codec'
-
 require 'rjack-lucene/base'
+require 'rjack-lucene'
 
-require 'java'
+require 'rjack-icu'
 
 module RJack
   module Lucene
-    Dir.glob( File.join( LIB_DIR, '*.jar' ) ).
-      reject { |jar| jar =~ /lucene-icu-/ }. # via rjack-lucene/icu
-      each { |jar| require jar }
+
+    require "#{LIB_DIR}/lucene-icu-#{CORE_VERSION}.jar"
+
   end
 end

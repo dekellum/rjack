@@ -8,4 +8,5 @@ jar-notes
 pom.xml
 lib/rjack-lucene/base.rb
 lib/rjack-lucene.rb
+lib/rjack-lucene/icu.rb
 test/test_lucene.rb

@@ -14,11 +14,11 @@
 # permissions and limitations under the License.
 #++
 
-require 'hooker'
 require 'rjack-jetty-jsp'
 
 require 'rjack-solr/base'
 require 'rjack-solr'
+require 'rjack-solr/config'
 
 module RJack
   module Solr

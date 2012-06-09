@@ -9,5 +9,6 @@ bin/rjack-solr-fg
 init/rjack-solr
 lib/rjack-solr/base.rb
 lib/rjack-solr.rb
+lib/rjack-solr/config.rb
 lib/rjack-solr/server.rb
 test/test_solr.rb

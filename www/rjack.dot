@@ -1,86 +1,111 @@
 digraph "RJack Gem Dependency Graph" {
   bgcolor="transparent";
-  rankdir=RL;
-  size="6.0,6.0";
+  rankdir=LR;
+  size="7.0,7.0";
   node [ shape=box, style="filled,rounded", fillcolor="#f8df8b",
          fontname="Arial", margin="0.15,0.1" ];
   edge [ fontname="Arial" ];
 
-  "rjack-jets3t"        [ target=_parent, URL="jets3t/" ];
-  "rjack-nekohtml"      [ target=_parent, URL="nekohtml/", group=ml ];
-  "rjack-rome"          [ target=_parent, URL="rome/", group=ml ];
-  "rjack-jdom"          [ target=_parent, URL="jdom/", group=ml ];
-  "rjack-xerces"        [ target=_parent, URL="xerces/", group=ml ];
+  "solr"          [ target=_parent, URL="solr/" ];
+  "lucene"        [ target=_parent, URL="lucene/" ];
 
-  "rjack-httpclient"    [ target=_parent, URL="httpclient-3/",
-                          shape=record, label="rjack-httpclient-[3,4]" ];
+  "jets3t"        [ target=_parent, URL="jets3t/" ];
 
-  "rjack-icu"           [ target=_parent, URL="icu/" ];
+  "httpclient"    [ target=_parent, URL="httpclient-3/",
+                          shape=record, label="httpclient-[3,4]" ];
 
-  "rjack-jetty"         [ target=_parent, URL="jetty/" ];
-  "rjack-jetty-jsp"     [ target=_parent, URL="jetty-jsp/" ];
+  "icu"           [ target=_parent, URL="icu/" ];
 
-  "rjack-slf4j"         [ target=_parent, URL="slf4j/", group=log ];
-  "rjack-logback"       [ target=_parent, URL="logback/", group=log ];
+  "jetty"         [ target=_parent, URL="jetty/" ];
+  "jetty-jsp"     [ target=_parent, URL="jetty-jsp/" ];
 
-  "rjack-commons-codec" [ target=_parent, URL="commons-codec/", group=commons ];
+  "slf4j"         [ target=_parent, URL="slf4j/", group=log ];
+  "logback"       [ target=_parent, URL="logback/", group=log ];
 
-  "rjack-jms-spec"      [ target=_parent, URL="jms-spec/", group=net ];
-  "rjack-jms"           [ target=_parent, URL="jms/", group=net ];
-  "rjack-mina"          [ target=_parent, URL="mina/", group=net ];
-  "rjack-qpid-client"   [ target=_parent, URL="qpid-client/", group=net ];
+  "commons-codec" [ label=<commons<br/>codec>
+                    target=_parent, URL="commons-codec/", group=commons ];
 
-  "rjack-commons-dbcp"  [ target=_parent, URL="commons-dbcp/", group=commons ];
-  "rjack-commons-dbutils" [ target=_parent, URL="commons-dbutils/", group=commons ];
+  "jms-spec"      [ target=_parent, URL="jms-spec/", group=net ];
+  "jms"           [ target=_parent, URL="jms/", group=net ];
+  "mina"          [ target=_parent, URL="mina/", group=net ];
+  "qpid-client"   [ target=_parent, URL="qpid-client/", group=net ];
 
-  "rjack-commons-pool"  [ target=_parent, URL="commons-pool/", group=commons ];
-  "rjack-protobuf"      [ target=_parent, URL="protobuf/" ];
+  "async-httpclient" [ label=<async<br/>httpclient>
+                       target=_parent, URL="async-httpclient/" ];
 
-  "rjack-tarpit"        [ target=_parent, URL="tarpit/" ];
-  "rjack-maven"         [ target=_parent, URL="maven/" ];
+  subgraph cluster_db {
+    style=invis
+    "commons-dbcp"    [ label=<commons<br/>dbcp>
+                        target=_parent, URL="commons-dbcp/", group=commons ];
+    "commons-dbutils" [ label=<commons<br/>dbutils>
+                        target=_parent, URL="commons-dbutils/", group=commons ];
+    "commons-pool"    [ label=<commons<br/>pool>
+                        target=_parent, URL="commons-pool/", group=commons ];
+  }
 
-  "rjack-jackson"       [ target=_parent, URL="jackson/" ];
+  subgraph cluster_xml {
+    style=invis
+    "rome"          [ target=_parent, URL="rome/", group=ml ];
+    "jdom"          [ target=_parent, URL="jdom/", group=ml ];
+    "nekohtml"      [ target=_parent, URL="nekohtml/", group=ml ];
+    "xerces"        [ target=_parent, URL="xerces/", group=ml ];
+  }
 
-  "rjack-async-httpclient" [ target=_parent, URL="async-httpclient/" ];
+  subgraph cluster_alt_parse {
+    style=invis
+    "jackson"       [ target=_parent, URL="jackson/" ];
+    "protobuf"      [ target=_parent, URL="protobuf/" ];
+  }
 
-  "rjack-tarpit"       -> "rjack-maven" [ style=dashed, label="java" ];
+  "tarpit"        [ target=_parent, URL="tarpit/" ];
+  "maven"         [ target=_parent, URL="maven/" ];
 
-  "rjack-jets3t"       -> "rjack-logback" [ style=dashed, label="dev" ];
-  "rjack-jets3t"       -> "rjack-httpclient";
-  "rjack-jets3t"       -> "rjack-commons-codec";
-  "rjack-jets3t"       -> "rjack-slf4j";
-  "rjack-rome"         -> "rjack-jdom"
-  "rjack-nekohtml"     -> "rjack-xerces"
+  "commons-dbcp" -> "commons-pool";
+  "commons-dbutils" -> "commons-pool" [ style=invis ];
 
-  "rjack-httpclient"   -> "rjack-commons-codec";
-  "rjack-httpclient"   -> "rjack-logback" [ style=dashed, label="dev" ];
-  "rjack-httpclient"   -> "rjack-slf4j";
+  "tarpit"       -> "maven" [ style=dashed, label="java" ];
 
-  "rjack-jetty-jsp"    -> "rjack-jetty";
-  "rjack-jetty"        -> "rjack-logback" [ style=dashed, label="dev" ];
-  "rjack-jetty"        -> "rjack-slf4j"   [ style=dashed, label="optional" ];
+  "jets3t"       -> "logback" [ style=dashed ];
+  "jets3t"       -> "httpclient";
+  "jets3t"       -> "commons-codec";
+  "jets3t"       -> "slf4j";
 
-  "rjack-logback"      -> "rjack-slf4j";
+  "rome"         -> "jdom"
+  "nekohtml"     -> "xerces"
 
-  "rjack-jms"          -> "rjack-jms-spec";
-  "rjack-jms"          -> "rjack-logback" [ style=dashed, label="dev" ];
+  "httpclient"   -> "commons-codec";
+  "httpclient"   -> "logback" [ style=dashed ];
+  "httpclient"   -> "slf4j";
 
-  "rjack-mina"         -> "rjack-slf4j";
-  "rjack-mina"         -> "rjack-logback" [ style=dashed, label="dev" ];
+  "jetty-jsp"    -> "jetty";
+  "jetty"        -> "logback" [ style=dashed ];
+#  "jetty"        -> "slf4j"   [ style=dashed, label="optional" ];
 
-  "rjack-qpid-client"  -> "rjack-jms";
-  "rjack-qpid-client"  -> "rjack-slf4j";
-#  "rjack-qpid-client"  -> "rjack-logback" [ style=dashed, label="dev" ];
+  "logback"      -> "slf4j";
 
-  "rjack-commons-dbcp" -> "rjack-commons-pool";
+  "jms"          -> "jms-spec";
+  "jms"          -> "logback" [ style=dashed ];
 
-  "rjack-async-httpclient" -> "rjack-slf4j"
-  "rjack-async-httpclient" -> "rjack-logback" [ style=dashed, label="dev" ];
+  "mina"         -> "slf4j";
+  "mina"         -> "logback" [ style=dashed ];
 
-# for fitting only
-  "rjack-jackson"         -> "rjack-tarpit"   [ style=invis ];
-  "rjack-jdom"            -> "rjack-icu"      [ style=invis ];
-  "rjack-protobuf"        -> "rjack-jackson"  [ style=invis ];
-  "rjack-commons-pool"    -> "rjack-nekohtml" [ style=invis ];
-  "rjack-commons-dbutils" -> "rjack-rome"     [ style=invis ];
+  "qpid-client"  -> "jms";
+  "qpid-client"  -> "slf4j";
+#  "qpid-client"  -> "logback" [ style=dashed ];
+
+  "async-httpclient" -> "slf4j"
+  "async-httpclient" -> "logback" [ style=dashed ];
+
+  "lucene" -> "commons-codec"
+  "lucene" -> "icu"           [ style=dashed, label="optional" ];
+
+  "solr"   -> "lucene"
+  "solr"   -> "jetty"
+  "solr"   -> "jetty-jsp"
+  "solr"   -> "httpclient"
+  "solr"   -> "logback"       [ style=dashed ];
+#  "solr"   -> "slf4j"
+
+# for association only
+  "slf4j" -> "tarpit" [ style=invis ];
 }

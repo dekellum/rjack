@@ -4,7 +4,6 @@ NOTICE.txt
 README.rdoc
 Rakefile
 assembly.xml
-jar-notes
 pom.xml
 lib/rjack-lucene/base.rb
 lib/rjack-lucene.rb

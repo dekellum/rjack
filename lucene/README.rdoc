@@ -8,6 +8,24 @@
 
 A gem packaging of {Lucene}[http://lucene.apache.org].
 
+The entire Lucene release set of jars is included minus the following,
+due to size or extra dependencies:
+
++lucene-benchmark+: Requires misc additional dependencies, excluded.
+
++lucene-remote+: Java RMI: any one using it?
+
++lucene-kuromuji+: Japanese morphological analyzer/tokenizer, excluded
+for size.
+
++lucene-smartcn+: Chinese Analyzer, exclude for size.
+
+Create a github issue/patch if you'd like to see any of these
+packaged, possibly as add-on gems, i.e. +rjack-lucene-ja+.
+
+In addition, +lucene-icu+ is included, but optionally require'd via
+rjack-lucene/icu and depends on rjack-icu.
+
 == License
 
 === rjack-lucene gem

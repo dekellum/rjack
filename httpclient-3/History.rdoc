@@ -1,3 +1,7 @@
+=== 3.1.6 (TBD)
+* Expand commons-codec gem dep to ~> 1.4 (tested with 1.6.0)
+* Update to tarpit ~> 2.0 (build)
+
 === 3.1.5 (2010-8-31)
 * Remove require 'rubygems' from lib, require 'java' for imports.
 * Expand slf4j/logback gem deps for compatibility with

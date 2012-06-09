@@ -1,5 +1,6 @@
-=== 4.1.2.2 (TBD)
-* Upgrade to httpcore 4.1.4
+=== 4.2.0.0 (TBD)
+* Upgrade to httpclient 4.2, httpcore 4.2; requires commons-codec 1.6
+* Upgrade to tarpit ~> 2.0 (build)
 
 === 4.1.2.1 (2011-9-16)
 * Adjust SchemaRegistry factory for backward incompatible change/bug

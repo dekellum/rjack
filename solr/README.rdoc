@@ -8,6 +8,34 @@
 
 A gem packaging of {Solr}[http://lucene.apache.org/solr].
 
+== Synopsis
+
+Solr is run as a service on Jetty 7.x, and defaults to finding its
+conf/ and data/ directories under the current working directory. To
+get started, you can use the SOLR release's sample config:
+
+  % mkdir -p /opt/var/rjack-solr
+  % cd /opt/var/rjack-solr
+  % svn checkout http://svn.apache.org/repos/asf/lucene/dev/tags/lucene_solr_3_6_0/solr/example/solr/conf
+
+  # Edit conf/schema.xml and remove/comment out the text_ja fieldType
+  # The Kuromoji Japanese Morphological is not included in
+  # rjack-lucene, due to size.
+
+  % jgem install rjack-solr
+  % rjack-solr-fg
+
+You can also include a config.rb for the Jetty HTTP server details, i.e:
+
+  RJack::Solr.configure do |c|
+    c.setup_http_server do |s|
+      s.port = 8080
+      s.max_threads = 10
+    end
+  end
+
+And pass <code>rjack-solr-fg -c ./config.rb</code>
+
 == License
 
 === rjack-solr gem

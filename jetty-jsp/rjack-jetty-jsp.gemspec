@@ -10,7 +10,7 @@ RJack::TarPit.specify do |s|
 
   s.add_developer( 'David Kellum', 'dek-oss@gravitext.com' )
 
-  s.depend 'rjack-jetty',      "~> #{RJack::Jetty::Jsp::JETTY_VERSION}.0"
+  s.depend 'rjack-jetty',      "~> 7.6.4"
 
   s.depend 'minitest',         '~> 2.2',                :dev
   s.depend 'rjack-slf4j',      '>= 1.5.8',  '< 1.7',    :dev

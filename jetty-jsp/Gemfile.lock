@@ -1,13 +1,13 @@
 PATH
   remote: .
   specs:
-    rjack-jetty-jsp (7.6.2.0-java)
-      rjack-jetty (~> 7.6.2.0)
+    rjack-jetty-jsp (7.6.4.0-java)
+      rjack-jetty (~> 7.6.4)
 
 PATH
   remote: /home/david/src/rjack/jetty
   specs:
-    rjack-jetty (7.6.2.0-java)
+    rjack-jetty (7.6.4.0-java)
 
 GEM
   remote: http://rubygems.org/
@@ -22,7 +22,7 @@ GEM
       json (~> 1.4)
     rjack-logback (1.3.0-java)
       rjack-slf4j (~> 1.6.0)
-    rjack-maven (3.0.3.1-java)
+    rjack-maven (3.0.4.0-java)
     rjack-slf4j (1.6.4.0-java)
     rjack-tarpit (2.0.1-java)
       jruby-openssl (~> 0.7.4)

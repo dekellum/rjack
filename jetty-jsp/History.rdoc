@@ -1,4 +1,4 @@
-=== 7.6.4.0 (TBD)
+=== 7.6.4.0 (2012-6-9)
 * Update to jetty 7.6.4.v20120524 level dependencies. This includes
   jdt.core 3.7.1.
 * Broaden,upgrade to rjack-jetty ~> 7.6.4, supporting inter-op with

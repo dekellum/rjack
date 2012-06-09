@@ -1,4 +1,4 @@
-=== 1.6.5.0 (TBD)
+=== 1.6.5.0 (2012-6-9)
 * Upgraded to SLF4J 1.6.5
 * Update to tarpit ~> 2.0 (build)
 

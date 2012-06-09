@@ -14,7 +14,7 @@ RJack::TarPit.specify do |s|
   s.depend 'rjack-lucene',        '~> 3.6.0'
   s.depend 'rjack-jetty',         '~> 7.6.4'
   s.depend 'rjack-jetty-jsp',     '~> 7.6.4'
-  s.depend 'rjack-httpclient-3',  '~> 3.1.5'
+  s.depend 'rjack-httpclient-3',  '~> 3.1.6'
   s.depend 'hooker',              '~> 1.0.0'
 
   s.depend 'rjack-logback',       '~> 1.3',              :dev

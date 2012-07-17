@@ -1,2 +1,2 @@
-=== 3.6.0.0 (TBD)
+=== 3.6.0.0 (2012-7-16)
 * Initial release based on Lucene 3.6.0

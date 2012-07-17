@@ -31,7 +31,7 @@ class TestLucene < MiniTest::Unit::TestCase
   import 'org.apache.lucene.LucenePackage'
 
   def test_load
-    pass
+    assert( LucenePackage )
   end
 
 end

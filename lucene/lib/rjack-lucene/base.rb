@@ -17,7 +17,7 @@
 module RJack
   module Lucene
 
-    # Mina (java) version
+    # Lucene (java) version
     CORE_VERSION = '3.6.0'
 
     # rjack gem version

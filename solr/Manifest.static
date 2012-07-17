@@ -6,6 +6,7 @@ Rakefile
 assembly.xml
 pom.xml
 bin/rjack-solr-fg
+config/config.rb
 init/rjack-solr
 lib/rjack-solr/base.rb
 lib/rjack-solr.rb

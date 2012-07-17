@@ -34,7 +34,7 @@ module RJack
 
         puts WEBAPP_PATH
         self.webapp_contexts[ '/' ] = WEBAPP_PATH
-        self.port = 9294
+        self.port = 8983
         @solr_home = '.'
 
         Hooker.apply( [ :solr, :http_server ], self )

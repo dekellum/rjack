@@ -7,6 +7,7 @@ PATH
       rjack-httpclient-3 (~> 3.1.6)
       rjack-jetty (~> 7.6.4)
       rjack-jetty-jsp (~> 7.6.4)
+      rjack-logback (~> 1.2)
       rjack-lucene (~> 3.6.0)
 
 GEM
@@ -45,6 +46,5 @@ PLATFORMS
 
 DEPENDENCIES
   minitest (~> 2.2)
-  rjack-logback (~> 1.3)
   rjack-solr!
   rjack-tarpit (~> 2.0)

@@ -30,6 +30,7 @@ module BinScript
   require 'rjack-logback'
   include RJack
   Logback.config_console( :full => true, :thread => true )
+  Logback[ 'org.apache.solr' ].level = :warn
 
   require 'rjack-solr/server'
 

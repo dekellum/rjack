@@ -28,6 +28,7 @@ module BinScript
 
   include RJack
   Logback.config_console( :thread => true )
+  Logback[ 'org.apache.solr' ].level = :warn
 
   require 'rjack-solr/server'
 
@@ -40,6 +41,7 @@ module BinScript
     end
     opts.on( "-d", "--debug", "Enable verbose DEBUG logging" ) do
       Logback.root.level = Logback::DEBUG
+      Logback[ 'org.apache.solr' ].level = nil
     end
     Hooker.register_config( opts )
   end.parse!

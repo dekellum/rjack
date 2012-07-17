@@ -1,0 +1,20 @@
+<assembly>
+  <id>bin</id>
+  <formats>
+    <format>dir</format>
+  </formats>
+  <includeBaseDirectory>false</includeBaseDirectory>
+  <dependencySets>
+    <dependencySet>
+      <useProjectArtifact>false</useProjectArtifact>
+      <excludes>
+        <exclude>commons-codec:commons-codec</exclude>
+        <exclude>jakarta-regexp:*</exclude>
+        <exclude>org.apache.lucene:*</exclude>
+        <exclude>org.apache.solr:solr</exclude>
+        <exclude>org.slf4j:*</exclude>
+        <exclude>javax.servlet:servlet-api</exclude>
+      </excludes>
+    </dependencySet>
+  </dependencySets>
+</assembly>

@@ -17,11 +17,11 @@ task :publish => PUB_FILES do
       'dekellum@rubyforge.org:/var/www/gforge-projects/rjack/' )
 end
 
-file 'rjack.svg' do
+file 'rjack.svg' => [ 'rjack.dot' ] do
   sh "ccomps -x rjack.dot | dot | gvpack -n | neato -n2 -Tsvg > rjack.svg"
 end
 
-file 'rjack.png' do
+file 'rjack.png' => [ 'rjack.dot' ] do
   sh "ccomps -x rjack.dot | dot | gvpack -n | neato -n2 -Tpng > rjack.png"
 end
 

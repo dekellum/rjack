@@ -29,7 +29,7 @@ You can also include a config.rb for the Jetty HTTP server details, i.e:
 
   RJack::Solr.configure do |c|
     c.setup_http_server do |s|
-      s.port = 8080
+      s.port = 8983
       s.max_threads = 10
     end
   end

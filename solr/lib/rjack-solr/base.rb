@@ -17,7 +17,7 @@
 module RJack
   module Solr
 
-    # Mina (java) version
+    # SOLR (java) version
     CORE_VERSION = '3.6.0'
 
     # rjack gem version

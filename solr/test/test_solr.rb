@@ -37,7 +37,7 @@ class TestSolr < MiniTest::Unit::TestCase
   import 'org.apache.solr.servlet.SolrServlet'
 
   def test_load
-    pass
+    assert( SolrServlet )
   end
 
 end

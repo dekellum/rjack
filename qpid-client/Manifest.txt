@@ -9,5 +9,5 @@ lib/rjack-qpid-client/base.rb
 lib/rjack-qpid-client.rb
 lib/rjack-qpid-client/qpid_jms_context.rb
 test/test_qpid_client.rb
-lib/rjack-qpid-client/qpid-client-0.14.jar
-lib/rjack-qpid-client/qpid-common-0.14.jar
+lib/rjack-qpid-client/qpid-client-0.16.jar
+lib/rjack-qpid-client/qpid-common-0.16.jar

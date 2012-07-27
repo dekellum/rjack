@@ -63,7 +63,7 @@ class TestJets3t < MiniTest::Unit::TestCase
       @s3.delete_bucket( @tbucket ) if @tbucket
     end
 
-    def test_write
+    def test_write_stream
       assert( @s3.buckets.any? { |b| b.name == @tbucket.name } )
 
       url = @tbucket.put( "testkey", "text/plain" ) do |obj|
@@ -73,6 +73,31 @@ class TestJets3t < MiniTest::Unit::TestCase
       end
       assert_equal( 'http://s3.amazonaws.com/test.rjack.rubyforge.org/testkey',
                     url )
+      called = false
+      @tbucket.get( "testkey" ) do |obj|
+        assert_equal( "text/plain", obj.content_type )
+        assert_equal( "hello", obj.data_input_stream.to_io.read )
+        called = true
+      end
+      assert( called )
+
+      @tbucket.delete( "testkey" )
+    end
+
+    def test_write_bytes
+      assert( @s3.buckets.any? { |b| b.name == @tbucket.name } )
+
+      url = @tbucket.put( "testkey", "text/plain", "hello" )
+      assert_equal( 'http://s3.amazonaws.com/test.rjack.rubyforge.org/testkey',
+                    url )
+      called = false
+      @tbucket.get( "testkey" ) do |obj|
+        assert_equal( "text/plain", obj.content_type )
+        assert_equal( "hello", obj.data_input_stream.to_io.read )
+        called = true
+      end
+      assert( called )
+
       @tbucket.delete( "testkey" )
     end
 

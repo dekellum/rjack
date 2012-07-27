@@ -3,7 +3,7 @@ PATH
   specs:
     rjack-jets3t (0.9.0.0-java)
       rjack-commons-codec (~> 1.4.0)
-      rjack-httpclient-3 (~> 3.1.3)
+      rjack-httpclient-4 (~> 4.1.2)
       rjack-slf4j (>= 1.5.8, < 1.7)
 
 GEM
@@ -18,8 +18,8 @@ GEM
     rdoc (3.12)
       json (~> 1.4)
     rjack-commons-codec (1.4.2-java)
-    rjack-httpclient-3 (3.1.6-java)
-      rjack-commons-codec (~> 1.4)
+    rjack-httpclient-4 (4.1.2.1-java)
+      rjack-commons-codec (~> 1.4.0)
       rjack-slf4j (>= 1.5.8, < 1.7)
     rjack-logback (1.4.0-java)
       rjack-slf4j (~> 1.6.0)

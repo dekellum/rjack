@@ -14,90 +14,100 @@
 # permissions and limitations under the License.
 #++
 
-require 'rjack-slf4j'
-require 'rjack-slf4j/jcl-over-slf4j'
-require 'rjack-commons-codec'
-require 'rjack-httpclient-3'
-require 'rjack-jets3t/base'
+require 'rjack-jets3t/java'
 
-require 'java'
+module RJack::JetS3t
+  import 'org.jets3t.service.acl.AccessControlList'
+  import 'org.jets3t.service.model.S3Object'
 
-module RJack
-  module JetS3t
-    import 'org.jets3t.service.acl.AccessControlList'
-    import 'org.jets3t.service.model.S3Object'
+  # Facade over org.jets3t.service.model.S3Bucket
+  class S3Bucket
 
-    # Facade over org.jets3t.service.model.S3Bucket
-    class S3Bucket
+    # The S3Service in which this bucket resides
+    attr_reader :service
 
-      #import 'org.jets3t.service.model.S3Bucket'
-      #import 'org.jets3t.service.impl.rest.httpclient.RestS3Service'
-      #import 'org.jets3t.service.security.AWSCredentials'
-      #import 'org.jets3t.service.Jets3tProperties'
+    # The underlying org.jets3t.service.model.S3Bucket
+    attr_reader :jbucket
 
-      # The S3Service from in which this bucket resides
-      attr_reader :service
+    # Hostname/prefix used use when composing HTTP access URLs.
+    attr_accessor :host_prefix
 
-      # The underlying org.jets3t.service.model.S3Bucket
-      attr_reader :jbucket
+    # Default ACL for put
+    attr_accessor :default_acl
 
-      # Hostname/prefix used use when composing HTTP access URLs.
-      attr_accessor :host_prefix
+    # New bucket wrapper
+    #
+    # ==== Parameters
+    # service<S3Service>:: S3Service in which this bucket resides
+    # jbucket<org.jets3t.service.model.S3Bucket>:: the bucket
+    #
+    # ==== Options (opts)
+    # :host_prefix<~to_s>:: Host name/prefix to use when composing access
+    #                       URLs. (Default: s3.amazonaws.com/bucket-name)
+    # :default_acl<AccessControlList>:: Default ACL for put
+    #          (Default: AccessControlList::REST_CANNED_PUBLIC_READ)
+    #
+    # ==== Raises
+    # :S3ServiceException:: From JetS3t
+    # :RuntimeError:: On failure to provide required options
+    def initialize( service, jbucket, opts = {} )
+      @service = service
+      @jbucket = jbucket
+      @host_prefix   = ( opts[ :host_prefix ] ||
+                         [ 's3.amazonaws.com', jbucket.name ].join( '/' ) )
+      @default_acl = ( opts[ :default_acl ] ||
+                       AccessControlList::REST_CANNED_PUBLIC_READ )
+    end
 
-      # Default ACL for put
-      attr_accessor :default_acl
+    # Bucket name
+    def name
+      @jbucket.name
+    end
 
-      # New bucket wrapper
-      #
-      # ==== Parameters
-      # service<S3Service>:: S3Service in which this bucket resides
-      # jbucket<org.jets3t.service.model.S3Bucket>:: the bucket
-      #
-      # ==== Options (opts)
-      # :host_prefix<~to_s>:: Host name/prefix to use when composing access
-      #                       URLs. (Default: s3.amazonaws.com/bucket-name)
-      # :default_acl<AccessControlList>:: Default ACL for put
-      #          (Default: AccessControlList::REST_CANNED_PUBLIC_READ)
-      #
-      # ==== Raises
-      # :S3ServiceException:: From JetS3t
-      # :RuntimeError:: On failure to provide required options
-      def initialize( service, jbucket, opts = {} )
-        @service = service
-        @jbucket = jbucket
-        @host_prefix   = ( opts[ :host_prefix ] ||
-                           [ 's3.amazonaws.com', jbucket.name ].join( '/' ) )
-        @default_acl = ( opts[ :default_acl ] ||
-                         AccessControlList::REST_CANNED_PUBLIC_READ )
+    # Put object in this S3 bucket at the given key. Yields
+    # S3Object for setting content, acl or other overrides if
+    # given. Optional data may be passed as a Ruby String which will
+    # be converted to java_bytes. Returns external HTTP url using
+    # :host_prefix
+    # ==== Raises
+    # :S3ServiceException:: From JetS3t
+    def put( key, mime_type, rbytes = nil )
+      if rbytes
+        rbytes = rbytes.to_java_bytes if rbytes.respond_to?( :to_java_bytes )
+        obj = S3Object.new( key, rbytes )
+      else
+        obj = S3Object.new( @jbucket, key )
       end
+      obj.content_type = mime_type
+      obj.acl = @default_acl
+      yield obj if block_given?
+      @service.jservice.put_object( @jbucket, obj )
+      "http://%s/%s" % [ @host_prefix, key ]
+    end
 
-      # Bucket name
-      def name
-        @jbucket.name
-      end
+    # Get and yield S3Object from this S3 bucket for the given
+    # key. Ensures that on return from block, the objects
+    # date_input_stream will be closed.
+    # ==== Raises
+    # :S3ServiceException:: From JetS3t
+    def get( key )
+      obj = @service.jservice.get_object( @jbucket.name, key )
+      yield obj
+      nil
+    ensure
+      if obj
+        din = obj.data_input_stream
+        din.close if din
+     end
+    end
 
-      # Put object in this S3 bucket at the given name (key). Yields
-      # S3Object for setting content, acl or other overrides. Returns
-      # external HTTP url using :host_prefix
-      # ==== Raises
-      # :S3ServiceException:: From JetS3t
-      def put( name, mime_type )
-        obj = S3Object.new( @jbucket, name )
-        obj.content_type = mime_type
-        obj.acl = @default_acl
-        yield obj
-        @service.jservice.put_object( @jbucket, obj )
-        "http://%s/%s" % [ @host_prefix, name ]
-      end
-
-      # Delete object with the given name in this bucket
-      # ==== Raises
-      # :S3ServiceException:: From JetS3t
-      def delete( name )
-        @service.jservice.delete_object( @jbucket, name )
-      end
-
+    # Delete object with the given name in this bucket
+    # ==== Raises
+    # :S3ServiceException:: From JetS3t
+    def delete( name )
+      @service.jservice.delete_object( @jbucket, name )
     end
 
   end
+
 end

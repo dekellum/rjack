@@ -1,7 +1,7 @@
 digraph "RJack Gem Dependency Graph" {
   bgcolor="transparent";
   rankdir=LR;
-  size="7.0,7.0";
+  size="7.0,6.5";
   node [ shape=box, style="filled,rounded", fillcolor="#f8df8b",
          fontname="Arial", margin="0.15,0.1" ];
   edge [ fontname="Arial" ];
@@ -11,8 +11,8 @@ digraph "RJack Gem Dependency Graph" {
 
   "jets3t"        [ target=_parent, URL="jets3t/" ];
 
-  "httpclient"    [ target=_parent, URL="httpclient-3/",
-                          shape=record, label="httpclient-[3,4]" ];
+  "httpclient-3"  [ target=_parent, URL="httpclient-3/" ];
+  "httpclient-4"  [ target=_parent, URL="httpclient-4/" ];
 
   "icu"           [ target=_parent, URL="icu/" ];
 
@@ -42,19 +42,22 @@ digraph "RJack Gem Dependency Graph" {
     "commons-pool"    [ label=<commons<br/>pool>
                         target=_parent, URL="commons-pool/", group=commons ];
   }
-
   subgraph cluster_xml {
     style=invis
+
     "rome"          [ target=_parent, URL="rome/", group=ml ];
     "jdom"          [ target=_parent, URL="jdom/", group=ml ];
     "nekohtml"      [ target=_parent, URL="nekohtml/", group=ml ];
     "xerces"        [ target=_parent, URL="xerces/", group=ml ];
+
+    "rome" -> "xerces" [ style=invis ];
   }
 
-  subgraph cluster_alt_parse {
+  subgraph cluster_ser {
     style=invis
-    "jackson"       [ target=_parent, URL="jackson/" ];
-    "protobuf"      [ target=_parent, URL="protobuf/" ];
+    "jackson"       [ target=_parent, URL="jackson/", group=ser ];
+    "protobuf"      [ target=_parent, URL="protobuf/", group=ser ];
+    "jackson" -> "protobuf" [ style=invis ];
   }
 
   "tarpit"        [ target=_parent, URL="tarpit/" ];
@@ -66,31 +69,34 @@ digraph "RJack Gem Dependency Graph" {
   "tarpit"       -> "maven" [ style=dashed, label="java" ];
 
   "jets3t"       -> "logback" [ style=dashed ];
-  "jets3t"       -> "httpclient";
+  "jets3t"       -> "httpclient-4";
   "jets3t"       -> "commons-codec";
   "jets3t"       -> "slf4j";
 
   "rome"         -> "jdom"
   "nekohtml"     -> "xerces"
 
-  "httpclient"   -> "commons-codec";
-  "httpclient"   -> "logback" [ style=dashed ];
-  "httpclient"   -> "slf4j";
+  "httpclient-3"   -> "commons-codec";
+  "httpclient-4"   -> "commons-codec";
+#  "httpclient"   -> "logback" [ style=dashed ];
+  "httpclient-3"   -> "slf4j";
+  "httpclient-4"   -> "slf4j";
 
   "jetty-jsp"    -> "jetty";
   "jetty"        -> "logback" [ style=dashed ];
-#  "jetty"        -> "slf4j"   [ style=dashed, label="optional" ];
+#  "jetty"        -> "slf4j"   [ style=dashed ];
 
   "logback"      -> "slf4j";
 
   "jms"          -> "jms-spec";
+  "jms"          -> "slf4j";
   "jms"          -> "logback" [ style=dashed ];
 
   "mina"         -> "slf4j";
   "mina"         -> "logback" [ style=dashed ];
 
   "qpid-client"  -> "jms";
-  "qpid-client"  -> "slf4j";
+#  "qpid-client"  -> "slf4j";
 #  "qpid-client"  -> "logback" [ style=dashed ];
 
   "async-httpclient" -> "slf4j"
@@ -102,10 +108,10 @@ digraph "RJack Gem Dependency Graph" {
   "solr"   -> "lucene"
   "solr"   -> "jetty"
   "solr"   -> "jetty-jsp"
-  "solr"   -> "httpclient"
-  "solr"   -> "logback"       [ style=dashed ];
+  "solr"   -> "httpclient-3"
+  "solr"   -> "logback";
 #  "solr"   -> "slf4j"
 
 # for association only
-  "slf4j" -> "tarpit" [ style=invis ];
+  "commons-codec" -> "commons-dbutils" [ style=invis ];
 }

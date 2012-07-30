@@ -14,16 +14,6 @@
 # permissions and limitations under the License.
 #++
 
-require 'rjack-slf4j'
-require 'rjack-slf4j/jcl-over-slf4j'
-require 'rjack-commons-codec'
-require 'rjack-httpclient-3'
 require 'rjack-jets3t/base'
-
-module RJack
-  module JetS3t
-    Dir.glob( File.join( JETS3T_DIR, '*.jar' ) ).each { |jar| require jar }
-  end
-end
-
+require 'rjack-jets3t/java'
 require 'rjack-jets3t/s3_service'

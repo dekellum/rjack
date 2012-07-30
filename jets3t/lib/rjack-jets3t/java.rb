@@ -14,14 +14,19 @@
 # permissions and limitations under the License.
 #++
 
-module RJack
-  module JetS3t
-    # JetS3t java version
-    JETS3T_VERSION = '0.9.0'
+require 'java'
 
-    # rjack-jets3t version
-    VERSION = JETS3T_VERSION + '.0'
+require 'rjack-slf4j'
+require 'rjack-slf4j/jcl-over-slf4j'
+require 'rjack-commons-codec'
+require 'rjack-httpclient-4'
+require 'rjack-jets3t/base'
 
-    JETS3T_DIR = File.dirname( __FILE__ ) # :nodoc:
-  end
+module RJack::JetS3t
+  Dir.glob( File.join( JETS3T_DIR, '*.jar' ) ).each { |jar| require jar }
+
+  import 'org.jets3t.service.S3ServiceException'
+
+  #Alias to org.jets3t.service.model.S3Bucket
+  JS3Bucket = Java::org.jets3t.service.model.S3Bucket
 end

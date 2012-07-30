@@ -1,3 +1,6 @@
+=== 0.9.0.0 (TBD)
+* Updated to jets3t 0.9.0
+
 === 0.8.1.0 (2011-7-31)
 * Updated to jets3t 0.8.1
 

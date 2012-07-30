@@ -1,21 +1,23 @@
-=== 0.9.0.0 (TBD)
-* Updated to jets3t 0.9.0
+=== 0.9.0.0 (2012-7-30)
+* Update to jets3t 0.9.0; now depends on rjack-httpclient-4
+* Add S3Bucket.get, generalize put
+* Upgrade to tarpit ~> 2.0 (build)
 
 === 0.8.1.0 (2011-7-31)
-* Updated to jets3t 0.8.1
+* Update to jets3t 0.8.1
 
 === 0.8.0.0 (2010-12-28)
-* Updated to jets3t 0.8.0
+* Update to jets3t 0.8.0
 
 === 0.7.4.0 (2010-8-31)
-* Updated to jets3t 0.7.4 (Note
+* Update to jets3t 0.7.4 (Note
   {Issue #16}[http://bitbucket.org/jmurty/jets3t/issue/16/classnotfoundexception])
 * Remove require 'rubygems' from lib, require 'java' for imports.
 * Expand slf4j/logback gem deps for compatibility with
   slf4j-1.6.x/logback-1.x
 
 === 0.7.2.0 (2010-5-13)
-* Updated to jets3t 0.7.2
+* Update to jets3t 0.7.2
 * New S3Bucket wrapper with put/delete methods.
 * S3Service provides list, get, create S3Bucket.
 * Set gem platform to java

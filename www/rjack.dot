@@ -1,7 +1,7 @@
 digraph "RJack Gem Dependency Graph" {
   bgcolor="transparent";
-  rankdir=TB;
-  size="7.0,7.0";
+  rankdir=LR;
+  size="7.0,6.5";
   node [ shape=box, style="filled,rounded", fillcolor="#f8df8b",
          fontname="Arial", margin="0.15,0.1" ];
   edge [ fontname="Arial" ];
@@ -42,19 +42,22 @@ digraph "RJack Gem Dependency Graph" {
     "commons-pool"    [ label=<commons<br/>pool>
                         target=_parent, URL="commons-pool/", group=commons ];
   }
-
   subgraph cluster_xml {
     style=invis
+
     "rome"          [ target=_parent, URL="rome/", group=ml ];
     "jdom"          [ target=_parent, URL="jdom/", group=ml ];
     "nekohtml"      [ target=_parent, URL="nekohtml/", group=ml ];
     "xerces"        [ target=_parent, URL="xerces/", group=ml ];
+
+    "rome" -> "xerces" [ style=invis ];
   }
 
-  subgraph cluster_alt_parse {
+  subgraph cluster_ser {
     style=invis
-    "jackson"       [ target=_parent, URL="jackson/" ];
-    "protobuf"      [ target=_parent, URL="protobuf/" ];
+    "jackson"       [ target=_parent, URL="jackson/", group=ser ];
+    "protobuf"      [ target=_parent, URL="protobuf/", group=ser ];
+    "jackson" -> "protobuf" [ style=invis ];
   }
 
   "tarpit"        [ target=_parent, URL="tarpit/" ];
@@ -86,13 +89,14 @@ digraph "RJack Gem Dependency Graph" {
   "logback"      -> "slf4j";
 
   "jms"          -> "jms-spec";
+  "jms"          -> "slf4j";
   "jms"          -> "logback" [ style=dashed ];
 
   "mina"         -> "slf4j";
   "mina"         -> "logback" [ style=dashed ];
 
   "qpid-client"  -> "jms";
-  "qpid-client"  -> "slf4j";
+#  "qpid-client"  -> "slf4j";
 #  "qpid-client"  -> "logback" [ style=dashed ];
 
   "async-httpclient" -> "slf4j"
@@ -109,5 +113,5 @@ digraph "RJack Gem Dependency Graph" {
 #  "solr"   -> "slf4j"
 
 # for association only
-  "slf4j" -> "tarpit" [ style=invis ];
+  "commons-codec" -> "commons-dbutils" [ style=invis ];
 }

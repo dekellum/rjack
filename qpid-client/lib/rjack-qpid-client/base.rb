@@ -18,7 +18,7 @@ module RJack
   module QpidClient
 
     # QpidClient (java) version
-    QPID_VERSION = '0.16'
+    QPID_VERSION = '0.18'
 
     # rjack gem version
     VERSION = QPID_VERSION + '.0'

@@ -1,4 +1,5 @@
-=== 3.6.0.1 (TBD)
+=== 3.6.1.0 (TBD)
+* Upgrade to Solr 3.6.1
 
 === 3.6.0.0 (2012-7-16)
 * Initial release based on Solr 3.6.0

@@ -10,9 +10,9 @@ RJack::TarPit.specify do |s|
 
   s.add_developer( 'David Kellum', 'dek-oss@gravitext.com' )
 
-  s.depend 'rjack-slf4j',           '~> 1.6.0'
+  s.depend 'rjack-slf4j',           '>= 1.6.5', '< 1.8'
 
-  s.depend 'minitest',              '~> 2.2',       :dev
+  s.depend 'minitest',              '~> 2.2',   :dev
 
   s.assembly_version = '1.0'
 

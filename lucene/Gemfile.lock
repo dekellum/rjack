@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rjack-lucene (3.6.0.0-java)
+    rjack-lucene (3.6.1.0-java)
       rjack-commons-codec (~> 1.6.0)
 
 GEM

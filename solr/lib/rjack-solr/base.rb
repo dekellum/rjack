@@ -21,7 +21,7 @@ module RJack
     CORE_VERSION = '3.6.0'
 
     # rjack gem version
-    VERSION = CORE_VERSION + '.0'
+    VERSION = CORE_VERSION + '.1'
 
     LIB_DIR = File.dirname( __FILE__ ) # :nodoc:
   end

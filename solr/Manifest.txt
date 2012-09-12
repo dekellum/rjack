@@ -58,5 +58,5 @@ webapp/index.jsp
 lib/rjack-solr/commons-fileupload-1.2.1.jar
 lib/rjack-solr/commons-io-2.1.jar
 lib/rjack-solr/commons-lang-2.6.jar
-lib/rjack-solr/solr-core-3.6.0.jar
-lib/rjack-solr/solr-solrj-3.6.0.jar
+lib/rjack-solr/solr-core-3.6.1.jar
+lib/rjack-solr/solr-solrj-3.6.1.jar

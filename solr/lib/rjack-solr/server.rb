@@ -32,7 +32,6 @@ module RJack
       def initialize()
         super()
 
-        puts WEBAPP_PATH
         self.webapp_contexts[ '/' ] = WEBAPP_PATH
         self.port = 8983
         @solr_home = '.'

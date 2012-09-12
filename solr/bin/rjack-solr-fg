@@ -22,7 +22,6 @@ require 'rubygems'
 
 module BinScript
 
-  require 'rubygems'
   require 'rjack-logback'
   require 'optparse'
 

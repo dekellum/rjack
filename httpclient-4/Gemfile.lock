@@ -1,9 +1,9 @@
 PATH
   remote: .
   specs:
-    rjack-httpclient-4 (4.2.0.0-java)
+    rjack-httpclient-4 (4.2.1.0-java)
       rjack-commons-codec (~> 1.6.0)
-      rjack-slf4j (>= 1.5.8, < 1.7)
+      rjack-slf4j (>= 1.6.5, < 1.8)
 
 GEM
   remote: http://rubygems.org/
@@ -11,16 +11,16 @@ GEM
     bouncy-castle-java (1.5.0146.1)
     jruby-openssl (0.7.7)
       bouncy-castle-java (>= 1.5.0146.1)
-    json (1.7.3-java)
+    json (1.7.5-java)
     minitest (2.12.1)
     rake (0.9.2.2)
     rdoc (3.12)
       json (~> 1.4)
     rjack-commons-codec (1.6.0-java)
-    rjack-logback (1.4.0-java)
-      rjack-slf4j (~> 1.6.0)
+    rjack-logback (1.5.0-java)
+      rjack-slf4j (>= 1.6.5, < 1.8)
     rjack-maven (3.0.4.0-java)
-    rjack-slf4j (1.6.5.0-java)
+    rjack-slf4j (1.7.0.0-java)
     rjack-tarpit (2.0.1-java)
       jruby-openssl (~> 0.7.4)
       rake (~> 0.9.2, >= 0.9.2.2)
@@ -33,5 +33,5 @@ PLATFORMS
 DEPENDENCIES
   minitest (~> 2.2)
   rjack-httpclient-4!
-  rjack-logback (>= 0.9.18, < 2.0)
+  rjack-logback (~> 1.2)
   rjack-tarpit (~> 2.0)

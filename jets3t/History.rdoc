@@ -1,3 +1,6 @@
+=== 0.9.0.1 (TBD)
+* Upgrade/broaden to slf4j [1.6.5,1.8), logback ~> 1.2 (dev)
+
 === 0.9.0.0 (2012-7-30)
 * Update to jets3t 0.9.0; now depends on rjack-httpclient-4
 * Add S3Bucket.get, generalize put

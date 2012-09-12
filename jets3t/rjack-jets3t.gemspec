@@ -10,12 +10,12 @@ RJack::TarPit.specify do |s|
 
   s.add_developer( 'David Kellum', 'dek-oss@gravitext.com' )
 
-  s.depend 'rjack-slf4j',         '>= 1.5.8',  '< 1.7'
+  s.depend 'rjack-slf4j',         '>= 1.6.5',  '< 1.8'
   s.depend 'rjack-httpclient-4',  '>= 4.1.2',  '< 4.3'
   s.depend 'rjack-commons-codec', '>= 1.4.2',  '< 1.7'
 
-  s.depend 'rjack-logback',       '>= 0.9.18', '< 2.0',  :dev
-  s.depend 'minitest',            '~> 2.2',              :dev
+  s.depend 'rjack-logback',       '~> 1.2',    :dev
+  s.depend 'minitest',            '~> 2.2',    :dev
 
   s.assembly_version = '1.0'
   s.maven_strategy = :jars_from_assembly

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rjack-jetty-jsp (7.6.4.0-java)
+    rjack-jetty-jsp (7.6.6.0-java)
       rjack-jetty (~> 7.6.4)
 
 PATH

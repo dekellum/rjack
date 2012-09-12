@@ -1,2 +1,5 @@
+=== 1.7.6.0 (TBD)
+* Upgrade to Async Http Client 1.7.6
+
 === 1.6.5.0 (2011-10-1)
 * Initial release based on Async Http Client 1.6.5

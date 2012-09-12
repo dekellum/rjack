@@ -1,3 +1,7 @@
+=== 1.1.1 (TBD)
+* Upgrade/broaden to slf4j [1.6.5,1.8), logback ~> 1.2 (dev)
+* Upgrade to tarpit ~> 2.0 (dev)
+
 === 1.1.0 (2011-3-10)
 * Added JMSConnector and ConnectListener for JMS (re-)connect.
 * Added SessionExecutor, SessionStateFactory, SessionTask for client

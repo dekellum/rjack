@@ -4,7 +4,7 @@
   <groupId>rjack</groupId>
   <artifactId>rjack-jms</artifactId>
   <packaging>jar</packaging>
-  <version>1.1.0</version>
+  <version>1.1.1</version>
   <name>Java Message Service Utilizes</name>
 
   <properties>
@@ -55,7 +55,7 @@
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
-      <version>[1.6.1,1.6.9999]</version>
+      <version>[1.6.5,1.7.9999]</version>
       <scope>compile</scope>
     </dependency>
 

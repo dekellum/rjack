@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rjack-jms (1.1.0-java)
+    rjack-jms (1.1.1-java)
       rjack-jms-spec (~> 1.1.1)
       rjack-slf4j (>= 1.5.8, < 1.7)
 

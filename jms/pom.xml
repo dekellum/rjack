@@ -4,7 +4,7 @@
   <groupId>rjack</groupId>
   <artifactId>rjack-jms</artifactId>
   <packaging>jar</packaging>
-  <version>1.1.0</version>
+  <version>1.1.1</version>
   <name>Java Message Service Utilizes</name>
 
   <properties>

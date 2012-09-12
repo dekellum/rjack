@@ -1,3 +1,8 @@
+=== 7.6.6.0 (TBD)
+* Upgrade/broaden to slf4j [1.6.5,1.8), logback ~> 1.2 (dev)
+* Jetty 7.6.6.v20120903 level dependencies (no change from prior 7.6.4
+  release).
+
 === 7.6.4.0 (2012-6-9)
 * Update to jetty 7.6.4.v20120524 level dependencies. This includes
   jdt.core 3.7.1.

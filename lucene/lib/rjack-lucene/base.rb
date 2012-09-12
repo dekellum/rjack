@@ -18,7 +18,7 @@ module RJack
   module Lucene
 
     # Lucene (java) version
-    CORE_VERSION = '3.6.0'
+    CORE_VERSION = '3.6.1'
 
     # rjack gem version
     VERSION = CORE_VERSION + '.0'

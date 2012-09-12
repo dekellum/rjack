@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rjack-jets3t (0.9.0.0-java)
+    rjack-jets3t (0.9.0.1-java)
       rjack-commons-codec (>= 1.4.2, < 1.7)
       rjack-httpclient-4 (>= 4.1.2, < 4.3)
       rjack-slf4j (>= 1.5.8, < 1.7)

@@ -21,7 +21,7 @@ module RJack
     QPID_VERSION = '0.14'
 
     # rjack gem version
-    VERSION = QPID_VERSION + '.0'
+    VERSION = QPID_VERSION + '.1'
 
     LIB_DIR = File.dirname( __FILE__ ) # :nodoc:
   end

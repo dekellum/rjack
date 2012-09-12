@@ -1,3 +1,6 @@
+=== 3.1.7 (TBD)
+* Upgrade/broaden to slf4j [1.6.5,1.8), logback ~> 1.2 (dev)
+
 === 3.1.6 (2012-6-9)
 * Expand commons-codec gem dep to ~> 1.4 (tested with 1.6.0)
 * Update to tarpit ~> 2.0 (build)

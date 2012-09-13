@@ -24,7 +24,9 @@ gems = %w[ tarpit
            jms-spec
            jms
            mina
-           qpid-client ]
+           qpid-client
+           lucene
+           solr ]
 
 subtasks = %w[ clean install_deps test gem docs tag install publish_rdoc push ]
 

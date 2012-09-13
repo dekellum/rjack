@@ -1,6 +1,6 @@
-=== 7.6.6.0 (TBD)
+=== 7.6.7.0 (TBD)
 * Upgrade/broaden to slf4j [1.6.5,1.8), logback ~> 1.2 (dev)
-* Jetty 7.6.6.v20120903 level dependencies (no change from prior 7.6.4
+* Jetty 7.6.7.v20120910 level dependencies (no change from prior 7.6.4
   release).
 
 === 7.6.4.0 (2012-6-9)
@@ -11,8 +11,7 @@
   code for the JSP support, only tested and packaged
   dependencies. Future releases will only be made with these
   dependencies are updated. Thus, for example, you might want to be
-  running rjack-jetty 7.6.5.0 (as yet not released) with
-  rjack-jetty-jsp 7.6.4.0.
+  running rjack-jetty 7.6.5.0 with rjack-jetty-jsp 7.6.4.0.
 
 === 7.6.2.0 (2012-3-11)
 * Update to Jetty 7.6.2.v20120308

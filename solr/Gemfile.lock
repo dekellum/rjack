@@ -15,7 +15,7 @@ GEM
   remote: http://rubygems.org/
   specs:
     bouncy-castle-java (1.5.0146.1)
-    hooker (1.0.0)
+    hooker (1.0.1)
     jruby-openssl (0.7.7)
       bouncy-castle-java (>= 1.5.0146.1)
     json (1.7.5-java)

@@ -1,4 +1,4 @@
-=== 1.7.6.0 (TBD)
+=== 1.7.6.0 (2012-9-15)
 * Upgrade to Async Http Client 1.7.6
 * Upgrade/broaden to slf4j [1.6.5,1.8), logback ~> 1.2 (dev)
 * Upgrade to tarpit ~> 2.0 (dev)

@@ -1,4 +1,4 @@
-=== 4.2.1.0 (TBD)
+=== 4.2.1.0 (2012-9-15)
 * Upgrade to httpclient 4.2.1, httpcore 4.2.1
 * Upgrade/broaden to slf4j [1.6.5,1.8), logback ~> 1.2 (dev)
 

@@ -1,6 +1,9 @@
 === 0.16.0 (2012-7-18)
 * Upgrade to Qpid java client 0.16
 
+=== 0.14.1 (2012-9-15)
+* Upgrade/broaden to slf4j [1.6.5,1.8), logback ~> 1.2 (dev)
+
 === 0.14.0 (2012-2-12)
 * Upgrade to Qpid java client 0.14 (mina no longer a dependency)
 * Upgrade to tarpit ~> 2.0 (build)

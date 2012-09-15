@@ -19,8 +19,8 @@ RJack::TarPit.specify do |s|
     s.depend 'jruby-openssl', '~> 0.7.4'
 
     # These are deps of test/zookeeper
-    s.depend 'rjack-slf4j',   '~> 1.6.4',     :dev
-    s.depend 'rjack-logback', '~> 1.2',       :dev
+    s.depend 'rjack-slf4j',   '>= 1.6.5', '< 1.8', :dev
+    s.depend 'rjack-logback', '~> 1.2',            :dev
 
     s.platform = :java
   end

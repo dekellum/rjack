@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     rjack-mina (1.0.10.0-java)
-      rjack-slf4j (>= 1.5.8, < 1.7)
+      rjack-slf4j (>= 1.6.5, < 1.8)
 
 GEM
   remote: http://rubygems.org/
@@ -30,6 +30,6 @@ PLATFORMS
 
 DEPENDENCIES
   minitest (~> 2.2)
-  rjack-logback (>= 0.9.18, < 2.0)
+  rjack-logback (~> 1.2)
   rjack-mina!
   rjack-tarpit (~> 2.0)

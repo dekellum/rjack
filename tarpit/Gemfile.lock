@@ -30,5 +30,5 @@ PLATFORMS
 DEPENDENCIES
   minitest (~> 2.10)
   rjack-logback (~> 1.2)
-  rjack-slf4j (~> 1.6.4)
+  rjack-slf4j (>= 1.6.5, < 1.8)
   rjack-tarpit!

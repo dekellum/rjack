@@ -11,10 +11,10 @@ RJack::TarPit.specify do |s|
   s.add_developer( 'David Kellum', 'dek-oss@gravitext.com' )
 
   s.depend 'rjack-commons-codec', '~> 1.6.0'
-  s.depend 'rjack-lucene',        '~> 3.6.1'
+  s.depend 'rjack-lucene',        '~> 4.0.0'
   s.depend 'rjack-jetty',         '~> 7.6.4'
   s.depend 'rjack-jetty-jsp',     '~> 7.6.4'
-  s.depend 'rjack-httpclient-3',  '~> 3.1.6'
+  s.depend 'rjack-httpclient-4',  '~> 4.2.1'
   s.depend 'hooker',              '~> 1.0.0'
   s.depend 'rjack-slf4j',         '>= 1.6.5', '< 1.8'
   s.depend 'rjack-logback',       '~> 1.2'

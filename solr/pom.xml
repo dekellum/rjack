@@ -17,10 +17,11 @@
       <artifactId>solr-core</artifactId>
       <version>4.0.0</version>
       <exclusions>
-        <exclusion>
+        <!-- <exclusion>
           <groupId>com.google.guava</groupId>
           <artifactId>guava</artifactId>
-        </exclusion>
+        </exclusion> -->
+
         <exclusion>
           <groupId>org.codehaus.woodstox</groupId>
           <artifactId>wstx-asl</artifactId>

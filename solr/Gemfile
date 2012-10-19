@@ -1,3 +1,4 @@
 # -*- ruby -*-
 source :rubygems
 gemspec :path => '.', :name => 'rjack-solr'
+gemspec :path => '../lucene', :name => 'rjack-lucene'

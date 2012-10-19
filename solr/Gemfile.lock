@@ -11,6 +11,12 @@ PATH
       rjack-lucene (~> 4.0.0)
       rjack-slf4j (>= 1.6.5, < 1.8)
 
+PATH
+  remote: /home/david/src/rjack/lucene
+  specs:
+    rjack-lucene (4.0.0.0-java)
+      rjack-commons-codec (~> 1.6.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -27,6 +33,7 @@ GEM
     rjack-httpclient-4 (4.2.1.0-java)
       rjack-commons-codec (~> 1.6.0)
       rjack-slf4j (>= 1.6.5, < 1.8)
+    rjack-icu (4.8.1.1-java)
     rjack-jetty (7.6.7.0-java)
     rjack-jetty-jsp (7.6.7.0-java)
       rjack-jetty (~> 7.6.7)
@@ -45,5 +52,7 @@ PLATFORMS
 
 DEPENDENCIES
   minitest (~> 2.2)
+  rjack-icu (~> 4.8.1.1)
+  rjack-lucene!
   rjack-solr!
   rjack-tarpit (~> 2.0)

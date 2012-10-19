@@ -12,7 +12,7 @@
         <exclude>org.apache.lucene:*</exclude>
         <exclude>org.apache.solr:solr</exclude>
         <exclude>org.slf4j:*</exclude>
-        <exclude>org.apache.zookeeper:*</exclude>
+        <!-- TESTING: <exclude>org.apache.zookeeper:*</exclude> -->
       </excludes>
     </dependencySet>
   </dependencySets>

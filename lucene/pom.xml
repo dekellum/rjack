@@ -14,83 +14,118 @@
   <dependencies>
     <dependency>
       <groupId>org.apache.lucene</groupId>
-      <artifactId>lucene-analyzers</artifactId>
-      <version>3.6.1</version>
+      <artifactId>lucene-analyzers-common</artifactId>
+      <version>4.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.lucene</groupId>
+      <artifactId>lucene-analyzers-icu</artifactId>
+      <version>4.0.0</version>
+    </dependency>
+    <!-- New Exclude: polish, large
+    <dependency>
+      <groupId>org.apache.lucene</groupId>
+      <artifactId>lucene-analyzers-morfologik</artifactId>
+      <version>4.0.0</version>
+    </dependency>
+    -->
+    <dependency>
+      <groupId>org.apache.lucene</groupId>
+      <artifactId>lucene-analyzers-phonetic</artifactId>
+      <version>4.0.0</version>
+    </dependency>
+    <!-- New Exclude: polish, large
+    <dependency>
+      <groupId>org.apache.lucene</groupId>
+      <artifactId>lucene-analyzers-stempel</artifactId>
+      <version>4.0.0</version>
+    </dependency>
+    -->
+    <!-- New Exclude: too large
+    <dependency>
+      <groupId>org.apache.lucene</groupId>
+      <artifactId>lucene-analyzers-uima</artifactId>
+      <version>4.0.0</version>
+    </dependency>
+    -->
+    <dependency>
+      <groupId>org.apache.lucene</groupId>
+      <artifactId>lucene-codecs</artifactId>
+      <version>4.0.0</version>
     </dependency>
     <dependency>
       <groupId>org.apache.lucene</groupId>
       <artifactId>lucene-core</artifactId>
-      <version>3.6.1</version>
+      <version>4.0.0</version>
     </dependency>
     <dependency>
       <groupId>org.apache.lucene</groupId>
       <artifactId>lucene-facet</artifactId>
-      <version>3.6.1</version>
+      <version>4.0.0</version>
     </dependency>
     <dependency>
       <groupId>org.apache.lucene</groupId>
       <artifactId>lucene-grouping</artifactId>
-      <version>3.6.1</version>
+      <version>4.0.0</version>
     </dependency>
     <dependency>
       <groupId>org.apache.lucene</groupId>
       <artifactId>lucene-highlighter</artifactId>
-      <version>3.6.1</version>
+      <version>4.0.0</version>
     </dependency>
-    <dependency>
-      <groupId>org.apache.lucene</groupId>
-      <artifactId>lucene-icu</artifactId>
-      <version>3.6.1</version>
-    </dependency>
+    <!-- Renamed or dropped?
     <dependency>
       <groupId>org.apache.lucene</groupId>
       <artifactId>lucene-instantiated</artifactId>
-      <version>3.6.1</version>
+      <version>4.0.0</version>
     </dependency>
+    -->
     <dependency>
       <groupId>org.apache.lucene</groupId>
       <artifactId>lucene-join</artifactId>
-      <version>3.6.1</version>
+      <version>4.0.0</version>
     </dependency>
     <dependency>
       <groupId>org.apache.lucene</groupId>
       <artifactId>lucene-memory</artifactId>
-      <version>3.6.1</version>
+      <version>4.0.0</version>
     </dependency>
     <dependency>
       <groupId>org.apache.lucene</groupId>
       <artifactId>lucene-misc</artifactId>
-      <version>3.6.1</version>
+      <version>4.0.0</version>
     </dependency>
-    <dependency>
-      <groupId>org.apache.lucene</groupId>
-      <artifactId>lucene-phonetic</artifactId>
-      <version>3.6.1</version>
-    </dependency>
+    <!-- Renamed or dropped?
     <dependency>
       <groupId>org.apache.lucene</groupId>
       <artifactId>lucene-pruning</artifactId>
-      <version>3.6.1</version>
+      <version>4.0.0</version>
     </dependency>
+    -->
     <dependency>
       <groupId>org.apache.lucene</groupId>
       <artifactId>lucene-queries</artifactId>
-      <version>3.6.1</version>
+      <version>4.0.0</version>
     </dependency>
     <dependency>
       <groupId>org.apache.lucene</groupId>
       <artifactId>lucene-queryparser</artifactId>
-      <version>3.6.1</version>
+      <version>4.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.lucene</groupId>
+      <artifactId>lucene-sandbox</artifactId>
+      <version>4.0.0</version>
     </dependency>
     <dependency>
       <groupId>org.apache.lucene</groupId>
       <artifactId>lucene-spatial</artifactId>
-      <version>3.6.1</version>
+      <version>4.0.0</version>
     </dependency>
     <dependency>
       <groupId>org.apache.lucene</groupId>
-      <artifactId>lucene-spellchecker</artifactId>
-      <version>3.6.1</version>
+      <artifactId>lucene-suggest</artifactId>
+      <version>4.0.0</version>
     </dependency>
   </dependencies>
 

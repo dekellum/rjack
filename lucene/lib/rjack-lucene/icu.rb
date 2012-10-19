@@ -22,7 +22,7 @@ require 'rjack-icu'
 module RJack
   module Lucene
 
-    require "#{LIB_DIR}/lucene-icu-#{CORE_VERSION}.jar"
+    require "#{LIB_DIR}/lucene-analyzers-icu-#{CORE_VERSION}.jar"
 
   end
 end

@@ -34,10 +34,10 @@ require 'rjack-solr'
 
 class TestSolr < MiniTest::Unit::TestCase
 
-  import 'org.apache.solr.servlet.SolrServlet'
+  import 'org.apache.solr.servlet.SolrDispatchFilter'
 
   def test_load
-    assert( SolrServlet )
+    assert( SolrDispatchFilter )
   end
 
 end

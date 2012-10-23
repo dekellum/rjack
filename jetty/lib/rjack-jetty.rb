@@ -143,10 +143,10 @@ module RJack
       def create
         server = Server.new( create_pool )
 
-        server.connectors = create_connectors( server ).to_java( Connector )
+        server.connectors = create_connectors( server )
 
         hcol = HandlerCollection.new
-        hcol.handlers = create_handlers.compact.to_java( Handler )
+        hcol.handlers = create_handlers.compact
         server.handler = hcol
 
         server.stop_at_shutdown = @stop_at_shutdown
@@ -228,8 +228,7 @@ module RJack
           ch = ContextHandler.new( context_handler_collection, ctx )
           ch.resource_base = rpath
           ch.handler = ResourceHandler.new
-          ch.handler.welcome_files =
-            @static_welcome_files.to_java( java.lang.String )
+          ch.handler.welcome_files = @static_welcome_files
         end
       end
 

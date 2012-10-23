@@ -1,3 +1,6 @@
+=== 9.0.0.0 (TBD)
+* Update to Jetty 9.0.0.M1
+
 === 8.1.7.0 (TBD)
 * Update to Jetty 8.1.7.v20120910
 

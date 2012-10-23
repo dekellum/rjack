@@ -52,7 +52,7 @@ module RJack
     import 'org.eclipse.jetty.server.handler.HandlerCollection'
     import 'org.eclipse.jetty.server.handler.RequestLogHandler'
     import 'org.eclipse.jetty.server.handler.ResourceHandler'
-    import 'org.eclipse.jetty.server.nio.SelectChannelConnector'
+    import 'org.eclipse.jetty.server.ServerConnector'
     import 'org.eclipse.jetty.servlet.ServletContextHandler'
     import 'org.eclipse.jetty.servlet.ServletHolder'
     import 'org.eclipse.jetty.webapp.WebAppContext'
@@ -141,11 +141,9 @@ module RJack
       # Returns a new org.morbay.jetty.Server that is ready to
       # be started.
       def create
-        server = Server.new
+        server = Server.new( create_pool )
 
-        server.thread_pool = create_pool
-
-        server.connectors = create_connectors.to_java( Connector )
+        server.connectors = create_connectors( server ).to_java( Connector )
 
         hcol = HandlerCollection.new
         hcol.handlers = create_handlers.compact.to_java( Handler )
@@ -170,13 +168,13 @@ module RJack
 
       # Return array of org.eclipse.jetty.Connector instances.
       #
-      # This implementation returns a single SelectChannelConnector
+      # This implementation returns a single ServerConnector
       # listening to the given port or an auto-selected avaiable
       # port. Connections are retained for max_idle_time_ms.
-      def create_connectors
-        connector = SelectChannelConnector.new
+      def create_connectors( server )
+        connector = ServerConnector.new( server )
         connector.port = @port
-        connector.max_idle_time = @max_idle_time_ms
+        connector.idle_timeout = @max_idle_time_ms
         [ connector ]
       end
 

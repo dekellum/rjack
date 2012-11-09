@@ -7,4 +7,4 @@ pom.xml
 lib/rjack-icu/base.rb
 lib/rjack-icu.rb
 test/test_icu.rb
-lib/rjack-icu/icu4j-49.1.jar
+lib/rjack-icu/icu4j-50.1.jar

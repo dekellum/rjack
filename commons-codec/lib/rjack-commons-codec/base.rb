@@ -18,7 +18,7 @@ module RJack
   module CommonsCodec
 
     # Commons codec (java) version
-    CODEC_VERSION = '1.6'
+    CODEC_VERSION = '1.7'
 
     # rjack gem version
     VERSION = CODEC_VERSION + '.0'

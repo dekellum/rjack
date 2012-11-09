@@ -224,7 +224,7 @@ module RJack
             if ex.is_a?( NativeException )
               @logger.#{lvl}( msg.to_s, ex.cause )
             elsif #{lvl}?
-              log = msg.to_s
+              log = msg.to_s.clone
               log << '\n'
               log << ex.class.name << ': ' << ex.message << '\n'
               ex.backtrace.each do |b|

@@ -24,6 +24,7 @@ require 'minitest/unit'
 require 'minitest/autorun'
 
 require 'rjack-jms-spec'
+require 'java'
 
 class TestJmsSpec < MiniTest::Unit::TestCase
 

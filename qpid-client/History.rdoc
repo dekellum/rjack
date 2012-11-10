@@ -1,4 +1,4 @@
-=== 0.14.2 (TBD)
+=== 0.14.2 (2012-11-9)
 * Fix nil access on lookup of a destination not configured. Now
   correctly raises NameNotFoundException (#2)
 

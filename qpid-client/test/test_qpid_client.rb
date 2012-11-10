@@ -74,6 +74,15 @@ class TestQpidClient < MiniTest::Unit::TestCase
     con.close if con
   end
 
+  def test_destination_not_found
+    con = nil
+    with_context do |ctx|
+      assert_raises( Java::javax.naming.NameNotFoundException ) do
+        ctx.lookup_destination( 'no-existe' )
+      end
+    end
+  end
+
   def test_dest_exchange
     con = nil
     with_context do |ctx|

@@ -15,12 +15,12 @@ RJack::TarPit.specify do |s|
   s.depend 'minitest',        '~> 2.10',      :dev
 
   if RUBY_PLATFORM =~ /java/
-    s.depend 'rjack-maven',   '~> 3.0.3'
-    s.depend 'jruby-openssl', '~> 0.7.4'
+    s.depend 'rjack-maven',   '~> 3.0.4'
+    s.depend 'jruby-openssl', '~> 0.8.1'
 
     # These are deps of test/zookeeper
-    s.depend 'rjack-slf4j',   '~> 1.6.4',     :dev
-    s.depend 'rjack-logback', '~> 1.2',       :dev
+    s.depend 'rjack-slf4j',   '~> 1.7.0',     :dev
+    s.depend 'rjack-logback', '~> 1.5',       :dev
 
     s.platform = :java
   end

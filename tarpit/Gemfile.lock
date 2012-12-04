@@ -3,7 +3,7 @@ PATH
   specs:
     rjack-tarpit (2.0.2-java)
       jruby-openssl (~> 0.8.1)
-      rake (~> 0.9.2, >= 0.9.2.2)
+      rake (>= 0.9.2.2, < 10.1)
       rdoc (~> 3.12)
       rjack-maven (~> 3.0.4)
 

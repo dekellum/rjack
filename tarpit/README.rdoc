@@ -105,7 +105,8 @@ as the gemspec's files.
 == Dependencies
 
 See the gem dependencies. The rjack-maven gem is only a dependency on
-the java platform.
+the java platform.  With JRuby 1.6.x, you may need to install
+jruby-openssl for builds requiring SSL support.
 
 == License
 

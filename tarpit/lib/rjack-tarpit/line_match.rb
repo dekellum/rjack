@@ -78,7 +78,7 @@ module RJack::TarPit
       end
 
       if init_files == :default
-        init_files = [ File.join( 'init', spec.name ) ].
+        self.init_files = [ File.join( 'init', spec.name ) ].
           select { |f| File.exist?( f ) }
       end
 

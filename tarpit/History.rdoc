@@ -1,11 +1,9 @@
 === 2.0.2 (TBD)
 * Expand rake dependency to [ >= 0.9.2.2, < 10.1 ] allowing new Rake
   FunkyVersion(TM) 10.
-* Removed the previously explicit jruby-openssl dependency for the
-  java platform. You still need SSL support for example, to access
-  rubygems repositories over HTTPS. JRuby 1.7.x includes an updated
-  version of SSL. With JRuby 1.6.8, you should install jruby-openssl
-  0.8.1+ yourself.
+* Upgrade to jruby-openssl ~> 0.8.1 (java platform only). JRuby 1.6
+  still requires this for things like "jrake push" to work. The 0.8
+  series is also safe with JRuby 1.7.
 * Fix botched local init_files ref in LineMatch. This had made it
   impossible to modify from the :default init_files, for example to
   add multiple files.

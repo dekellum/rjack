@@ -79,7 +79,7 @@ module RJack::TarPit
               end
             end
 
-            tfiles.each { |f| load f }
+            tfiles.each { |f| load File.expand_path( f ) }
 
             code = MiniTest::Unit.new.run( ( ENV['TESTOPTS'] || '' ).split )
             fail "test failed (#{code})" if code && code > 0

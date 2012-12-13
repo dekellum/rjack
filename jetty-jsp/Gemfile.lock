@@ -1,13 +1,13 @@
 PATH
-  remote: /home/david/src/rjack/jetty
-  specs:
-    rjack-jetty (7.6.8.0-java)
-
-PATH
   remote: .
   specs:
-    rjack-jetty-jsp (7.6.7.0-java)
-      rjack-jetty (~> 7.6.7)
+    rjack-jetty-jsp (9.0.0.0-java)
+      rjack-jetty (~> 9.0.0)
+
+PATH
+  remote: /home/david/src/rjack/jetty
+  specs:
+    rjack-jetty (9.0.0.0-java)
 
 GEM
   remote: http://rubygems.org/

@@ -1,3 +1,9 @@
+=== 9.0.0.0 (TBD)
+* Jetty 9.0.0.M3 level dependencies (all production releases):
+  * jasper.glassfish 2.2.2
+  * javax.el 2.2.0
+  * javax.servlet.jsp 2.2.0
+
 === 7.6.7.0 (2012-9-15)
 * Upgrade/broaden to slf4j [1.6.5,1.8), logback ~> 1.2 (dev)
 * Jetty 7.6.7.v20120910 level dependencies (no change from prior 7.6.4

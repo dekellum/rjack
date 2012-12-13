@@ -1,3 +1,15 @@
+=== 9.0.0.0 (2012-12-13)
+* Update to Jetty 9.0.0.M3. Note this a major upgrade and currently
+  only a milestone release.  The server itself appears to be quite
+  stable while jetty-client, which was rewritten, is still undergoing
+  changes. An upstream M4 is expected and will be provided here as
+  9.0.0.1, and so on until a final release is provided.
+* Includes javax.servlet 3.0.0
+* There are a few potentially breaking interface changes to the
+  provided RJack::Jetty::ServerFactory, for example create_connectors
+  now takes a server parameter.
+* The minimum thread count is raised to 7 (per testing).
+
 === 7.6.8.0 (2012-11-9)
 * Update to Jetty 7.6.8.v20121106
 

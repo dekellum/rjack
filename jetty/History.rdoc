@@ -1,4 +1,4 @@
-=== 9.0.0.0 (TBD)
+=== 9.0.0.0 (2012-12-13)
 * Update to Jetty 9.0.0.M3. Note this a major upgrade and currently
   only a milestone release.  The server itself appears to be quite
   stable while jetty-client, which was rewritten, is still undergoing

@@ -23,7 +23,7 @@
 #++
 
 require 'rubygems'
-gem( "rjack-solr", "= 3.6.1.0" )
+gem( "rjack-solr", "= 3.6.2.0" )
 
 module BinScript
 

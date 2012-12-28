@@ -8,7 +8,7 @@ PATH
       rjack-jetty (~> 7.6.4)
       rjack-jetty-jsp (~> 7.6.4)
       rjack-logback (~> 1.2)
-      rjack-lucene (~> 3.6.1)
+      rjack-lucene (~> 3.6.2)
       rjack-slf4j (>= 1.6.5, < 1.8)
 
 GEM

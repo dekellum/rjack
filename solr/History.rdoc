@@ -1,5 +1,7 @@
 === 3.6.2.0 (TBD)
 * Upgrade to Solr 3.6.2
+* Upgrade/broaden to rjack-jetty [7.6.7,9.1). This includes 9.0.0.1
+  based on upstream M4, a milestone pre-release.
 
 === 3.6.1.0 (2012-9-15)
 * Upgrade to Solr 3.6.1

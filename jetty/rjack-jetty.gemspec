@@ -23,7 +23,9 @@ RJack::TarPit.specify do |s|
         [ n, RJack::Jetty::JETTY_VERSION, RJack::Jetty::JETTY_BUILD ]
     end
 
-  s.jars += [ "servlet-api-#{ RJack::Jetty::SERVLET_API_VERSION }.jar",
+  s.jars += [ "javax.servlet-%s.%s.jar" %
+              [ RJack::Jetty::SERVLET_API_VERSION,
+                RJack::Jetty::SERVLET_API_BUILD ] ,
               "rjack-jetty-1.0.jar" ]
 
   s.generated_files = [ 'webapps/test.war' ]

@@ -38,7 +38,8 @@ module RJack
     require_jar 'jetty-webapp'
     require_jar 'jetty-util'
 
-    require File.join( JETTY_DIR, "servlet-api-#{ SERVLET_API_VERSION }.jar" )
+    require File.join( JETTY_DIR,
+      "javax.servlet-#{ SERVLET_API_VERSION }.#{ SERVLET_API_BUILD }.jar" )
 
     import 'org.eclipse.jetty.server.Connector'
     import 'org.eclipse.jetty.server.Handler'
@@ -51,7 +52,7 @@ module RJack
     import 'org.eclipse.jetty.server.handler.HandlerCollection'
     import 'org.eclipse.jetty.server.handler.RequestLogHandler'
     import 'org.eclipse.jetty.server.handler.ResourceHandler'
-    import 'org.eclipse.jetty.server.nio.SelectChannelConnector'
+    import 'org.eclipse.jetty.server.ServerConnector'
     import 'org.eclipse.jetty.servlet.ServletContextHandler'
     import 'org.eclipse.jetty.servlet.ServletHolder'
     import 'org.eclipse.jetty.webapp.WebAppContext'
@@ -140,14 +141,12 @@ module RJack
       # Returns a new org.morbay.jetty.Server that is ready to
       # be started.
       def create
-        server = Server.new
+        server = Server.new( create_pool )
 
-        server.thread_pool = create_pool
-
-        server.connectors = create_connectors.to_java( Connector )
+        server.connectors = create_connectors( server )
 
         hcol = HandlerCollection.new
-        hcol.handlers = create_handlers.compact.to_java( Handler )
+        hcol.handlers = create_handlers.compact
         server.handler = hcol
 
         server.stop_at_shutdown = @stop_at_shutdown
@@ -163,19 +162,19 @@ module RJack
       def create_pool
         pool = QueuedThreadPool.new
         pool.min_threads = [ @min_threads || ( @max_threads / 4 ), 4 ].max
-        pool.max_threads = [ @max_threads, 5 ].max
+        pool.max_threads = [ @max_threads, 7 ].max
         pool
       end
 
       # Return array of org.eclipse.jetty.Connector instances.
       #
-      # This implementation returns a single SelectChannelConnector
+      # This implementation returns a single ServerConnector
       # listening to the given port or an auto-selected avaiable
       # port. Connections are retained for max_idle_time_ms.
-      def create_connectors
-        connector = SelectChannelConnector.new
+      def create_connectors( server )
+        connector = ServerConnector.new( server )
         connector.port = @port
-        connector.max_idle_time = @max_idle_time_ms
+        connector.idle_timeout = @max_idle_time_ms
         [ connector ]
       end
 
@@ -229,8 +228,7 @@ module RJack
           ch = ContextHandler.new( context_handler_collection, ctx )
           ch.resource_base = rpath
           ch.handler = ResourceHandler.new
-          ch.handler.welcome_files =
-            @static_welcome_files.to_java( java.lang.String )
+          ch.handler.welcome_files = @static_welcome_files
         end
       end
 

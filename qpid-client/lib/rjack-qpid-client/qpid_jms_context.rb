@@ -128,10 +128,11 @@ module RJack::QpidClient
     #
     # Throws javax.naming.NamingException
     def lookup_destination( name )
+      dest = context.lookup( name )
       @log.info( "Lookup of destinations[ '%s' ] =\n    %s" %
                  [ name,
                    address_serialize( name, @destinations[ name ] ) ] )
-      context.lookup( name )
+      dest
     rescue NativeException => x
       raise x.cause
     end
@@ -165,7 +166,7 @@ module RJack::QpidClient
     # Serialize destination
     # {Addresses}[http://qpid.apache.org/books/0.14/Programming-In-Apache-Qpid/html/ch02s04.html]
     # (new format). Reference: section 2.4.3.5
-    def address_serialize( name, opts = nil )
+    def address_serialize( name, opts = {} )
       opts = opts.dup
       out = ( opts.delete( :address ) || name ).to_s
       subject = opts.delete( :subject )

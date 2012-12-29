@@ -127,6 +127,16 @@ class TestSlf4j < MiniTest::Unit::TestCase
     assert_equal( 1, @handler.count )
   end
 
+  def test_ruby_exception_msg
+    msg = "my message".freeze
+    begin
+      0/0 # ZeroDivisionError
+    rescue ZeroDivisionError => x
+      @log.error( msg, x )
+    end
+    assert_equal( 1, @handler.count )
+  end
+
   def test_ruby_exception_block
     begin
       0/0 # ZeroDivisionError

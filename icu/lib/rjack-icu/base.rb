@@ -26,7 +26,7 @@ module RJack
   module ICU
 
     # icu4j (java) version
-    J_VERSION = '49.1'
+    J_VERSION = '50.1'
 
     # rjack gem version
     VERSION = [ 4, J_VERSION, 0 ].join( '.' )

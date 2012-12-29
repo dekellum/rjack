@@ -6,15 +6,17 @@
 
 == Description
 
-A gem packaging of the {Jetty Web Server}[http://www.mortbay.org/jetty/]
+A gem packaging of the {Jetty Web Server}[http://www.eclipse.org/jetty/]
 for JRuby:
 
-* Provides jetty, jetty-util, servlet-api, and jetty-rewrite-handler
-  jars.
-* A Jetty::ServerFactory for simple programmatic server setup in ruby.
+* Provides all common jetty server jars and some optional jars like,
+  -util, -rewrite, -continuation
+* jetty-client (via <tt>require rjack-jetty/client</tt>)
+* javax.servlet 3.0.0
+* A Jetty::ServerFactory for simple programmatic server setup in ruby
 * A set of Jetty::TestServlets containing a SnoopServlet and
-  PerfTestServlet (implemented in Java).
-* A jetty-service bin script for easy testing from the command line.
+  PerfTestServlet (implemented in Java)
+* A jetty-service bin script for easy testing from the command line
 
 Note that JSP support is provided separately in the companion
 jetty-jsp[http://rjack.rubyforge.org/jetty-jsp/] gem.
@@ -76,7 +78,7 @@ permissions and limitations under the License.
 
 === Jetty Web Container (Java)
 
-Copyright (c) 1995-2009 Mort Bay Consulting Pty Ltd
+Copyright (c) 1995-2012 Mort Bay Consulting Pty Ltd
 
 The Jetty Web Container is Copyright Mort Bay Consulting Pty Ltd
 unless otherwise noted. It is dual licensed under the apache 2.0

@@ -18,7 +18,7 @@ module RJack
   module CommonsDbUtils
 
     # Commons dbutils (java) version
-    DBUTILS_VERSION = '1.4'
+    DBUTILS_VERSION = '1.5'
 
     # rjack gem version
     VERSION = DBUTILS_VERSION + '.0'

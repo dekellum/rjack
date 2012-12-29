@@ -24,6 +24,7 @@ require 'minitest/unit'
 require 'minitest/autorun'
 
 require 'rjack-xerces'
+require 'java'
 
 class TestXerces < MiniTest::Unit::TestCase
 

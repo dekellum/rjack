@@ -24,6 +24,7 @@ require 'minitest/unit'
 require 'minitest/autorun'
 
 require 'rjack-nekohtml'
+require 'java'
 
 class TestNekoHTML < MiniTest::Unit::TestCase
 

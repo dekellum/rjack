@@ -6,8 +6,8 @@
 
 == Description
 
-A gem packaging of the {Jetty Web Server}[http://www.mortbay.org/jetty/]
-JSP 2.1 support for JRuby. This gem is provided as a companion to the
+A gem packaging of the {Jetty Web Server}[http://www.eclipse.org/jetty/]
+JSP 2.2 support for JRuby. This gem is provided as a companion to the
 rjack-jetty[http://rjack.rubyforge.org/jetty/] gem.
 
 == License
@@ -30,7 +30,7 @@ permissions and limitations under the License.
 
 === Jetty Web Container (Java)
 
-Copyright (c) 1995-2009 Mort Bay Consulting Pty Ltd
+Copyright (c) 1995-2012 Mort Bay Consulting Pty Ltd
 
 The Jetty Web Container is Copyright Mort Bay Consulting Pty Ltd
 unless otherwise noted. It is dual licensed under the apache 2.0

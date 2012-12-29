@@ -18,7 +18,7 @@ module RJack
   module NekoHTML
 
     # Upstream java version
-    NEKOHTML_VERSION = '1.9.15'
+    NEKOHTML_VERSION = '1.9.17'
 
     # rjack gem version
     VERSION = NEKOHTML_VERSION + '.0'

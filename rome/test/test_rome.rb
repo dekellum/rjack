@@ -24,6 +24,7 @@ require 'minitest/unit'
 require 'minitest/autorun'
 
 require 'rjack-rome'
+require 'java'
 
 class TestRome < MiniTest::Unit::TestCase
 

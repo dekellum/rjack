@@ -1,9 +1,17 @@
+=== 0.18.1 (2012-11-9)
+* Fix nil access on lookup of a destination not configured. Now
+  correctly raises NameNotFoundException (#2)
+
 === 0.18.0 (2012-9-15)
 * Upgrade to Qpid java client 0.18
 * Upgrade/broaden to slf4j [1.6.5,1.8), logback ~> 1.2 (dev)
 
 === 0.16.0 (2012-7-18)
 * Upgrade to Qpid java client 0.16
+
+=== 0.14.2 (2012-11-9)
+* Fix nil access on lookup of a destination not configured. Now
+  correctly raises NameNotFoundException (#2)
 
 === 0.14.1 (2012-9-15)
 * Upgrade/broaden to slf4j [1.6.5,1.8), logback ~> 1.2 (dev)

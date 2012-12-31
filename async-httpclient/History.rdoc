@@ -1,5 +1,5 @@
-=== 1.7.7.0 (TBD)
-* Upgrade to Async Http Client 1.7.7
+=== 1.7.9.0 (TBD)
+* Upgrade to Async Http Client 1.7.9
 
 === 1.7.6.0 (2012-9-15)
 * Upgrade to Async Http Client 1.7.6

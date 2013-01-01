@@ -8,6 +8,4 @@ lib/rjack-zookeeper/base.rb
 lib/rjack-zookeeper.rb
 test/setup.rb
 test/test_zookeeper.rb
-lib/rjack-zookeeper/jline-1.0.jar
-lib/rjack-zookeeper/netty-3.2.7.Final.jar
-lib/rjack-zookeeper/zookeeper-3.4.1.jar
+lib/rjack-zookeeper/zookeeper-3.3.6.jar

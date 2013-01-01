@@ -7,9 +7,9 @@
   <dependencySets>
     <dependencySet>
       <useProjectArtifact>false</useProjectArtifact>
-      <excludes>
-        <exclude>org.slf4j:slf4j-api</exclude>
-      </excludes>
+      <includes>
+        <include>org.apache.zookeeper:zookeeper</include>
+      </includes>
     </dependencySet>
   </dependencySets>
 </assembly>

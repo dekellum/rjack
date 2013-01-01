@@ -9,8 +9,8 @@ RJack::TarPit.specify do |s|
 
   s.add_developer 'David Kellum', 'dek-oss@gravitext.com'
 
-  s.maven_strategy = :jars_from_assembly
   s.assembly_version = 1.0
+  s.jars = [ "zookeeper-#{ RJack::RZooKeeper::ZOOKEEPER_VERSION }.jar" ]
 
   s.depend 'rjack-slf4j',     '>= 1.6.5', '< 1.8'
   s.depend 'minitest',        '~> 2.3',   :dev

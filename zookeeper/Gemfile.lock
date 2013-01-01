@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rjack-zookeeper (3.4.1.0-java)
+    rjack-zookeeper (3.3.6.0-java)
       rjack-slf4j (>= 1.6.5, < 1.8)
 
 GEM

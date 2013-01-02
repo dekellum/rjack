@@ -4,6 +4,8 @@ README.rdoc
 Rakefile
 assembly.xml
 pom.xml
+bin/rjack-zookeeper-fg
+config/zoo.cfg
 lib/rjack-zookeeper/base.rb
 lib/rjack-zookeeper.rb
 test/setup.rb

@@ -1,0 +1,61 @@
+#!/usr/bin/env jruby
+# -*- ruby -*-
+#--
+# Copyright (c) 2009-2012 David Kellum
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you
+# may not use this file except in compliance with the License.  You
+# may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+# implied.  See the License for the specific language governing
+# permissions and limitations under the License.
+#++
+
+$LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
+
+require 'rubygems'
+
+module BinScript
+  require 'rjack-zookeeper/base'
+  require 'rjack-slf4j/log4j-over-slf4j'
+  require 'rjack-logback'
+  require 'optparse'
+
+  include RJack
+  Logback.config_console( :thread => true )
+  Logback[ 'org.apache.zookeeper' ].level = :warn
+
+  config = 'zoo.cfg'
+
+  OptionParser.new do |opts|
+    opts.on( "-v", "--version", "Display version" ) do
+
+      puts "rjack-zookeeper-fg: #{ RZooKeeper::VERSION }"
+      exit 1
+    end
+    opts.on( "-d", "--debug", "Enable verbose DEBUG logging" ) do
+      Logback.root.level = Logback::DEBUG
+    end
+    opts.on( "-c", "--zk-config=FILE",
+             "ZooKeeper config file (./zoo.cfg)" ) do |c|
+      config = c
+    end
+  end.parse!
+
+  require 'java'
+
+  # Disable log4j JMX registrations unless already set (i.e. false).
+  # Otherwise can fail with NoClassDefFoundError:
+  #   o.a.log4j.jmx.HierarchyDynamicMBean
+  Java::java.lang.System.properties[ 'zookeeper.jmx.log4j.disable' ] ||= 'true'
+
+  require 'rjack-zookeeper'
+  Logback[ 'org.apache.zookeeper' ].level = nil
+
+  RZooKeeper::QuorumPeerMain::main( [ config ] )
+end

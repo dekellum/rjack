@@ -25,5 +25,7 @@ module RJack::RZooKeeper
   Dir.glob( File.join( LIB_DIR, '*.jar' ) ).each { |jar| require jar }
 
   java_import "org.apache.zookeeper.ZooKeeper"
+  java_import "org.apache.zookeeper.ZooKeeperMain"
+  java_import "org.apache.zookeeper.server.quorum.QuorumPeerMain"
 
 end

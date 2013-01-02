@@ -4,7 +4,20 @@
 
 == Description
 
-A gem packaging of {ZooKeeper}[http://zookeeper.apache.org/] for JRuby.
+A gem packaging of {ZooKeeper}[http://zookeeper.apache.org/] for JRuby
+including the ZooKeeper jar (used for server and client), foreground and
+init daemon scripts, and CLI client script.
+
+== Requirements
+
+ZooKeeper's Log4j dependencies are fullfilled via rjack-slf4j.
+
+There is a potential conflict between the version of
+{JLine}[https://github.com/jline/jline2] foisted into JRuby
+and the ZooKeeper CLI client.  Zookeeper 3.3.x is JLine 1.0
+compatible, and will run with JLine enabled if under JRuby 1.6.8 (and
+prior).  If run under JRuby 1.7.x which includes JLine 2, JLine will
+be disabled in the CLI.
 
 == License
 

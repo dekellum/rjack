@@ -6,6 +6,7 @@ assembly.xml
 pom.xml
 bin/rjack-zookeeper-fg
 config/zoo.cfg
+init/rjack-zookeeper
 lib/rjack-zookeeper/base.rb
 lib/rjack-zookeeper.rb
 test/setup.rb

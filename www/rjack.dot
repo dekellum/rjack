@@ -112,7 +112,7 @@ digraph "RJack Gem Dependency Graph" {
   "solr"   -> "lucene"
   "solr"   -> "jetty"
   "solr"   -> "jetty-jsp"
-  "solr"   -> "httpclient-3"
+  "solr"   -> "httpclient-4"
   "solr"   -> "logback";
 #  "solr"   -> "slf4j"
 

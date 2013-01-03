@@ -99,6 +99,17 @@ Gems for various components from the
 
 <tr <% if row.next %>class="odd"<% end %>>
 <td class="gemlink">
+<div><a title="rdoc" href="guava/">rjack-guava</a></div>
+</td>
+<td>
+<p>
+<a href="http://code.google.com/p/guava-libraries/">Guava</a>
+utilities.</p>
+</td>
+</tr>
+
+<tr <% if row.next %>class="odd"<% end %>>
+<td class="gemlink">
 <div><a title="rdoc" href="httpclient-3/">rjack-httpclient-3</a></div>
 <div><a title="rdoc" href="httpclient-4/">rjack-httpclient-4</a></div>
 <div><a title="rdoc" href="async-httpclient/">rjack-async-httpclient</a></div>
@@ -111,10 +122,21 @@ and (Jakarta) Commons HttpClient 3.x.  These gems are named with the
 major version numbers to allow them to coexist in the same process and
 allow incremental upgrade to 4.x.</p>
 
-<p>Also included is the Netty/NIO
-based <a href="http://groups.google.com/group/asynchttpclient">Async
-Http Client</a>.</p>
+<p>Also includes the
+<a href="http://groups.google.com/group/asynchttpclient">Async Http Client</a>.</p>
+</td>
+</tr>
 
+<tr <% if row.next %>class="odd"<% end %>>
+<td class="gemlink">
+<div><a title="rdoc" href="mina/">rjack-mina</a></div>
+<div><a title="rdoc" href="netty/">rjack-netty</a></div>
+</td>
+<td>
+<p>
+<span class="sh">Networking:</span>
+<a href="https://netty.io/">Netty</a> also includes it own HTTP client.
+</p>
 </td>
 </tr>
 
@@ -128,8 +150,8 @@ Http Client</a>.</p>
 <p><span class="sh">HTTP Server:</span>
 Gem packaging of the
 
-<a href="http://www.mortbay.org/jetty/">Jetty Web Server</a>.
-The jetty gem includes an extensible
+<a href="http://jetty.codehaus.org/jetty/">Jetty Web Server</a>.
+The jetty gem includes the HTTP client and a
 <a href="jetty/RJack/Jetty/ServerFactory.html">ServerFactory</a>
 for Server setup in ruby. The jetty-jsp companion gem adds JSP support
 if needed.</p>
@@ -221,7 +243,6 @@ Unicode components.</p>
 <div><a title="rdoc" href="protobuf/">rjack-protobuf</a></div>
 <div><a title="rdoc" href="jms/">rjack-jms</a></div>
 <div><a title="rdoc" href="jms-spec/">rjack-jms-spec</a></div>
-<div><a title="rdoc" href="mina/">rjack-mina</a></div>
 <div><a title="rdoc" href="qpid-client/">rjack-qpid-client</a></div>
 </td>
 <td>
@@ -242,6 +263,16 @@ Unicode components.</p>
   <span class="sh">Full Text Search:</span>
   <a href="http://lucene.apache.org/">Lucene</a>
   and the <a href="http://lucene.apache.org/solr">Solr</a> service.</p>
+</td>
+</tr>
+
+<tr <% if row.next %>class="odd"<% end %>>
+<td class="gemlink">
+<div><a title="rdoc" href="zookeeper/">rjack-zookeeper</a></div>
+</td>
+<td>
+<p>
+<a href="http://zookeeper.apache.org/">ZooKeeper</a>: reliable distributed coordination.</p>
 </td>
 </tr>
 

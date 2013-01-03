@@ -1,6 +1,6 @@
 digraph "RJack Gem Dependency Graph" {
   bgcolor="transparent";
-  rankdir=LR;
+  rankdir=TB;
   size="7.0,6.5";
   node [ shape=box, style="filled,rounded", fillcolor="#f8df8b",
          fontname="Arial", margin="0.15,0.1" ];
@@ -32,6 +32,10 @@ digraph "RJack Gem Dependency Graph" {
 
   "async-httpclient" [ label=<async<br/>httpclient>
                        target=_parent, URL="async-httpclient/" ];
+
+  "netty"         [ target=_parent, URL="netty/", group=net ];
+  "zookeeper"     [ target=_parent, URL="zookeeper/" ];
+  "guava"         [ target=_parent, URL="guava/" ];
 
   subgraph cluster_db {
     style=invis
@@ -108,10 +112,16 @@ digraph "RJack Gem Dependency Graph" {
   "solr"   -> "lucene"
   "solr"   -> "jetty"
   "solr"   -> "jetty-jsp"
-  "solr"   -> "httpclient-3"
+  "solr"   -> "httpclient-4"
   "solr"   -> "logback";
 #  "solr"   -> "slf4j"
 
 # for association only
   "commons-codec" -> "commons-dbutils" [ style=invis ];
+
+  "solr"   -> "guava"
+  "solr"   -> "zookeeper"
+  "zookeeper" -> "netty"
+  "zookeeper" -> "slf4j"
+  "async-httpclient" -> "netty"
 }

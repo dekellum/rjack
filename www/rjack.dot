@@ -33,6 +33,10 @@ digraph "RJack Gem Dependency Graph" {
   "async-httpclient" [ label=<async<br/>httpclient>
                        target=_parent, URL="async-httpclient/" ];
 
+  "netty"         [ target=_parent, URL="netty/", group=net ];
+  "zookeeper"     [ target=_parent, URL="zookeeper/" ];
+  "guava"         [ target=_parent, URL="guava/" ];
+
   subgraph cluster_db {
     style=invis
     "commons-dbcp"    [ label=<commons<br/>dbcp>
@@ -114,4 +118,10 @@ digraph "RJack Gem Dependency Graph" {
 
 # for association only
   "commons-codec" -> "commons-dbutils" [ style=invis ];
+
+  "solr"   -> "guava"
+  "solr"   -> "zookeeper"
+  "zookeeper" -> "netty"
+  "zookeeper" -> "slf4j"
+  "async-httpclient" -> "netty"
 }

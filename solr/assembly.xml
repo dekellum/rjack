@@ -13,6 +13,7 @@
         <exclude>org.apache.solr:solr</exclude>
         <exclude>org.slf4j:*</exclude>
         <exclude>org.apache.zookeeper:*</exclude>
+        <exclude>com.google.guava:*</exclude>
       </excludes>
     </dependencySet>
   </dependencySets>

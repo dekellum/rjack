@@ -22,6 +22,7 @@ require 'rjack-httpclient-4'
 require 'rjack-slf4j'
 require 'rjack-slf4j/log4j-over-slf4j'
 require 'rjack-zookeeper'
+require 'rjack-guava'
 
 require 'rjack-solr/base'
 

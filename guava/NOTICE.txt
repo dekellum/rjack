@@ -1,0 +1,7 @@
+rjack-guava gem
+Copyright (c) 2013 David Kellum
+
+This product includes software developed by:
+
+Guava
+Copyright (c) 2012 The Guava Authors

@@ -9,6 +9,7 @@ gems = %w[ tarpit
            commons-codec
            commons-dbcp
            commons-dbutils
+           guava
            httpclient-3
            httpclient-4
            icu
@@ -24,7 +25,9 @@ gems = %w[ tarpit
            jms-spec
            jms
            mina
+           netty
            qpid-client
+           zookeeper
            lucene
            solr ]
 

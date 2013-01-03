@@ -16,7 +16,7 @@
 
 module RJack
   module RZooKeeper
-    ZOOKEEPER_VERSION = '3.3.6'
+    ZOOKEEPER_VERSION = '3.4.5'
     VERSION = ZOOKEEPER_VERSION + '.0'
     LIB_DIR = File.dirname( __FILE__ ) # :nodoc:
   end

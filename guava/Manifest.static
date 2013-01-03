@@ -1,0 +1,10 @@
+History.rdoc
+Manifest.txt
+NOTICE.txt
+README.rdoc
+Rakefile
+assembly.xml
+pom.xml
+lib/rjack-guava/base.rb
+lib/rjack-guava.rb
+test/test_guava.rb

@@ -9,11 +9,11 @@
       <useProjectArtifact>false</useProjectArtifact>
       <excludes>
         <exclude>commons-codec:commons-codec</exclude>
-        <exclude>jakarta-regexp:*</exclude>
         <exclude>org.apache.lucene:*</exclude>
         <exclude>org.apache.solr:solr</exclude>
         <exclude>org.slf4j:*</exclude>
-        <exclude>javax.servlet:servlet-api</exclude>
+        <exclude>org.apache.zookeeper:*</exclude>
+        <exclude>com.google.guava:*</exclude>
       </excludes>
     </dependencySet>
   </dependencySets>

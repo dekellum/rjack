@@ -10,9 +10,9 @@ A gem packaging of {Solr}[http://lucene.apache.org/solr].
 
 == Synopsis
 
-Solr is run as a service on Jetty 7.x, and defaults to finding its
-conf/ and data/ directories under ./collection1. To get started, you
-can use the SOLR release's sample config:
+Solr is run as a service, and defaults to finding its conf/ and data/
+directories under ./collection1. To get started, you can use the SOLR
+release's sample config:
 
   % mkdir -p /var/local/rjack-solr
   % cd /var/local/rjack-solr

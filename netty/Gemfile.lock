@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rjack-netty (3.2.8.0-java)
+    rjack-netty (3.4.6.0-java)
 
 GEM
   remote: http://rubygems.org/

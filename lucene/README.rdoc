@@ -13,12 +13,15 @@ due to size or extra dependencies:
 
 +lucene-benchmark+: Requires misc additional dependencies, excluded.
 
-+lucene-remote+: Java RMI: any one using it?
-
 +lucene-kuromuji+: Japanese morphological analyzer/tokenizer, excluded
 for size.
 
-+lucene-smartcn+: Chinese Analyzer, exclude for size.
++lucene-smartcn+: Chinese Analyzer, excluded for size.
+
++lucene-analyzers-stempel+, +lucene-analyzers-morfologik+: Polish
+analyzers, excluded for size.
+
++lucene-analyzers-uima+: Excluded for size.
 
 Create a github issue/patch if you'd like to see any of these
 packaged, possibly as add-on gems, i.e. +rjack-lucene-ja+.

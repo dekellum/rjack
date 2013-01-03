@@ -16,7 +16,7 @@
 
 require 'rjack-netty/base'
 
-require 'rjack-slf4j'
+require 'java'
 
 # Netty module
 #

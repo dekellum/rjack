@@ -1,2 +1,2 @@
-=== 13.0.1.0 (TBD)
+=== 13.0.1.0 (2013-1-3)
 * Initial release based on guava 13.0.1

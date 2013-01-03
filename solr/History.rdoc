@@ -1,5 +1,7 @@
-=== 4.0.0.0 (TBD)
+=== 4.0.0.0 (2013-1-3)
 * Upgrade to Solr 4.0.0
+* Introduces new dependencies on lucene ~> 4.0.0,
+  httpclient-4 ~> 4.2.1, zookeeper ~> 3.3.6, guava ~> 13.0
 
 === 3.6.2.0 (2012-12-28)
 * Upgrade to Solr 3.6.2

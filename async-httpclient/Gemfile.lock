@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     rjack-async-httpclient (1.7.9.0-java)
+      rjack-netty (~> 3.4.4)
       rjack-slf4j (>= 1.6.5, < 1.8)
 
 GEM
@@ -18,6 +19,7 @@ GEM
     rjack-logback (1.5.0-java)
       rjack-slf4j (>= 1.6.5, < 1.8)
     rjack-maven (3.0.4.0-java)
+    rjack-netty (3.4.6.0-java)
     rjack-slf4j (1.7.0.0-java)
     rjack-tarpit (2.0.1-java)
       jruby-openssl (~> 0.7.4)

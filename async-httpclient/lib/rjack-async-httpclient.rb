@@ -16,6 +16,7 @@
 
 require 'rjack-slf4j'
 require 'rjack-async-httpclient/base'
+require 'rjack-netty'
 
 require 'java'
 

@@ -9,7 +9,6 @@
       <useProjectArtifact>false</useProjectArtifact>
       <includes>
         <include>com.ning:async-http-client</include>
-        <include>io.netty:netty</include>
       </includes>
     </dependencySet>
   </dependencySets>

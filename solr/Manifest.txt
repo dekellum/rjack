@@ -305,4 +305,3 @@ lib/rjack-solr/commons-lang-2.6.jar
 lib/rjack-solr/guava-r05.jar
 lib/rjack-solr/solr-core-4.0.0.jar
 lib/rjack-solr/solr-solrj-4.0.0.jar
-lib/rjack-solr/zookeeper-3.3.6.jar

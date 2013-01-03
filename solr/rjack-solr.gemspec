@@ -15,6 +15,7 @@ RJack::TarPit.specify do |s|
   s.depend 'rjack-jetty',         '>= 7.6.7', '< 9.1'
   s.depend 'rjack-jetty-jsp',     '>= 7.6.7', '< 9.1'
   s.depend 'rjack-httpclient-4',  '~> 4.2.1'
+  s.depend 'rjack-zookeeper',     '~> 3.3.6'
   s.depend 'hooker',              '~> 1.0.1'
   s.depend 'rjack-slf4j',         '>= 1.6.5', '< 1.8'
   s.depend 'rjack-logback',       '~> 1.2'

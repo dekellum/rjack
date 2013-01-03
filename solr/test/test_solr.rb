@@ -22,9 +22,11 @@ require 'bundler/setup'
 
 require 'rjack-logback'
 
-RJack::Logback.config_console( :level => RJack::Logback::INFO )
+RJack::Logback.config_console
 if ARGV.include?( '-v' ) || ARGV.include?( '--verbose' )
-  RJack::Logback.root.level = RJack::Logback::DEBUG
+  RJack::Logback.root.level = :debug
+else
+  RJack::Logback[ 'org.apache.zookeeper' ].level = :warn
 end
 
 require 'minitest/unit'

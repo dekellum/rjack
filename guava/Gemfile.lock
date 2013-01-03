@@ -2,7 +2,6 @@ PATH
   remote: .
   specs:
     rjack-guava (13.0.1.0-java)
-      rjack-slf4j (>= 1.6.5, < 1.8)
 
 GEM
   remote: http://rubygems.org/
@@ -15,10 +14,7 @@ GEM
     rake (10.0.3)
     rdoc (3.12)
       json (~> 1.4)
-    rjack-logback (1.5.0-java)
-      rjack-slf4j (>= 1.6.5, < 1.8)
     rjack-maven (3.0.4.0-java)
-    rjack-slf4j (1.7.2.0-java)
     rjack-tarpit (2.0.2-java)
       jruby-openssl (~> 0.8.1)
       rake (>= 0.9.2.2, < 10.1)
@@ -31,5 +27,4 @@ PLATFORMS
 DEPENDENCIES
   minitest (~> 2.2)
   rjack-guava!
-  rjack-logback (~> 1.2)
   rjack-tarpit (~> 2.0)

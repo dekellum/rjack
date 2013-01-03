@@ -16,8 +16,6 @@
 
 require 'rjack-guava/base'
 
-require 'rjack-slf4j'
-
 # Guava module
 #
 module RJack

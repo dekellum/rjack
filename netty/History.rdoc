@@ -1,0 +1,2 @@
+=== 3.2.8.0 (TBD)
+* Initial release based on (org.jboss) Netty 3.2.8

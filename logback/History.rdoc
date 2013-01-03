@@ -1,3 +1,6 @@
+=== 1.5.1 (TBD)
+* Upgraded to Logback 1.0.9
+
 === 1.5.0 (2012-9-15)
 * Upgraded to Logback 1.0.7
 * Update/broaden to slf4j >= 1.6.5, < 1.8 (include 1.7.0)

@@ -15,10 +15,10 @@
 module RJack
   module Logback
     # Logback java version
-    LOGBACK_VERSION = '1.0.7'
+    LOGBACK_VERSION = '1.0.9'
 
     # Logback gem version
-    VERSION = '1.5.0'
+    VERSION = '1.5.1'
 
     LOGBACK_DIR = File.dirname(__FILE__) # :nodoc:
   end

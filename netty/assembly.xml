@@ -8,7 +8,7 @@
     <dependencySet>
       <useProjectArtifact>false</useProjectArtifact>
       <includes>
-        <include>org.jboss.netty:netty</include>
+        <include>io.netty:netty</include>
       </includes>
     </dependencySet>
   </dependencySets>

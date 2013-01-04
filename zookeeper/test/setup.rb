@@ -6,7 +6,6 @@ require 'bundler/setup'
 require 'minitest/unit'
 require 'minitest/autorun'
 
-require 'rjack-slf4j/log4j-over-slf4j'
 require 'rjack-logback'
 
 RJack::Logback.config_console( :stderr => true )

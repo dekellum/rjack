@@ -17,6 +17,7 @@
 require 'rjack-zookeeper/base'
 
 require 'rjack-slf4j'
+require 'rjack-netty'
 
 require 'java'
 

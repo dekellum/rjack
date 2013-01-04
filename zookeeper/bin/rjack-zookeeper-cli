@@ -22,7 +22,6 @@ require 'rubygems'
 
 module BinScript
   require 'rjack-zookeeper/base'
-  require 'rjack-slf4j/log4j-over-slf4j'
   require 'rjack-logback'
   require 'optparse'
 

@@ -1,2 +1,6 @@
+=== 3.4.5.0 (TBD)
+* Upgrade to ZooKeeper 3.4.5
+* Introduces netty ~> 3.2.2 dependency, satisfied by 3.2.8
+
 === 3.3.6.0 (2013-1-3)
 * Initial release.

@@ -13,6 +13,7 @@ RJack::TarPit.specify do |s|
   s.jars = [ "zookeeper-#{ RJack::RZooKeeper::ZOOKEEPER_VERSION }.jar" ]
 
   s.depend 'rjack-slf4j',     '>= 1.6.5', '< 1.8'
+  s.depend 'rjack-netty',     '~> 3.2.2'
   s.depend 'minitest',        '~> 2.3',   :dev
   s.depend 'rjack-logback',   '~> 1.2',   :dev
 end

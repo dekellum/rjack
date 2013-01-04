@@ -25,7 +25,7 @@
 $LOAD_PATH.unshift File.join( File.dirname(__FILE__), "..", "lib" )
 
 require 'rubygems'
-gem( "rjack-zookeeper", "= 3.3.6.0" )
+gem( "rjack-zookeeper", "= 3.4.5.0" )
 
 module BinScript
   require 'rjack-zookeeper/base'

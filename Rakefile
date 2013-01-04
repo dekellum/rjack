@@ -4,6 +4,8 @@ gems = %w[ tarpit
            maven
            slf4j
            logback
+           mina
+           netty
            async-httpclient
            commons-pool
            commons-codec
@@ -24,8 +26,6 @@ gems = %w[ tarpit
            protobuf
            jms-spec
            jms
-           mina
-           netty
            qpid-client
            zookeeper
            lucene

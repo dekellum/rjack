@@ -40,7 +40,7 @@ GEM
     rjack-jetty (9.0.0.1-java)
     rjack-jetty-jsp (9.0.0.0-java)
       rjack-jetty (~> 9.0.0)
-    rjack-logback (1.5.0-java)
+    rjack-logback (1.5.1-java)
       rjack-slf4j (>= 1.6.5, < 1.8)
     rjack-maven (3.0.4.0-java)
     rjack-slf4j (1.7.2.0-java)

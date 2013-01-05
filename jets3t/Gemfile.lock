@@ -21,7 +21,7 @@ GEM
     rjack-httpclient-4 (4.2.2.0-java)
       rjack-commons-codec (~> 1.6.0)
       rjack-slf4j (>= 1.6.5, < 1.8)
-    rjack-logback (1.5.0-java)
+    rjack-logback (1.5.1-java)
       rjack-slf4j (>= 1.6.5, < 1.8)
     rjack-maven (3.0.4.0-java)
     rjack-slf4j (1.7.2.0-java)

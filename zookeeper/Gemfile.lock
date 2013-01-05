@@ -2,6 +2,7 @@ PATH
   remote: .
   specs:
     rjack-zookeeper (3.4.5.0-java)
+      rjack-logback (~> 1.2)
       rjack-netty (~> 3.2.2)
       rjack-slf4j (>= 1.6.5, < 1.8)
 
@@ -16,7 +17,7 @@ GEM
     rake (10.0.3)
     rdoc (3.12)
       json (~> 1.4)
-    rjack-logback (1.5.0-java)
+    rjack-logback (1.5.1-java)
       rjack-slf4j (>= 1.6.5, < 1.8)
     rjack-maven (3.0.4.0-java)
     rjack-netty (3.2.8.0-java)
@@ -32,6 +33,5 @@ PLATFORMS
 
 DEPENDENCIES
   minitest (~> 2.3)
-  rjack-logback (~> 1.2)
   rjack-tarpit (~> 2.0)
   rjack-zookeeper!

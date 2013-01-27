@@ -158,6 +158,7 @@ webapp/img/ico/clock-select.png
 webapp/img/ico/construction.png
 webapp/img/ico/cross-0.png
 webapp/img/ico/cross-1.png
+webapp/img/ico/cross-button.png
 webapp/img/ico/cross.png
 webapp/img/ico/dashboard.png
 webapp/img/ico/database.png
@@ -179,6 +180,7 @@ webapp/img/ico/gear.png
 webapp/img/ico/globe-network.png
 webapp/img/ico/globe.png
 webapp/img/ico/hammer-screwdriver.png
+webapp/img/ico/hammer.png
 webapp/img/ico/hand.png
 webapp/img/ico/highlighter-text.png
 webapp/img/ico/hourglass--exclamation.png
@@ -257,6 +259,7 @@ webapp/js/lib/console.js
 webapp/js/lib/d3.js
 webapp/js/lib/highlight.js
 webapp/js/lib/jquery-1.7.2.min.js
+webapp/js/lib/jquery.autogrow.js
 webapp/js/lib/jquery.blockUI.js
 webapp/js/lib/jquery.cookie.js
 webapp/js/lib/jquery.form.js
@@ -302,5 +305,5 @@ lib/rjack-solr/commons-cli-1.2.jar
 lib/rjack-solr/commons-fileupload-1.2.1.jar
 lib/rjack-solr/commons-io-2.1.jar
 lib/rjack-solr/commons-lang-2.6.jar
-lib/rjack-solr/solr-core-4.0.0.jar
-lib/rjack-solr/solr-solrj-4.0.0.jar
+lib/rjack-solr/solr-core-4.1.0.jar
+lib/rjack-solr/solr-solrj-4.1.0.jar

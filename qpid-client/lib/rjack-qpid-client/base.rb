@@ -18,10 +18,10 @@ module RJack
   module QpidClient
 
     # QpidClient (java) version
-    QPID_VERSION = '0.18'
+    QPID_VERSION = '0.20'
 
     # rjack gem version
-    VERSION = QPID_VERSION + '.1'
+    VERSION = QPID_VERSION + '.0'
 
     LIB_DIR = File.dirname( __FILE__ ) # :nodoc:
   end

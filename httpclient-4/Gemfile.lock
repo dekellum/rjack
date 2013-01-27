@@ -1,8 +1,8 @@
 PATH
   remote: .
   specs:
-    rjack-httpclient-4 (4.2.2.0-java)
-      rjack-commons-codec (~> 1.6.0)
+    rjack-httpclient-4 (4.2.3.0-java)
+      rjack-commons-codec (>= 1.6.0, < 1.8)
       rjack-slf4j (>= 1.6.5, < 1.8)
 
 GEM
@@ -16,7 +16,7 @@ GEM
     rake (10.0.3)
     rdoc (3.12)
       json (~> 1.4)
-    rjack-commons-codec (1.6.0-java)
+    rjack-commons-codec (1.7.0-java)
     rjack-logback (1.5.1-java)
       rjack-slf4j (>= 1.6.5, < 1.8)
     rjack-maven (3.0.4.0-java)

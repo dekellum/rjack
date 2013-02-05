@@ -17,8 +17,8 @@
 module RJack
   module Jetty
     JETTY_VERSION = '9.0.0'
-    VERSION = JETTY_VERSION + '.2'
-    JETTY_BUILD = 'M5'
+    VERSION = JETTY_VERSION + '.3'
+    JETTY_BUILD = 'RC0'
     SERVLET_API_VERSION = '3.0.0'
     SERVLET_API_BUILD = 'v201112011016'
 

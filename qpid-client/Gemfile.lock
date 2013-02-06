@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rjack-qpid-client (0.18.1-java)
+    rjack-qpid-client (0.20.0-java)
       rjack-jms (>= 1.0.0, < 1.2)
       rjack-slf4j (>= 1.6.5, < 1.8)
 

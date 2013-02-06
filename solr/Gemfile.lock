@@ -1,23 +1,23 @@
 PATH
   remote: .
   specs:
-    rjack-solr (4.0.0.0-java)
+    rjack-solr (4.1.0.0-java)
       hooker (~> 1.0.1)
-      rjack-commons-codec (~> 1.6.0)
+      rjack-commons-codec (~> 1.7.0)
       rjack-guava (~> 13.0)
-      rjack-httpclient-4 (~> 4.2.1)
+      rjack-httpclient-4 (~> 4.2.3)
       rjack-jetty (>= 7.6.7, < 9.1)
       rjack-jetty-jsp (>= 7.6.7, < 9.1)
       rjack-logback (~> 1.2)
-      rjack-lucene (~> 4.0.0)
+      rjack-lucene (~> 4.1.0)
       rjack-slf4j (>= 1.6.5, < 1.8)
-      rjack-zookeeper (~> 3.3.6)
+      rjack-zookeeper (~> 3.4.5)
 
 PATH
   remote: /home/david/src/rjack/lucene
   specs:
-    rjack-lucene (4.0.0.0-java)
-      rjack-commons-codec (~> 1.6.0)
+    rjack-lucene (4.1.0.0-java)
+      rjack-commons-codec (~> 1.7.0)
 
 GEM
   remote: http://rubygems.org/
@@ -31,25 +31,27 @@ GEM
     rake (10.0.3)
     rdoc (3.12)
       json (~> 1.4)
-    rjack-commons-codec (1.6.0-java)
+    rjack-commons-codec (1.7.0-java)
     rjack-guava (13.0.1.0-java)
-    rjack-httpclient-4 (4.2.2.0-java)
-      rjack-commons-codec (~> 1.6.0)
+    rjack-httpclient-4 (4.2.3.0-java)
+      rjack-commons-codec (>= 1.6.0, < 1.8)
       rjack-slf4j (>= 1.6.5, < 1.8)
     rjack-icu (4.8.1.1-java)
-    rjack-jetty (9.0.0.1-java)
+    rjack-jetty (9.0.0.2-java)
     rjack-jetty-jsp (9.0.0.0-java)
       rjack-jetty (~> 9.0.0)
     rjack-logback (1.5.1-java)
       rjack-slf4j (>= 1.6.5, < 1.8)
     rjack-maven (3.0.4.0-java)
+    rjack-netty (3.2.8.0-java)
     rjack-slf4j (1.7.2.0-java)
     rjack-tarpit (2.0.2-java)
       jruby-openssl (~> 0.8.1)
       rake (>= 0.9.2.2, < 10.1)
       rdoc (~> 3.12)
       rjack-maven (~> 3.0.4)
-    rjack-zookeeper (3.3.6.0-java)
+    rjack-zookeeper (3.4.5.0-java)
+      rjack-netty (~> 3.2.2)
       rjack-slf4j (>= 1.6.5, < 1.8)
 
 PLATFORMS

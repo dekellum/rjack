@@ -1,3 +1,7 @@
+=== 4.2.3.0 (TBD)
+* Upgrade to httpclient 4.2.3, httpcore 4.2.3
+* Broaden commons-codec dep to >= 1.6.0, < 1.8
+
 === 4.2.2.0 (2012-11-9)
 * Upgrade to httpclient 4.2.2, httpcore 4.2.2
 

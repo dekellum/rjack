@@ -1,4 +1,4 @@
-=== 4.1.0.0 (TBD)
+=== 4.1.0.0 (2013-2-6)
 * Upgrade to Solr 4.1.0
 * Upgrades httpclient-4 ~> 4.2.3, zookeeper ~> 3.4.5,
   commons-codec ~> 1.7.0

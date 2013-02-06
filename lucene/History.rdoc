@@ -1,4 +1,4 @@
-=== 4.1.0.0 (TBD)
+=== 4.1.0.0 (2013-2-6)
 * Upgrade to Lucene 4.1.0
 * Upgrade to commons-codec ~> 1.7.0
 

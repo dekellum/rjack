@@ -21,9 +21,7 @@ webapp/WEB-INF
 webapp/WEB-INF/lib
 webapp/WEB-INF/web.xml
 webapp/WEB-INF/weblogic.xml
-webapp/admin
 webapp/admin.html
-webapp/admin/replication
 webapp/css
 webapp/css/chosen.css
 webapp/css/styles

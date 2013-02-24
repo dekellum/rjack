@@ -12,7 +12,10 @@ t = RJack::TarPit.new( 'slf4j', SLF4JRedirect::VERSION, :java_platform )
 t.specify do |h|
   h.developer( "David Kellum", "dek-oss@gravitext.com" )
   h.extra_deps << [ 'rjack-slf4j', '~> 1.6.1' ]
-  h.rdoc_locations << "dekellum@rubyforge.org:/var/www/gforge-projects/rjack/slf4j-redirect"
+  h.rdoc_locations <<
+    "dekellum@rubyforge.org:/var/www/gforge-projects/rjack/slf4j-redirect"
+  tp.publish_rdoc_rsync_flags = %w[ -rL ]
+
 end
 
 loaders = %w[ jul jul-to-slf4j jdk14 jcl-over-slf4j jcl

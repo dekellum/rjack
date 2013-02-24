@@ -14,7 +14,10 @@ t = TarPit.new( 'jetty-jsp', JettyJspRedirect::VERSION, :java_platform )
 t.specify do |h|
   h.developer( "David Kellum", "dek-oss@gravitext.com" )
   h.extra_deps << [ 'rjack-jetty-jsp', '>= 6.1.26', '< 7' ]
-  h.rdoc_locations << "dekellum@rubyforge.org:/var/www/gforge-projects/rjack/jetty-jsp-redirect"
+  h.rdoc_locations <<
+    "dekellum@rubyforge.org:/var/www/gforge-projects/rjack/jetty-jsp-redirect"
+  tp.publish_rdoc_rsync_flags = %w[ -rL ]
+
 end
 
 task :check_history_version do

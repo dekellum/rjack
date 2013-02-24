@@ -8,5 +8,6 @@ RJack::TarPit.new( 'rjack-mina' ) do |tp|
 
   tp.rdoc_destinations <<
     'dekellum@rubyforge.org:/var/www/gforge-projects/rjack/mina'
+  tp.publish_rdoc_rsync_flags = %w[ -rL ]
 
 end

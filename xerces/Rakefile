@@ -8,5 +8,6 @@ RJack::TarPit.new( 'rjack-xerces' ) do |tp|
 
   tp.rdoc_destinations <<
     'dekellum@rubyforge.org:/var/www/gforge-projects/rjack/xerces'
+  tp.publish_rdoc_rsync_flags = %w[ -rL ]
 
 end

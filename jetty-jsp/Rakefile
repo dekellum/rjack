@@ -8,6 +8,7 @@ RJack::TarPit.new( 'rjack-jetty-jsp' ) do |tp|
 
   tp.rdoc_destinations <<
     'dekellum@rubyforge.org:/var/www/gforge-projects/rjack/jetty-jsp'
+  tp.publish_rdoc_rsync_flags = %w[ -rL ]
 
 end
 

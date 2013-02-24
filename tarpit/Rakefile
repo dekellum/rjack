@@ -9,6 +9,7 @@ RJack::TarPit.new( 'rjack-tarpit' ) do |tp|
 
   tp.rdoc_destinations <<
     'dekellum@rubyforge.org:/var/www/gforge-projects/rjack/tarpit'
+  tp.publish_rdoc_rsync_flags = %w[ -rL ]
 
   desc "Check that README sample has latest version"
   task :check_sample_version do

@@ -12,7 +12,10 @@ t = RJack::TarPit.new( 'jetty', JettyRedirect::VERSION, :java_platform )
 t.specify do |h|
   h.developer( "David Kellum", "dek-oss@gravitext.com" )
   h.extra_deps << [ 'rjack-jetty', '>= 6.1.26', '< 7' ]
-  h.rdoc_locations << "dekellum@rubyforge.org:/var/www/gforge-projects/rjack/jetty-redirect"
+  h.rdoc_locations <<
+    "dekellum@rubyforge.org:/var/www/gforge-projects/rjack/jetty-redirect"
+  tp.publish_rdoc_rsync_flags = %w[ -rL ]
+
 end
 
 task :check_history_version do

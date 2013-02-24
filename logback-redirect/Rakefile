@@ -12,7 +12,10 @@ t = RJack::TarPit.new( 'logback', LogbackRedirect::VERSION, :java_platform )
 t.specify do |h|
   h.developer( "David Kellum", "dek-oss@gravitext.com" )
   h.extra_deps << [ 'rjack-logback', '~> 1.1.1' ]
-  h.rdoc_locations << "dekellum@rubyforge.org:/var/www/gforge-projects/rjack/logback-redirect"
+  h.rdoc_locations <<
+    "dekellum@rubyforge.org:/var/www/gforge-projects/rjack/logback-redirect"
+  tp.publish_rdoc_rsync_flags = %w[ -rL ]
+
 end
 
 task :check_history_version do

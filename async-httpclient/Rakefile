@@ -8,5 +8,6 @@ RJack::TarPit.new( 'rjack-async-httpclient' ) do |tp|
 
   tp.rdoc_destinations <<
     'dekellum@rubyforge.org:/var/www/gforge-projects/rjack/async-httpclient'
+  tp.publish_rdoc_rsync_flags = %w[ -rL ]
 
 end

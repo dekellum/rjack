@@ -1,7 +1,0 @@
-Manifest.txt
-README.rdoc
-History.rdoc
-Rakefile
-lib/slf4j/base.rb
-lib/slf4j.rb
-test/test_slf4j.rb

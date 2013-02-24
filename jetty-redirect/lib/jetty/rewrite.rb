@@ -1,1 +1,0 @@
-require 'rjack-jetty/rewrite'

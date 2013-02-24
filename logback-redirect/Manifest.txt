@@ -1,8 +1,0 @@
-History.rdoc
-Manifest.txt
-README.rdoc
-Rakefile
-lib/logback/base.rb
-lib/logback.rb
-lib/logback/access.rb
-test/test_logback.rb

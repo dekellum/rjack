@@ -1,6 +1,6 @@
 # -*- ruby -*-
 
-source :rubygems
+source 'https://rubygems.org'
 
 # Special case: If referenced this gemspec, bundler would use self as
 # the rjack-maven impl. for rjack-tarpit, which has ordering issues.

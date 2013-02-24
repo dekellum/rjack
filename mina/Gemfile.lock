@@ -5,7 +5,7 @@ PATH
       rjack-slf4j (>= 1.6.5, < 1.8)
 
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     bouncy-castle-java (1.5.0146.1)
     jruby-openssl (0.8.2)

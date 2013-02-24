@@ -1,4 +1,4 @@
 # -*- ruby -*-
-source :rubygems
+source 'https://rubygems.org'
 gemspec :path => '.', :name => 'rjack-solr'
 gemspec :path => '../lucene', :name => 'rjack-lucene'

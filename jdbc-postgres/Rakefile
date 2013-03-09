@@ -1,0 +1,18 @@
+# -*- ruby -*-
+
+require 'rubygems'
+require 'bundler/setup'
+require 'rjack-tarpit'
+
+RJack::TarPit.new( 'rjack-jdbc-postgres' ) do |tp|
+
+  tp.rdoc_destinations <<
+    'dekellum@rubyforge.org:/var/www/gforge-projects/rjack/jdbc-postgres'
+  tp.publish_rdoc_rsync_flags = %w[ -rL ]
+
+end
+
+jar = "postgresql-#{RJack::JDBCPostgres::DRIVER_VERSION}.jdbc4.jar"
+file "lib/rjack-jdbc-postgres/#{jar}" do |t|
+  sh "curl -sf -o #{t.name} http://jdbc.postgresql.org/download/#{jar}"
+end

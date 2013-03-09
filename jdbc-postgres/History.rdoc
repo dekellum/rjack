@@ -1,0 +1,2 @@
+=== 9.2.1002.0 (TBD)
+* Initial release based on Postgres JDBC Driver 9.2.1002

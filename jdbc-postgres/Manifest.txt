@@ -1,0 +1,8 @@
+History.rdoc
+Manifest.txt
+README.rdoc
+Rakefile
+lib/rjack-jdbc-postgres/base.rb
+lib/rjack-jdbc-postgres.rb
+test/test_jdbc_postgres.rb
+lib/rjack-jdbc-postgres/postgresql-9.2-1002.jdbc4.jar

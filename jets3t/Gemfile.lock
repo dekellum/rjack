@@ -15,7 +15,7 @@ GEM
     json (1.7.7-java)
     minitest (2.12.1)
     rake (10.0.3)
-    rdoc (3.12.1)
+    rdoc (3.12.2)
       json (~> 1.4)
     rjack-commons-codec (1.6.0-java)
     rjack-httpclient-4 (4.2.3.0-java)

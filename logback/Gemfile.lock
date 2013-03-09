@@ -13,7 +13,7 @@ GEM
     json (1.7.7-java)
     minitest (2.12.1)
     rake (10.0.3)
-    rdoc (3.12.1)
+    rdoc (3.12.2)
       json (~> 1.4)
     rjack-maven (3.0.4.0-java)
     rjack-slf4j (1.7.2.0-java)

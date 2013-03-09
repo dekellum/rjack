@@ -14,7 +14,7 @@ GEM
     json (1.7.7-java)
     minitest (2.12.1)
     rake (10.0.3)
-    rdoc (3.12.1)
+    rdoc (3.12.2)
       json (~> 1.4)
     rjack-jms (1.1.1-java)
       rjack-jms-spec (~> 1.1.1)

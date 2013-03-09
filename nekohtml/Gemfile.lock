@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rjack-nekohtml (1.9.17.0-java)
+    rjack-nekohtml (1.9.18.0-java)
       rjack-xerces (~> 2.9.1)
 
 GEM

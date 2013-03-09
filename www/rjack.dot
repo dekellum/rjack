@@ -37,6 +37,8 @@ digraph "RJack Gem Dependency Graph" {
   "zookeeper"     [ target=_parent, URL="zookeeper/" ];
   "guava"         [ target=_parent, URL="guava/" ];
 
+  "jdbc-postgres" [ target=_parent, URL="jdbc-postgres/" ];
+
   subgraph cluster_db {
     style=invis
     "commons-dbcp"    [ label=<commons<br/>dbcp>

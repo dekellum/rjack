@@ -1,0 +1,11 @@
+# -*- ruby -*-
+
+Gravitext::DevTools.configure do |c|
+
+  c.setup_header do |h|
+    h.holder = "David Kellum"
+    h.inception = 2013
+    h.license = :bsd
+  end
+
+end

@@ -1,4 +1,5 @@
 === 9.0.0.1 (TBD)
+* Upgrade to rjack-jetty >= 9.0.0.5 (v20130308) release
 
 === 9.0.0.0 (2012-12-13)
 * Jetty 9.0.0.M3 level dependencies (all production releases):

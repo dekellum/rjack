@@ -18,7 +18,7 @@ module RJack
   module Jetty
     module Jsp
       JETTY_VERSION = '9.0.0'
-      GEM_VERSION = '0'
+      GEM_VERSION = '1'
       VERSION = [ JETTY_VERSION, GEM_VERSION ].join( '.' )
       JSP_VERSION = '2.2'
 

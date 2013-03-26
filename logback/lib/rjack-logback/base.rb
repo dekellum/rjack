@@ -15,7 +15,7 @@
 module RJack
   module Logback
     # Logback java version
-    LOGBACK_VERSION = '1.0.10'
+    LOGBACK_VERSION = '1.0.11'
 
     # Logback gem version
     VERSION = '1.6.0'

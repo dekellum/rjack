@@ -11,11 +11,11 @@ GEM
   remote: https://rubygems.org/
   specs:
     bouncy-castle-java (1.5.0147)
-    jruby-openssl (0.8.5)
+    jruby-openssl (0.8.7)
       bouncy-castle-java (>= 1.5.0147)
     json (1.7.7-java)
     minitest (2.12.1)
-    rake (10.0.3)
+    rake (10.0.4)
     rdoc (3.12.2)
       json (~> 1.4)
     rjack-logback (1.5.1-java)

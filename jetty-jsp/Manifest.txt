@@ -10,10 +10,10 @@ test/test_jsp.rb
 webapps/test/index.jsp
 webapps/test/WEB-INF/web.xml
 webapps/test.war
-lib/rjack-jetty-jsp/com.sun.el-2.2.0.v201108011116.jar
-lib/rjack-jetty-jsp/javax.el-2.2.0.v201108011116.jar
+lib/rjack-jetty-jsp/com.sun.el-2.2.0.v201303151357.jar
+lib/rjack-jetty-jsp/javax.el-2.2.0.v201303151357.jar
 lib/rjack-jetty-jsp/javax.servlet.jsp-2.2.0.v201112011158.jar
 lib/rjack-jetty-jsp/javax.servlet.jsp.jstl-1.2.0.v201105211821.jar
 lib/rjack-jetty-jsp/org.apache.jasper.glassfish-2.2.2.v201112011158.jar
 lib/rjack-jetty-jsp/org.apache.taglibs.standard.glassfish-1.2.0.v201112081803.jar
-lib/rjack-jetty-jsp/org.eclipse.jdt.core-3.7.1.jar
+lib/rjack-jetty-jsp/org.eclipse.jdt.core-3.8.2.v20130121.jar

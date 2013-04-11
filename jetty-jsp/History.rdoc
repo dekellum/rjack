@@ -1,3 +1,9 @@
+=== 9.0.1.0 (TBD)
+* Upgrade to rjack-jetty ~> 9.0.1
+* Jetty 9.0.1.v20130408 level dependencies, including upgrades:
+  * javax.el-2.2.0.v201303151357
+  * jdt.core 3.7.1.
+
 === 9.0.0.0 (2012-12-13)
 * Jetty 9.0.0.M3 level dependencies (all production releases):
   * jasper.glassfish 2.2.2

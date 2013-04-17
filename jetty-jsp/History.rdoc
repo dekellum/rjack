@@ -1,4 +1,4 @@
-=== 9.0.2.0 (TBD)
+=== 9.0.2.0 (2013-4-17)
 * Upgrade to rjack-jetty ~> 9.0.2
 * Jetty 9.0.2.v20130417 level dependencies, including upgrades:
   * javax.el-2.2.0.v201303151357

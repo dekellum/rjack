@@ -12,7 +12,7 @@ RJack::TarPit.specify do |s|
 
   s.depend 'rjack-commons-codec', '>= 1.7.0', '< 1.9'
   s.depend 'minitest',            '~> 2.2',              :dev
-  s.depend 'rjack-icu',           '~> 4.8.1.1',          :dev #optional
+  s.depend 'rjack-icu',           '>= 4.49.1', '< 4.51', :dev #optional
 
   s.assembly_version = '1.0'
   s.maven_strategy = :jars_from_assembly

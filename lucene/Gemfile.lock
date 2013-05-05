@@ -16,7 +16,7 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     rjack-commons-codec (1.8.0-java)
-    rjack-icu (4.8.1.1-java)
+    rjack-icu (4.50.1.0-java)
     rjack-maven (3.0.4.0-java)
     rjack-tarpit (2.0.2-java)
       jruby-openssl (~> 0.8.1)
@@ -29,6 +29,6 @@ PLATFORMS
 
 DEPENDENCIES
   minitest (~> 2.2)
-  rjack-icu (~> 4.8.1.1)
+  rjack-icu (>= 4.49.1, < 4.51)
   rjack-lucene!
   rjack-tarpit (~> 2.0)

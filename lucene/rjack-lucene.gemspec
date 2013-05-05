@@ -10,7 +10,7 @@ RJack::TarPit.specify do |s|
 
   s.add_developer( 'David Kellum', 'dek-oss@gravitext.com' )
 
-  s.depend 'rjack-commons-codec', '~> 1.7.0'
+  s.depend 'rjack-commons-codec', '>= 1.7.0', '< 1.9'
   s.depend 'minitest',            '~> 2.2',              :dev
   s.depend 'rjack-icu',           '~> 4.8.1.1',          :dev #optional
 

@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     rjack-lucene (4.2.1.0-java)
-      rjack-commons-codec (~> 1.7.0)
+      rjack-commons-codec (>= 1.7.0, < 1.9)
 
 GEM
   remote: https://rubygems.org/
@@ -15,7 +15,7 @@ GEM
     rake (10.0.4)
     rdoc (3.12.2)
       json (~> 1.4)
-    rjack-commons-codec (1.7.0-java)
+    rjack-commons-codec (1.8.0-java)
     rjack-icu (4.8.1.1-java)
     rjack-maven (3.0.4.0-java)
     rjack-tarpit (2.0.2-java)

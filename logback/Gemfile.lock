@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rjack-logback (1.6.0-java)
+    rjack-logback (1.6.1-java)
       rjack-slf4j (>= 1.6.5, < 1.8)
 
 GEM

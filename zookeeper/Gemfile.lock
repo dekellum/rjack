@@ -17,7 +17,7 @@ GEM
     rake (10.0.4)
     rdoc (3.12.2)
       json (~> 1.4)
-    rjack-logback (1.6.0-java)
+    rjack-logback (1.6.1-java)
       rjack-slf4j (>= 1.6.5, < 1.8)
     rjack-maven (3.0.4.0-java)
     rjack-netty (3.2.8.0-java)

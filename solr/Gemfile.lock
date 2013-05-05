@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rjack-solr (4.1.0.0-java)
+    rjack-solr (4.2.1.0-java)
       hooker (~> 1.0.1)
       rjack-commons-codec (~> 1.7.0)
       rjack-guava (~> 13.0)
@@ -9,14 +9,14 @@ PATH
       rjack-jetty (>= 7.6.7, < 9.1)
       rjack-jetty-jsp (>= 7.6.7, < 9.1)
       rjack-logback (~> 1.2)
-      rjack-lucene (~> 4.1.0)
+      rjack-lucene (~> 4.2.1)
       rjack-slf4j (>= 1.6.5, < 1.8)
       rjack-zookeeper (~> 3.4.5)
 
 PATH
   remote: /home/david/src/rjack/lucene
   specs:
-    rjack-lucene (4.1.0.0-java)
+    rjack-lucene (4.2.1.0-java)
       rjack-commons-codec (~> 1.7.0)
 
 GEM
@@ -36,7 +36,7 @@ GEM
     rjack-httpclient-4 (4.2.3.0-java)
       rjack-commons-codec (>= 1.6.0, < 1.8)
       rjack-slf4j (>= 1.6.5, < 1.8)
-    rjack-icu (4.8.1.1-java)
+    rjack-icu (4.50.1.0-java)
     rjack-jetty (9.0.2.0-java)
     rjack-jetty-jsp (9.0.0.0-java)
       rjack-jetty (~> 9.0.0)
@@ -59,7 +59,7 @@ PLATFORMS
 
 DEPENDENCIES
   minitest (~> 2.2)
-  rjack-icu (~> 4.8.1.1)
+  rjack-icu (>= 4.49.1, < 4.51)
   rjack-lucene!
   rjack-solr!
   rjack-tarpit (~> 2.0)

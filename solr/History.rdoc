@@ -1,4 +1,4 @@
-=== 4.2.1.0 (TBD)
+=== 4.2.1.0 (2013-5-5)
 * Upgrade to Solr 4.2.1
 * Upgrades lucene ~> 4.2.1; rjack-jetty >= 7.6.9, < 9.1;
   commons-codec >= 1.7.0, < 1.9.

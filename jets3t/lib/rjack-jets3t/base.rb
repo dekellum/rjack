@@ -20,7 +20,7 @@ module RJack
     JETS3T_VERSION = '0.9.0'
 
     # rjack-jets3t version
-    VERSION = JETS3T_VERSION + '.1'
+    VERSION = JETS3T_VERSION + '.2'
 
     JETS3T_DIR = File.dirname( __FILE__ ) # :nodoc:
   end

@@ -18,7 +18,7 @@ module RJack
   module Solr
 
     # SOLR (java) version
-    CORE_VERSION = '4.1.0'
+    CORE_VERSION = '4.2.1'
 
     # rjack gem version
     VERSION = CORE_VERSION + '.0'

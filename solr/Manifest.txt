@@ -21,7 +21,9 @@ webapp/WEB-INF
 webapp/WEB-INF/lib
 webapp/WEB-INF/web.xml
 webapp/WEB-INF/weblogic.xml
+webapp/admin
 webapp/admin.html
+webapp/admin/replication
 webapp/css
 webapp/css/chosen.css
 webapp/css/styles
@@ -181,6 +183,7 @@ webapp/img/ico/hammer-screwdriver.png
 webapp/img/ico/hammer.png
 webapp/img/ico/hand.png
 webapp/img/ico/highlighter-text.png
+webapp/img/ico/home.png
 webapp/img/ico/hourglass--exclamation.png
 webapp/img/ico/hourglass.png
 webapp/img/ico/inbox-document-text.png
@@ -263,7 +266,6 @@ webapp/js/lib/jquery.cookie.js
 webapp/js/lib/jquery.form.js
 webapp/js/lib/jquery.jstree.js
 webapp/js/lib/jquery.sammy.js
-webapp/js/lib/jquery.sparkline.js
 webapp/js/lib/jquery.timeago.js
 webapp/js/lib/linker.js
 webapp/js/lib/order.js
@@ -303,5 +305,7 @@ lib/rjack-solr/commons-cli-1.2.jar
 lib/rjack-solr/commons-fileupload-1.2.1.jar
 lib/rjack-solr/commons-io-2.1.jar
 lib/rjack-solr/commons-lang-2.6.jar
-lib/rjack-solr/solr-core-4.1.0.jar
-lib/rjack-solr/solr-solrj-4.1.0.jar
+lib/rjack-solr/org.restlet-2.1.1.jar
+lib/rjack-solr/org.restlet.ext.servlet-2.1.1.jar
+lib/rjack-solr/solr-core-4.2.1.jar
+lib/rjack-solr/solr-solrj-4.2.1.jar

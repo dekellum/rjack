@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rjack-solr (4.2.1.0-java)
+    rjack-solr (4.2.1.1-java)
       hooker (~> 1.0.1)
       rjack-commons-codec (>= 1.7.0, < 1.9)
       rjack-guava (~> 13.0)

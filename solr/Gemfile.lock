@@ -26,7 +26,7 @@ GEM
     hooker (1.0.1)
     jruby-openssl (0.8.8)
       bouncy-castle-java (>= 1.5.0147)
-    json (1.7.7-java)
+    json (1.8.0-java)
     minitest (4.7.4)
     rake (10.0.4)
     rdoc (3.12.2)

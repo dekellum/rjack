@@ -8,4 +8,4 @@ source 'https://rubygems.org'
 
 # Instead specify separately
 gem 'rjack-tarpit', '~> 2.0'
-gem 'minitest',     '~> 2.10',     :group => :development
+gem 'minitest',     '~> 4.7.4',     :group => :development

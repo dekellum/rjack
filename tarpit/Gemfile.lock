@@ -14,7 +14,7 @@ GEM
     jruby-openssl (0.8.8)
       bouncy-castle-java (>= 1.5.0147)
     json (1.7.7-java)
-    minitest (2.12.1)
+    minitest (4.7.4)
     rake (10.0.4)
     rdoc (3.12.2)
       json (~> 1.4)
@@ -28,7 +28,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  minitest (~> 2.10)
+  minitest (~> 4.7.4)
   rjack-logback (~> 1.5)
   rjack-slf4j (~> 1.7.0)
   rjack-tarpit!

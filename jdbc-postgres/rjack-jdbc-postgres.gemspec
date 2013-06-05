@@ -10,7 +10,7 @@ RJack::TarPit.specify do |s|
 
   s.add_developer( 'David Kellum', 'dek-oss@gravitext.com' )
 
-  s.depend 'minitest',              '~> 2.2',       :dev
+  s.depend 'minitest',              '~> 4.7.4',     :dev
 
   s.generated_files = [
     "lib/#{s.name}/postgresql-#{RJack::JDBCPostgres::DRIVER_VERSION}.jdbc4.jar" ]

@@ -14,7 +14,7 @@ RJack::TarPit.specify do |s|
   s.depend 'rjack-commons-codec',   '~> 1.4'
 
   s.depend 'rjack-logback',         '~> 1.2',   :dev
-  s.depend 'minitest',              '~> 2.2',   :dev
+  s.depend 'minitest',              '~> 4.7.4', :dev
 
   s.assembly_version = '1.0'
   s.jars =

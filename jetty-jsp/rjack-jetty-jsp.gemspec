@@ -13,7 +13,7 @@ RJack::TarPit.specify do |s|
   s.depend 'rjack-jetty',      "~> 9.0.2"
 
   s.depend 'rjack-slf4j',      '>= 1.6.5',  '< 1.8',    :dev
-  s.depend 'minitest',         '~> 2.2',                :dev
+  s.depend 'minitest',         '~> 4.7.4',              :dev
 
   s.maven_strategy = :jars_from_assembly
   s.assembly_version = '1.0'

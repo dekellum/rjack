@@ -10,7 +10,7 @@ RJack::TarPit.specify do |s|
 
   s.add_developer( 'David Kellum', 'dek-oss@gravitext.com' )
 
-  s.depend 'minitest',              '~> 2.2',       :dev
+  s.depend 'minitest',              '~> 4.7.4',     :dev
 
   def s.loaders
     RJack::SLF4J::ADAPTERS.flatten.compact - [ "jul-to-slf4j" ]

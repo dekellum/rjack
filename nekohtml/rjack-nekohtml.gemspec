@@ -11,7 +11,7 @@ RJack::TarPit.specify do |s|
   s.add_developer( 'David Kellum', 'dek-oss@gravitext.com' )
 
   s.depend 'rjack-xerces',          '~> 2.9.1'
-  s.depend 'minitest',              '~> 2.2',       :dev
+  s.depend 'minitest',              '~> 4.7.4',     :dev
 
   s.assembly_version = '1.0'
 

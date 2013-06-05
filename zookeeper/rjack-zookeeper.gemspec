@@ -16,5 +16,5 @@ RJack::TarPit.specify do |s|
   s.depend 'rjack-logback',   '~> 1.2'
   s.depend 'rjack-netty',     '~> 3.2.2'
 
-  s.depend 'minitest',        '~> 2.3',   :dev
+  s.depend 'minitest',        '~> 4.7.4', :dev
 end

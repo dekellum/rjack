@@ -16,7 +16,7 @@ RJack::TarPit.specify do |s|
   s.maven_strategy = :jars_from_assembly
   s.assembly_version = 1.0
 
-  s.depend 'minitest',        '~> 2.10',      :dev
+  s.depend 'minitest',        '~> 4.7.4',     :dev
   s.depend 'rjack-tarpit',    '~> 2.0',       :dev
 
   # Since an install'd rjack-maven will be used to build this, avoid

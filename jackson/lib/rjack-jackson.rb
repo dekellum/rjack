@@ -24,7 +24,8 @@ require 'java'
 #
 module RJack
   module Jackson
-    require "#{LIB_DIR}/jackson-core-asl-#{JACKSON_VERSION}.jar"
-    require "#{LIB_DIR}/jackson-mapper-asl-#{JACKSON_VERSION}.jar"
+    require "#{LIB_DIR}/jackson-core-#{JACKSON_VERSION}.jar"
+    require "#{LIB_DIR}/jackson-databind-#{JACKSON_VERSION}.jar"
+    require "#{LIB_DIR}/jackson-annotations-#{JACKSON_VERSION}.jar"
   end
 end

@@ -25,16 +25,13 @@ require 'minitest/autorun'
 
 require 'rjack-jackson'
 
-require 'rjack-jackson/jaxrs'
-require 'rjack-jackson/xc'
-
 class TestJackson < MiniTest::Unit::TestCase
   include RJack
 
-  import 'org.codehaus.jackson.JsonParser'
+  import 'com.fasterxml.jackson.core.JsonParser'
 
-  import 'org.codehaus.jackson.jaxrs.MapperConfigurator'       #jaxrs
-  import 'org.codehaus.jackson.xc.DataHandlerJsonDeserializer' #xc
+  import 'com.fasterxml.jackson.databind.JsonNode' #databind
+  import 'com.fasterxml.jackson.annotation.JacksonAnnotation' #annotations
 
   def test_load
     pass

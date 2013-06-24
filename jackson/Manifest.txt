@@ -7,10 +7,7 @@ assembly.xml
 pom.xml
 lib/rjack-jackson/base.rb
 lib/rjack-jackson.rb
-lib/rjack-jackson/jaxrs.rb
-lib/rjack-jackson/xc.rb
 test/test_jackson.rb
-lib/rjack-jackson/jackson-core-asl-1.8.11.jar
-lib/rjack-jackson/jackson-jaxrs-1.8.11.jar
-lib/rjack-jackson/jackson-mapper-asl-1.8.11.jar
-lib/rjack-jackson/jackson-xc-1.8.11.jar
+lib/rjack-jackson/jackson-annotations-2.2.2.jar
+lib/rjack-jackson/jackson-core-2.2.2.jar
+lib/rjack-jackson/jackson-databind-2.2.2.jar

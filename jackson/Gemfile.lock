@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rjack-jackson (1.8.11.0-java)
+    rjack-jackson (2.2.2.0-java)
 
 GEM
   remote: https://rubygems.org/

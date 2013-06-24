@@ -1,4 +1,4 @@
-=== 2.2.2.0 (TBD)
+=== 2.2.2.0 (2013-6-24)
 * Update to Jackson 2.2.2. This is a major update, including new java
   package names under com.fasterxml.jackson. See
   {Release 2.0}[http://wiki.fasterxml.com/JacksonRelease20] for

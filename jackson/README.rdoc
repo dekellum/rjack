@@ -6,7 +6,7 @@
 
 == Description
 
-A gem packaging of {Jackson JSON Processor}[http://jackson.codehaus.org/].
+A gem packaging of {Jackson JSON Processor}[http://wiki.fasterxml.com/JacksonHome].
 
 == License
 

@@ -14,6 +14,6 @@ RJack::TarPit.specify do |s|
 
   s.assembly_version = '1.0'
 
-  s.jars = %w[ core-asl mapper-asl jaxrs xc ].
+  s.jars = %w[ core databind annotations ].
     map { |m| "jackson-#{m}-#{ RJack::Jackson::JACKSON_VERSION }.jar" }
 end

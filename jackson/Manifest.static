@@ -7,6 +7,4 @@ assembly.xml
 pom.xml
 lib/rjack-jackson/base.rb
 lib/rjack-jackson.rb
-lib/rjack-jackson/jaxrs.rb
-lib/rjack-jackson/xc.rb
 test/test_jackson.rb

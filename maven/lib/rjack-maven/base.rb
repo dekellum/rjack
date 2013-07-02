@@ -16,7 +16,7 @@
 
 module RJack
   module Maven
-    MAVEN_VERSION = '3.0.4'
+    MAVEN_VERSION = '3.0.5'
     VERSION = MAVEN_VERSION + '.0'
     LIB_DIR = File.dirname( __FILE__ ) # :nodoc:
   end

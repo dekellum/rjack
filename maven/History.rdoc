@@ -1,3 +1,6 @@
+=== 3.0.5.0 (TBD)
+* Update to maven 3.0.5 (includes Wagon 2.4 with SSL improvements)
+
 === 3.0.4.0 (2012-6-9)
 * Update to maven 3.0.4
 

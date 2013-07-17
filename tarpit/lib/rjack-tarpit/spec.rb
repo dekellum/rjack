@@ -192,7 +192,7 @@ module RJack::TarPit
       super( val.gsub( /\s+/, ' ' ).strip )
     end
 
-    # Set summary. This override cleans up whitespace.
+    # Set description. This override cleans up whitespace.
     def description=( val )
       super( val.gsub( /\s+/, ' ' ).strip )
     end

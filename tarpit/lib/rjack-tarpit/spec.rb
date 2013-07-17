@@ -39,10 +39,8 @@ module RJack::TarPit
       # object. Deriving our own Specification subclass would cause
       # problems with to_yaml.
       spec = Gem::Specification.new
-      class << spec
-        include SpecHelper
-        include ReadmeParser
-      end
+      spec.extend( SpecHelper )
+      spec.extend( ReadmeParser )
 
       specfile = caller[0] =~ /^(.*\.gemspec)/ && $1
 

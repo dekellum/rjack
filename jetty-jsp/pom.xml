@@ -15,7 +15,7 @@
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-jsp</artifactId>
       <!-- This 'jar' contains nothing but a pom, for dependencies -->
-      <version>7.6.7.v20120910</version>
+      <version>7.6.12.v20130726</version>
     </dependency>
   </dependencies>
 

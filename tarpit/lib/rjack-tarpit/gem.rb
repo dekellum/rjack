@@ -72,7 +72,7 @@ module RJack::TarPit
         require 'rubygems'
         require 'rubygems/command_manager'
         force = ( args[:force] == 'force' )
-        ( @spec.extra_deps + @spec.extra_dev_deps ).each do |dep|
+        @spec.dependencies.each do |dep|
           if force
             gem_install_dep( dep )
           else
@@ -90,8 +90,8 @@ module RJack::TarPit
     def gem_install_dep( dep )
       puts "Install: " + dep.inspect
       cm = Gem::CommandManager.instance
-      c = [ 'install', '--remote', '-V', dep.first ]
-      c += dep[1..-1].map { |r| [ '-v', r ] }.flatten
+      c = [ 'install', '--remote', '-V', dep.name ]
+      c += dep.requirement.as_list.map { |r| [ '-v', r ] }.flatten
       cm.run( gem_config( *c ) )
     rescue Gem::SystemExitException => x
       raise "Install failed (#{x.exit_code})" if x.exit_code != 0

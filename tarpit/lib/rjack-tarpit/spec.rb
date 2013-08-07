@@ -20,6 +20,18 @@ require 'rjack-tarpit/readme_parser'
 
 require 'fileutils'
 
+# RubyGems 2.x (at least 2.0.0-2.0.5) writes warnings for
+# unresolved_deps and Bundler 1.3.5 (at least) does a
+# Specification.reset triggering this on the tarpit dependencies. Use
+# the Gem.pre_reset hook facility to clear these unresolved_deps (a
+# post outcome of reset anyway) and avoid the noisy warning.
+if defined?( Gem.pre_reset ) && defined?( Gem::Specification.unresolved_deps )
+  Gem.pre_reset do
+    deps = Gem::Specification.unresolved_deps
+    deps.clear if deps && defined?( deps.clear )
+  end
+end
+
 module RJack::TarPit
 
   class << self
@@ -39,10 +51,8 @@ module RJack::TarPit
       # object. Deriving our own Specification subclass would cause
       # problems with to_yaml.
       spec = Gem::Specification.new
-      class << spec
-        include SpecHelper
-        include ReadmeParser
-      end
+      spec.extend( SpecHelper )
+      spec.extend( ReadmeParser )
 
       specfile = caller[0] =~ /^(.*\.gemspec)/ && $1
 
@@ -194,7 +204,7 @@ module RJack::TarPit
       super( val.gsub( /\s+/, ' ' ).strip )
     end
 
-    # Set summary. This override cleans up whitespace.
+    # Set description. This override cleans up whitespace.
     def description=( val )
       super( val.gsub( /\s+/, ' ' ).strip )
     end

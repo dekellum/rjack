@@ -305,7 +305,8 @@ lib/rjack-solr/commons-cli-1.2.jar
 lib/rjack-solr/commons-fileupload-1.2.1.jar
 lib/rjack-solr/commons-io-2.1.jar
 lib/rjack-solr/commons-lang-2.6.jar
+lib/rjack-solr/noggit-0.5.jar
 lib/rjack-solr/org.restlet-2.1.1.jar
 lib/rjack-solr/org.restlet.ext.servlet-2.1.1.jar
-lib/rjack-solr/solr-core-4.2.1.jar
-lib/rjack-solr/solr-solrj-4.2.1.jar
+lib/rjack-solr/solr-core-4.3.1.jar
+lib/rjack-solr/solr-solrj-4.3.1.jar

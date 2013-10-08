@@ -1,3 +1,7 @@
+=== 4.3.1.0 (TBD)
+* Upgrade to Solr 4.3.1
+* Upgrade httpclient-4 >= 4.2.3, < 4.4
+
 === 4.2.1.1 (2013-5-6)
 * Fix rjack-jetty-jsp dependency: 7.6.7.0 is current for 7.6.x series.
 

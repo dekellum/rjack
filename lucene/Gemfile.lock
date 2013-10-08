@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rjack-lucene (4.2.1.0-java)
+    rjack-lucene (4.3.1.0-java)
       rjack-commons-codec (>= 1.7.0, < 1.9)
 
 GEM
@@ -29,6 +29,6 @@ PLATFORMS
 
 DEPENDENCIES
   minitest (~> 4.7.4)
-  rjack-icu (>= 4.49.1, < 4.51)
+  rjack-icu (>= 4.49.1, < 4.52)
   rjack-lucene!
   rjack-tarpit (~> 2.0)

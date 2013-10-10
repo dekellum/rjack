@@ -1,5 +1,6 @@
 === 1.9.19.0 (TBD)
 * Upgrade to Neko HTML 1.9.19
+* Upgrade to rjack-xerces >= 2.10.0, < 2.12
 
 === 1.9.18.0 (2013-3-9)
 * Upgrade to Neko HTML 1.9.18

@@ -18,7 +18,7 @@ module RJack
   module Netty
 
     # Netty (java) version, numeric component
-    NETTY_N_VERSION = '3.6.3'
+    NETTY_N_VERSION = '3.6.6'
 
     # Netty (java) version
     NETTY_VERSION = NETTY_N_VERSION + '.Final'

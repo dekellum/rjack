@@ -18,7 +18,7 @@ module RJack
   module Guava
 
     # Guava (java) version
-    GUAVA_VERSION = '13.0.1'
+    GUAVA_VERSION = '14.0.1'
 
     # rjack gem version
     VERSION = GUAVA_VERSION + '.0'

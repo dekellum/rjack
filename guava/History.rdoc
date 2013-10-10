@@ -1,3 +1,6 @@
+=== 15.0.0.0 (TBD)
+* Upgrade to guava 15.0
+
 === 14.0.1.0 (2013-10-11)
 * Upgrade to guava 14.0.1
 

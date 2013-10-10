@@ -18,10 +18,10 @@ module RJack
   module Guava
 
     # Guava (java) version
-    GUAVA_VERSION = '14.0.1'
+    GUAVA_VERSION = '15.0'
 
     # rjack gem version
-    VERSION = GUAVA_VERSION + '.0'
+    VERSION = GUAVA_VERSION + '.0.0'
 
     LIB_DIR = File.dirname( __FILE__ ) # :nodoc:
   end

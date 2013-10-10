@@ -16,7 +16,7 @@ release's sample config:
 
   % mkdir -p /var/local/rjack-solr
   % cd /var/local/rjack-solr
-  % svn checkout http://svn.apache.org/repos/asf/lucene/dev/tags/lucene_solr_4_2_1/solr/example/solr/collection1
+  % svn checkout http://svn.apache.org/repos/asf/lucene/dev/tags/lucene_solr_4_3_1/solr/example/solr/collection1
 
   # Edit collection1/conf/schema.xml and remove/comment out the text_ja fieldType
   # The Kuromoji Japanese Morphological is not included in

@@ -18,10 +18,10 @@ module RJack
   module Solr
 
     # SOLR (java) version
-    CORE_VERSION = '4.2.1'
+    CORE_VERSION = '4.3.1'
 
     # rjack gem version
-    VERSION = CORE_VERSION + '.1'
+    VERSION = CORE_VERSION + '.0'
 
     LIB_DIR = File.dirname( __FILE__ ) # :nodoc:
   end

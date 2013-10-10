@@ -32,7 +32,7 @@ module RJack
   module ProtoBuf
 
     # Commons pool (java) version
-    PB_VERSION = '2.4.1'
+    PB_VERSION = '2.5.0'
 
     # rjack gem version
     VERSION = PB_VERSION + '.0'

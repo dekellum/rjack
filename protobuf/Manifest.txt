@@ -7,4 +7,4 @@ pom.xml
 lib/rjack-protobuf/base.rb
 lib/rjack-protobuf.rb
 test/test_protobuf.rb
-lib/rjack-protobuf/protobuf-java-2.4.1.jar
+lib/rjack-protobuf/protobuf-java-2.5.0.jar

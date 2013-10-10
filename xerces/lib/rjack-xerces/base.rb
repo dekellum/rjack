@@ -18,7 +18,7 @@ module RJack
   module Xerces
 
     # xerces (java) version
-    XERCES_VERSION = '2.9.1'
+    XERCES_VERSION = '2.11.0'
 
     # rjack gem version
     VERSION = XERCES_VERSION + '.0'

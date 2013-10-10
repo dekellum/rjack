@@ -1,2 +1,5 @@
+=== 2.11.0.0 (TBD)
+* Upgrade to Xerces2-Java 2.11.0
+
 === 2.9.1.0 (2010-8-31)
 * Initial release based on Xerces2-Java 2.9.1

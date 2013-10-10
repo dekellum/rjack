@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rjack-guava (13.0.1.0-java)
+    rjack-guava (14.0.1.0-java)
 
 GEM
   remote: https://rubygems.org/

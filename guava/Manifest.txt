@@ -8,4 +8,4 @@ pom.xml
 lib/rjack-guava/base.rb
 lib/rjack-guava.rb
 test/test_guava.rb
-lib/rjack-guava/guava-13.0.1.jar
+lib/rjack-guava/guava-14.0.1.jar

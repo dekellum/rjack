@@ -1,4 +1,4 @@
-=== 4.3.1.0 (TBD)
+=== 4.3.1.0 (2013-10-11)
 * Upgrade to Solr 4.3.1
 * Upgrade httpclient-4 >= 4.2.3, < 4.4
 

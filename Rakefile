@@ -24,6 +24,7 @@ gems = %w[ tarpit
            xerces
            nekohtml
            protobuf
+           jdbc-postgres
            jms-spec
            jms
            qpid-client

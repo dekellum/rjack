@@ -5,7 +5,7 @@ PATH
       rjack-jetty (~> 9.0.2)
 
 PATH
-  remote: /home/david/src/rjack/jetty
+  remote: ../jetty
   specs:
     rjack-jetty (9.0.6.0-java)
 

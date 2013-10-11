@@ -36,7 +36,7 @@ GEM
     rjack-httpclient-4 (4.3.1.0-java)
       rjack-commons-codec (>= 1.6.0, < 1.9)
       rjack-slf4j (>= 1.6.5, < 1.8)
-    rjack-icu (4.50.1.0-java)
+    rjack-icu (4.51.2.0-java)
     rjack-jetty (9.0.6.0-java)
     rjack-jetty-jsp (9.0.2.0-java)
       rjack-jetty (~> 9.0.2)

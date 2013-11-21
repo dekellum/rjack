@@ -69,7 +69,7 @@ project is re-packaging upstream jars as a gem.
 Sample gemspec for a gem including a single jar, built from java
 source with maven (see also included test/jproject):
 
-  gem 'rjack-tarpit', '~> 2.0'
+  gem 'rjack-tarpit', '~> 2.1'
   require 'rjack-tarpit/spec'
 
   RJack::TarPit.specify do |s|

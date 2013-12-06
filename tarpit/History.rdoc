@@ -1,4 +1,4 @@
-=== 2.1.0 (TBD)
+=== 2.1.0 (2013-12-5)
 * Drop gemspec (java) dependency on jruby-openssl. This breaks jruby
   1.6.x compatibility, at minimum, for the rubygems "rake push"
   target. We can't just update or broaden the jruby-openssl dependency

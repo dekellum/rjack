@@ -1,6 +1,6 @@
 # -*- ruby -*-
 
-gem 'rjack-tarpit', '~> 2.0'
+gem 'rjack-tarpit', '~> 2.1'
 require 'rjack-tarpit/spec'
 
 RJack::TarPit.specify do |s|
@@ -23,9 +23,8 @@ RJack::TarPit.specify do |s|
         [ n, RJack::Jetty::JETTY_VERSION, RJack::Jetty::JETTY_BUILD ]
     end
 
-  s.jars += [ "javax.servlet-%s.%s.jar" %
-              [ RJack::Jetty::SERVLET_API_VERSION,
-                RJack::Jetty::SERVLET_API_BUILD ] ,
+  s.jars += [ "javax.servlet-api-%s.jar" %
+              [ RJack::Jetty::SERVLET_API_VERSION ] ,
               "rjack-jetty-1.0.jar" ]
 
   s.generated_files = [ 'webapps/test.war' ]

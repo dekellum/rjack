@@ -1,6 +1,6 @@
 # -*- ruby -*-
 
-gem 'rjack-tarpit', '~> 2.0'
+gem 'rjack-tarpit', '~> 2.1'
 require 'rjack-tarpit/spec'
 
 RJack::TarPit.specify do |s|
@@ -10,7 +10,7 @@ RJack::TarPit.specify do |s|
 
   s.add_developer( 'David Kellum', 'dek-oss@gravitext.com' )
 
-  s.depend 'rjack-jetty',      "~> 9.0.2"
+  s.depend 'rjack-jetty',      "~> 9.1.0"
 
   s.depend 'rjack-slf4j',      '>= 1.6.5',  '< 1.8',    :dev
   s.depend 'minitest',         '~> 4.7.4',              :dev

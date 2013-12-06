@@ -1,4 +1,4 @@
-=== 9.1.0.0 (TBD)
+=== 9.1.0.0 (2013-12-5)
 * Upgrade to rjack-jetty ~> 9.1.0 and dependencies:
   * javax.servlet.jsp 2.3.2
   * javax.el 3.0.0

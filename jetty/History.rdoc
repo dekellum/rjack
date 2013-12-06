@@ -1,4 +1,4 @@
-=== 9.1.0.0 (TBD)
+=== 9.1.0.0 (2013-12-5)
 * Update to Jetty 9.1.0.v20131115
 * Includes javax.servlet 3.1.0
 

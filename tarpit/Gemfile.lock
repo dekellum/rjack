@@ -25,6 +25,7 @@ PLATFORMS
 
 DEPENDENCIES
   minitest (~> 4.7.4)
+  rdoc (~> 4.0.1)
   rjack-logback (~> 1.5)
   rjack-slf4j (~> 1.7.0)
   rjack-tarpit!

@@ -13,6 +13,7 @@ RJack::TarPit.specify do |s|
   s.depend 'rjack-slf4j',           '>= 1.6.5', '< 1.8'
 
   s.depend 'minitest',              '~> 4.7.4', :dev
+  s.depend 'rdoc',                  '~> 4.0.1', :dev
 
   s.assembly_version = '1.0'
 

@@ -12,6 +12,7 @@ RJack::TarPit.specify do |s|
 
   s.depend 'rjack-xerces',          '>= 2.10.0', '< 2.12'
   s.depend 'minitest',              '~> 4.7.4',     :dev
+  s.depend 'rdoc',                  '~> 4.0.1',     :dev
 
   s.assembly_version = '1.0'
 

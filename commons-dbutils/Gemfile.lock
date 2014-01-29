@@ -22,5 +22,6 @@ PLATFORMS
 
 DEPENDENCIES
   minitest (~> 4.7.4)
+  rdoc (~> 4.0.1)
   rjack-commons-dbutils!
   rjack-tarpit (~> 2.1)

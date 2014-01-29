@@ -25,6 +25,7 @@ PLATFORMS
 
 DEPENDENCIES
   minitest (~> 4.7.4)
+  rdoc (~> 4.0.1)
   rjack-jetty!
   rjack-logback (~> 1.2)
   rjack-slf4j (>= 1.6.5, < 1.8)

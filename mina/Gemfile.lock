@@ -26,6 +26,7 @@ PLATFORMS
 
 DEPENDENCIES
   minitest (~> 4.7.4)
+  rdoc (~> 4.0.1)
   rjack-logback (~> 1.2)
   rjack-mina!
   rjack-tarpit (~> 2.1)

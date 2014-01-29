@@ -10,7 +10,7 @@ GEM
   specs:
     json (1.8.1-java)
     minitest (4.7.5)
-    rake (10.1.0)
+    rake (10.1.1)
     rdoc (4.0.1)
       json (~> 1.4)
     rjack-logback (1.6.1-java)

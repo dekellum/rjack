@@ -1,2 +1,2 @@
 rjack-jms gem
-Copyright (c) 2011-2013 David Kellum
+Copyright (c) 2011-2014 David Kellum

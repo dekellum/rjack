@@ -1,5 +1,5 @@
 #--
-# Copyright (c) 2008-2013 David Kellum
+# Copyright (c) 2008-2014 David Kellum
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you
 # may not use this file except in compliance with the License.  You
@@ -17,10 +17,10 @@
 module RJack
   module Jetty
     module Jsp
-      JETTY_VERSION = '9.0.2'
+      JETTY_VERSION = '9.1.0'
       GEM_VERSION = '0'
       VERSION = [ JETTY_VERSION, GEM_VERSION ].join( '.' )
-      JSP_VERSION = '2.2'
+      JSP_VERSION = '2.3.1'
 
       JETTY_JSP_DIR = File.dirname( __FILE__ ) # :nodoc:
 

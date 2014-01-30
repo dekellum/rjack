@@ -1,3 +1,8 @@
+=== 9.1.0.0 (2013-12-5)
+* Upgrade to rjack-jetty ~> 9.1.0 and dependencies:
+  * javax.servlet.jsp 2.3.2
+  * javax.el 3.0.0
+
 === 9.0.2.0 (2013-4-17)
 * Upgrade to rjack-jetty ~> 9.0.2
 * Jetty 9.0.2.v20130417 level dependencies, including upgrades:

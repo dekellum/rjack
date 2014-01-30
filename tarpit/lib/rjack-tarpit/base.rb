@@ -1,5 +1,5 @@
 #--
-# Copyright (c) 2009-2013 David Kellum
+# Copyright (c) 2009-2014 David Kellum
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you
 # may not use this file except in compliance with the License.  You
@@ -16,7 +16,7 @@
 
 module RJack
   module TarPit
-    MINOR_VERSION = '2.0'
-    VERSION = MINOR_VERSION + '.3'
+    MINOR_VERSION = '2.1'
+    VERSION = MINOR_VERSION + '.0'
   end
 end

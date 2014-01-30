@@ -3,3 +3,5 @@
 source 'https://rubygems.org'
 
 gemspec :name => 'rjack-tarpit'
+
+gem 'rdoc', '~> 4.0.1'

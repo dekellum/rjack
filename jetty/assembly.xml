@@ -18,7 +18,7 @@
         <include>org.eclipse.jetty:jetty-util</include>
         <include>org.eclipse.jetty:jetty-rewrite</include>
         <include>org.eclipse.jetty:jetty-client</include>
-        <include>org.eclipse.jetty.orbit:javax.servlet</include>
+        <include>javax.servlet:javax.servlet-api</include>
         <include>rjack:rjack-jetty</include>
       </includes>
     </dependencySet>

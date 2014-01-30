@@ -1,5 +1,5 @@
 #--
-# Copyright (c) 2008-2013 David Kellum
+# Copyright (c) 2008-2014 David Kellum
 # All rights reserved.
 #
 # Permission is hereby granted, free of charge, to any person obtaining

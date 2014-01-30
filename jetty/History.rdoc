@@ -1,3 +1,13 @@
+=== 9.1.1.0 (2014-1-29)
+* Update to Jetty 9.1.1.v20140108
+
+=== 9.1.0.0 (2013-12-5)
+* Update to Jetty 9.1.0.v20131115
+* Includes javax.servlet 3.1.0
+
+=== 9.0.7.0 (2013-11-21)
+* Update to Jetty 9.0.7.v20131107
+
 === 9.0.6.0 (2013-10-7)
 * Update to Jetty 9.0.6.v20130930
 
@@ -39,6 +49,9 @@
   provided RJack::Jetty::ServerFactory, for example create_connectors
   now takes a server parameter.
 * The minimum thread count is raised to 7 (per testing).
+
+=== 7.6.14.0 (2013-11-7)
+* Update to Jetty 7.6.14.v20131031
 
 === 7.6.13.0 (2013-9-23)
 * Update to Jetty 7.6.13.v20130916

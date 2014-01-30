@@ -18,6 +18,7 @@ RJack::TarPit.specify do |s|
 
   s.depend 'minitest',        '~> 4.7.4',     :dev
   s.depend 'rjack-tarpit',    '~> 2.0',       :dev
+  s.depend 'rdoc',            '~> 4.0.1',     :dev
 
   # Since an install'd rjack-maven will be used to build this, avoid
   # warnings by removing constants loaded above.

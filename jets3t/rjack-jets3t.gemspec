@@ -16,6 +16,7 @@ RJack::TarPit.specify do |s|
 
   s.depend 'rjack-logback',       '~> 1.2',    :dev
   s.depend 'minitest',            '~> 4.7.4',  :dev
+  s.depend 'rdoc',                '~> 4.0.1',  :dev
 
   s.assembly_version = '1.0'
   s.maven_strategy = :jars_from_assembly

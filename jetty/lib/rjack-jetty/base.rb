@@ -1,5 +1,5 @@
 #--
-# Copyright (c) 2008-2013 David Kellum
+# Copyright (c) 2008-2014 David Kellum
 #
 # Licensed under the Apache License, Version 2.0 (the "License"); you
 # may not use this file except in compliance with the License.  You
@@ -16,11 +16,10 @@
 
 module RJack
   module Jetty
-    JETTY_VERSION = '9.0.6'
+    JETTY_VERSION = '9.1.1'
     VERSION = JETTY_VERSION + '.0'
-    JETTY_BUILD = 'v20130930'
-    SERVLET_API_VERSION = '3.0.0'
-    SERVLET_API_BUILD = 'v201112011016'
+    JETTY_BUILD = 'v20140108'
+    SERVLET_API_VERSION = '3.1.0'
 
     JETTY_DIR = File.dirname( __FILE__ ) # :nodoc:
   end

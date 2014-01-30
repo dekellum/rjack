@@ -1,5 +1,5 @@
 #--
-# Copyright (c) 2013 David Kellum
+# Copyright (c) 2013-2014 David Kellum
 # All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
@@ -32,7 +32,7 @@ module RJack
   module JDBCPostgres
 
     # Postgres JDBC Driver version
-    DRIVER_VERSION = "9.2-1003"
+    DRIVER_VERSION = "9.3-1100"
 
     # rjack gem version
     VERSION = DRIVER_VERSION.gsub( '-', '.' ) + '.0'

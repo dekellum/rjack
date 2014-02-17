@@ -1,4 +1,4 @@
-=== 9.1.2.0 (TBD)
+=== 9.1.2.0 (2014-2-17)
 * Upgrade to rjack-jetty ~> 9.1.2 and dependencies:
   * jstl (taglibs) 1.2.2
 

@@ -17,8 +17,6 @@ GEM
     rake (10.1.1)
     rdoc (4.0.1)
       json (~> 1.4)
-    rjack-logback (1.6.1-java)
-      rjack-slf4j (>= 1.6.5, < 1.8)
     rjack-maven (3.0.5.0-java)
     rjack-slf4j (1.7.5.0-java)
     rjack-tarpit (2.1.0-java)
@@ -34,6 +32,5 @@ DEPENDENCIES
   rdoc (~> 4.0.1)
   rjack-jetty!
   rjack-jetty-jsp!
-  rjack-logback (~> 1.2)
   rjack-slf4j (>= 1.6.5, < 1.8)
   rjack-tarpit (~> 2.1)

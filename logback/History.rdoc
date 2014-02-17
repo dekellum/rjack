@@ -1,5 +1,5 @@
 === 1.7.0 (TBD)
-* Upgraded to Logback 1.1.0
+* Upgraded to Logback 1.1.1
 
 === 1.6.1 (2013-5-5)
 * Upgraded to Logback 1.0.12

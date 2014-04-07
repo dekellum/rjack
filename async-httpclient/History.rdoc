@@ -1,5 +1,6 @@
-=== 1.8.5.0 (TBD)
+=== 1.8.5.0 (2014-4-7)
 * Upgrade to Async Http Client 1.8.5
+* Upgrade to rjack-netty ~> 3.9.0
 
 === 1.7.24.0 (2014-4-7)
 * Upgrade to Async Http Client 1.7.24

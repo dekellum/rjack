@@ -37,7 +37,6 @@ module RJack
         :max_connection_per_host        => :maximum_connections_per_host,
         :max_redirects                  => :maximum_number_of_redirects,
         :max_total_connections          => :maximum_connections_total,
-        :reaper                         => :scheduled_executor_service,
         :redirect_enabled               => :follow_redirects,
         :remove_query_param_on_redirect => :remove_query_params_on_redirect,
         :ssl_connection_pool_enabled    => :allow_ssl_connection_pool
@@ -51,7 +50,7 @@ module RJack
           compact
 
         props -= %w[ valid class closed ]      #bogus
-        props += %w[ reaper executor_service ] #without get_
+        props += %w[ executor_service ]        #without get_
 
         props.map! { |p| p.to_sym }
         props.inject( {} ) do |h,p|

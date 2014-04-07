@@ -50,7 +50,7 @@ module RJack
           map { |m| m =~ /^(is|get)_([a-z0-9_]+)$/ && $2 }.
           compact
 
-        props -= %w[ class closed ]            #bogus
+        props -= %w[ valid class closed ]      #bogus
         props += %w[ reaper executor_service ] #without get_
 
         props.map! { |p| p.to_sym }

@@ -8,4 +8,4 @@ pom.xml
 lib/rjack-netty/base.rb
 lib/rjack-netty.rb
 test/test_netty.rb
-lib/rjack-netty/netty-3.6.8.Final.jar
+lib/rjack-netty/netty-3.9.0.Final.jar

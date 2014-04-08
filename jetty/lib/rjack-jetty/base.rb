@@ -16,9 +16,9 @@
 
 module RJack
   module Jetty
-    JETTY_VERSION = '9.1.3'
+    JETTY_VERSION = '9.1.4'
     VERSION = JETTY_VERSION + '.0'
-    JETTY_BUILD = 'v20140225'
+    JETTY_BUILD = 'v20140401'
     SERVLET_API_VERSION = '3.1.0'
 
     JETTY_DIR = File.dirname( __FILE__ ) # :nodoc:

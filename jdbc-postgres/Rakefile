@@ -4,15 +4,16 @@ require 'rubygems'
 require 'bundler/setup'
 require 'rjack-tarpit'
 
-RJack::TarPit.new( 'rjack-jdbc-postgres' ) do |tp|
-
-  tp.rdoc_destinations <<
-    'dekellum@rubyforge.org:/var/www/gforge-projects/rjack/jdbc-postgres'
-  tp.publish_rdoc_rsync_flags = %w[ -rL ]
-
-end
+RJack::TarPit.new( 'rjack-jdbc-postgres' ).define_tasks
 
 jar = "postgresql-#{RJack::JDBCPostgres::DRIVER_VERSION}.jdbc4.jar"
 file "lib/rjack-jdbc-postgres/#{jar}" do |t|
   sh "curl -sf -o #{t.name} http://jdbc.postgresql.org/download/#{jar}"
+end
+
+desc "Upload RDOC to Amazon S3 (rdoc.gravitext.com/rjack, Oregon)"
+task :publish_rdoc => [ :clean, :rerdoc ] do
+  sh <<-SH
+    aws s3 sync --acl public-read doc/ s3://rjack.gravitext.com/jdbc-postgres/
+  SH
 end

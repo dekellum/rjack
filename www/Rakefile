@@ -13,8 +13,9 @@ task :clean do
 end
 
 task :publish => PUB_FILES do
-  sh( "rsync -auP #{ PUB_FILES.join ' ' } " +
-      'dekellum@rubyforge.org:/var/www/gforge-projects/rjack/' )
+  includes = PUB_FILES.map { |f| "--include #{f}" }.join( ' ' )
+  sh( "aws s3 sync --acl public-read --exclude '*' #{includes} " +
+      ". s3://rjack.gravitext.com/" )
 end
 
 file 'rjack.svg' => [ 'rjack.dot' ] do

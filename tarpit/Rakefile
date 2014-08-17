@@ -7,10 +7,6 @@ require 'rjack-tarpit'
 
 RJack::TarPit.new( 'rjack-tarpit' ) do |tp|
 
-  tp.rdoc_destinations <<
-    'dekellum@rubyforge.org:/var/www/gforge-projects/rjack/tarpit'
-  tp.publish_rdoc_rsync_flags = %w[ -rL ]
-
   desc "Check that README sample has latest version"
   task :check_sample_version do
     tp.test_line_match( 'README.rdoc',
@@ -19,4 +15,11 @@ RJack::TarPit.new( 'rjack-tarpit' ) do |tp|
   end
   [ :gem, :tag, :push ].each { |t| task t => :check_sample_version }
 
+end
+
+desc "Upload RDOC to Amazon S3 (rdoc.gravitext.com/rjack, Oregon)"
+task :publish_rdoc => [ :clean, :rerdoc ] do
+  sh <<-SH
+    aws s3 sync --acl public-read doc/ s3://rjack.gravitext.com/tarpit/
+  SH
 end

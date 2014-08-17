@@ -4,10 +4,11 @@ require 'rubygems'
 require 'bundler/setup'
 require 'rjack-tarpit'
 
-RJack::TarPit.new( 'rjack-jets3t' ) do |tp|
+RJack::TarPit.new( 'rjack-jets3t' ).define_tasks
 
-  tp.rdoc_destinations <<
-    'dekellum@rubyforge.org:/var/www/gforge-projects/rjack/jets3t'
-  tp.publish_rdoc_rsync_flags = %w[ -rL ]
-
+desc "Upload RDOC to Amazon S3 (rdoc.gravitext.com/rjack, Oregon)"
+task :publish_rdoc => [ :clean, :rerdoc ] do
+  sh <<-SH
+    aws s3 sync --acl public-read doc/ s3://rjack.gravitext.com/jets3t/
+  SH
 end

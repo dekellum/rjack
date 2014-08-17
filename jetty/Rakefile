@@ -4,16 +4,18 @@ require 'rubygems'
 require 'bundler/setup'
 require 'rjack-tarpit'
 
-RJack::TarPit.new( 'rjack-jetty' ) do |tp|
-
-  tp.rdoc_destinations <<
-    'dekellum@rubyforge.org:/var/www/gforge-projects/rjack/jetty'
-  tp.publish_rdoc_rsync_flags = %w[ -rL ]
-
-end
+RJack::TarPit.new( 'rjack-jetty' ).define_tasks
 
 file 'webapps/test.war' => [ 'webapps/test/index.html',
                              'webapps/test/WEB-INF/web.xml' ] do
   sh( 'jar cvf webapps/test.war ' +
       '-C webapps/test index.html -C webapps/test WEB-INF/web.xml' )
 end
+
+desc "Upload RDOC to Amazon S3 (rdoc.gravitext.com/rjack, Oregon)"
+task :publish_rdoc => [ :clean, :rerdoc ] do
+  sh <<-SH
+    aws s3 sync --acl public-read doc/ s3://rjack.gravitext.com/jetty/
+  SH
+end
+

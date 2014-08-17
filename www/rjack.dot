@@ -3,8 +3,8 @@ digraph "RJack Gem Dependency Graph" {
   rankdir=TB;
   size="7.0,6.5";
   node [ shape=box, style="filled,rounded", fillcolor="#f8df8b",
-         fontname="Arial", margin="0.15,0.1" ];
-  edge [ fontname="Arial" ];
+         fontname="sans-serif", margin="0.15,0.1" ];
+  edge [ fontname="sans-serif" ];
 
   "solr"          [ target=_parent, URL="solr/" ];
   "lucene"        [ target=_parent, URL="lucene/" ];

@@ -1,7 +1,7 @@
 = rjack-guava
 
-* http://rjack.rubyforge.org/guava
-* http://rjack.rubyforge.org
+* http://rjack.gravitext.com/guava
+* http://rjack.gravitext.com
 * https://github.com/dekellum/rjack
 
 == Description

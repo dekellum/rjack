@@ -1,7 +1,7 @@
 = rjack-zookeeper
 
-* http://rjack.rubyforge.org/zookeeper
-* http://rjack.rubyforge.org
+* http://rjack.gravitext.com/zookeeper
+* http://rjack.gravitext.com
 * https://github.com/dekellum/rjack
 
 == Description

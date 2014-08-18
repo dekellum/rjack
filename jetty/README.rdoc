@@ -1,7 +1,7 @@
 = rjack-jetty
 
-* http://rjack.rubyforge.org/jetty
-* http://rjack.rubyforge.org
+* http://rjack.gravitext.com/jetty
+* http://rjack.gravitext.com
 * https://github.com/dekellum/rjack
 
 == Description
@@ -19,7 +19,7 @@ for JRuby:
 * A jetty-service bin script for easy testing from the command line
 
 Note that JSP support is provided separately in the companion
-jetty-jsp[http://rjack.rubyforge.org/jetty-jsp/] gem.
+jetty-jsp[http://rjack.gravitext.com/jetty-jsp/] gem.
 
 == Synopsis
 
@@ -51,11 +51,11 @@ or
 No hard requirements, however:
 
 * To load webapps with JSPs, the
-  rjack-jetty-jsp[http://rjack.rubyforge.org/jetty-jsp/] gem
+  rjack-jetty-jsp[http://rjack.gravitext.com/jetty-jsp/] gem
   must be loaded.
-* Jetty will log to SLF4J[http://rjack.rubyforge.org/slf4j] if
+* Jetty will log to SLF4J[http://rjack.gravitext.com/slf4j] if
   loaded. The jetty-service script will attempt to load
-  rjack-logback[http://rjack.rubyforge.org/logback], and thus
+  rjack-logback[http://rjack.gravitext.com/logback], and thus
   rjack-slf4j, if available.
 
 == License

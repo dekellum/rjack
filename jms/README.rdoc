@@ -1,7 +1,7 @@
 = rjack-jms
 
-* http://rjack.rubyforge.org/jms
-* http://rjack.rubyforge.org
+* http://rjack.gravitext.com/jms
+* http://rjack.gravitext.com
 * https://github.com/dekellum/rjack
 
 == Description

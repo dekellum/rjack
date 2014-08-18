@@ -1,7 +1,7 @@
 = rjack-commons-pool
 
-* http://rjack.rubyforge.org/commons-pool
-* http://rjack.rubyforge.org
+* http://rjack.gravitext.com/commons-pool
+* http://rjack.gravitext.com
 * https://github.com/dekellum/rjack
 
 == Description

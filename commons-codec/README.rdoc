@@ -1,7 +1,7 @@
 = rjack-commons-codec
 
-* http://rjack.rubyforge.org/commons-codec
-* http://rjack.rubyforge.org
+* http://rjack.gravitext.com/commons-codec
+* http://rjack.gravitext.com
 * https://github.com/dekellum/rjack
 
 == Description

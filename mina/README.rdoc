@@ -1,7 +1,7 @@
 = rjack-mina
 
-* http://rjack.rubyforge.org/mina
-* http://rjack.rubyforge.org
+* http://rjack.gravitext.com/mina
+* http://rjack.gravitext.com
 * https://github.com/dekellum/rjack
 
 == Description

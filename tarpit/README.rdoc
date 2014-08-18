@@ -1,7 +1,7 @@
 = rjack-tarpit
 
-* http://rjack.rubyforge.org/tarpit
-* http://rjack.rubyforge.org
+* http://rjack.gravitext.com/tarpit
+* http://rjack.gravitext.com
 * https://github.com/dekellum/rjack
 
 == Description
@@ -15,7 +15,7 @@ gemspec benefits from sensible automation but remains in
 a <project>.gemspec per Bundler's requirements.
 
 For java platform projects, TarPit offers Maven integration via the
-rjack-maven[http://rjack.rubyforge.org/maven] gem. Maven
+rjack-maven[http://rjack.gravitext.com/maven] gem. Maven
 package/install is run as needed, and jars are linked to the gem lib
 directory for inclusion, with semi-automatic Manifest.txt production.
 No need to bloat your git repo by checking in every version of every

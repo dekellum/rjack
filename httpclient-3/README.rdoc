@@ -1,7 +1,7 @@
 = rjack-httpclient-3
 
-* http://rjack.rubyforge.org/httpclient-3
-* http://rjack.rubyforge.org
+* http://rjack.gravitext.com/httpclient-3
+* http://rjack.gravitext.com
 * https://github.com/dekellum/rjack
 
 == Description
@@ -32,12 +32,12 @@ See {org.apache.commons.HttpClient}[http://hc.apache.org/httpclient-3.x/apidocs/
 
 == Requirements
 
-* rjack-commons-codec[http://rjack.rubyforge.org/commons-codec].
+* rjack-commons-codec[http://rjack.gravitext.com/commons-codec].
 
-* rjack-slf4j[http://rjack.rubyforge.org/slf4j].
+* rjack-slf4j[http://rjack.gravitext.com/slf4j].
 
 * An SLF4J output adaptor such as 'rjack-slf4j/simple' or
-  rjack-logback[http://rjack.rubyforge.org/logback] must be require'd
+  rjack-logback[http://rjack.gravitext.com/logback] must be require'd
   before rjack-httpclient.  (The rjack-logback gem is listed as a
   development dependency only.)
 

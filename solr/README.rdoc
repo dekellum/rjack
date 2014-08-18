@@ -1,7 +1,7 @@
 = rjack-solr
 
-* http://rjack.rubyforge.org/solr
-* http://rjack.rubyforge.org
+* http://rjack.gravitext.com/solr
+* http://rjack.gravitext.com
 * https://github.com/dekellum/rjack
 
 == Description

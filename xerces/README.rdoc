@@ -1,7 +1,7 @@
 = rjack-xerces
 
-* http://rjack.rubyforge.org/xerces
-* http://rjack.rubyforge.org
+* http://rjack.gravitext.com/xerces
+* http://rjack.gravitext.com
 * https://github.com/dekellum/rjack
 
 == Description

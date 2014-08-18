@@ -1,6 +1,6 @@
 = jproject
 
-* http://rjack.rubyforge.org/tarpit
+* http://rjack.gravitext.com/tarpit
 
 == Description
 

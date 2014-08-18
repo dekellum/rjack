@@ -1,7 +1,7 @@
 = rjack-maven
 
-* http://rjack.rubyforge.org/maven
-* http://rjack.rubyforge.org
+* http://rjack.gravitext.com/maven
+* http://rjack.gravitext.com
 * https://github.com/dekellum/rjack
 
 == Description

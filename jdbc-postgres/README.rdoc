@@ -1,7 +1,7 @@
 = rjack-jdbc-postgres
 
-* http://rjack.rubyforge.org/jdbc-postgres
-* http://rjack.rubyforge.org
+* http://rjack.gravitext.com/jdbc-postgres
+* http://rjack.gravitext.com
 * https://github.com/dekellum/rjack
 
 == Description

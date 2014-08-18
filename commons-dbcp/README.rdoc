@@ -1,7 +1,7 @@
 = rjack-commons-dbcp
 
-* http://rjack.rubyforge.org/commons-dbcp
-* http://rjack.rubyforge.org
+* http://rjack.gravitext.com/commons-dbcp
+* http://rjack.gravitext.com
 * https://github.com/dekellum/rjack
 
 == Description

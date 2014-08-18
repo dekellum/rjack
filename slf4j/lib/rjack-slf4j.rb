@@ -49,7 +49,7 @@ module RJack
   #   require 'rjack-slf4j/nop'       # NOP null logger (provided)
   #   require 'rjack-slf4j/simple'    # Simple logger (provided)
   #
-  # The rjack-logback[http://rjack.rubyforge.org/logback] gem may
+  # The rjack-logback[http://rjack.gravitext.com/logback] gem may
   # also be be used as the output adapter:
   #
   #   require 'rjack-logback'

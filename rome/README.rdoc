@@ -1,7 +1,7 @@
 = rjack-rome
 
-* http://rjack.rubyforge.org/rome
-* http://rjack.rubyforge.org
+* http://rjack.gravitext.com/rome
+* http://rjack.gravitext.com
 * https://github.com/dekellum/rjack
 
 == Description

@@ -1,7 +1,7 @@
 = rjack-protobuf
 
-* http://rjack.rubyforge.org/protobuf
-* http://rjack.rubyforge.org
+* http://rjack.gravitext.com/protobuf
+* http://rjack.gravitext.com
 * https://github.com/dekellum/rjack
 
 == Description

@@ -1,23 +1,7 @@
 
-* http://rjack.rubyforge.org
-* http://rubyforge.org/projects/rjack
+* http://rjack.gravitext.com
 * http://github.com/dekellum/rjack
 
-The RJack tree contains the source for several distinct gems (per
-rubyforge conventions), in independent directories. Under www/ is the
-public home page documentation pushed to rjack.rubyforge.org.
-
-== Git
-
-    % git remote add rubyforge gitosis@rubyforge.org:rjack.git
-    % git remote add origin git@github.com:dekellum/rjack.git
-
-== Release
-
-Release a gem (from gem dir):
-
-    jrake push publish_docs
-
-Publish site html:
-
-    cd www && rake publish
+The RJack tree contains the source for several distinct gems, each in
+its own directory. The public home page documentation pushed to
+rjack.gravitext.com is under www/.

@@ -73,7 +73,7 @@ module RJack
   # +start+.  Logback provides many other components not yet extended in
   # this way.  These can be created directly and or extended in a
   # similar fashion externally.  Consider providing a patch to the
-  # rjack[http://rubyforge.org/projects/rjack] project with desired
+  # rjack[http://rjack.gravitext.com] project with desired
   # extensions.
   #
   module Logback

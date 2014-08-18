@@ -1,7 +1,7 @@
 = rjack-commons-dbutils
 
-* http://rjack.rubyforge.org/commons-dbutils
-* http://rjack.rubyforge.org
+* http://rjack.gravitext.com/commons-dbutils
+* http://rjack.gravitext.com
 * https://github.com/dekellum/rjack
 
 == Description

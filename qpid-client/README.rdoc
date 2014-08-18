@@ -1,7 +1,7 @@
 = rjack-qpid-client
 
-* http://rjack.rubyforge.org/qpid-client
-* http://rjack.rubyforge.org
+* http://rjack.gravitext.com/qpid-client
+* http://rjack.gravitext.com
 * https://github.com/dekellum/rjack
 
 == Description

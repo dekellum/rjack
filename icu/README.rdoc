@@ -1,7 +1,7 @@
 = rjack-icu
 
-* http://rjack.rubyforge.org/icu
-* http://rjack.rubyforge.org
+* http://rjack.gravitext.com/icu
+* http://rjack.gravitext.com
 * https://github.com/dekellum/rjack
 
 == Description

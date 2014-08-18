@@ -1,7 +1,7 @@
 = rjack-lucene
 
-* http://rjack.rubyforge.org/lucene
-* http://rjack.rubyforge.org
+* http://rjack.gravitext.com/lucene
+* http://rjack.gravitext.com
 * https://github.com/dekellum/rjack
 
 == Description

@@ -1,7 +1,8 @@
 = rjack-async-httpclient
 
-* http://rjack.rubyforge.org
-* http://rubyforge.org/projects/rjack
+* http://rjack.gravitext.com/async-httpclient
+* http://rjack.gravitext.com
+* https://github.com/dekellum/rjack
 
 == Description
 

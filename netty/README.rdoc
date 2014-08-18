@@ -1,7 +1,7 @@
 = rjack-netty
 
-* http://rjack.rubyforge.org/netty
-* http://rjack.rubyforge.org
+* http://rjack.gravitext.com/netty
+* http://rjack.gravitext.com
 * https://github.com/dekellum/rjack
 
 == Description

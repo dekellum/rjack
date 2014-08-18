@@ -1,7 +1,7 @@
 = rjack-jdom
 
-* http://rjack.rubyforge.org/jdom
-* http://rjack.rubyforge.org
+* http://rjack.gravitext.com/jdom
+* http://rjack.gravitext.com
 * https://github.com/dekellum/rjack
 
 == Description

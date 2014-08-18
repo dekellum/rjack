@@ -49,12 +49,14 @@ class TestJets3t < MiniTest::Unit::TestCase
   #   - access-key
   #   - secret-key
 
-  if File.exists?( 'test_opts.yaml' )
+  TEST_OPTS = File.expand_path( '../test_opts.yaml', __FILE__ )
+
+  if File.exists?( TEST_OPTS )
 
     require 'yaml'
 
     def setup
-      opts = File.open( 'test_opts.yaml' ) { |f| YAML::load( f ) }
+      opts = File.open( TEST_OPTS ) { |f| YAML::load( f ) }
       @s3 = S3Service.new( opts )
       @tbucket = @s3.create_bucket( "test.rjack.rubyforge.org" )
     end

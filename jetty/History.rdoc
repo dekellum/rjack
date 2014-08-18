@@ -65,6 +65,9 @@
   now takes a server parameter.
 * The minimum thread count is raised to 7 (per testing).
 
+=== 7.6.15.0 (2014-8-18)
+* Update to Jetty 7.6.15.v20140411
+
 === 7.6.14.0 (2013-11-7)
 * Update to Jetty 7.6.14.v20131031
 

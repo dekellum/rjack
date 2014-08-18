@@ -1,3 +1,6 @@
+=== 1.9.0 (TBD)
+* Upgrade to commons-codec 1.9 (java 1.6 only)
+
 === 1.8.0 (2013-5-5)
 * Upgrade to commons-codec 1.8 (java 1.6 only)
 

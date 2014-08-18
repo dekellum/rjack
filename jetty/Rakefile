@@ -18,4 +18,3 @@ task :publish_rdoc => [ :clean, :rerdoc ] do
     aws s3 sync --acl public-read doc/ s3://rjack.gravitext.com/jetty/
   SH
 end
-

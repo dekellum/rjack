@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rjack-async-httpclient (1.8.5.0-java)
+    rjack-async-httpclient (1.8.13.0-java)
       rjack-netty (~> 3.9.0)
       rjack-slf4j (>= 1.6.5, < 1.8)
 

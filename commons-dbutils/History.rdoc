@@ -1,4 +1,8 @@
+=== 1.6.0 (TBD)
+* Upgrade to commons-dbutils 1.6
+
 === 1.5.0 (2012-11-9)
+* Upgrade to commons-dbutils 1.5
 
 === 1.4.0 (2012-1-15)
 * Upgrade to commons-dbutils 1.4

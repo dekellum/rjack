@@ -8,4 +8,4 @@ pom.xml
 lib/rjack-commons-dbutils/base.rb
 lib/rjack-commons-dbutils.rb
 test/test_dbutils.rb
-lib/rjack-commons-dbutils/commons-dbutils-1.5.jar
+lib/rjack-commons-dbutils/commons-dbutils-1.6.jar

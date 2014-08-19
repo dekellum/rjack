@@ -227,7 +227,7 @@ module RJack
               log = msg.to_s.dup
               log << '\n'
               log << ex.class.name << ': ' << ex.message << '\n'
-              ex.backtrace.each do |b|
+              ex.backtrace && ex.backtrace.each do |b|
                 log << '\t' << b << '\n'
               end
               @logger.#{lvl}( log )

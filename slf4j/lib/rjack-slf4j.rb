@@ -218,6 +218,7 @@ module RJack
                 @logger.#{lvl}( msg.to_s )
               end
             end
+            true
           end
 
           def #{lvl}_ex( msg, ex )
@@ -232,6 +233,7 @@ module RJack
               end
               @logger.#{lvl}( log )
             end
+            true
           end
 
         } )

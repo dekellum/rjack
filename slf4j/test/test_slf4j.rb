@@ -166,7 +166,10 @@ class TestCompatibility < MiniTest::Unit::TestCase
 
   def setup
     @jdk_logger = java.util.logging.Logger::getLogger( "" )
-    @jdk_logger.level = java.util.logging.Level::INFO
+    @jdk_logger.level = java.util.logging.Level::ALL
+    @jdk_logger.handlers.each do |h|
+      h.level = java.util.logging.Level::ALL
+    end
   end
 
   def test_ruby_logger
@@ -188,7 +191,6 @@ class TestCompatibility < MiniTest::Unit::TestCase
     l.sev_threshold = ::Logger::INFO
     assert_equal( ::Logger::INFO, l.sev_threshold )
 
-    assert_equal( false, l.debug? )
     assert_equal( true,  l.info? )
 
     assert_equal( true, l.add( ::Logger::INFO, 'message', 'program' ) )

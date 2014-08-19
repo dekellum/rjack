@@ -241,20 +241,44 @@ module RJack
       end
 
       # Unused attribute, for Ruby ::Logger compatibility.
-      attr_accessor :progname
+      attr_reader :progname
 
       # Unused attribute, for Ruby ::Logger compatibility.
-      attr_accessor :level
+      def progname=( v )
+        debug { "Setting SLF4J::Logger progname=#{v.inspect} has no effect" }
+        @progname = v
+      end
+
+      # Unused attribute, for Ruby ::Logger compatibility.
+      attr_reader :level
+
+      # Unused attribute, for Ruby ::Logger compatibility.
+      def level=( v )
+        debug { "Setting SLF4J::Logger level=#{v.inspect} has no effect" }
+        @level = v
+      end
 
       # Unused attribute alias, for Ruby ::Logger compatibility.
       alias sev_threshold  level
       alias sev_threshold= level=
 
       # Unused attribute, for Ruby ::Logger compatibility.
-      attr_accessor :datetime_format
+      attr_reader :datetime_format
 
       # Unused attribute, for Ruby ::Logger compatibility.
-      attr_accessor :formatter
+      def datetime_format=( v )
+        debug { "Setting SLF4J::Logger datetime_format=#{v.inspect} has no effect" }
+        @datetime_format = v
+      end
+
+      # Unused attribute, for Ruby ::Logger compatibility.
+      attr_reader :formatter
+
+      # Unused attribute, for Ruby ::Logger compatibility.
+      def formatter=( v )
+        debug { "Setting SLF4J::Logger formatter=#{v.inspect} has no effect" }
+        @formatter = v
+      end
 
       # Alias to #error for Ruby ::Logger compatibility
       alias fatal  error

@@ -5,3 +5,4 @@ lib/rjack-slf4j/log4j-over-slf4j.rb
 lib/rjack-slf4j/log4j12.rb
 lib/rjack-slf4j/nop.rb
 lib/rjack-slf4j/simple.rb
+test/logger.out

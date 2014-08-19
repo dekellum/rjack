@@ -145,7 +145,7 @@ module RJack
       alias ruby_to_java_logger_name to_log_name
     end
 
-    # Logger compatible facade over org.slf4j.Logger
+    # Ruby ::Logger compatible adapter for org.slf4j.Logger
     #
     # === Generated Methods
     #
@@ -191,6 +191,7 @@ module RJack
       def initialize( name )
         @name = name.is_a?( Module ) ? SLF4J.to_log_name( name ) : name
         @logger = org.slf4j.LoggerFactory.getLogger( @name )
+        @level = 0 #DEBUG
       end
 
       # Return underlying org.slf4j.Logger
@@ -239,9 +240,56 @@ module RJack
         } )
       end
 
-      # Alias fatal to error for Logger compatibility
-      alias_method :fatal, :error
-      alias_method :fatal?, :error?
+      # Unused attribute, for Ruby ::Logger compatibility.
+      attr_accessor :progname
+
+      # Unused attribute, for Ruby ::Logger compatibility.
+      attr_accessor :level
+
+      # Unused attribute alias, for Ruby ::Logger compatibility.
+      alias sev_threshold  level
+      alias sev_threshold= level=
+
+      # Unused attribute, for Ruby ::Logger compatibility.
+      attr_accessor :datetime_format
+
+      # Unused attribute, for Ruby ::Logger compatibility.
+      attr_accessor :formatter
+
+      # Alias to #error for Ruby ::Logger compatibility
+      alias fatal  error
+      alias fatal? error?
+
+      # Alias to #info for Ruby ::Logger compatibility. Extend to map to
+      # a different level.
+      alias << info
+
+      # Log via Ruby ::Logger levels, for compatibility.
+      # UNKNOWN or nil level is mapped to #info
+      def add( rlvl, msg = nil, progname = nil, &block )
+        case rlvl
+        when 0 #DEBUG
+          debug( msg, &block )
+        when 1 #INFO
+          info( msg, &block )
+        when 2 #WARN
+          warn( msg, &block )
+        when 3 #ERROR
+          error( msg, &block )
+        when 4 #FATAL
+          error( msg, &block )
+        else #UNKNOWN, nil
+          info( msg, &block )
+        end
+      end
+
+      alias log add
+
+      # No-Op, for Ruby ::Logger compatibility.
+      def close
+        #No-OP
+      end
+
     end
 
     # Get Logger by name

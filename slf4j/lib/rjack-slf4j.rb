@@ -288,6 +288,10 @@ module RJack
       # a different level.
       alias << info
 
+      # Alias to #info for Ruby ::Logger compatibility. Extend to map to
+      # a different level.
+      alias unknown info
+
       # Log via Ruby ::Logger levels, for compatibility.
       # UNKNOWN or nil level is mapped to #info
       def add( rlvl, msg = nil, progname = nil, &block )

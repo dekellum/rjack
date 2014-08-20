@@ -1,3 +1,6 @@
+=== 1.7.7.1 (2014-8-20)
+* Add one remaining ::Logger compat alias RJack::SLF4J::Logger#unknown
+
 === 1.7.7.0 (2014-8-19)
 * Upgraded to SLF4J 1.7.7
 * Add check to log exceptions with nil backtrace

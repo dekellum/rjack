@@ -183,6 +183,15 @@ class TestCompatibility < MiniTest::Unit::TestCase
     logger_like?( RJack::SLF4J['compat'] )
   end
 
+  def test_compare_methods
+    File.open( File.expand_path( '../logger.out', __FILE__ ), 'w' ) do |fout|
+      r_mths = ::Logger.new( fout ).public_methods.sort
+      s_mths = RJack::SLF4J['compat'].public_methods.sort
+      assert_equal( [], (r_mths - s_mths),
+                    "::Logger methods not in SLF4J::Logger" )
+    end
+  end
+
   def logger_like?( l )
     assert_equal( ::Logger::DEBUG, l.level )
     l.level = ::Logger::INFO
@@ -191,7 +200,7 @@ class TestCompatibility < MiniTest::Unit::TestCase
     l.sev_threshold = ::Logger::INFO
     assert_equal( ::Logger::INFO, l.sev_threshold )
 
-    assert_equal( true,  l.info? )
+    assert_equal( true, l.info? )
 
     assert_equal( true, l.add( ::Logger::INFO, 'message', 'program' ) )
     assert_equal( true, l.add( ::Logger::INFO, 'message' ) )
@@ -205,6 +214,9 @@ class TestCompatibility < MiniTest::Unit::TestCase
     assert_equal( true, l.info( "message" ) )
     assert_equal( true, l.info( RuntimeError.new( "exception" ) ) )
     assert_equal( true, l.info( RuntimeError.new( "exception" ) ) { "other" } )
+
+    assert_equal( true, l.add( ::Logger::UNKNOWN, 'message' ) )
+    l.unknown( 'message' )
 
     l << 'dump'
 

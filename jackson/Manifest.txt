@@ -8,6 +8,6 @@ pom.xml
 lib/rjack-jackson/base.rb
 lib/rjack-jackson.rb
 test/test_jackson.rb
-lib/rjack-jackson/jackson-annotations-2.2.3.jar
-lib/rjack-jackson/jackson-core-2.2.3.jar
-lib/rjack-jackson/jackson-databind-2.2.3.jar
+lib/rjack-jackson/jackson-annotations-2.4.2.jar
+lib/rjack-jackson/jackson-core-2.4.2.jar
+lib/rjack-jackson/jackson-databind-2.4.2.jar

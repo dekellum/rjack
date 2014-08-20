@@ -21,7 +21,7 @@ require 'rubygems'
 
 require 'rjack-logback'
 
-RJack::Logback.config_console( :level => RJack::Logback::DEBUG )
+RJack::Logback.config_console( :level => RJack::Logback::INFO )
 if ARGV.include?( '-v' ) || ARGV.include?( '--verbose' )
   RJack::Logback.root.level = RJack::Logback::DEBUG
 end
@@ -33,6 +33,8 @@ require 'rjack-httpclient-4'
 
 class TestClient < MiniTest::Unit::TestCase
   include RJack::HTTPClient4
+  import 'org.apache.http.client.methods.HttpGet'
+
   def test_setup
     mf = ManagerFacade.new
 
@@ -54,11 +56,21 @@ class TestClient < MiniTest::Unit::TestCase
     mf.set_retry_handler( 2 )
 
     mf.start
-
     refute_nil mf.client
 
     mf.shutdown
-
     assert_nil mf.client
   end
+
+  def test_get
+    mf = ManagerFacade.new
+    mf.start
+    client = mf.client
+    res = client.execute( HttpGet.new( "http://rjack.gravitext.com" ) )
+    assert( 200, res.status_line.status_code )
+  ensure
+    res.close if res
+    mf.shutdown if mf
+  end
+
 end

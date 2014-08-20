@@ -28,7 +28,7 @@ module RJack
     # SLF4J-java version
     SLF4J_VERSION = '1.7.7'
     # SLF4J gem version
-    VERSION = SLF4J_VERSION + '.0'
+    VERSION = SLF4J_VERSION + '.1'
 
     SLF4J_DIR = File.dirname(__FILE__) # :nodoc:
 

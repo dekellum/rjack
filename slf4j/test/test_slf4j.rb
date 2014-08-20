@@ -159,3 +159,68 @@ class TestSlf4j < MiniTest::Unit::TestCase
   end
 
 end
+
+require 'logger'
+
+class TestCompatibility < MiniTest::Unit::TestCase
+
+  def setup
+    @jdk_logger = java.util.logging.Logger::getLogger( "" )
+    @jdk_logger.level = java.util.logging.Level::ALL
+    @jdk_logger.handlers.each do |h|
+      h.level = java.util.logging.Level::ALL
+    end
+  end
+
+  def test_ruby_logger
+    # minitest mucks with STDOUT? So use file...
+    File.open( File.expand_path( '../logger.out', __FILE__ ), 'w' ) do |fout|
+      logger_like?( ::Logger.new( fout ) )
+    end
+  end
+
+  def test_slf4j_logger
+    logger_like?( RJack::SLF4J['compat'] )
+  end
+
+  def logger_like?( l )
+    assert_equal( ::Logger::DEBUG, l.level )
+    l.level = ::Logger::INFO
+    assert_equal( ::Logger::INFO, l.level )
+
+    l.sev_threshold = ::Logger::INFO
+    assert_equal( ::Logger::INFO, l.sev_threshold )
+
+    assert_equal( true,  l.info? )
+
+    assert_equal( true, l.add( ::Logger::INFO, 'message', 'program' ) )
+    assert_equal( true, l.add( ::Logger::INFO, 'message' ) )
+    assert_equal( true, l.add( ::Logger::INFO ) )
+    assert_equal( true, l.add( ::Logger::INFO ) { "message" } )
+
+    assert_equal( true, l.log( ::Logger::INFO, 'message' ) )
+
+    assert_equal( true, l.info( "message" ) )
+    assert_equal( true, l.info( "progname" ) { "message" } )
+    assert_equal( true, l.info( "message" ) )
+    assert_equal( true, l.info( RuntimeError.new( "exception" ) ) )
+    assert_equal( true, l.info( RuntimeError.new( "exception" ) ) { "other" } )
+
+    l << 'dump'
+
+    assert_nil( l.datetime_format )
+    l.datetime_format = '%Y-%m-%d %H:%M:%S'
+    assert_equal( '%Y-%m-%d %H:%M:%S', l.datetime_format )
+
+    assert_nil( l.formatter )
+    l.formatter = x = proc {}
+    assert_equal( x, l.formatter )
+
+    assert_nil( l.progname )
+    l.progname = 'program'
+    assert_equal( 'program', l.progname )
+
+    l.close
+  end
+
+end

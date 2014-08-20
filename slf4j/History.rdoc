@@ -1,4 +1,4 @@
-=== 1.7.7.0 (TBD)
+=== 1.7.7.0 (2014-8-19)
 * Upgraded to SLF4J 1.7.7
 * Add check to log exceptions with nil backtrace
 * Complete RJack::SLF4J::Logger interface compatibility with Ruby

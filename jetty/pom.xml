@@ -16,43 +16,43 @@
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-servlet</artifactId>
-      <version>9.2.2.v20140723</version>
+      <version>9.2.7.v20150116</version>
     </dependency>
 
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-server</artifactId>
-      <version>9.2.2.v20140723</version>
+      <version>9.2.7.v20150116</version>
     </dependency>
 
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-webapp</artifactId>
-      <version>9.2.2.v20140723</version>
+      <version>9.2.7.v20150116</version>
     </dependency>
 
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-util</artifactId>
-      <version>9.2.2.v20140723</version>
+      <version>9.2.7.v20150116</version>
     </dependency>
 
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-rewrite</artifactId>
-      <version>9.2.2.v20140723</version>
+      <version>9.2.7.v20150116</version>
     </dependency>
 
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-client</artifactId>
-      <version>9.2.2.v20140723</version>
+      <version>9.2.7.v20150116</version>
     </dependency>
 
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-continuation</artifactId>
-      <version>9.2.2.v20140723</version>
+      <version>9.2.7.v20150116</version>
     </dependency>
 
   </dependencies>

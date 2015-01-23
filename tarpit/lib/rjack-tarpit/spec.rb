@@ -54,7 +54,7 @@ module RJack::TarPit
       spec.extend( SpecHelper )
       spec.extend( ReadmeParser )
 
-      specfile = caller[0] =~ /^(.*\.gemspec)/ && $1
+      specfile = caller[0] =~ /^(.+\.gemspec):/ && $1
 
       if specfile
         # Default name to the (name).gemspec that should be calling us

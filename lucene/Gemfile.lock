@@ -7,9 +7,9 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    json (1.8.1-java)
+    json (1.8.2-java)
     minitest (4.7.5)
-    rake (10.3.2)
+    rake (10.4.2)
     rdoc (4.0.1)
       json (~> 1.4)
     rjack-commons-codec (1.8.0-java)

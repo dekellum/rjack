@@ -16,37 +16,37 @@
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-servlet</artifactId>
-      <version>7.6.15.v20140411</version>
+      <version>7.6.16.v20140903</version>
     </dependency>
 
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-server</artifactId>
-      <version>7.6.15.v20140411</version>
+      <version>7.6.16.v20140903</version>
     </dependency>
 
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-webapp</artifactId>
-      <version>7.6.15.v20140411</version>
+      <version>7.6.16.v20140903</version>
     </dependency>
 
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-util</artifactId>
-      <version>7.6.15.v20140411</version>
+      <version>7.6.16.v20140903</version>
     </dependency>
 
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-rewrite</artifactId>
-      <version>7.6.15.v20140411</version>
+      <version>7.6.16.v20140903</version>
     </dependency>
 
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-client</artifactId>
-      <version>7.6.15.v20140411</version>
+      <version>7.6.16.v20140903</version>
     </dependency>
 
     <dependency>

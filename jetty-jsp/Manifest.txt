@@ -15,5 +15,6 @@ lib/rjack-jetty-jsp/javax.servlet.jsp-2.3.2.jar
 lib/rjack-jetty-jsp/javax.servlet.jsp-api-2.3.1.jar
 lib/rjack-jetty-jsp/javax.servlet.jsp.jstl-1.2.0.v201105211821.jar
 lib/rjack-jetty-jsp/javax.servlet.jsp.jstl-1.2.2.jar
+lib/rjack-jetty-jsp/jetty-jsp-9.2.7.v20150116.jar
 lib/rjack-jetty-jsp/jetty-schemas-3.1.M0.jar
 lib/rjack-jetty-jsp/org.eclipse.jdt.core-3.8.2.v20130121.jar

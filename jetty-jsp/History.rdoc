@@ -1,5 +1,7 @@
-=== 9.2.2.0 (TBD)
-* Upgrade to rjack-jetty ~> 9.2.2 and dependencies (TBD)
+=== 9.2.7.0 (TBD)
+* Upgrade to rjack-jetty ~> 9.2.7. A dependency has been reintroduced
+  in jetty-jsp (class org.eclipse.jetty.jsp.JettyJspServlet) which is
+  now included in the gem.
 
 === 9.1.2.0 (2014-2-17)
 * Upgrade to rjack-jetty ~> 9.1.2 and dependencies:

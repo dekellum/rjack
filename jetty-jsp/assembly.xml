@@ -8,7 +8,6 @@
     <dependencySet>
       <useProjectArtifact>false</useProjectArtifact>
       <excludes>
-        <exclude>org.eclipse.jetty:jetty-jsp</exclude>
         <exclude>javax.servlet:javax.servlet-api</exclude>
       </excludes>
     </dependencySet>

@@ -224,7 +224,8 @@ module RJack
           end
 
           def #{lvl}( msg=nil, ex=nil )
-            if msg.is_a?( Exception ) && ex.nil?
+            if ex.nil? && ( msg.is_a?( Exception ) ||
+                            msg.is_a?( java.lang.Throwable ) )
               msg, ex = "Exception:", msg
             end
             msg = yield if ( block_given? && #{lvl}? )
@@ -239,7 +240,9 @@ module RJack
           end
 
           def #{lvl}_ex( msg, ex )
-            if ex.is_a?( NativeException )
+            if ex.is_a?( java.lang.Throwable )
+              @logger.#{lvl}( msg.to_s, ex )
+            elsif ex.is_a?( NativeException )
               @logger.#{lvl}( msg.to_s, ex.cause )
             elsif #{lvl}?
               lm = sprintf( SLF4J.ruby_ex_format,

@@ -116,7 +116,15 @@ class TestSlf4j < MiniTest::Unit::TestCase
       @log.error( "test java exception", x )
     end
     assert_equal( 1, @handler.count )
-    assert_same( ex.cause, @handler.last.thrown )
+    if ex.cause #old NativeException jruby 1.6.x case
+      assert_same( ex.cause, @handler.last.thrown )
+    else
+      assert_same( ex, @handler.last.thrown )
+    end
+
+    mlines = @handler.last.message.split($/)
+    assert_equal( 1, mlines.length )
+    assert_equal( "test java exception", mlines[0] )
   end
 
   def test_ruby_exception

@@ -1,3 +1,4 @@
 # -*- ruby -*-
 source 'https://rubygems.org'
 gemspec :path => '.', :name => 'rjack-logback'
+gem 'rjack-slf4j', :path => '../slf4j'

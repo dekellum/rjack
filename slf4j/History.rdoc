@@ -1,4 +1,18 @@
-=== 1.7.10.0 (TBD)
+=== 1.7.10.0 (2015-1-30)
+* Upgraded to SLF4J 1.7.10
+* Somewhere in the JRuby 1.7.x series, exceptions from java that are
+  rescued in ruby are no longer being wrapped in the NativeException
+  ruby class. Update the Logger to also send exceptions of type
+  java.lang.Throwable directly though the SLF4J API. Previous to this
+  fix, java exceptions were being logged like ruby exceptions.
+* Add RJack::SLF4J.ruby_ex_format for globally configurable formatting
+  of ruby exceptions as log messages. Ruby exceptions aren't java
+  Throwable so they won't be formatted by the SLF4J java
+  API. Compatibility with java exception formatting is dependent on
+  the output adapter and its configuration, so this can be set in the
+  same place. Also changed the default format separator between the
+  (prefix) message and exception class name from NEWLINE to SPACE,
+  given at least one raised issue (#7) of incompatibly.
 
 === 1.7.7.1 (2014-8-20)
 * Add one remaining ::Logger compat alias RJack::SLF4J::Logger#unknown

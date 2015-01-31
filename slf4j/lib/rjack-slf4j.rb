@@ -123,10 +123,26 @@ module RJack
     @@api_loader = org.slf4j.ILoggerFactory.java_class.class_loader
     @@loaded = {}
     @@output_name = nil
+    @@ruby_ex_format = "%s %s: %s\n".freeze
 
     # Output adapter name if one has been added, or nil.
     def self.output_name
       @@output_name
+    end
+
+    # A (sprintf) format string to use when synthesizing a log message
+    # from a prefix message (msg) (i.e. "Exception:") and ruby
+    # exception (ex) using [ msg, ex.class.name, ex.cause ]. Since
+    # ruby exceptions aren't instances of java Throwable, they can't
+    # be passed directly. This can be globally set to match the
+    # formatting of the output adapter (i.e. for java exceptions),
+    # preferably in the same place it is required and configured.
+    def self.ruby_ex_format
+      @@ruby_ex_format
+    end
+
+    def self.ruby_ex_format=( f )
+      @@ruby_ex_format = f.dup.freeze
     end
 
     # SLF4J severity levels
@@ -208,7 +224,8 @@ module RJack
           end
 
           def #{lvl}( msg=nil, ex=nil )
-            if msg.is_a?( Exception ) && ex.nil?
+            if ex.nil? && ( msg.is_a?( Exception ) ||
+                            msg.is_a?( java.lang.Throwable ) )
               msg, ex = "Exception:", msg
             end
             msg = yield if ( block_given? && #{lvl}? )
@@ -223,16 +240,17 @@ module RJack
           end
 
           def #{lvl}_ex( msg, ex )
-            if ex.is_a?( NativeException )
+            if ex.is_a?( java.lang.Throwable )
+              @logger.#{lvl}( msg.to_s, ex )
+            elsif ex.is_a?( NativeException )
               @logger.#{lvl}( msg.to_s, ex.cause )
             elsif #{lvl}?
-              log = msg.to_s.dup
-              log << '\n'
-              log << ex.class.name << ': ' << ex.message << '\n'
+              lm = sprintf( SLF4J.ruby_ex_format,
+                            msg, ex.class.name, ex.message )
               ex.backtrace && ex.backtrace.each do |b|
-                log << '\t' << b << '\n'
+                lm << '\t' << b << '\n'
               end
-              @logger.#{lvl}( log )
+              @logger.#{lvl}( lm )
             end
             true
           end

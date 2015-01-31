@@ -323,7 +323,7 @@ module RJack
               pat << mp
             end
 
-            pat += [ '-', '%msg' '%ex%n' ]
+            pat += [ '-', '%msg', '%ex%n' ]
             layout.pattern = pat.join( ' ' )
           end
         end

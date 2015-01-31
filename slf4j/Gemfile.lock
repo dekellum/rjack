@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rjack-slf4j (1.7.7.1-java)
+    rjack-slf4j (1.7.10.0-java)
 
 GEM
   remote: https://rubygems.org/

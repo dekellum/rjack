@@ -81,6 +81,7 @@ class TestSlf4j < MiniTest::Unit::TestCase
     @jdk_logger = JdkLogger.getLogger ""
     @jdk_logger.addHandler @handler
     @jdk_logger.level = java.util.logging.Level::INFO
+    SLF4J.ruby_ex_format = "%s\n%s: %s\n".freeze
     @log = SLF4J[ "my.app" ]
   end
 
@@ -115,7 +116,15 @@ class TestSlf4j < MiniTest::Unit::TestCase
       @log.error( "test java exception", x )
     end
     assert_equal( 1, @handler.count )
-    assert_same( ex.cause, @handler.last.thrown )
+    if ex.cause #old NativeException jruby 1.6.x case
+      assert_same( ex.cause, @handler.last.thrown )
+    else
+      assert_same( ex, @handler.last.thrown )
+    end
+
+    mlines = @handler.last.message.split($/)
+    assert_equal( 1, mlines.length )
+    assert_equal( "test java exception", mlines[0] )
   end
 
   def test_ruby_exception
@@ -135,6 +144,9 @@ class TestSlf4j < MiniTest::Unit::TestCase
       @log.error( msg, x )
     end
     assert_equal( 1, @handler.count )
+    mlines = @handler.last.message.split($/)
+    assert_equal( "my message", mlines[0] )
+    assert_match( /^ZeroDivisionError: /, mlines[1] )
   end
 
   def test_ruby_exception_block

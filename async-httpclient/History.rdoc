@@ -1,3 +1,6 @@
+=== 1.8.15.0 (2015-2-3)
+* Upgrade to Async Http Client 1.8.15
+
 === 1.8.13.0 (2014-8-19)
 * Upgrade to Async Http Client 1.8.13
 

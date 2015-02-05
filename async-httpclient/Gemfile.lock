@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rjack-async-httpclient (1.8.13.0-java)
+    rjack-async-httpclient (1.8.15.0-java)
       rjack-netty (~> 3.9.2)
       rjack-slf4j (>= 1.6.5, < 1.8)
 
@@ -16,7 +16,7 @@ GEM
     rjack-logback (1.7.1-java)
       rjack-slf4j (>= 1.6.5, < 1.8)
     rjack-maven (3.0.5.0-java)
-    rjack-netty (3.9.3.0-java)
+    rjack-netty (3.9.6.0-java)
     rjack-slf4j (1.7.7.1-java)
     rjack-tarpit (2.1.0-java)
       rake (>= 0.9.2.2, < 11)

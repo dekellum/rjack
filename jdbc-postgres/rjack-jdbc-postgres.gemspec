@@ -14,5 +14,6 @@ RJack::TarPit.specify do |s|
   s.depend 'rdoc',                  '~> 4.0.1',     :dev
 
   s.generated_files = [
-    "lib/#{s.name}/postgresql-#{RJack::JDBCPostgres::DRIVER_VERSION}.jdbc4.jar" ]
+    "lib/#{s.name}/postgresql-#{RJack::JDBCPostgres::DRIVER_VERSION}.jdbc4.jar",
+    "lib/#{s.name}/postgresql-#{RJack::JDBCPostgres::DRIVER_VERSION}.jdbc41.jar" ]
 end

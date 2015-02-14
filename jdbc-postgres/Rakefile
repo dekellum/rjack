@@ -6,9 +6,11 @@ require 'rjack-tarpit'
 
 RJack::TarPit.new( 'rjack-jdbc-postgres' ).define_tasks
 
-jar = "postgresql-#{RJack::JDBCPostgres::DRIVER_VERSION}.jdbc4.jar"
-file "lib/rjack-jdbc-postgres/#{jar}" do |t|
-  sh "curl -sf -o #{t.name} https://jdbc.postgresql.org/download/#{jar}"
+%w[ 4 41 ].each do |v|
+  jar = "postgresql-#{RJack::JDBCPostgres::DRIVER_VERSION}.jdbc#{v}.jar"
+  file "lib/rjack-jdbc-postgres/#{jar}" do |t|
+    sh "curl -sf -o #{t.name} https://jdbc.postgresql.org/download/#{jar}"
+  end
 end
 
 desc "Upload RDOC to Amazon S3 (rdoc.gravitext.com/rjack, Oregon)"

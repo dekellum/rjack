@@ -33,5 +33,13 @@ require 'rjack-jdbc-postgres/base'
 require 'java'
 
 module RJack::JDBCPostgres
-  require "#{LIB_DIR}/postgresql-#{DRIVER_VERSION}.jdbc4.jar"
+
+  def self.jdbc_version
+    vers = Java::java.lang.System::get_property( 'java.specification.version' ).
+           split( '.' ).map( &:to_i )
+    ( ( vers <=> [ 1, 7 ] ) >= 0 ) ? '41' : '4'
+  end
+
+  require "#{LIB_DIR}/postgresql-#{DRIVER_VERSION}.jdbc#{jdbc_version}.jar"
+
 end

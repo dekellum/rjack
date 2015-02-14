@@ -1,5 +1,7 @@
-=== 9.4.1200.0 (TBD)
+=== 9.4.1200.0 (2015-2-13)
 * Update to 9.4-1200
+* Add jdbc 4.1 jar (java 1.7) and switching between jdbc 4.1 and jdbc
+  4 based on the java (specification) version.
 
 === 9.3.1103.0 (2015-2-13)
 * Update to 9.3-1103

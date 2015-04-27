@@ -263,9 +263,13 @@ module RJack
 
       def create_https_connector( server, opts = {} )
         ctx_f = SslContextFactory.new
-        ctx_f.key_store_path = opts[:key_store_path] if opts[:key_store_path]
-        ctx_f.key_store_password = opts[:key_store_password] if opts[:key_store_password]
-        ssl_con_f = SslConnectionFactory.new( ctx_f, HttpVersion::HTTP_1_1.to_s )
+        if opts[:key_store_path]
+          ctx_f.key_store_path = opts[:key_store_path]
+        end
+        if opts[:key_store_password]
+          ctx_f.key_store_password = opts[:key_store_password]
+        end
+        ssl_con_f = SslConnectionFactory.new(ctx_f, HttpVersion::HTTP_1_1.to_s)
 
         conf = HttpConfiguration.new
         conf.add_customizer( SecureRequestCustomizer.new )

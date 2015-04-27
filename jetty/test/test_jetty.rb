@@ -73,6 +73,36 @@ class TestJetty < MiniTest::Unit::TestCase
     server.join
   end
 
+  def test_static_ssl
+    factory = default_factory
+    factory.connections = [ { scheme: 'tcp' },
+                            { scheme: 'ssl',
+                              key_store_path: 'test/keystore',
+                              key_store_password: 'password'} ]
+    factory.static_contexts[ '/' ] = TEST_DIR
+    server = factory.create
+    server.start
+    port = server.connectors[1].local_port
+    test_text = get( '/test.txt', port, :ssl ).body
+    assert_equal( File.read( File.join( TEST_DIR, 'test.txt' ) ), test_text )
+    server.stop
+    server.join
+  end
+
+  def test_static_ssl_uri
+    factory = default_factory
+    factory.connections = [ 'tcp://0.0.0.0',
+                            'ssl://127.0.0.1?key_store_path=test/keystore&key_store_password=password' ]
+    factory.static_contexts[ '/' ] = TEST_DIR
+    server = factory.create
+    server.start
+    port = server.connectors[1].local_port
+    test_text = get( '/test.txt', port, :ssl ).body
+    assert_equal( File.read( File.join( TEST_DIR, 'test.txt' ) ), test_text )
+    server.stop
+    server.join
+  end
+
   class TestHandler < AbstractHandler
     TEST_TEXT = 'test handler text'
 
@@ -157,8 +187,12 @@ class TestJetty < MiniTest::Unit::TestCase
     server.join
   end
 
-  def get( path, port )
-    Net::HTTP.start( 'localhost', port ) do |http|
+  def get( path, port, scheme = :tcp )
+    args = [ 'localhost', port, nil, nil, nil, nil ]
+    if scheme == :ssl
+      args << { use_ssl: true, verify_mode: OpenSSL::SSL::VERIFY_NONE }
+    end
+    Net::HTTP.start( *args ) do |http|
       http.open_timeout = 1.0
       http.read_timeout = 1.0
       http.get( path )

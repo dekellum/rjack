@@ -1,4 +1,6 @@
 === 9.2.10.1 (TBD)
+* Add ServerFactory#connections (and host) properties for creating
+  multiple tcp/ssl connectors.
 
 === 9.2.10.0 (2015-3-30)
 * Update to Jetty 9.2.10.v20150310

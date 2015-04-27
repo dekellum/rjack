@@ -127,6 +127,10 @@ module RJack
       # Deprecated: use #connections instead.
       attr_accessor :port
 
+      # Default interface to bind to. Default: nil -> 0.0.0.0 -> all
+      # Use #connections instead.
+      attr_accessor :host
+
       # Default idle time in milliseconds to use for all connections.
       # Default: 10,000 ms
       attr_accessor :max_idle_time_ms
@@ -180,6 +184,7 @@ module RJack
 
       def initialize
         @port                 = 0        # Use any available port
+        @host                 = nil
         @max_threads          = 20
         @min_threads          = nil      # Compute from max_threads
         @max_idle_time_ms     = 10000
@@ -234,7 +239,8 @@ module RJack
                       else
                         raise "Unsupported connection scheme '#{opts[:scheme]}'"
                       end
-          connector.host = opts[:host] if opts[:host]
+          h = opts[:host] || @host
+          connector.host = h if h
           connector.port = opts[:port] || ( first && @port ) || 0
           connector.idle_timeout = opts[:max_idle_time_ms] || @max_idle_time_ms
           first = false

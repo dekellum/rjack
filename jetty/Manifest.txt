@@ -10,6 +10,7 @@ lib/rjack-jetty.rb
 lib/rjack-jetty/client.rb
 lib/rjack-jetty/rewrite.rb
 lib/rjack-jetty/test-servlets.rb
+test/keystore
 test/test.txt
 test/test_jetty.rb
 webapps/test/index.html

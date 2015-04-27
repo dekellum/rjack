@@ -165,17 +165,16 @@ module RJack
       #
       # :scheme:: Values 'tcp' or 'ssl'
       # :host:: The local interface to bind Default: 0.0.0.0 (all)
-      # :port:: Port number or 0 to select an available port (Default:
-      #         top level #port, 0 )
+      # :port:: Port number or 0 to select an available port
+      #         (Default: top level #port for first connection, 0 )
       # :max_idle_time_ms:: See above
-      # :key_store_path:: For scheme 'ssl', the path to the (Java JKS) keystore
-      # :key_store_password:: For scheme 'ssl', the password to the keystore
+      # :key_store_path:: For ssl, the path to the (Java JKS) keystore
+      # :key_store_password:: For ssl, the password to the keystore
       #
       # URI examples:
       #
-      #   tcp://127.0.0.1
-      #
-      #   ssl://0.0.0.0:8443?key_store_path=test/keystore&key_store_password=399as8d9
+      #  tcp://127.0.0.1
+      #  ssl://0.0.0.0:8443?key_store_path=test/keystore&key_store_password=399as8d9
       #
       attr_accessor  :connections
 

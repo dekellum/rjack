@@ -1,7 +1,6 @@
 # -*- ruby -*-
 
-gem 'rjack-tarpit', '~> 2.1'
-require 'rjack-tarpit/spec'
+require 'rjack-tarpit/spec' if gem 'rjack-tarpit', '~> 2.1'
 
 RJack::TarPit.specify do |s|
   require 'rjack-jetty/base'

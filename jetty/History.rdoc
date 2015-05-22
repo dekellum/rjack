@@ -1,3 +1,6 @@
+=== 9.3.0.1 (2015-5-22)
+* Update to Jetty 9.3.0.RC0 (pre-release)
+
 === 9.3.0.0 (2015-5-3)
 * Update to Jetty 9.3.0.M2 (milestone/pre-release)
 * Add ServerFactory#connections (and host) properties for creating

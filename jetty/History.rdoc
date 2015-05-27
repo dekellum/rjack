@@ -1,5 +1,8 @@
 === 9.3.0.2 (2015-5-27)
 * Update to Jetty 9.3.0.RC1 (pre-release)
+* Errata: As of RC1, Java SE 8 is the minimum supported Java
+  version. An exception with message "Unsupported major.minor version
+  52.0" may be raised if used with a prior version of Java.
 
 === 9.3.0.1 (2015-5-22)
 * Update to Jetty 9.3.0.RC0 (pre-release)

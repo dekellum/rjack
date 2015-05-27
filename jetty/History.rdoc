@@ -1,3 +1,6 @@
+=== 9.3.0.2 (TBD)
+* Update to Jetty 9.3.0.RC1 (pre-release)
+
 === 9.3.0.1 (2015-5-22)
 * Update to Jetty 9.3.0.RC0 (pre-release)
 

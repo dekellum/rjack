@@ -1,3 +1,6 @@
+=== 9.3.0.3 (TBD)
+* Update to Jetty 9.3.0.v20150612 (release)
+
 === 9.3.0.2 (2015-5-27)
 * Update to Jetty 9.3.0.RC1 (pre-release)
 * Errata: As of RC1, Java SE 8 is the minimum supported Java

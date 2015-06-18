@@ -48,8 +48,11 @@ or
 
 == Requirements
 
-No hard requirements, however:
-
+* See the
+  {Jetty Versions}[http://www.eclipse.org/jetty/documentation/current/what-jetty-version.html]
+  table for details on minimum Java version requirements. Note however
+  that as of 9.3.0.RC1, and despite the current state of this document,
+  Java SE 8 is required.
 * To load webapps with JSPs, the
   rjack-jetty-jsp[http://rjack.gravitext.com/jetty-jsp/] gem
   must be loaded.

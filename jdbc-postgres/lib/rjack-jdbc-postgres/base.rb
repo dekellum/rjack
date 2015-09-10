@@ -32,7 +32,7 @@ module RJack
   module JDBCPostgres
 
     # Postgres JDBC Driver version
-    DRIVER_VERSION = "9.4-1200"
+    DRIVER_VERSION = "9.4-1202"
 
     # rjack gem version
     VERSION = DRIVER_VERSION.gsub( '-', '.' ) + '.0'

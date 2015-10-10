@@ -1,3 +1,8 @@
+=== 9.4.1204.0 (2015-10-10)
+* Update to 9.4-1204
+* Add PostgreSQL JDBC 4.2 jar (java 1.8) and drop JDBC 4 jar (java 1.6). The
+  minimum supported java version is now 1.7.
+
 === 9.4.1202.0 (2015-9-10)
 * Update to 9.4-1202
 

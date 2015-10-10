@@ -37,7 +37,7 @@ module RJack::JDBCPostgres
   def self.jdbc_version
     vers = Java::java.lang.System::get_property( 'java.specification.version' ).
            split( '.' ).map( &:to_i )
-    ( ( vers <=> [ 1, 7 ] ) >= 0 ) ? '41' : '4'
+    ( ( vers <=> [ 1, 8 ] ) >= 0 ) ? '42' : '41'
   end
 
   require "#{LIB_DIR}/postgresql-#{DRIVER_VERSION}.jdbc#{jdbc_version}.jar"

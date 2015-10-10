@@ -5,5 +5,5 @@ Rakefile
 lib/rjack-jdbc-postgres/base.rb
 lib/rjack-jdbc-postgres.rb
 test/test_jdbc_postgres.rb
-lib/rjack-jdbc-postgres/postgresql-9.4-1204.jdbc4.jar
 lib/rjack-jdbc-postgres/postgresql-9.4-1204.jdbc41.jar
+lib/rjack-jdbc-postgres/postgresql-9.4-1204.jdbc42.jar

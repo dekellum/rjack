@@ -7,7 +7,7 @@
 == Description
 
 A gem packaging of the Postgres {JDBC Driver}[http://jdbc.postgresql.org]
-for JDBC 4 (Java SE 1.6) and JDBC 4.1 (Java SE 1.7+).
+for JDBC 4.1 (Java 1.7) and JDBC 4.2 (Java 1.8+).
 
 Check this out: you can `require rjack-jdbc-postgres` and it requires
 the underlying JDBC driver jar, without any other contortions.

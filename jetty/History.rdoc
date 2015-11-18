@@ -1,3 +1,6 @@
+=== 9.3.6.0 (2015-11-18)
+* Update to Jetty 9.3.6.v20151106
+
 === 9.3.4.0 (2015-10-10)
 * Update to Jetty 9.3.4.v20151007
 
@@ -26,6 +29,9 @@
 * Update to Jetty 9.3.0.M2 (milestone/pre-release)
 * Add ServerFactory#connections (and host) properties for creating
   multiple tcp/ssl connectors.
+
+=== 9.2.14.0 (2015-11-18)
+* Update to Jetty 9.2.14.v20151106
 
 === 9.2.13.0 (2015-8-10)
 * Update to Jetty 9.2.13.v20150730

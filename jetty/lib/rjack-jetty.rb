@@ -161,6 +161,10 @@ module RJack
       # Default: true
       attr_accessor :stop_at_shutdown
 
+      # Whether connector uses a channel inherited from the JVM?
+      # Default: false
+      attr_accessor :inherit_channel
+
       # Request log output to :stderr or file name (default: nil, no log)
       attr_accessor  :request_log_file
 
@@ -193,6 +197,7 @@ module RJack
         @webapp_contexts      = {}
         @request_log_file     = nil
         @servlet_contexts     = {}
+        @inherit_channel      = false
         @stop_at_shutdown     = true
         @connections          = nil
       end
@@ -243,6 +248,7 @@ module RJack
           connector.host = h if h
           connector.port = opts[:port] || ( first && @port ) || 0
           connector.idle_timeout = opts[:max_idle_time_ms] || @max_idle_time_ms
+          connector.inherit_channel = opts[:inherit_channel] || @inherit_channel
           first = false
           connector
         end

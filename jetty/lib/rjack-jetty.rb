@@ -161,10 +161,6 @@ module RJack
       # Default: true
       attr_accessor :stop_at_shutdown
 
-      # Whether connector uses a channel inherited from the JVM?
-      # Default: false
-      attr_accessor :inherit_channel
-
       # Request log output to :stderr or file name (default: nil, no log)
       attr_accessor  :request_log_file
 

@@ -249,7 +249,8 @@ module RJack
           connector.host = h if h
           connector.port = opts[:port] || ( first && @port ) || 0
           connector.idle_timeout = opts[:max_idle_time_ms] || @max_idle_time_ms
-          connector.inherit_channel = opts[:inherit_channel] || @inherit_channel
+          connector.inherit_channel = [nil, false].none? { |n|
+            [n, n.inspect].include?( opts[:inherit_channel] ) } || @inherit_channel
           first = false
           connector
         end

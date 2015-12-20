@@ -198,7 +198,6 @@ module RJack
         @webapp_contexts      = {}
         @request_log_file     = nil
         @servlet_contexts     = {}
-        @inherit_channel      = false
         @stop_at_shutdown     = true
         @connections          = nil
       end
@@ -250,7 +249,7 @@ module RJack
           connector.port = opts[:port] || ( first && @port ) || 0
           connector.idle_timeout = opts[:max_idle_time_ms] || @max_idle_time_ms
           connector.inherit_channel = [nil, false].none? { |n|
-            [n, n.inspect].include?( opts[:inherit_channel] ) } || @inherit_channel
+            [n, n.inspect].include?( opts[:inherit_channel] ) }
           first = false
           connector
         end

@@ -47,6 +47,24 @@ class TestJetty < MiniTest::Unit::TestCase
     factory
   end
 
+  def test_parse_inherit_channel
+    factory = default_factory
+    factory.connections = [ 'tcp://127.0.0.1?inherit_channel=true',
+                            { scheme: 'tcp', inherit_channel: true },
+                            'tcp://127.0.0.1?inherit_channel=false',
+                            { scheme: 'tcp', inherit_channel: false },
+                            'tcp://127.0.0.1?inherit_channel=nil',
+                            { scheme: 'tcp', inherit_channel: nil } ]
+    server = factory.create
+    connectors = server.connectors
+    assert( connectors[0].inherit_channel )
+    assert( connectors[1].inherit_channel )
+    assert( !connectors[2].inherit_channel )
+    assert( !connectors[3].inherit_channel )
+    assert( !connectors[4].inherit_channel )
+    assert( !connectors[5].inherit_channel )
+  end
+
   def test_start_stop
     10.times do
       factory = default_factory

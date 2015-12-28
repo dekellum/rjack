@@ -174,11 +174,17 @@ module RJack
       # :max_idle_time_ms:: See above
       # :key_store_path:: For ssl, the path to the (Java JKS) keystore
       # :key_store_password:: For ssl, the password to the keystore
+      # :inherit_channel:: If set to true, use channel based on standard input,
+      #                    if standard input is available and binded to a socket,
+      #                    it can be used for inetd or hot deploy with
+      #                    {start_server}[https://metacpan.org/pod/start_server]
+      #                    (Default: false)
       #
       # URI examples:
       #
       #  tcp://127.0.0.1
       #  ssl://0.0.0.0:8443?key_store_path=test/keystore&key_store_password=399as8d9
+      #  tcp://127.0.0.1?inherit_channel=true
       #
       attr_accessor  :connections
 
@@ -243,6 +249,7 @@ module RJack
           connector.host = h if h
           connector.port = opts[:port] || ( first && @port ) || 0
           connector.idle_timeout = opts[:max_idle_time_ms] || @max_idle_time_ms
+          connector.inherit_channel = [true, 'true'].include?(opts[:inherit_channel])
           first = false
           connector
         end

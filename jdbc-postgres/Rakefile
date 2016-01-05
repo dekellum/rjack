@@ -9,7 +9,8 @@ RJack::TarPit.new( 'rjack-jdbc-postgres' ).define_tasks
 %w[ 41 42 ].each do |v|
   jar = "postgresql-#{RJack::JDBCPostgres::DRIVER_VERSION}.jdbc#{v}.jar"
   file "lib/rjack-jdbc-postgres/#{jar}" do |t|
-    sh "curl -sf -o #{t.name} https://jdbc.postgresql.org/download/#{jar}"
+    rname = jar.sub( /jdbc41/, 'jre7' ).sub( /\.jdbc42/, '' )
+    sh "curl -sf -o #{t.name} https://jdbc.postgresql.org/download/#{rname}"
   end
 end
 

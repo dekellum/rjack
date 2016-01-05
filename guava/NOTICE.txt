@@ -1,5 +1,5 @@
 rjack-guava gem
-Copyright (c) 2013-2015 David Kellum
+Copyright (c) 2013-2016 David Kellum
 
 This product includes software developed by:
 

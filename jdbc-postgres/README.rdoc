@@ -16,7 +16,7 @@ the underlying JDBC driver jar, without any other contortions.
 
 === rjack-jdbc-postgres
 
-Copyright (c) 2013-2015 David Kellum
+Copyright (c) 2013-2016 David Kellum
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without

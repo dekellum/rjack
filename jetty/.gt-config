@@ -9,6 +9,7 @@ Gravitext::DevTools.configure do |c|
     h.exclusions += %w[ lib/rjack-jetty/rewrite.rb
                         lib/rjack-jetty/client.rb
                         test/test.txt
+                        test/keystore
                         webapps/test/**/* ]
   end
 

@@ -2,7 +2,7 @@
 #.hashdot.profile += jruby-shortlived
 
 #--
-# Copyright (c) 2009-2015 David Kellum
+# Copyright (c) 2009-2016 David Kellum
 #
 # See README.rdoc for license terms.
 #++

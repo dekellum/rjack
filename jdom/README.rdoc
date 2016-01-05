@@ -14,7 +14,7 @@ license below.
 
 === rjack-jdom
 
-Copyright (c) 2009-2015 David Kellum
+Copyright (c) 2009-2016 David Kellum
 
 The rjack-jdom gem is released under the same license terms as the
 JDOM source and binaries, see below.

@@ -4,7 +4,7 @@
   failure of a default configured JRuby Net::HTTP client at minimum. A
   workaround was found for local tests.
 * Add :inherit_channel option to RJack::Jetty::ServerFactory#connections
-  (Akihiro Uchida)
+  (#9, Akihiro Uchida)
 
 === 9.3.6.0 (2015-11-18)
 * Update to Jetty 9.3.6.v20151106

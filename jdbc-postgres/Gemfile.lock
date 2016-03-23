@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rjack-jdbc-postgres (9.4.1207.0)
+    rjack-jdbc-postgres (9.4.1208.0)
 
 GEM
   remote: https://rubygems.org/

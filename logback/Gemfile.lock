@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     rjack-logback (1.8.0-java)
-      rjack-slf4j (>= 1.6.5, < 1.8)
+      rjack-slf4j (~> 1.7.16)
 
 PATH
   remote: ../slf4j

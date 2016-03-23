@@ -1,3 +1,6 @@
+=== 9.3.8.0 (TBD)
+* Update to Jetty 9.3.8.v20160314
+
 === 9.3.7.0 (2016-1-21)
 * Update to Jetty 9.3.7.v20160115. Note that this release changes the
   default ciphers for SSL connectors. This results in connection

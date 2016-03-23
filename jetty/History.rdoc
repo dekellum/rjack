@@ -1,3 +1,6 @@
+=== 9.3.8.0 (TBD)
+* Update to Jetty 9.3.8.v20160314
+
 === 9.3.7.0 (2016-1-21)
 * Update to Jetty 9.3.7.v20160115. Note that this release changes the
   default ciphers for SSL connectors. This results in connection
@@ -37,6 +40,9 @@
 * Update to Jetty 9.3.0.M2 (milestone/pre-release)
 * Add ServerFactory#connections (and host) properties for creating
   multiple tcp/ssl connectors.
+
+=== 9.2.15.0 (2016-3-23)
+* Update to Jetty 9.2.15.v20160210
 
 === 9.2.14.0 (2015-11-18)
 * Update to Jetty 9.2.14.v20151106

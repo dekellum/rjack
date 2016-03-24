@@ -8,7 +8,7 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    json (1.8.2-java)
+    json (1.8.3-java)
     minitest (4.7.5)
     rake (10.4.2)
     rdoc (4.0.1)
@@ -17,10 +17,10 @@ GEM
       rjack-jms-spec (~> 1.1.1)
       rjack-slf4j (>= 1.6.5, < 1.8)
     rjack-jms-spec (1.1.1-java)
-    rjack-logback (1.7.1-java)
-      rjack-slf4j (>= 1.6.5, < 1.8)
+    rjack-logback (1.8.0-java)
+      rjack-slf4j (~> 1.7.16)
     rjack-maven (3.0.5.0-java)
-    rjack-slf4j (1.7.7.1-java)
+    rjack-slf4j (1.7.19.0-java)
     rjack-tarpit (2.1.0-java)
       rake (>= 0.9.2.2, < 11)
       rdoc (>= 3.12, < 5)

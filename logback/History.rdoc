@@ -1,3 +1,7 @@
+=== 1.8.0 (TBD)
+* Upgraded to Logback 1.1.6
+* Update dependency to slf4j ~> 1.7.16 (as required by logback 1.1.6)
+
 === 1.7.2 (2015-1-30)
 * Fix typo, a missing space between message and exception, in the
   default Logback.config_console pattern layout.

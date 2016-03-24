@@ -1,4 +1,4 @@
-=== 1.8.0 (TBD)
+=== 1.8.0 (2016-3-24)
 * Upgraded to Logback 1.1.6
 * Update dependency to slf4j ~> 1.7.16 (as required by logback 1.1.6)
 

@@ -10,7 +10,7 @@ RJack::TarPit.specify do |s|
 
   s.add_developer( 'David Kellum', 'dek-oss@gravitext.com' )
 
-  s.depend 'rake',            '>= 0.9.2.2', '< 11'
+  s.depend 'rake',            '>= 0.9.2.2', '< 12'
   s.depend 'rdoc',            '>= 3.12',    '< 5'
   s.depend 'minitest',        '~> 4.7.4',     :dev
 

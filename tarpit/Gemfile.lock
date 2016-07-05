@@ -25,7 +25,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  minitest (~> 4.7.4)
+  minitest (>= 4.7.4, < 5.9)
   rdoc (~> 4.0.1)
   rjack-logback (~> 1.5)
   rjack-slf4j (~> 1.7.0)

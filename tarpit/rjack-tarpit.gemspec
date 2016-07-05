@@ -12,7 +12,7 @@ RJack::TarPit.specify do |s|
 
   s.depend 'rake',            '>= 0.9.2.2', '< 12'
   s.depend 'rdoc',            '>= 3.12',    '< 5'
-  s.depend 'minitest',        '~> 4.7.4',     :dev
+  s.depend 'minitest',        '>= 4.7.4',   '< 6',  :dev
 
   if RUBY_PLATFORM =~ /java/
     s.depend 'rjack-maven',   '~> 3.0.4'

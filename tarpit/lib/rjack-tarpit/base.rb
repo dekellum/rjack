@@ -17,6 +17,6 @@
 module RJack
   module TarPit
     MINOR_VERSION = '2.1'
-    VERSION = MINOR_VERSION + '.0'
+    VERSION = MINOR_VERSION + '.1'
   end
 end

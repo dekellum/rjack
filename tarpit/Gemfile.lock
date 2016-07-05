@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rjack-tarpit (2.1.0-java)
+    rjack-tarpit (2.1.1-java)
       rake (>= 0.9.2.2, < 11)
       rdoc (>= 3.12, < 5)
       rjack-maven (~> 3.0.4)

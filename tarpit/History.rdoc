@@ -1,7 +1,7 @@
 === 2.1.1 (TBD)
 * Use unmodified minitest/autorun (at_exit handler) for default
   in-proc test loader to regain compatibility with later minitest
-  (gem) versions up through 5.8.4
+  (gem) versions up through 5.8.4 and 5.9.0
 * Add error handling for when the specfile isn't the caller of
   RJack::TarPit.specify (as observed with jruby's unavoidable
   jar-dependencies)

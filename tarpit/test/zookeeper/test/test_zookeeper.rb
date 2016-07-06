@@ -7,8 +7,8 @@ require 'rjack-zookeeper'
 
 class TestZooKeeper < MiniTest::Unit::TestCase
 
-  def test
-    pass #FIXME
+  def test_defined
+    assert( defined?( RJack::RZooKeeper ) )
   end
 
 end

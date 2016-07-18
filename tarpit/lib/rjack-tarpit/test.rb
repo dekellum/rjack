@@ -71,19 +71,9 @@ module RJack::TarPit
 
           desc "Run minitest tests (in rake process)"
           task :test do |t,args|
-            require 'minitest/unit'
-
-            MiniTest::Unit.class_eval do
-              def self.autorun # :nodoc:
-                # disable autorun, as we are running ourselves
-              end
-            end
-
+            # Let minitest/autorun at_exit run the test
+            require 'minitest/autorun'
             tfiles.each { |f| load File.expand_path( f ) }
-
-            code = MiniTest::Unit.new.run( ( ENV['TESTOPTS'] || '' ).split )
-            fail "test failed (#{code})" if code && code > 0
-            puts
           end
 
         else

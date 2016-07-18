@@ -24,7 +24,7 @@ require 'rjack-tarpit'
 class TestTarpit < MiniTest::Unit::TestCase
   include RJack
 
-  def test
+  def test_load
     tp = TarPit.new( "rjack-tarpit" )
     pass #load worked
 

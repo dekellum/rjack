@@ -54,18 +54,22 @@ module RJack::TarPit
       spec.extend( SpecHelper )
       spec.extend( ReadmeParser )
 
-      specfile = caller[0] =~ /^(.*\.gemspec)/ && $1
+      specfile = caller[0] =~ /^(.+\.gemspec):/ && $1
 
-      # Default name to the (name).gemspec that should be calling us
-      spec.name = File.basename( specfile, ".gemspec" )
+      if specfile
+        # Default name to the (name).gemspec that should be calling us
+        spec.name = File.basename( specfile, ".gemspec" )
 
-      # Add project's lib/ to LOAD_PATH for block...
-      ldir = File.expand_path( File.join( File.dirname( specfile ), 'lib' ) )
-      $LOAD_PATH.unshift( ldir )
+        # Add project's lib/ to LOAD_PATH for block...
+        ldir = File.expand_path( File.join( File.dirname( specfile ), 'lib' ) )
+        $LOAD_PATH.unshift( ldir )
+      end
 
       spec.tarpit_specify( &block )
 
-      $LOAD_PATH.shift # ...then remove it to avoid pollution
+      if specfile
+        $LOAD_PATH.shift # ...then remove it to avoid pollution
+      end
 
       @last_spec = spec
     end
@@ -148,6 +152,8 @@ module RJack::TarPit
       parse_readme( @readme_file ) if @readme_file
 
       yield self if block_given?
+
+      raise "No default or specified name" unless name
 
       @assembly_name ||= name
       @assembly_version ||= version

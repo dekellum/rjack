@@ -27,7 +27,7 @@ module RJack::TarPit
     def parse_readme( file )
 
       in_desc = false
-      desc = ""
+      desc = String.new
 
       readme_file_open( file ) do |fin|
         fin.each do |line|

@@ -41,6 +41,9 @@
 * Add ServerFactory#connections (and host) properties for creating
   multiple tcp/ssl connectors.
 
+=== 9.2.17.0 (2016-7-17)
+* Update to Jetty 9.2.17.v20160517
+
 === 9.2.15.0 (2016-3-23)
 * Update to Jetty 9.2.15.v20160210
 

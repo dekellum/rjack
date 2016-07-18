@@ -1,4 +1,4 @@
-=== 2.1.1 (TBD)
+=== 2.1.1 (2016-7-18)
 * Use unmodified minitest/autorun (at_exit handler) for default
   in-proc test loader to regain compatibility with later minitest
   (gem) versions up through 5.8.4 and 5.9.0

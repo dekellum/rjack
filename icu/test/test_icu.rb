@@ -2,7 +2,7 @@
 #.hashdot.profile += jruby-shortlived
 
 #--
-# Copyright (c) 2011-2016 David Kellum
+# Copyright (c) 2011-2017 David Kellum
 # All rights reserved.
 #
 # Permission is hereby granted, free of charge, to any person obtaining

@@ -1,5 +1,5 @@
 #--
-# Copyright (c) 2008-2016 David Kellum
+# Copyright (c) 2008-2017 David Kellum
 #
 # rjack-logback is free software: you can redistribute it and/or
 # modify it under the terms of either of following licenses:

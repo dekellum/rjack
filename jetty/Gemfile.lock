@@ -1,14 +1,14 @@
 PATH
   remote: .
   specs:
-    rjack-jetty (9.3.11.0-java)
+    rjack-jetty (9.3.16.0-java)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    json (1.8.3-java)
+    json (1.8.6-java)
     minitest (4.7.5)
-    rake (11.2.2)
+    rake (11.3.0)
     rdoc (4.0.1)
       json (~> 1.4)
     rjack-logback (1.8.1-java)
@@ -32,4 +32,4 @@ DEPENDENCIES
   rjack-tarpit (~> 2.1)
 
 BUNDLED WITH
-   1.12.5
+   1.13.7

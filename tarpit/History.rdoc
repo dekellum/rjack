@@ -1,3 +1,5 @@
+=== 2.1.2 (TBD)
+
 === 2.1.1 (2016-7-18)
 * Use unmodified minitest/autorun (at_exit handler) for default
   in-proc test loader to regain compatibility with later minitest

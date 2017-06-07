@@ -1,5 +1,6 @@
 === 9.4.6.0 (TBD)
 * Update to Jetty 9.4.6.v20170531
+* The minimum thread count is raised to 11 (per jetty error, testing).
 
 === 9.3.19.0 (2017-6-7)
 * Update to Jetty 9.3.19.v20170502

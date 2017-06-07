@@ -135,7 +135,7 @@ module RJack
       # Default: 10,000 ms
       attr_accessor :max_idle_time_ms
 
-      # Maximum number of threads. A minimum value of 7 is used, based
+      # Maximum number of threads. A minimum value of 11 is used, based
       # on the testing with the current Jetty version. Default: 20
       attr_accessor :max_threads
 
@@ -227,7 +227,7 @@ module RJack
       def create_pool
         pool = QueuedThreadPool.new
         pool.min_threads = [ @min_threads || ( @max_threads / 4 ), 4 ].max
-        pool.max_threads = [ @max_threads, 7 ].max
+        pool.max_threads = [ @max_threads, 11 ].max
         pool
       end
 

@@ -13,7 +13,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     minitest (4.7.5)
-    rake (11.3.0)
+    rake (12.0.0)
     rdoc (4.3.0)
     rjack-maven (3.0.5.0-java)
     rjack-tarpit (2.1.2-java)

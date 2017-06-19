@@ -1,4 +1,6 @@
-=== 42.1.1.0 (TBD)
+=== 42.1.1.0 (2017-6-19)
+* Update to 42.1.1 (note changed
+  {versioning scheme}[https://jdbc.postgresql.org/documentation/faq.html#versioning])
 
 === 9.4.1208.0 (2016-3-24)
 * Update to 9.4.1208

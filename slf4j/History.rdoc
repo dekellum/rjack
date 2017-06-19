@@ -1,4 +1,4 @@
-=== 1.7.25.0 (TBD)
+=== 1.7.25.0 (2017-6-19)
 * Upgraded to SLF4J 1.7.25
 * Add RJack::SLF4J::Logger#reopen no-op for ::Logger (stdlib 2.3)
   compatibility.

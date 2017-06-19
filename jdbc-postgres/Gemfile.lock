@@ -6,11 +6,9 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    json (1.8.6-java)
     minitest (4.7.5)
     rake (11.3.0)
-    rdoc (4.0.1)
-      json (~> 1.4)
+    rdoc (4.3.0)
     rjack-maven (3.0.5.0-java)
     rjack-tarpit (2.1.1-java)
       rake (>= 0.9.2.2, < 12)
@@ -22,7 +20,7 @@ PLATFORMS
 
 DEPENDENCIES
   minitest (~> 4.7.4)
-  rdoc (~> 4.0.1)
+  rdoc (>= 4.0.1, < 5)
   rjack-jdbc-postgres!
   rjack-tarpit (~> 2.1)
 

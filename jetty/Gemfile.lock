@@ -13,9 +13,8 @@ GEM
       rjack-slf4j (~> 1.7.16)
     rjack-maven (3.0.5.0-java)
     rjack-slf4j (1.7.19.0-java)
-    rjack-tarpit (2.1.1-java)
-      rake (>= 0.9.2.2, < 12)
-      rdoc (>= 3.12, < 5)
+    rjack-tarpit (2.1.2-java)
+      rake (>= 0.9.2.2)
       rjack-maven (~> 3.0.4)
 
 PLATFORMS

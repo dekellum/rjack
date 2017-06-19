@@ -336,6 +336,10 @@ module RJack
         #No-OP
       end
 
+      # No-Op, for Ruby ::Logger compatibility.
+      def reopen
+      end
+
     end
 
     # Get Logger by name

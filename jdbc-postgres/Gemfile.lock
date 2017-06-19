@@ -16,6 +16,7 @@ GEM
 
 PLATFORMS
   java
+  universal-java-1.8
 
 DEPENDENCIES
   minitest (~> 4.7.4)

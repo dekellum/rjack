@@ -5,3 +5,4 @@ source 'https://rubygems.org'
 gemspec :name => 'rjack-tarpit'
 
 gem 'rdoc', '~> 4.3.0'
+gem 'minitest', '>= 4.7.4', '< 6'

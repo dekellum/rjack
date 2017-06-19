@@ -1,13 +1,13 @@
 PATH
+  remote: ../slf4j
+  specs:
+    rjack-slf4j (1.7.25.0-java)
+
+PATH
   remote: .
   specs:
     rjack-logback (1.8.1-java)
       rjack-slf4j (~> 1.7.16)
-
-PATH
-  remote: ../slf4j
-  specs:
-    rjack-slf4j (1.7.19.0-java)
 
 GEM
   remote: https://rubygems.org/

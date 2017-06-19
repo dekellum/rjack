@@ -1,3 +1,6 @@
+=== 1.7.25.0 (TBD)
+* Upgraded to SLF4J 1.7.25
+
 === 1.7.19.0 (2016-3-24)
 * Upgraded to SLF4J 1.7.19
 

@@ -7,18 +7,19 @@ GEM
   remote: https://rubygems.org/
   specs:
     minitest (4.7.5)
-    rake (12.0.0)
+    rake (12.3.2)
     rdoc (4.3.0)
-    rjack-logback (1.8.1-java)
+    rjack-logback (1.9.0-java)
       rjack-slf4j (~> 1.7.16)
     rjack-maven (3.0.5.0-java)
-    rjack-slf4j (1.7.19.0-java)
+    rjack-slf4j (1.7.25.0-java)
     rjack-tarpit (2.1.2-java)
       rake (>= 0.9.2.2)
       rjack-maven (~> 3.0.4)
 
 PLATFORMS
   java
+  universal-java-1.8
 
 DEPENDENCIES
   minitest (~> 4.7.4)
@@ -29,4 +30,4 @@ DEPENDENCIES
   rjack-tarpit (~> 2.1)
 
 BUNDLED WITH
-   1.15.1
+   1.17.3
